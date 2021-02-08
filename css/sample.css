@@ -1,0 +1,95 @@
+.ponomar {
+  font-family: 'Ponomar Unicode';
+  font-language-override: 'CSL';
+}
+
+.fedorovsk {
+  font-family: 'Fedorovsk Unicode';
+}
+
+.menaion {
+  font-family: 'Menaion Unicode';
+  line-height: 1.5em;
+}
+
+.monomakh {
+  font-family: 'Monomakh Unicode';
+}
+
+.cathisma {
+  font-family: 'Cathisma Unicode';
+}
+
+.oglavie {
+  font-family: 'Oglavie Unicode';
+}
+
+.fira {
+  font-family: 'FiraSlav';
+}
+
+.pochaevsk {
+  font-family: 'Pochaevsk Unicode';
+}
+
+.triodion {
+  font-family: 'Triodion Unicode';
+}
+
+.acathist {
+  font-family: 'Acathist';
+}
+
+.shafarik {
+  font-family: 'Shafarik';
+}
+
+.shafarik3 {
+  font-family: 'Shafarik';
+  font-feature-settings: 'ss03';
+}
+
+.pomorsky-dropcaps {
+  font-family: 'Pomorsky Unicode';
+  font-size: 5em;
+  float : left;
+  color : #CC0502;
+  margin-top: -0.38em;
+  margin-right: 0.05em;
+  margin-bottom: -0.6em;
+}
+
+.indiction-dropcaps {
+  font-family: 'Indiction Unicode';
+  font-size: 4em;
+  float : left;
+  color : #CC0502;
+  margin-top: -0.25em;
+  margin-bottom: 0.3em;
+  margin-right: 0.05em;
+}
+
+.vertograd-dropcaps {
+  font-family: 'Vertograd Unicode';
+  font-size: 4em;
+  float: left;
+  color: #CC0502;
+  margin-top: -0.25em;
+  margin-right: 0.05em;
+  margin-bottom: 0.3em;
+}
+
+.sample {
+  margin: 1em 5vw 1em 5vw;
+  padding: 0.5em;
+  border: 1pt solid lightgrey;
+  font-size: 1.5em;
+}
+
+.decoration {
+  margin: 1em 5vw 1em 5vw;
+  padding: 0.5em;
+  border: 1pt solid lightgrey;
+  font-size: 2.5em;
+  text-align: center;
+}

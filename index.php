@@ -18,7 +18,7 @@ include 'include/topscripts.php';
                echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <h1>Храм в честь сщмч. Фаддея, архиепископа Тверского</h1>
+            <h1 class="acathist">Храм в честь сщмч. Фаддея, архиепископа Тверского</h1>
             <h2>Сайт в разработке. Зайдите через несколько дней.</h2>
         </div>
         <?php
