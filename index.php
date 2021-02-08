@@ -1,16 +1,28 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+include 'include/topscripts.php';
 ?>
 <!doctype html>
 <html>
+    <head>
+        <?php
+        include 'include/head.php';
+        ?>
+    </head>
     <body>
-        <h1>Лок. сайт</h1>
-        <p>В разработке.</p>
+        <?php
+        include 'include/header.php';
+        ?>
+        <div class="container">
+            <?php
+            if(!empty($error_message)) {
+               echo "<div class='alert alert-danger'>$error_message</div>";
+            }
+            ?>
+            <h1>Храм в честь сщмч. Фаддея, архиепископа Тверского</h1>
+            <h2>Сайт в разработке. Зайдите через несколько дней.</h2>
+        </div>
+        <?php
+        include 'include/footer.php';
+        ?>
     </body>
 </html>
