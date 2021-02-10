@@ -1,0 +1,10 @@
+.header {
+    position: relative;
+}
+
+.ikona_top {
+    position: absolute;
+    left: 42%;
+    top: 90px;
+    width: 16%;
+}

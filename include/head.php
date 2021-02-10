@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title>Храм в честь сщмч. Фаддея, архиепископа Тверского</title>
+<title>Храм священномученика Фаддея архиепископа Тверского</title>
 <link href="<?=APPLICATION ?>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=APPLICATION ?>/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/css/main.css" rel="stylesheet" />
