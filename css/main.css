@@ -8,3 +8,19 @@
     top: 90px;
     width: 16%;
 }
+
+.address_top {
+    position: absolute;
+    left: 10%;
+    bottom: 5%;
+    width: 30%;
+    padding: 12px;
+    background-color: white;
+    opacity: 0.6;
+    border-radius: 15px;
+    border: solid 2px #913d14;
+    font-weight: bold;
+    font-family: Times New Roman, serif;
+    font-style: italic;
+    font-size: 16px;
+}
