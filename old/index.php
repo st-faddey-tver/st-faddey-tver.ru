@@ -1,6 +1,17 @@
-<div class="container">
+<?php
+include '../include/topscripts.php';
+?>
+<!doctype html>
+<html>
+    <head>
+        <?php
+        include '../include/head.php';
+        ?>
+    </head>
+    <body>
+         <div class="container">
     <div class="header d-none d-md-block">
-        <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_icon_picture_photos.jpg" class="img-fluid" /></a>
+        <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_with_text.jpg" class="img-fluid" /></a>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">
@@ -24,4 +35,21 @@
             </li>
         </ul>
     </nav>
-</div>
+</div>       
+        <div class="container">
+            <div class="content">
+                <?php
+                if(!empty($error_message)) {
+                    echo "<div class='alert alert-danger'>$error_message</div>";
+                }
+                ?>
+                <h1>Старая версия</h1>
+                <p>Раздел в разработке.</p>
+                <br/><br/><br/><br/><br/><br/><br/>
+            </div>
+        </div>
+        <?php
+        include '../include/footer.php';
+        ?>
+    </body>
+</html>
