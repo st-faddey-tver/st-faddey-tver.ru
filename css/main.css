@@ -45,3 +45,25 @@ nav.neopalimy-navbar a:hover, nav.neopalimy-navbar a:active {
 nav.neopalimy-navbar a.disabled {
     color: white;
 }
+
+/* Главная часть */
+.content {
+    border-left: solid 3px #913d14;
+    border-right: solid 3px #913d14;
+    padding: 10px;
+}
+
+/* Футер */
+.footer {
+    background-color: sienna;
+    padding: 10px;
+    color: white;
+}
+
+.footer a:link, .footer a:visited {
+    color: gold;
+}
+
+.footer a:hover, .footer a:active {
+    color: darkorange;
+}
