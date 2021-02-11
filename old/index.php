@@ -12,6 +12,9 @@ include '../include/topscripts.php';
          <div class="container">
     <div class="header d-none d-md-block">
         <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_with_text.jpg" class="img-fluid" /></a>
+        <div class="ikona_top">
+            <img src="<?=APPLICATION ?>/images/ikona.jpg" class="img-fluid" />
+        </div>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">
