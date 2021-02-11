@@ -13,7 +13,7 @@
             $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/contact/index.php' ? ' disabled' : '';
             ?>
             <li class="nav-item">
-                <a class="nav-link<?=$home_status ?>" href="<?=APPLICATION ?>"><i class="fas fa-home"></i></a>
+                <a class="nav-link<?=$home_status ?>" href="<?=APPLICATION ?>/"><i class="fas fa-home"></i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link<?=$about_status ?>" href="<?=APPLICATION ?>/about/">О святом Фаддее</a>
