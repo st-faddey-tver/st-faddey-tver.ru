@@ -1,3 +1,5 @@
+/* Заголовок */
+
 .header {
     position: relative;
 }
@@ -23,4 +25,23 @@
     font-family: Times New Roman, serif;
     font-style: italic;
     font-size: 16px;
+}
+
+/* Меню */
+nav.neopalimy-navbar {
+    background-color: sienna;
+    border-top: solid 2px #913d14;
+    border-bottom: solid 2px #913d14;
+}
+
+nav.neopalimy-navbar a:link, nav.neopalimy-navbar a:visited {
+    color: gold;
+}
+
+nav.neopalimy-navbar a:hover, nav.neopalimy-navbar a:active {
+    color: darkorange;
+}
+
+nav.neopalimy-navbar a.disabled {
+    color: white;
 }
