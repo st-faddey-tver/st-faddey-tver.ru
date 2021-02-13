@@ -19,7 +19,7 @@ include '../include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <h1>О храме</h1>
+                <h1>Паломничество</h1>
                 <p>Раздел в разработке.</p>
                 <br/><br/><br/><br/><br/><br/><br/>
             </div>

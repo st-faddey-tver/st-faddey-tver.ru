@@ -29,7 +29,11 @@
             $education_preparation_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/documents/index.php' ? ' disabled' : '';
             $education_preparation_teachers_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/teachers/index.php' ? ' disabled' : '';
             
+            $pilgrimage_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pilgrimage/index.php' ? ' disabled': '';
+            
             $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/contact/index.php' ? ' disabled' : '';
+            
+            $gallery_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/gallery/index.php' ? ' disabled' : '';
             ?>
             <li class="nav-item">
                 <a class="nav-link<?=$home_status ?>" href="<?=APPLICATION ?>/"><i class="fas fa-home"></i></a>
@@ -38,9 +42,9 @@
                 <a class="nav-link dropdown-toggle<?=$about_status ?>" href="#" id="navbardrop_about" data-toggle="dropdown">О храме</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/about/history/">История</a>
-                    <a class="dropdown-item<?=$about_saints_status ?>" href="<?=APPLICATION ?>/about/saints">Святые храма</a>
-                    <a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/about/schedule">Расписание богослужений</a>
-                    <a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/about/clergy">Духовенство</a>
+                    <a class="dropdown-item<?=$about_saints_status ?>" href="<?=APPLICATION ?>/about/saints/">Святые храма</a>
+                    <a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/about/schedule/">Расписание богослужений</a>
+                    <a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/about/clergy/">Духовенство</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -74,7 +78,13 @@
                 </ul>
             </li>
             <li class="nav-item">
+                <a class="nav-link<?=$pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link<?=$contact_status ?>" href="<?=APPLICATION ?>/contact/">Контакты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link<?=$gallery_status ?>" href="<?=APPLICATION ?>/gallery/">Фотогалерея</a>
             </li>
         </ul>
     </nav>
