@@ -8,7 +8,6 @@
             $home_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? ' disabled' : '';
             $about_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/about/index.php' ? ' disabled' : '';
             $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/contact/index.php' ? ' disabled' : '';
-            $old_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/old/index.php' ? ' disabled' : '';
             ?>
             <li class="nav-item">
                 <a class="nav-link<?=$home_status ?>" href="<?=APPLICATION ?>/"><i class="fas fa-home"></i></a>
@@ -18,9 +17,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link<?=$contact_status ?>" href="<?=APPLICATION ?>/contact/">Контакты</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link<?=$old_status ?>" href="<?=APPLICATION ?>/old">Старая версия</a>
             </li>
         </ul>
     </nav>
