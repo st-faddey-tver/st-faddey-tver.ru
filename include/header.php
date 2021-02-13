@@ -21,7 +21,13 @@
             
             $education_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/index.php' ? ' disabled' : '';
             $education_sunday_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/sunday/index.php' ? ' disabled' : '';
-            $education_sunday_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/sunday/schedule.php' ? ' disabled' : '';
+            $education_sunday_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/sunday/schedule/index.php' ? ' disabled' : '';
+            $education_sunday_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/sunday/documents/index.php' ? ' disabled' : '';
+            $education_sunday_teachers_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/sunday/teachers/index.php' ? ' disabled' : '';
+            $education_preparation_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/index.php' ? ' disabled' : '';
+            $education_preparation_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/schedule/index.php' ? ' disabled' : '';
+            $education_preparation_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/documents/index.php' ? ' disabled' : '';
+            $education_preparation_teachers_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/education/preparation/teachers/index.php' ? ' disabled' : '';
             
             $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/contact/index.php' ? ' disabled' : '';
             ?>
@@ -48,12 +54,24 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle<?=$education_status ?>" href="#" id="navbardrop_education" data-toggle="dropdown">Образовательный центр</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-toggle<?=$education_sunday_status ?>" data-toggle="dropdown" href="#">Воскресная школа</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item<?=$education_sunday_schedule_status ?>" href="<?=APPLICATION ?>/education/sunday/schedule/">Расписание занятий</a>
-                    </div>
-                </div>
+                <ul class="dropdown-menu">
+                    <li style="position: relative;">
+                        <a class="dropdown-item dropdown-toggle<?=$education_sunday_status ?>" id="navbardrop_education_sunday" data-toggle="dropdown" href="#">Воскресная школа</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item<?=$education_sunday_schedule_status ?>" href="<?=APPLICATION ?>/education/sunday/schedule/">Расписание занятий</a>
+                            <a class="dropdown-item<?=$education_sunday_documents_status ?>" href="<?=APPLICATION ?>/education/sunday/documents/">Документы</a>
+                            <a class="dropdown-item<?=$education_sunday_teachers_status ?>" href="<?=APPLICATION ?>/education/sunday/teachers/">Преподаватели</a>
+                        </div>
+                    </li>
+                    <li style="position: relative;">
+                        <a class="dropdown-item dropdown-toggle<?=$education_preparation_status ?>" id="navbardrop_education_preparation" data-toggle="dropdown" href="#">Курсы подготовки для поступления в семинарию</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item<?=$education_preparation_schedule_status ?>" href="<?=APPLICATION ?>/education/preparation/schedule/">Расписание занятий</a>
+                            <a class="dropdown-item<?=$education_preparation_documents_status ?>" href="<?=APPLICATION ?>/education/preparation/documents/">Документы</a>
+                            <a class="dropdown-item<?=$education_preparation_teachers_status ?>" href="<?=APPLICATION ?>/education/preparation/teachers/">Преподаватели</a>
+                        </div>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link<?=$contact_status ?>" href="<?=APPLICATION ?>/contact/">Контакты</a>
