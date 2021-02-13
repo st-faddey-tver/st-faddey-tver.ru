@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header d-none d-md-block">
-        <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_icon_picture_photos.jpg" class="img-fluid" /></a>
+        <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_two_icons.jpg" class="img-fluid" /></a>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">
