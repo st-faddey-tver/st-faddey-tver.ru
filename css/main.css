@@ -65,6 +65,16 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     padding: 10px;
 }
 
+h1 {
+    margin-bottom: 30px;
+    color: #913d14;
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: #913d14;
+}
+
 /* Футер */
 .footer {
     background-color: sienna;
