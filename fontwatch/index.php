@@ -64,6 +64,10 @@ include '../include/topscripts.php';
             <h1 class="vertograd-dropcaps">Храм священномученика Фаддея, архиепископа Тверского</h1>
             
             <h2>Сайт в разработке. Зайдите через несколько дней.</h2>
+            
+            <br /><br /><br /><br /><br /><br />
+            <h1 class="triodion" style="font-size: 60px; color: #8b4513;">Храм сщмч. Фаддея архиепископа Тверского</h1>
+            <br /><br /><br /><br /><br /><br />
         </div>
         <?php
         include '../include/footer.php';
