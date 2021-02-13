@@ -42,8 +42,20 @@ nav.neopalimy-navbar a:hover, nav.neopalimy-navbar a:active {
     color: darkorange;
 }
 
+nav.neopalimy-navbar a.dropdown-item:link, nav.neopalimy-navbar a.dropdown-item:visited {
+    color: #913d14;
+}
+
+nav.neopalimy-navbar a.dropdown-item:hover, nav.neopalimy-navbar a.dropdown-item:active {
+    color: darkorange;
+}
+
 nav.neopalimy-navbar a.disabled {
     color: white;
+}
+
+nav.neopalimy-navbar a.dropdown-item.disabled {
+    color: gray;
 }
 
 /* Главная часть */
@@ -66,4 +78,57 @@ nav.neopalimy-navbar a.disabled {
 
 .footer a:hover, .footer a:active {
     color: darkorange;
+}
+
+.dropdown-menu .dropdown-menu {
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    display: block;
+}
+
+.dropdown-menu .dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: middle;
+    content: "";
+    border-top: .3em solid transparent;
+    border-right: 0;
+    border-bottom: .3em solid transparent;
+    border-left: .3em solid;
+}
+
+/* Navbar dropdown open on hover */
+@media only screen and (min-width:768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown:hover .dropdown-menu .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown .dropdown-menu:hover .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-menu {
+        margin-top: 0;
+    }
 }

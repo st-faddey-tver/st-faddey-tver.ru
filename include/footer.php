@@ -1,7 +1,7 @@
 <div class="container">
     <div class="footer">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <table>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
@@ -9,10 +9,14 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-4">
+            <div class="col-2">
                 <p><a href="<?=APPLICATION ?>/">На главную</a></p>
-                <p><a href="<?=APPLICATION ?>/about/">О святом Фаддее</a></p>
                 <p><a href="<?=APPLICATION ?>/contact/">Контакты</a></p>
+                <p><a href="<?=APPLICATION ?>/gallery/">Фотогалерея</a></p>
+            </div>
+            <div class="col-2">
+                <p>О храме</p>
+                <p><a href="<?=APPLICATION ?>/about/history/">История</a></p>
             </div>
         </div>
     </div>

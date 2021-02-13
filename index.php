@@ -21,7 +21,7 @@ include 'include/topscripts.php';
                 ?>
                 <h1>Сайт в разработке</h1>
                 <h2>Зайдите через несколько дней.</h2>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/>
             </div>
         </div>
         <?php
