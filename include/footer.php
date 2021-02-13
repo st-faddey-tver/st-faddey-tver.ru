@@ -34,6 +34,8 @@
                 <p><a href="<?=APPLICATION ?>/education/sunday/schedule/">Расписание занятий</a></p>
                 <p><a href="<?=APPLICATION ?>/education/sunday/documents/">Документы</a></p>
                 <p><a href="<?=APPLICATION ?>/education/sunday/teachers/">Преподаватели</a></p>
+            </div>
+            <div class="col-2">
                 <p>Курсы подготовки для поступления в семинарию</p>
                 <p><a href="<?=APPLICATION ?>/education/preparation/schedule/">Расписание занятий</a></p>
                 <p><a href="<?=APPLICATION ?>/education/preparation/documents/">Документы</a></p>
