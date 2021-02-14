@@ -80,6 +80,7 @@ h2 {
     background-color: sienna;
     padding: 10px;
     color: white;
+    font-size: small;
 }
 
 .footer a:link, .footer a:visited {
