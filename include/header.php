@@ -1,6 +1,14 @@
 <div class="container">
     <div class="header d-none d-md-block">
         <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_two_icons.jpg" class="img-fluid" /></a>
+        <div style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
+            &#8222;Сними обувь твою с ног твоих, ибо место, на котором ты стоишь, есть земля святая.&#8220;
+            <div style="text-align: right; font-size: smaller;">Исх 3:5</div>
+        </div>
+        <div style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; right: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
+            &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
+            <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
+        </div>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">
