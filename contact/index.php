@@ -61,8 +61,6 @@ include '../include/topscripts.php';
                         </td>
                     </tr>
                 </table>
-                
-                <br/><br/><br/><br/><br/><br/><br/>
             </div>
         </div>
         <?php
