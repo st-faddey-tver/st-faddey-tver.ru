@@ -19,14 +19,7 @@ include '../include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <div class="d-flex justify-content-between">
-                    <div class="p-1">
-                        <h1>Контакты</h1>
-                    </div>
-                    <div class="p-1">
-                        <button class="btn btn-primary"><i class="fas fa-ruble-sign"></i></button>
-                    </div>
-                </div>
+                <h1>Контакты</h1>
                 <table class="table">
                     <tr>
                         <th style="width: 20%;">Адрес</th>
