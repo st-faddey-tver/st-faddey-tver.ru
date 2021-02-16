@@ -9,6 +9,9 @@
             &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
             <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
         </div>
+        <div>
+            <a class="btn btn-danger" href="<?=APPLICATION ?>/admin/" style="position: absolute; right: 0; bottom: 0;">Администратор</a>
+        </div>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">
