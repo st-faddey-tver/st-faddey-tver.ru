@@ -1,7 +1,7 @@
 <?php
 include '../include/topscripts.php';
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <?php
