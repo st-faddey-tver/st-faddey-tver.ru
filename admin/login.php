@@ -30,7 +30,7 @@ include '../include/topscripts.php';
                             </div>
                             <div class="form-group">
                                 <label for="login_password">Пароль</label>
-                                <input type="login_password" id="password" name="login_password" class="form-control" required="required" />
+                                <input type="password" id="login_password" name="login_password" class="form-control" required="required" />
                                 <div class="invalid-feedback">Пароль обязательно</div>
                             </div>
                             <div class="form-group">

@@ -9,9 +9,15 @@
             &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
             <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
         </div>
-        <div>
-            <a class="btn btn-danger d-none" href="<?=APPLICATION ?>/admin/" style="position: absolute; right: 0; bottom: 0;">Администратор</a>
+        <?php
+        if(IsInRole(array('admin', 'editor'))):
+        ?>
+        <div style="position: absolute; right: 0; bottom: 0;">
+            <a class="btn btn-danger" href="<?=APPLICATION ?>/admin/">Администратор</a>
         </div>
+        <?php
+        endif;
+        ?>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
         <ul class="navbar-nav">

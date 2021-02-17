@@ -1,6 +1,11 @@
 <?php
 include '../../include/topscripts.php';
 
+// Авторизация
+if(!IsInRole(array('admin', 'editor'))) {
+    header('Location: '.APPLICATION.'/admin/login.php');
+}
+
 // Валидация формы
 define('ISINVALID', ' is-invalid');
 $form_valid = true;

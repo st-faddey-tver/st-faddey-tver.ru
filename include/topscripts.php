@@ -21,14 +21,22 @@ function GetUserId() {
     return filter_input(INPUT_COOKIE, USER_ID);
 }
 
-function IsInRole($role) {
-    $cookie = filter_input(INPUT_COOKIE, ROLE);
+function IsInRole($param) {
+    $roles = filter_input(INPUT_COOKIE, ROLES);
     
-    if(is_array($role)) {
-        return in_array($cookie, $role);
-    }
-    else {
-        return $cookie == $role;
+    if(!empty($roles)){
+        $arr_roles = unserialize($roles);
+        
+        if(is_array($param)) {
+            foreach ($param as $role) {
+                if(in_array($role, $arr_roles)) {
+                    return true;
+                }
+            }
+        }
+        else {
+            return in_array($param, $arr_roles);
+        }
     }
     
     return false;
@@ -157,6 +165,17 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
             setcookie(LAST_NAME, $last_name, 0, "/");
             setcookie(FIRST_NAME, $first_name, 0, "/");
             setcookie(MIDDLE_NAME, $middle_name, 0, "/");
+            
+            $roles = array();
+            $role_i = 0;
+            $roles_result = (new Grabber("select r.name from user_role ur inner join role r on ur.role_id = r.id where ur.user_id = $user_id"))->result;
+            
+            foreach ($roles_result as $role_row) {
+                $roles[$role_i++] = $role_row['name'];
+            }
+            
+            setcookie(ROLES, serialize($roles), 0, '/');
+            
             header("Refresh:0");
             header('Location: '.APPLICATION.'/admin/');
         }
@@ -170,6 +189,7 @@ if(null !== filter_input(INPUT_POST, 'logout_submit')) {
     setcookie(LAST_NAME, '', 0, "/");
     setcookie(FIRST_NAME, '', 0, "/");
     setcookie(MIDDLE_NAME, '', 0, "/");
+    setcookie(ROLES, '', 0, "/");
     header("Refresh:0");
     header('Location: '.APPLICATION.'/');
 }
