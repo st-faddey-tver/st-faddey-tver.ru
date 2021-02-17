@@ -29,7 +29,7 @@ include '../../include/topscripts.php';
                 </div>
                 <div class="p-1">
                     <a href="create.php" class="btn btn-outline-dark mr-2">
-                        <i class="fas fa-user-plus"></i>&nbsp;Добавить
+                        <i class="fas fa-user-plus"></i>&nbsp;Создать
                     </a>
                 </div>
             </div>

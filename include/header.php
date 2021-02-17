@@ -10,7 +10,7 @@
             <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
         </div>
         <div>
-            <a class="btn btn-danger" href="<?=APPLICATION ?>/admin/" style="position: absolute; right: 0; bottom: 0;">Администратор</a>
+            <a class="btn btn-danger d-none" href="<?=APPLICATION ?>/admin/" style="position: absolute; right: 0; bottom: 0;">Администратор</a>
         </div>
     </div>
     <nav class="navbar navbar-expand-sm neopalimy-navbar">
