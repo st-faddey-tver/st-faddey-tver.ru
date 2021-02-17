@@ -7,7 +7,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);">Выход&nbsp;<i class="fas fa-sign-out"></i></a>
+                <a class="nav-link" href="javascript:void(0);">Выход&nbsp;<i class="fas fa-sign-out-alt"></i></a>
             </li>
         </ul>
     </nav>

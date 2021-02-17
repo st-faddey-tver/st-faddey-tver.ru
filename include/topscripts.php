@@ -135,14 +135,9 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
         $username = '';
         $last_name = '';
         $first_name = '';
-        $role = '';
-        $twofactor = 0;
+        $middle_name = '';
         
-        $sql = "select u.id, u.username, u.last_name, u.first_name, u.email, r.name role, r.twofactor "
-                . "from user u "
-                . "inner join role r on u.role_id=r.id "
-                . "where u.username='$login_username' and u.password=password('$login_password')";
-        
+        $sql = "select id, username, last_name, first_name, middle_name from user where username='$login_username' and password=password('$login_password')";
         $users_result = (new Grabber($sql))->result;
         
         foreach ($users_result as $row) {
@@ -151,7 +146,6 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
             $last_name = $row['last_name'];
             $first_name = $row['first_name'];
             $middle_name = $row['middle_name'];
-            $role = $row['role'];
         }
         
         if(empty($user_id) || empty($username)) {
@@ -163,8 +157,8 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
             setcookie(LAST_NAME, $last_name, 0, "/");
             setcookie(FIRST_NAME, $first_name, 0, "/");
             setcookie(MIDDLE_NAME, $middle_name, 0, "/");
-            setcookie(ROLE, $role, 0, "/");
             header("Refresh:0");
+            header('Location: '.APPLICATION.'/admin/');
         }
     }
 }
@@ -176,7 +170,6 @@ if(null !== filter_input(INPUT_POST, 'logout_submit')) {
     setcookie(LAST_NAME, '', 0, "/");
     setcookie(FIRST_NAME, '', 0, "/");
     setcookie(MIDDLE_NAME, '', 0, "/");
-    setcookie(ROLE, '', 0, "/");
     header("Refresh:0");
     header('Location: '.APPLICATION.'/');
 }
