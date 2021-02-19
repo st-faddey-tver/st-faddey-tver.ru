@@ -92,7 +92,13 @@ $myroles = (new Grabber("select ur.user_id, ur.role_id, r.local_name from role r
                             <div class="btn-group">
                                 <a href="<?=APPLICATION ?>/admin/user/" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo"></i></a>
                                 <a href="<?=APPLICATION ?>/admin/user/edit.php?id=<?=$id ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-user-edit"></i></a>
+                                <?php
+                                if(GetUserId() != $id):
+                                ?>
                                 <a href="<?=APPLICATION ?>/admin/user/delete.php?id=<?=$id ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
+                                <?php
+                                endif;
+                                ?>
                             </div>
                         </div>
                     </div>
