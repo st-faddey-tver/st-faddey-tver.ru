@@ -1,16 +1,20 @@
 <?php
 include '../../include/topscripts.php';
+include '../../admin/include/page/page.php';
 
 // Авторизация
 if(!IsInRole(array('history', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
+
+$page = new Page(1);
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php
         include '../include/head.php';
+        $page->Head();
         ?>
     </head>
     <body>
@@ -30,9 +34,14 @@ if(!IsInRole(array('history', 'admin'))) {
             </ul>
             <h1>О храме</h1>
             <h2>История</h2>
+            <?php
+            $page->GetFragmentsAdmin();
+            $page->ShowCreateFragmentForm();
+            ?>
         </div>
         <?php
         include '../include/footer.php';
+        $page->Footer();
         ?>
     </body>
 </html>

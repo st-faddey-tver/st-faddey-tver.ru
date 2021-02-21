@@ -49,8 +49,11 @@
 <script src='<?=APPLICATION ?>/js/jquery-3.5.1.min.js'></script>
 <script src='<?=APPLICATION ?>/js/popper.min.js'></script>
 <script src='<?=APPLICATION ?>/js/bootstrap.min.js'></script>
+<script src='<?=APPLICATION ?>/admin/cleditor/jquery.cleditor.js'></script>
 <script>
     $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip(); 
+        $('[data-toggle="tooltip"]').tooltip(); 
+        
+        $('textarea.editor').cleditor()[0].focus();
     });
 </script>
