@@ -67,7 +67,7 @@ if(!IsInRole(array('admin'))) {
                         <td><?= htmlentities($row['first_name']) ?></td>
                         <td><?= htmlentities($row['middle_name']) ?></td>
                         <td><?= htmlentities($row['roles']) ?></td>
-                        <td><a href="details.php?id=<?=$row['id'] ?>" title="Подробно" data-toggle="tooltip"><i class="fas fa-user"></i></a></td>
+                        <td><a href="details.php?id=<?=$row['id'] ?>" class="btn btn-outline-dark" title="Подробно" data-toggle="tooltip"><i class="fas fa-user"></i></a></td>
                     </tr>
                     <?php
                     endwhile;
