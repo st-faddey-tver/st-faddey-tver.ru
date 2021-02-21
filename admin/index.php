@@ -29,9 +29,20 @@ if(!IsInRole(array('admin', 'editor'))) {
             </ul>
             <h1>Администратор</h1>
             <div class="row">
-                <div class="col-6"></div>
                 <div class="col-6">
+                    <p>О храме</p>
+                    <ul>
+                        <li><a href="history/">История</a></li>
+                    </ul>
+                </div>
+                <div class="col-6">
+                    <?php
+                    if(IsInRole(array('admin'))):
+                    ?>
                     <p><a href="<?=APPLICATION ?>/admin/user/">Пользователи</a></p>
+                    <?php
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>

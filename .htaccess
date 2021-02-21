@@ -1,0 +1,30 @@
+# REWRITE
+ <IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /st-faddey-tver.ru/
+RewriteRule ^images - [L]
+
+RewriteRule ^history pages/about/history.php
+RewriteRule ^saints pages/about/saints.php
+RewriteRule ^schedule pages/about/schedule.php
+RewriteRule ^clergy pages/about/clergy.php
+RewriteRule ^events pages/about/events.php
+RewriteRule ^news pages/about/news.php
+
+RewriteRule ^volunteer pages/youth/volunteer.php
+RewriteRule ^club pages/youth/club.php
+RewriteRule ^family pages/youth/family.php
+RewriteRule ^cinema pages/youth/cinema.php
+
+RewriteRule ^preparation/documents pages/education/preparation/documents.php
+RewriteRule ^preparation/schedule pages/education/preparation/schedule.php
+RewriteRule ^preparation/teachers pages/education/preparation/teachers.php
+RewriteRule ^sunday/documents pages/education/sunday/documents.php
+RewriteRule ^sunday/schedule pages/education/sunday/schedule.php
+RewriteRule ^sunday/teachers pages/education/sunday/teachers.php
+
+RewriteRule ^pilgrimage pages/pilgrimage.php
+RewriteRule ^contact pages/contact.php
+RewriteRule ^gallery pages/gallery.php
+</IfModule>
