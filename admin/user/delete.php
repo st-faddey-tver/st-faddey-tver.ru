@@ -66,7 +66,7 @@ $middle_name = $row['middle_name'];
                             <h1 class="text-danger">Действительно удалить?</h1>
                         </div>
                         <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/user/details.php?id=<?=$id ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                            <a href="<?=APPLICATION ?>/admin/user/details.php?id=<?=$id ?>" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
                         </div>
                     </div>
                     <table class="table table-bordered">
@@ -94,5 +94,8 @@ $middle_name = $row['middle_name'];
                 </div>
             </div>
         </div>
+        <?php
+        include '../include/footer.php';
+        ?>
     </body>
 </html>

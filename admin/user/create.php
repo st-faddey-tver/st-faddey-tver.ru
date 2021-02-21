@@ -97,7 +97,7 @@ if(null !== filter_input(INPUT_POST, 'user_create_submit')) {
                             <h1>Создание пользователя</h1>
                         </div>
                         <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/user/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                            <a href="<?=APPLICATION ?>/admin/user/" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
                         </div>
                     </div>
                     <form method="post">

@@ -49,8 +49,8 @@ $middle_name = $row['middle_name'];
                         </div>
                         <div class="p-1">
                             <div class="btn-group">
-                                <a href="<?=APPLICATION ?>/admin/personal/edit.php" class="btn btn-outline-dark"><i class="fas fa-user-edit"></i>&nbsp;Редактировать</a>
-                                <a href="<?=APPLICATION ?>/admin/personal/password.php" class="btn btn-outline-dark"><i class="fas fa-key"></i>&nbsp;Сменить пароль</a>
+                                <a href="<?=APPLICATION ?>/admin/personal/edit.php" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-user-edit"></i></a>
+                                <a href="<?=APPLICATION ?>/admin/personal/password.php" class="btn btn-outline-dark" title="Сменить пароль" data-toggle="tooltip"><i class="fas fa-key"></i></a>
                             </div>
                         </div>
                     </div>
