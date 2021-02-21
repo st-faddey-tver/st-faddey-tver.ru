@@ -21,6 +21,8 @@
                 <p><a href="<?=APPLICATION ?>/saints/">Святые храма</a></p>
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
                 <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
+                <p><a href="<?=APPLICATION ?>/events/">Все события</a></p>
+                <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
             </div>
             <div class="col-2">
                 <p>Молодёжь храма</p>
