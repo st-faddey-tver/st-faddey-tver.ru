@@ -17,29 +17,29 @@
             </div>
             <div class="col-2">
                 <p>О храме</p>
-                <p><a href="<?=APPLICATION ?>/about/history/">История</a></p>
-                <p><a href="<?=APPLICATION ?>/about/saints/">Святые храма</a></p>
-                <p><a href="<?=APPLICATION ?>/about/schedule/">Расписание богослужений</a></p>
-                <p><a href="<?=APPLICATION ?>/about/clergy/">Духовенство</a></p>
+                <p><a href="<?=APPLICATION ?>/history/">История</a></p>
+                <p><a href="<?=APPLICATION ?>/saints/">Святые храма</a></p>
+                <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
+                <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
             </div>
             <div class="col-2">
                 <p>Молодёжь храма</p>
-                <p><a href="<?=APPLICATION ?>/youth/volunteer/">Добровольческое движение</a></p>
-                <p><a href="<?=APPLICATION ?>/youth/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
-                <p><a href="<?=APPLICATION ?>/youth/family/">Семейный клуб</a></p>
-                <p><a href="<?=APPLICATION ?>/youth/cinema/">Синематографический клуб</a></p>
+                <p><a href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a></p>
+                <p><a href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
+                <p><a href="<?=APPLICATION ?>/family/">Семейный клуб</a></p>
+                <p><a href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a></p>
             </div>
             <div class="col-2">
                 <p>Воскресная школа</p>
-                <p><a href="<?=APPLICATION ?>/education/sunday/schedule/">Расписание занятий</a></p>
-                <p><a href="<?=APPLICATION ?>/education/sunday/documents/">Документы</a></p>
-                <p><a href="<?=APPLICATION ?>/education/sunday/teachers/">Преподаватели</a></p>
+                <p><a href="<?=APPLICATION ?>/sunday/schedule/">Расписание занятий</a></p>
+                <p><a href="<?=APPLICATION ?>/sunday/documents/">Документы</a></p>
+                <p><a href="<?=APPLICATION ?>/sunday/teachers/">Преподаватели</a></p>
             </div>
             <div class="col-2">
                 <p>Курсы подготовки для поступления в семинарию</p>
-                <p><a href="<?=APPLICATION ?>/education/preparation/schedule/">Расписание занятий</a></p>
-                <p><a href="<?=APPLICATION ?>/education/preparation/documents/">Документы</a></p>
-                <p><a href="<?=APPLICATION ?>/education/preparation/teachers/">Преподаватели</a></p>
+                <p><a href="<?=APPLICATION ?>/preparation/schedule/">Расписание занятий</a></p>
+                <p><a href="<?=APPLICATION ?>/preparation/documents/">Документы</a></p>
+                <p><a href="<?=APPLICATION ?>/preparation/teachers/">Преподаватели</a></p>
             </div>
         </div>
     </div>
