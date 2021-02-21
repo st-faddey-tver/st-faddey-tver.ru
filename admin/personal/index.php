@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('editor', 'admin'))) {
+if(!HasRole()) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>

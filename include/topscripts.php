@@ -42,6 +42,20 @@ function IsInRole($param) {
     return false;
 }
 
+function HasRole() {
+    $roles = filter_input(INPUT_COOKIE, ROLES);
+    
+    if(!empty($roles)) {
+        $arr_roles = unserialize($roles);
+        
+        if(is_array($arr_roles) && count($arr_roles) > 0) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
 // Классы
 class Executer {
     public $error = '';

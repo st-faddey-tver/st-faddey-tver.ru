@@ -10,7 +10,7 @@
             <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
         </div>
         <?php
-        if(IsInRole(array('admin', 'editor'))):
+        if(HasRole()):
         ?>
         <div style="position: absolute; right: 0; bottom: 0;">
             <a class="btn btn-danger" href="<?=APPLICATION ?>/admin/">Администратор</a>
