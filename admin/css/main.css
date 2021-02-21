@@ -1,3 +1,12 @@
+/* Раскрывающееся меню */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    margin-top: 0;
+}
+
 /* Style the list */
 ul.breadcrumb {
     padding: 10px 16px;

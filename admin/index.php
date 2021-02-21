@@ -2,7 +2,7 @@
 include '../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin', 'editor'))) {
+if(!IsInRole(array('editor', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>
@@ -32,17 +32,8 @@ if(!IsInRole(array('admin', 'editor'))) {
                 <div class="col-6">
                     <p>О храме</p>
                     <ul>
-                        <li><a href="history/">История</a></li>
+                        <li><a href="about/history.php">История</a></li>
                     </ul>
-                </div>
-                <div class="col-6">
-                    <?php
-                    if(IsInRole(array('admin'))):
-                    ?>
-                    <p><a href="<?=APPLICATION ?>/admin/user/">Пользователи</a></p>
-                    <?php
-                    endif;
-                    ?>
                 </div>
             </div>
         </div>
