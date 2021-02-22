@@ -1,6 +1,10 @@
+@import '../../css/fonts.css';
+@import '../../css/sample.css';
+
 /* Главная часть */
 .content {
     padding: 10px;
+    font-size: 18px;
 }
 
 /* Раскрывающееся меню */

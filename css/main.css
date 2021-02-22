@@ -1,5 +1,7 @@
-/* Заголовок */
+@import 'fonts.css';
+@import 'sample.css';
 
+/* Заголовок */
 .header {
     position: relative;
 }
@@ -63,6 +65,7 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     border-left: solid 3px #913d14;
     border-right: solid 3px #913d14;
     padding: 10px;
+    font-size: 18px;
 }
 
 h1 {

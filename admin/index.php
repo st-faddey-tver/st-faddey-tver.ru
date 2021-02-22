@@ -32,8 +32,9 @@ if(!HasRole()) {
                 <div class="col-6">
                     <p>О храме</p>
                     <ul>
-                        <li><a href="about/history.php">История</a></li>
+                        <li><a href="pages/about/history.php">История</a></li>
                     </ul>
+                    <p><a href="pages/contact.php">Контакты</a></p>
                 </div>
             </div>
         </div>
