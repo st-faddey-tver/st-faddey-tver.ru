@@ -21,6 +21,43 @@ class Page {
                 $this->errorMessage = (new Executer($sql))->error;
             }
         }
+        
+        if(null !== filter_input(INPUT_POST, 'page_fragment_delete_submit')) {
+            $id = filter_input(INPUT_POST, 'id');
+            $this->errorMessage = (new Executer("delete from page_fragment where id=$id"))->error;
+        }
+        
+        if(null !== filter_input(INPUT_POST, 'page_fragment_up_submit')) {
+            $id = filter_input(INPUT_POST, 'id');
+            $page = filter_input(INPUT_POST, 'page');
+            $position = filter_input(INPUT_POST, 'position');
+            
+            $row = (new Fetcher("select id, position from page_fragment where page='$page' and position<$position order by position desc limit 1"))->Fetch();
+            $previous_id = $row['id'];
+            $previous_position = $row['position'];
+            
+            $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$previous_id"))->error;
+            
+            if(empty($this->errorMessage)) {
+                $this->errorMessage = (new Executer("update page_fragment set position=$previous_position where id=$id"))->error;
+            }
+        }
+        
+        if(null !== filter_input(INPUT_POST, 'page_fragment_down_submit')) {
+            $id = filter_input(INPUT_POST, 'id');
+            $page = filter_input(INPUT_POST, 'page');
+            $position = filter_input(INPUT_POST, 'position');
+            
+            $row = (new Fetcher("select id, position from page_fragment where page='$page' and position>$position order by position asc limit 1"))->Fetch();
+            $next_id = $row['id'];
+            $next_position = $row['position'];
+            
+            $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$next_id"))->error;
+            
+            if(empty($this->errorMessage)) {
+                $this->errorMessage = (new Executer("update page_fragment set position=$next_position where id=$id"))->error;
+            }
+        }
     }
 
     public function GetFragments() {
@@ -32,7 +69,7 @@ class Page {
     }
     
     public function GetFragmentsEditMode() {
-        $sql = "select id, body, position from page_fragment where page = '$this->page' order by position";
+        $sql = "select id, page, body, position from page_fragment where page = '$this->page' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()):
         ?>
@@ -43,6 +80,7 @@ class Page {
             <div class="col-4 text-right">
                 <form method="post">
                     <input type="hidden" id="id" name="id" value="<?=$row['id'] ?>" />
+                    <input type="hidden" id="page" name="page" value="<?=$row['page'] ?>" />
                     <input type="hidden" id="position" name="position" value="<?=$row['position'] ?>" />
                     <input type="hidden" id="scroll" name="scroll" />
                     <div class="btn-group text-right">
