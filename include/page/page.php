@@ -32,7 +32,7 @@ class Page {
     }
     
     public function GetFragmentsEditMode() {
-        $sql = "select id, body from page_fragment where page = '$this->page' order by position";
+        $sql = "select id, body, position from page_fragment where page = '$this->page' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()):
         ?>
@@ -43,12 +43,13 @@ class Page {
             <div class="col-4 text-right">
                 <form method="post">
                     <input type="hidden" id="id" name="id" value="<?=$row['id'] ?>" />
+                    <input type="hidden" id="position" name="position" value="<?=$row['position'] ?>" />
                     <input type="hidden" id="scroll" name="scroll" />
                     <div class="btn-group text-right">
                         <button type="submit" id="page_fragment_up_submit" name="page_fragment_up_submit" class="btn btn-outline-dark" title="Вверх" data-toggle="tooltip"><i class="fas fa-arrow-up"></i></button>
                         <button type="submit" id="page_fragment_down_submit" name="page_fragment_down_submit" class="btn btn-outline-dark" title="Вниз" data-toggle="tooltip"><i class="fas fa-arrow-down"></i></button>
                         <button type="submit" id="page_fragment_edit_submit" name="page_fragment_edit_submit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></button>
-                        <button type="submit" id="page_fragment_delete_submit" name="page_fragment_delete_submit" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" id="page_fragment_delete_submit" name="page_fragment_delete_submit" class="btn btn-outline-dark confirmable" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </form>
             </div>

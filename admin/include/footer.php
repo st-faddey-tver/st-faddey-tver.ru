@@ -10,7 +10,7 @@
             docCSSFile: '<?=APPLICATION ?>/admin/css/main.css',
             height: 350,
             bodyStyle: "margin:4px; font:14pt Arial,Verdana; cursor:text"
-        })[0].focus();
+        }); //[0].focus();
     });
     
     // Подтверждение удаления
