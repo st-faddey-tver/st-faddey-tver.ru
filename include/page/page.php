@@ -22,6 +22,17 @@ class Page {
             }
         }
         
+        if(null !== filter_input(INPUT_POST, 'edit_fragment_submit')) {
+            $id = filter_input(INPUT_POST, 'id');
+            $body = filter_input(INPUT_POST, 'body');
+            
+            if(!empty($body)) {
+                $body = addslashes($body);
+                $sql = "update page_fragment set body='$body' where id=$id";
+                $this->errorMessage = (new Executer($sql))->error;
+            }
+        }
+        
         if(null !== filter_input(INPUT_POST, 'page_fragment_delete_submit')) {
             $id = filter_input(INPUT_POST, 'id');
             $this->errorMessage = (new Executer("delete from page_fragment where id=$id"))->error;
@@ -75,7 +86,21 @@ class Page {
         ?>
         <div class="row" style="border-top: solid 1px lightgray;">
             <div class="col-8">
-                <?=$row['body'] ?>
+                <?php
+                if(null !== filter_input(INPUT_POST, 'page_fragment_edit_submit')) {
+                    $id = filter_input(INPUT_POST, 'id');
+                    
+                    if($id == $row['id']) {
+                        include 'edit_fragment_form.php';
+                    }
+                    else {
+                        echo $row['body'];
+                    }
+                }
+                else {
+                    echo $row['body'];
+                }
+                ?>
             </div>
             <div class="col-4 text-right">
                 <form method="post">
