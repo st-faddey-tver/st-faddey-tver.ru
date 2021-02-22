@@ -1,13 +1,15 @@
 <?php
 include '../../include/topscripts.php';
-include '../../admin/include/page/page.php';
+include '../../include/page/page.php';
 
 // Авторизация
 if(!IsInRole(array('history', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-$page = new Page(1);
+$page = new Page("history");
+$page->Top();
+$error_message = $page->errorMessage;
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,10 +34,16 @@ $page = new Page(1);
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li>История</li>
             </ul>
-            <h1>О храме</h1>
-            <h2>История</h2>
+            <div class="container" style="margin-left: 0;">
+                <div class="content">
+                    <h1>О храме</h1>
+                    <h2>История</h2>
+                    <?php
+                    $page->GetFragments();
+                    ?>
+                </div>
+            </div>
             <?php
-            $page->GetFragmentsAdmin();
             $page->ShowCreateFragmentForm();
             ?>
         </div>

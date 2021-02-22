@@ -1,5 +1,7 @@
 <?php
 include '../../include/topscripts.php';
+include '../../include/page/page.php';
+$page = new Page("history");
 ?>
 <!doctype html>
 <html>
@@ -20,8 +22,9 @@ include '../../include/topscripts.php';
                 }
                 ?>
                 <h1>История</h1>
-                <p>Раздел в разработке.</p>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <?php
+                $page->GetFragments();
+                ?>
             </div>
         </div>
         <?php

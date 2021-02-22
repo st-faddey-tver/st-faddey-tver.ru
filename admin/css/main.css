@@ -1,3 +1,8 @@
+/* Главная часть */
+.content {
+    padding: 10px;
+}
+
 /* Раскрывающееся меню */
 .dropdown:hover .dropdown-menu {
     display: block;
