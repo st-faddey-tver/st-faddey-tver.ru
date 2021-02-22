@@ -43,14 +43,15 @@ class Page {
             $page = filter_input(INPUT_POST, 'page');
             $position = filter_input(INPUT_POST, 'position');
             
-            $row = (new Fetcher("select id, position from page_fragment where page='$page' and position<$position order by position desc limit 1"))->Fetch();
-            $previous_id = $row['id'];
-            $previous_position = $row['position'];
-            
-            $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$previous_id"))->error;
-            
-            if(empty($this->errorMessage)) {
-                $this->errorMessage = (new Executer("update page_fragment set position=$previous_position where id=$id"))->error;
+            if($row = (new Fetcher("select id, position from page_fragment where page='$page' and position<$position order by position desc limit 1"))->Fetch()) {
+                $previous_id = $row['id'];
+                $previous_position = $row['position'];
+                
+                $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$previous_id"))->error;
+                
+                if(empty($this->errorMessage)) {
+                    $this->errorMessage = (new Executer("update page_fragment set position=$previous_position where id=$id"))->error;
+                }
             }
         }
         
@@ -59,14 +60,15 @@ class Page {
             $page = filter_input(INPUT_POST, 'page');
             $position = filter_input(INPUT_POST, 'position');
             
-            $row = (new Fetcher("select id, position from page_fragment where page='$page' and position>$position order by position asc limit 1"))->Fetch();
-            $next_id = $row['id'];
-            $next_position = $row['position'];
-            
-            $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$next_id"))->error;
-            
-            if(empty($this->errorMessage)) {
-                $this->errorMessage = (new Executer("update page_fragment set position=$next_position where id=$id"))->error;
+            if($row = (new Fetcher("select id, position from page_fragment where page='$page' and position>$position order by position asc limit 1"))->Fetch()) {
+                $next_id = $row['id'];
+                $next_position = $row['position'];
+                
+                $this->errorMessage = (new Executer("update page_fragment set position=$position where id=$next_id"))->error;
+                
+                if(empty($this->errorMessage)) {
+                    $this->errorMessage = (new Executer("update page_fragment set position=$next_position where id=$id"))->error;
+                }
             }
         }
     }
