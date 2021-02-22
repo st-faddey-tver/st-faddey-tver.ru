@@ -7,7 +7,7 @@ if(!IsInRole(array('about', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-$page = new Page("history");
+$page = new Page("saints");
 $page->Top();
 $error_message = $page->errorMessage;
 ?>
@@ -31,24 +31,24 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>История</li>
+                <li>Святые храма</li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
                             <h1>О храме</h1>
-                            <h2>История</h2>
+                            <h2>Святые храма</h2>
                         </div>
                         <div class="p-1">
                             <?php
                             if(filter_input(INPUT_GET, 'mode') == 'edit'):
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/history.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
+                            <a href="<?=APPLICATION ?>/admin/pages/about/saints.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
                             <?php
                             else:
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/history.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                            <a href="<?=APPLICATION ?>/admin/pages/about/saints.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
                             <?php
                             endif;
                             ?>

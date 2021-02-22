@@ -33,6 +33,16 @@ if(!HasRole()) {
                     <p>О храме</p>
                     <ul>
                         <li><a href="pages/about/history.php">История</a></li>
+                        <li><a href="pages/about/saints.php">Святые храма</a></li>
+                        <li><a href="pages/about/schedule.php">Расписание богослужений</a></li>
+                        <li><a href="pages/about/clergy.php">Духовенство</a></li>
+                    </ul>
+                    <p>Молодёжь храма</p>
+                    <ul>
+                        <li><a href="pages/youth/volunteer.php">Добровольческое движение</a></li>
+                        <li><a href="pages/youth/club.php">Молодёжный клуб &laquo;Встреча&raquo;</a></li>
+                        <li><a href="pages/youth/family.php">Семейный клуб</a></li>
+                        <li><a href="pages/youth/cinema.php">Синематографический клуб</a></li>
                     </ul>
                     <p><a href="pages/contact.php">Контакты</a></p>
                 </div>
