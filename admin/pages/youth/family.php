@@ -60,8 +60,9 @@ $error_message = $page->errorMessage;
                     }
                     else {
                         $page->GetFragments();
-                        $page->ShowCreateFragmentForm();
                     }
+                    
+                    $page->ShowCreateFragmentForm();
                     ?>
                 </div>
             </div>
