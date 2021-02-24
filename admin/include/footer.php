@@ -9,8 +9,8 @@
         $('textarea.editor').cleditor({
             docCSSFile: '<?=APPLICATION ?>/admin/css/main.css',
             height: 350,
-            bodyStyle: "margin:4px; font:14pt Arial,Verdana; cursor:text"
-        }); //[0].focus();
+            bodyStyle: "margin:4px; font-size:18px; font-family: Arial,Verdana, sans-serif; cursor:text"
+        })[0].focus();
     });
     
     // Подтверждение удаления
