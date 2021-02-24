@@ -33,7 +33,7 @@ $error_message = $page->errorMessage;
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li>История</li>
             </ul>
-            <div class="container">
+            <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
