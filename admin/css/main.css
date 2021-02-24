@@ -8,6 +8,10 @@
     font-family: Arial, Verdana, sans-serif;
 }
 
+.ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
+    font-size: 24px;
+}
+
 /* Раскрывающееся меню */
 .dropdown:hover .dropdown-menu {
     display: block;

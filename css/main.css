@@ -6,29 +6,6 @@
     position: relative;
 }
 
-.ikona_top {
-    position: absolute;
-    left: 42%;
-    top: 90px;
-    width: 16%;
-}
-
-.address_top {
-    position: absolute;
-    left: 10%;
-    bottom: 5%;
-    width: 30%;
-    padding: 12px;
-    background-color: white;
-    opacity: 0.6;
-    border-radius: 15px;
-    border: solid 2px #913d14;
-    font-weight: bold;
-    font-family: Times New Roman, serif;
-    font-style: italic;
-    font-size: 16px;
-}
-
 /* Меню */
 nav.neopalimy-navbar {
     background-color: sienna;
@@ -67,6 +44,10 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     padding: 10px;
     font-size: 18px;
     font-family: Arial, Verdana, sans-serif;
+}
+
+.ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
+    font-size: 24px;
 }
 
 h1 {
