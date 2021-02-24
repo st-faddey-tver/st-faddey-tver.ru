@@ -26,9 +26,9 @@ if(!IsInRole(array('files', 'admin'))) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Картинки</li>
+                <li>Изображения</li>
             </ul>
-            <h1>Картинки</h1>
+            <h1>Изображения</h1>
         </div>
         <?php
         include '../include/footer.php';
