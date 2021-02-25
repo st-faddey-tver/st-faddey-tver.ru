@@ -10,13 +10,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="width">Уменьшить ширину до</label>
-                <input type="number" min="1" step="1" id="width" name="width" class="form-control" />
+                <input type="number" min="1" step="1" id="max_width" name="max_width" class="form-control" />
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="height">Уменьшить высоту до</label>
-                <input type="number" min="1" step="1" id="height" name="height" class="form-control" />
+                <input type="number" min="1" step="1" id="max_height" name="max_height" class="form-control" />
             </div>
         </div>
     </div>

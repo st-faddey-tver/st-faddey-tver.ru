@@ -8,6 +8,10 @@ class Page {
     public $errorMessage;
 
     public function Top() {
+        define('ISINVALID', ' is-invalid');
+        $form_valid = true;
+        $error_message = '';
+
         if(null !== filter_input(INPUT_POST, 'create_fragment_submit')) {
             $body = filter_input(INPUT_POST, 'body');
             
@@ -73,8 +77,17 @@ class Page {
         }
         
         if(null !== filter_input(INPUT_POST, 'upload_image_submit')) {
-            if($_FILES['file']['error'] == 0) {
+            $name = filter_input(INPUT_POST, 'name');
+            $max_width = filter_input(INPUT_POST, 'max_width');
+            $max_height = filter_input(INPUT_POST, 'max_height');
+            
+            if($_FILES['file']['error'] == 0 && !empty($name)) {
                 if(exif_imagetype($_FILES['file']['tmp_name'])) {
+                    $image_size = getimagesize($_FILES['file']['tmp_name']);
+                    $width = $image_size[0];
+                    $height = $image_size[1];
+                    $extension = image_type_to_extension($image_size[2]);
+                    
                     $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
                     $romanized_name = Romanize($_FILES['file']['name']);
                     $final_name = $romanized_name;
@@ -84,7 +97,9 @@ class Page {
                     }
                     
                     if(move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name)) {
-                        //
+                        $name = addslashes($name);
+                        $sql = "insert into page_image (page, name, filename, width, height, extension) values ('$this->page', '$name', '$final_name', $width, $height, '$extension')";
+                        $this->errorMessage = (new Executer($sql))->error;
                     }
                     else {
                         $this->errorMessage = "Ошибка при загрузке файла";
@@ -156,7 +171,7 @@ class Page {
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             echo "<p>".$row['name']."</p>";
-            echo "<p>".$row['name']."</p>";
+            echo "<p>".$row['filename']."</p>";
             echo '<br />';
         }
     }
