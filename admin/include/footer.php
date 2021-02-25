@@ -18,6 +18,22 @@
         return confirm('Действительно удалить?');
     });
     
+    // Копирование ссылки
+    $('.copy_src').click(function(e){
+        var src = $(e.target).attr("data-src");
+        
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(src).select();
+        document.execCommand("copy");
+        $temp.remove();
+        
+        var alert = $(this).children('.clipboard_alert');
+        alert.slideDown(300, function(){
+            $(this).slideUp(1000);
+        });
+    });
+    
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
         $('input[name="scroll"]').val($(window).scrollTop());

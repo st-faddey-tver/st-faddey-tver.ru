@@ -68,7 +68,6 @@ $error_message = $page->errorMessage;
                     ?>
                     <hr />
                     <h2>Изображения</h2>
-                    <hr />
                     <?php
                     $page->GetImages();
                     ?>
