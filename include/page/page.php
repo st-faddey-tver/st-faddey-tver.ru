@@ -152,7 +152,13 @@ class Page {
     }
     
     public function GetImages() {
-        echo '<p>IMAGES</p>';
+        $sql = "select id, name, filename, width, height from page_image where page = '$this->page' order by id";
+        $fetcher = new Fetcher($sql);
+        while ($row = $fetcher->Fetch()) {
+            echo "<p>".$row['name']."</p>";
+            echo "<p>".$row['name']."</p>";
+            echo '<br />';
+        }
     }
     
     public function ShowUploadImageForm() {

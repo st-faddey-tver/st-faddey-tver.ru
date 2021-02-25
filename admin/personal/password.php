@@ -85,17 +85,17 @@ if(null !== filter_input(INPUT_POST, 'password_change_submit')) {
                     </div>
                     <form method="post">
                         <div class="form-group">
-                            <label for="old_password">Текущий пароль</label>
+                            <label for="old_password">Текущий пароль<span class="text-danger">*</span></label>
                             <input type="password" id="old_password" name="old_password" class="form-control<?=$old_password_valid ?>" required="required" />
                             <div class="invalid-feedback">Текущий пароль обязательно</div>
                         </div>
                         <div class="form-group">
-                            <label for="new_password">Новый пароль</label>
+                            <label for="new_password">Новый пароль<span class="text-danger">*</span></label>
                             <input type="password" id="new_password" name="new_password" class="form-control<?=$new_password_valid ?>" required="required" />
                             <div class="invalid-feedback">Новый пароль обязательно</div>
                         </div>
                         <div class="form-group">
-                            <label for="confirm">Введите новый пароль повторно</label>
+                            <label for="confirm">Введите новый пароль повторно<span class="text-danger">*</span></label>
                             <input type="password" id="confirm" name="confirm" class="form-control<?=$confirm_valid ?>" required="required" />
                             <div class="invalid-feedback">Новый пароль и его подтверждение не совпадают</div>
                         </div>

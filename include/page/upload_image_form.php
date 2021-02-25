@@ -1,6 +1,11 @@
 <h2>Загрузить изображение</h2>
 <form method="post" enctype="multipart/form-data">
     <input type="hidden" id="scroll" name="scroll" />
+    <div class="form-group">
+        <label for="file">Наименование<span class="text-danger">*</span></label>
+        <input type="text" id="name" name="name" class="form-control" required="required" />
+        <div class="invalid-feedback">Наименование обязательно.</div>
+    </div>
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -16,7 +21,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="file">Файл изображения</label>
+        <label for="file">Файл изображения<span class="text-danger">*</span></label>
         <input type="file" id="file" name="file" class="form-control" />
     </div>
     <div class="form-group">

@@ -133,22 +133,22 @@ if(empty($middle_name)) {
                     <form method="post">
                         <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
                         <div class="form-group">
-                            <label for="username">Логин</label>
+                            <label for="username">Логин<span class="text-danger">*</span></label>
                             <input type="text" id="username" name="username" class="form-control<?=$username_valid ?>" value="<?= htmlentities($username) ?>" required="required" />
                             <div class="invalid-feedback">Логин обязательно: только латинские буквы, цифры, точка и подчёркивание</div>
                         </div>
                         <div class="form-group">
-                            <label for="last_name">Фамилия</label>
+                            <label for="last_name">Фамилия<span class="text-danger">*</span></label>
                             <input type="text" id="last_name" name="last_name" class="form-control<?=$last_name_valid ?>" value="<?= htmlentities($last_name) ?>" required="required" />
                             <div class="invalid-feedback">Фамилия обязательно</div>
                         </div>
                         <div class="form-group">
-                            <label for="first_name">Имя</label>
+                            <label for="first_name">Имя<span class="text-danger">*</span></label>
                             <input type="text" id="first_name" name="first_name" class="form-control<?=$first_name_valid ?>" value="<?= htmlentities($first_name) ?>" required="required" />
                             <div class="invalid-feedback">Имя обязательно</div>
                         </div>
                         <div class="form-group">
-                            <label for="middle_name">Отчество</label>
+                            <label for="middle_name">Отчество<span class="text-danger">*</span></label>
                             <input type="text" id="middle_name" name="middle_name" class="form-control<?=$middle_name_valid ?>" value="<?= htmlentities($middle_name) ?>" required="required" />
                             <div class="invalid-feedback">Отчество обязательно</div>
                         </div>
