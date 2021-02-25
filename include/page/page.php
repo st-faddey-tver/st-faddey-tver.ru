@@ -71,6 +71,21 @@ class Page {
                 }
             }
         }
+        
+        if(null !== filter_input(INPUT_POST, 'upload_image_submit')) {
+            if($_FILES['file']['error'] == 0) {
+                $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
+                $final_name = $_FILES['file']['name'];
+                
+                while (file_exists($upload_path.$final_name)) {
+                    $final_name = time().'_'.$_FILES['file']['name'];
+                }
+                
+                if(!move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name)) {
+                    $this->errorMessage = "Ошибка при загрузке файла";
+                }
+            }
+        }
     }
 
     public function GetFragments() {
@@ -125,6 +140,14 @@ class Page {
 
     public function ShowCreateFragmentForm() {
         include 'create_fragment_form.php';
+    }
+    
+    public function GetImages() {
+        echo '<p>IMAGES</p>';
+    }
+    
+    public function ShowUploadImageForm() {
+        include 'upload_image_form.php';
     }
 }
 ?>
