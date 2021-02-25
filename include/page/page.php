@@ -74,15 +74,24 @@ class Page {
         
         if(null !== filter_input(INPUT_POST, 'upload_image_submit')) {
             if($_FILES['file']['error'] == 0) {
-                $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
-                $final_name = $_FILES['file']['name'];
-                
-                while (file_exists($upload_path.$final_name)) {
-                    $final_name = time().'_'.$_FILES['file']['name'];
+                if(exif_imagetype($_FILES['file']['tmp_name'])) {
+                    $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
+                    $romanized_name = Romanize($_FILES['file']['name']);
+                    $final_name = $romanized_name;
+                    
+                    while (file_exists($upload_path.$final_name)) {
+                        $final_name = time().'_'.$romanized_name;
+                    }
+                    
+                    if(move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name)) {
+                        //
+                    }
+                    else {
+                        $this->errorMessage = "Ошибка при загрузке файла";
+                    }
                 }
-                
-                if(!move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name)) {
-                    $this->errorMessage = "Ошибка при загрузке файла";
+                else {
+                    $this->errorMessage = "Файл не является изображением";
                 }
             }
         }

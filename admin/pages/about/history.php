@@ -63,6 +63,8 @@ $error_message = $page->errorMessage;
                     }
                     
                     $page->ShowCreateFragmentForm();
+                    
+                    if(filter_input(INPUT_GET, 'mode') != 'edit'):
                     ?>
                     <hr />
                     <h2>Изображения</h2>
@@ -76,6 +78,9 @@ $error_message = $page->errorMessage;
                             ?>
                         </div>
                     </div>
+                    <?php
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>
