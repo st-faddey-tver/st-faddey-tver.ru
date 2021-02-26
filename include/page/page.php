@@ -96,7 +96,21 @@ class Page {
                         $final_name = time().'_'.$romanized_name;
                     }
                     
-                    if(move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name)) {
+                    $file_uploaded = false;
+                    
+                    if($max_width > $width) {
+                        unset($max_width);
+                    }
+                    
+                    if($max_height > $height) {
+                        unset($max_height);
+                    }
+                    
+                    if(empty($max_width) && empty($max_height)) {
+                        $file_uploaded = move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name);
+                    }
+                    
+                    if($file_uploaded) {
                         $name = addslashes($name);
                         $sql = "insert into page_image (page, name, filename, width, height, extension) values ('$this->page', '$name', '$final_name', $width, $height, '$extension')";
                         $this->errorMessage = (new Executer($sql))->error;
