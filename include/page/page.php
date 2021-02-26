@@ -83,7 +83,10 @@ class Page {
             
             if($_FILES['file']['error'] == 0 && !empty($name)) {
                 if(exif_imagetype($_FILES['file']['tmp_name'])) {
-                    $image_size = getimagesize($_FILES['file']['tmp_name']);
+                    $myimage = new MyImage($_FILES['file']['tmp_name']);
+                    $file_uploaded = $myimage->ResizeAndSave(filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/", $max_width, $max_height);
+                    
+                    /*$image_size = getimagesize($_FILES['file']['tmp_name']);
                     $width = $image_size[0];
                     $height = $image_size[1];
                     $extension = image_type_to_extension($image_size[2]);
@@ -180,11 +183,11 @@ class Page {
                         $image_size = getimagesize($upload_path.$final_name);
                         $width = $image_size[0];
                         $height = $image_size[1];
-                    }
+                    }*/
                     
                     if($file_uploaded) {
                         $name = addslashes($name);
-                        $sql = "insert into page_image (page, name, filename, width, height, extension) values ('$this->page', '$name', '$final_name', $width, $height, '$extension')";
+                        $sql = "insert into page_image (page, name, filename, width, height, extension) values ('$this->page', '$name', '$myimage->filename', $myimage->width, $myimage->height, '$myimage->extension')";
                         $this->errorMessage = (new Executer($sql))->error;
                     }
                     else {

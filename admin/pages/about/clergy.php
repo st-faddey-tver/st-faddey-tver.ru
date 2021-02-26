@@ -1,6 +1,7 @@
 <?php
 include '../../../include/topscripts.php';
 include '../../../include/page/page.php';
+include '../../../include/myimage/myimage.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
