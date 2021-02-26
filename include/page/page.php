@@ -84,7 +84,7 @@ class Page {
             if($_FILES['file']['error'] == 0 && !empty($name)) {
                 if(exif_imagetype($_FILES['file']['tmp_name'])) {
                     $myimage = new MyImage($_FILES['file']['tmp_name']);
-                    $file_uploaded = $myimage->ResizeAndSave(filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/", $max_width, $max_height);
+                    $file_uploaded = $myimage->ResizeAndSave($_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/", $max_width, $max_height);
                     
                     /*$image_size = getimagesize($_FILES['file']['tmp_name']);
                     $width = $image_size[0];
