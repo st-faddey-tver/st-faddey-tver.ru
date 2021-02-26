@@ -143,7 +143,7 @@ class Page {
         $sql = "select id, name, filename, width, height, extension from page_image where page = '$this->page' order by id";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
-            $src = filter_input(INPUT_SERVER, 'REQUEST_SCHEME').'://'. filter_input(INPUT_SERVER, 'HTTP_HOST').APPLICATION."/images/content/".$row['filename'];
+            $src = $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION."/images/content/".$row['filename'];
             include 'fragment_image_row.php';
         }
     }
