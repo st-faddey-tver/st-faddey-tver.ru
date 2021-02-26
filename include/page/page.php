@@ -97,17 +97,89 @@ class Page {
                     }
                     
                     $file_uploaded = false;
+                    $dest_height = 0;
+                    $dest_width = 0;
                     
-                    if($max_width > $width) {
-                        unset($max_width);
-                    }
-                    
-                    if($max_height > $height) {
-                        unset($max_height);
-                    }
-                    
-                    if(empty($max_width) && empty($max_height)) {
+                    if((empty($max_height) || $max_height >= $height) && ($max_width == 0 || $max_width >= $width)) {
                         $file_uploaded = move_uploaded_file($_FILES['file']['tmp_name'], $upload_path.$final_name);
+                    }
+                    else {
+                        if(empty($max_height) && !empty($max_width)) {
+                            $dest_width = $max_width;
+                            $dest_height = $height * $max_width / $width;
+                        }
+                        
+                        if(!empty($max_height) && empty($max_width)) {
+                            $dest_height = $max_height;
+                            $dest_width = $width * $max_height / $height;
+                        }
+                        
+                        if(!empty($max_height) && !empty($max_width)) {
+                            $dest_width = $max_width;
+                            $dest_height = $height * $max_width / $width;
+                            
+                            if($dest_height > $max_height) {
+                                $dest_height = $max_height;
+                                $dest_width = $width * $max_height / $height;
+                            }
+                        }
+                        
+                        $src_image = null;
+                        $dest_image = imagecreatetruecolor($dest_width, $dest_height);
+                        
+                        switch ($image_size[2]) {
+                        case IMG_BMP:
+                            $src_image = imagecreatefrombmp($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagebmp($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_GIF:
+                            $src_image = imagecreatefromgif($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagegif($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_JPG:
+                            $src_image = imagecreatefromjpeg($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagejpeg($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_JPEG:
+                            $src_image = imagecreatefromjpeg($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagejpeg($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_PNG:
+                            $src_image = imagecreatefrompng($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagepng($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_WBMP:
+                            $src_image = imagecreatefromwbmp($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagewbmp($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_WEBP:
+                            $src_image = imagecreatefromwebp($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagewebp($dest_image, $upload_path.$final_name);
+                            break;
+                        
+                        case IMG_XPM:
+                            $src_image = imagecreatefromxpm($_FILES['file']['tmp_name']);
+                            imagecopyresampled($dest_image, $src_image, 0, 0, 0, 0, $dest_width, $dest_height, $width, $height);
+                            $file_uploaded = imagexbm($dest_image, $upload_path.$final_name);
+                            break;
+                        }
+                        
+                        $image_size = getimagesize($upload_path.$final_name);
+                        $width = $image_size[0];
+                        $height = $image_size[1];
                     }
                     
                     if($file_uploaded) {
