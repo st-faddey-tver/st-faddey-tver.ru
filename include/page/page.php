@@ -110,6 +110,23 @@ class Page {
                 }
             }
         }
+        
+        if(null !== filter_input(INPUT_POST, 'delete_image_submit')) {
+            $id = filter_input(INPUT_POST, 'id');
+            $filename = filter_input(INPUT_POST, 'filename');
+            $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
+            $filepath = $upload_path.$filename;
+            
+            $this->errorMessage = (new Executer("delete from page_image where id=$id"))->error;
+            
+            if(empty($this->errorMessage)) {
+                if(file_exists($filepath)) {
+                    if(!unlink($filepath)) {
+                        $this->errorMessage = "Ошибка при удалении файла";
+                    }
+                }
+            }
+        }
     }
 
     public function GetFragments() {
@@ -123,43 +140,9 @@ class Page {
     public function GetFragmentsEditMode() {
         $sql = "select id, page, body, position from page_fragment where page = '$this->page' order by position";
         $fetcher = new Fetcher($sql);
-        while ($row = $fetcher->Fetch()):
-        ?>
-        <div class="row" style="border-top: solid 1px lightgray;">
-            <div class="col-8">
-                <?php
-                if(null !== filter_input(INPUT_POST, 'page_fragment_edit_submit')) {
-                    $id = filter_input(INPUT_POST, 'id');
-                    
-                    if($id == $row['id']) {
-                        include 'edit_fragment_form.php';
-                    }
-                    else {
-                        echo $row['body'];
-                    }
-                }
-                else {
-                    echo $row['body'];
-                }
-                ?>
-            </div>
-            <div class="col-4 text-right">
-                <form method="post">
-                    <input type="hidden" id="id" name="id" value="<?=$row['id'] ?>" />
-                    <input type="hidden" id="page" name="page" value="<?=$row['page'] ?>" />
-                    <input type="hidden" id="position" name="position" value="<?=$row['position'] ?>" />
-                    <input type="hidden" id="scroll" name="scroll" />
-                    <div class="btn-group text-right">
-                        <button type="submit" id="page_fragment_up_submit" name="page_fragment_up_submit" class="btn btn-outline-dark" title="Вверх" data-toggle="tooltip"><i class="fas fa-arrow-up"></i></button>
-                        <button type="submit" id="page_fragment_down_submit" name="page_fragment_down_submit" class="btn btn-outline-dark" title="Вниз" data-toggle="tooltip"><i class="fas fa-arrow-down"></i></button>
-                        <button type="submit" id="page_fragment_edit_submit" name="page_fragment_edit_submit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></button>
-                        <button type="submit" id="page_fragment_delete_submit" name="page_fragment_delete_submit" class="btn btn-outline-dark confirmable" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <?php
-        endwhile;
+        while ($row = $fetcher->Fetch()) {
+            include 'page_edit_mode_row.php';
+        }
     }
 
     public function ShowCreateFragmentForm() {
@@ -169,34 +152,10 @@ class Page {
     public function GetImages() {
         $sql = "select id, name, filename, width, height, extension from page_image where page = '$this->page' order by id";
         $fetcher = new Fetcher($sql);
-        while ($row = $fetcher->Fetch()):
-        $src = filter_input(INPUT_SERVER, 'REQUEST_SCHEME').'://'. filter_input(INPUT_SERVER, 'HTTP_HOST').APPLICATION."/images/content/".$row['filename'];
-        ?>
-<div class="row mb-5">
-    <div class="col-2">
-        <a href="<?=$src ?>" title="Открыть в новом окне" target="_blank"><img src="<?=$src ?>" title="<?=$row['name'] ?>" class="img-fluid" /></a>
-    </div>
-    <div class="col-10" style="border-top: solid 1px lightgray;">
-        <p><strong><?= htmlentities($row['name']) ?></strong></p>
-        <p><?=$row['extension'] ?>,&nbsp;<?=$row['width'] ?>&nbsp;<i class="fas fa-times"></i>&nbsp;<?=$row['height'] ?></p>
-        <p class="src"><?=$src ?></p>
-        <div class="d-flex justify-content-between mb-2">
-            <div class="p-1">
-                <button class="btn btn-outline-dark copy_src" data-src="<?=$src ?>"><i class="fas fa-copy"></i>&nbsp;Скопировать ссылку<div class='alert alert-info clipboard_alert'>Скопировано</div></button>
-            </div>
-            <div class="p-1">
-                <form method="post">
-                    <input type="hidden" id="id" name="id" value="<?=$row['id']; ?>" />
-                    <input type="hidden" id="scroll" name="scroll" />
-                    <input type="hidden" id="filename" name="filename" />
-                    <button type="submit" class="btn btn-outline-dark confirmable" id="delete_image_submit" name="delete_image_submit"><i class="fas fa-trash-alt"></i>&nbsp;Удалить</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-        <?php
-        endwhile;
+        while ($row = $fetcher->Fetch()) {
+            $src = filter_input(INPUT_SERVER, 'REQUEST_SCHEME').'://'. filter_input(INPUT_SERVER, 'HTTP_HOST').APPLICATION."/images/content/".$row['filename'];
+            include 'fragment_image_row.php';
+        }
     }
     
     public function ShowUploadImageForm() {

@@ -34,6 +34,15 @@
         });
     });
     
+    // Валидация
+    $('input').keypress(function(){
+        $(this).removeClass('is-invalid');
+    });
+    
+    $('select').change(function(){
+        $(this).removeClass('is-invalid');
+    });
+    
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
         $('input[name="scroll"]').val($(window).scrollTop());
