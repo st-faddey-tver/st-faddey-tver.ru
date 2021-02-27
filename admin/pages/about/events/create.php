@@ -37,6 +37,8 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
         $title = addslashes(filter_input(INPUT_POST, 'title'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
+        $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
+        $show_title = filter_input(INPUT_POST, 'show_title') == 'on' ? 1 : 0;
 
         if(empty($shortname)) {
             $shortname = Romanize($title);
@@ -60,7 +62,7 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (is_event, date, title, shortname, body) values (1, '$date', '$title', '$shortname', '$body')";
+        $sql = "insert into news (is_event, date, title, shortname, body, front, show_title) values (1, '$date', '$title', '$shortname', '$body', $front, $show_title)";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         
@@ -103,9 +105,37 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
                     </div>
                 </div>
                 <form method="post">
-                    <div class="form-group w-25">
-                        <label for="date">Дата</label>
-                        <input type="date" id="date" name="date" class="form-control" value="<?= filter_input(INPUT_POST, 'date') ?? date('Y-m-d') ?>" />
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="date">Дата</label>
+                                <input type="date" id="date" name="date" class="form-control" value="<?= filter_input(INPUT_POST, 'date') ?? date('Y-m-d') ?>" />
+                            </div>
+                        </div>
+                        <div class="col-4" style="padding-top: 30px;">
+                            <div class="form-check">
+                                <?php
+                                $checked = " checked='checked'";
+                                if(null != filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
+                                    $checked = '';
+                                }
+                                ?>
+                                <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?>" />
+                                <label class="form-check-label" for="front">На первой странице</label>
+                            </div>
+                        </div>
+                        <div class="col-4" style="padding-top: 30px;">
+                            <div class="form-check">
+                                <?php
+                                $checked = " checked='checked'";
+                                if(null != filter_input(INPUT_POST, 'show_title') && !filter_input(INPUT_POST, 'show_title')) {
+                                    $checked = '';
+                                }
+                                ?>
+                                <input type="checkbox" class="form-check-input" id="show_title" name="show_title"<?=$checked ?>" />
+                                <label class="form-check-label" for="show_title">Показывать заголовок</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="title">Заголовок<span class="text-danger">*</span></label>

@@ -48,7 +48,7 @@ if(!IsInRole(array('about', 'admin'))) {
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select id, date, title, shortname, body from news n where n.is_event=1 order by n.date desc, n.id desc limit $pager_skip, $pager_take";
+                    $sql = "select id, date, title, shortname, body, front, show_title from news n where n.is_event=1 order by n.date desc, n.id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     
@@ -58,8 +58,10 @@ if(!IsInRole(array('about', 'admin'))) {
                     $title = $row['title'];
                     $shortname = $row['shortname'];
                     $body = $row['body'];
+                    $front = $row['front'];
+                    $show_title = $row['show_title'];
                     ?>
-                    <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?></div>
+                    <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
                     <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
                     <?=$body ?>
                     <hr />
