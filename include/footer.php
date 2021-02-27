@@ -5,7 +5,7 @@
                 <table>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
-                        <td style="padding-bottom: 10px;">Московская патриархия,<br /> Храм свмч. Фаддея архиепископа Тверского</td>
+                        <td style="padding-bottom: 10px;">Московская патриархия,<br />храм свмч. Фаддея архиепископа Тверского</td>
                     </tr>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>

@@ -36,6 +36,7 @@ if(!HasRole()) {
                         <li><a href="pages/about/saints.php">Святые храма</a></li>
                         <li><a href="pages/about/schedule.php">Расписание богослужений</a></li>
                         <li><a href="pages/about/clergy.php">Духовенство</a></li>
+                        <li><a href="pages/about/events/">Все события</a></li>
                     </ul>
                     <p>Молодёжь храма</p>
                     <ul>
