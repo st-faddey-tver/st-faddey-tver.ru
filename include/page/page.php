@@ -1,4 +1,6 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
+
 class Page {
     public function __construct($pageName) {
         $this->page = $pageName;
@@ -104,7 +106,7 @@ class Page {
         if(null !== filter_input(INPUT_POST, 'delete_image_submit')) {
             $id = filter_input(INPUT_POST, 'id');
             $filename = filter_input(INPUT_POST, 'filename');
-            $upload_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT').APPLICATION."/images/content/";
+            $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/";
             $filepath = $upload_path.$filename;
             
             $this->errorMessage = (new Executer("delete from page_image where id=$id"))->error;
