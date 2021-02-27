@@ -7,10 +7,16 @@ if(!IsInRole(array('about', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
+// Если нет параметра is_event, переход на главную страницу администратора
+$is_event = filter_input(INPUT_GET, 'is_event');
+if($is_event === null) {
+    header('Location: '.APPLICATION."/admin/");
+}
+
 // Если нет параметра id, переход к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION."/admin/pages/about/events/");
+    header('Location: '.APPLICATION."/admin/pages/about/news/". BuildQuery('is_event', $is_event));
 }
 
 // Получение объекта
@@ -57,7 +63,7 @@ $error_message = $news->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/events/<?= BuildQueryRemove('id') ?>">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
                 <li><?=$title ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">

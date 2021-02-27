@@ -6,6 +6,12 @@ if(!IsInRole(array('about', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
+// Если нет параметра is_event, переход на главную страницу администратора
+$is_event = filter_input(INPUT_GET, 'is_event');
+if($is_event === null) {
+    header('Location: '.APPLICATION."/admin/");
+}
+
 // Валидация формы
 define('ISINVALID', ' is-invalid');
 $form_valid = true;
@@ -16,7 +22,7 @@ $shortname_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
+if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
     if(empty(filter_input(INPUT_POST, 'title'))) {
         $title_valid = ISINVALID;
         $form_valid = false;
@@ -62,12 +68,12 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (is_event, date, title, shortname, body, front, show_title) values (1, '$date', '$title', '$shortname', '$body', $front, $show_title)";
+        $sql = "insert into news (is_event, date, title, shortname, body, front, show_title) values ($is_event, '$date', '$title', '$shortname', '$body', $front, $show_title)";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/pages/about/events/");
+            header('Location: '.APPLICATION."/admin/pages/about/news/". BuildQuery('is_event', $is_event));
         }
     }
 }
@@ -92,13 +98,13 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/events/">Все события</a></li>
-                <li>Новое событие</li>
+                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQuery('is_event', $is_event) ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><?=$is_event ? "Новое событие" : "Новая новость" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="d-flex justify-content-between mb-2">
                     <div class="p-1">
-                        <h1>Новое событие</h1>
+                        <h1><?=$is_event ? "Новое событие" : "Новая новость" ?></h1>
                     </div>
                     <div class="p-1">
                         <a href="index.php" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
@@ -153,7 +159,7 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
                         <div class="invalid-feedback">Текст обязательно</div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" id="event_create_submit" name="event_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать</button>
+                        <button type="submit" id="news_create_submit" name="news_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать</button>
                     </div>
                 </form>
             </div>

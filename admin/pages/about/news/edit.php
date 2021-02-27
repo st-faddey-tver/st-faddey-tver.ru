@@ -6,6 +6,12 @@ if(!IsInRole(array('about', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
+// Если нет параметра is_event, переход на главную страницу администратора
+$is_event = filter_input(INPUT_GET, 'is_event');
+if($is_event === null) {
+    header('Location: '.APPLICATION."/admin/");
+}
+
 // Валидация формы
 define('ISINVALID', ' is-invalid');
 $form_valid = true;
@@ -16,7 +22,7 @@ $shortname_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
+if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     if(empty(filter_input(INPUT_POST, 'title'))) {
         $title_valid = ISINVALID;
         $form_valid = false;
@@ -66,14 +72,14 @@ if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
         $sql = "update news set date='$date', title='$title', shortname='$shortname', body='$body', front=$front, show_title=$show_title where id=$id";
         $error_message = (new Executer($sql))->error;
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/pages/about/events/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/pages/about/news/details.php".BuildQuery('id', $id));
         }
     }
 }
 
 // Если нет параметра id, переходим к списку
 if(null === filter_input(INPUT_GET, 'id')) {
-    header('Location: '.APPLICATION.'/admin/pages/about/events/');
+    header('Location: '.APPLICATION.'/admin/pages/about/news/'. BuildQuery('is_event', $is_event));
 }
 
 // Получение объекта
@@ -105,7 +111,7 @@ if(empty($body)) {
     $body = $row['body'];
 }
 
-if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
+if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
     $show_title = filter_input(INPUT_POST, 'show_title') == 'on' ? 1 : 0;
 }
@@ -134,14 +140,14 @@ else {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/events/<?= BuildQueryRemove('id') ?>">Все события</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/events/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
-                <li>Редактирование события</li>
+                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
+                <li><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="d-flex justify-content-between mb-2">
                     <div class="p-1">
-                        <h1>Редактирование события</h1>
+                        <h1><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></h1>
                     </div>
                     <div class="p-1">
                         <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
@@ -185,7 +191,7 @@ else {
                         <div class="invalid-feedback">Текст обязательно</div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" id="event_edit_submit" name="event_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
+                        <button type="submit" id="news_edit_submit" name="news_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
                     </div>
                 </form>
             </div>
