@@ -46,6 +46,12 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     font-family: Arial, Verdana, sans-serif;
 }
 
+.content img {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
 .ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
     font-size: 24px;
 }
