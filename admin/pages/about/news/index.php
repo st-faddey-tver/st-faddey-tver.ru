@@ -42,7 +42,7 @@ if($is_event === null) {
                             <h1><?=$is_event ? "Все события" : "Все новости" ?></h1>
                         </div>
                         <div class="p-1">
-                            <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;<?=$is_event ? "Создать событие" : "Создать новость" ?></a>
+                            <a href="create.php<?= BuildQuery('is_event', $is_event) ?>" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;<?=$is_event ? "Создать событие" : "Создать новость" ?></a>
                         </div>
                     </div>
                     <?php
