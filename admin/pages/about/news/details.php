@@ -81,6 +81,7 @@ $error_message = $news->errorMessage;
                         </div>
                     </div>
                     <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
+                    <div class="news_title"><?=$title ?></div>
                     <?=$body ?>
                     <hr />
                     <div class="d-flex justify-content-between mb-2">
