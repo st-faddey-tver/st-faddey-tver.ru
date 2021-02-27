@@ -1,5 +1,6 @@
 <?php
 include '../../../../include/topscripts.php';
+include '../../../../include/news/news.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -30,6 +31,11 @@ if($row = $fetcher->Fetch()) {
     $front = $row['front'];
     $show_title = $row['show_title'];
 }
+
+// Фрагменты
+$news = new News($id);
+$news->Top();
+$error_message = $news->errorMessage;
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,6 +77,51 @@ if($row = $fetcher->Fetch()) {
                     <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
                     <?=$body ?>
                     <hr />
+                    <div class="d-flex justify-content-between mb-2">
+                        <div class="p-1">
+                            <h2>Полный текст</h2>
+                        </div>
+                        <div class="p-1">
+                            <?php
+                            if(filter_input(INPUT_GET, 'mode') == 'edit'):
+                            ?>
+                            <a href="details.php<?= BuildQueryRemove('mode') ?>" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
+                            <?php
+                            else:
+                            ?>
+                            <a href="details.php<?= BuildQuery('mode', 'edit') ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <?php
+                            endif;
+                            ?>
+                        </div>
+                    </div>
+                    <?php
+                    if(filter_input(INPUT_GET, 'mode') == 'edit') {
+                        $news->GetFragmentsEditMode();
+                    }
+                    else {
+                        $news->GetFragments();
+                    }
+                    
+                    $news->ShowCreateFragmentForm();
+                    
+                    if(filter_input(INPUT_GET, 'mode') != 'edit'):
+                    ?>
+                    <hr />
+                    <h2>Изображения</h2>
+                    <?php
+                    $news->GetImages();
+                    ?>
+                    <div class="row">
+                        <div class="col-8">
+                            <?php
+                            $news->ShowUploadImageForm();
+                            ?>
+                        </div>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
                 </div>
             </div>
         </div>
