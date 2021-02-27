@@ -59,9 +59,8 @@ if(!IsInRole(array('about', 'admin'))) {
                     $shortname = $row['shortname'];
                     $body = $row['body'];
                     ?>
-                    <p><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></p>
-                    <h2><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></h2>
-                    <h3><?=$shortname ?></h3>
+                    <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?></div>
+                    <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
                     <?=$body ?>
                     <hr />
                     <?php
