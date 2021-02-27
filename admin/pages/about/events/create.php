@@ -58,7 +58,7 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
             }
             
             if($shortnames_count > 0) {
-                $shortname = time().'_'.$shortname;
+                $shortname = strval(time());
             }
         }while ($shortnames_count > 0);
         
