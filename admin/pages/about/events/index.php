@@ -40,6 +40,14 @@ if(!IsInRole(array('about', 'admin'))) {
                         </div>
                     </div>
                     <?php
+                    $sql = "select count(id) pages_total_count from news where is_event=1";
+                    $fetcher = new Fetcher($sql);
+                    $error_message = $fetcher->error;
+                    
+                    if($row = $fetcher->Fetch()) {
+                        $pager_total_count = $row[0];
+                    }
+                    
                     $sql = "select id, date, title, shortname, body from news n where n.is_event=1 order by n.date desc, n.id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
@@ -52,7 +60,7 @@ if(!IsInRole(array('about', 'admin'))) {
                     $body = $row['body'];
                     ?>
                     <p><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></p>
-                    <h2><a href='details.php?id=<?=$id ?>'><?=$title ?></a></h2>
+                    <h2><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></h2>
                     <h3><?=$shortname ?></h3>
                     <?=$body ?>
                     <hr />

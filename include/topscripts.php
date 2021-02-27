@@ -82,6 +82,32 @@ function Romanize($param) {
     return $result;
 }
 
+function BuildQuery($key, $value) {
+    $result = '';
+    $get_params = $_GET;
+    $get_params[$key] = $value;
+    $result = http_build_query($get_params);
+    
+    if(!empty($result)) {
+        $result = "?$result";
+    }
+    
+    return $result;
+}
+
+function BuildQueryRemove($key) {
+    $result = '';
+    $get_params = $_GET;
+    unset($get_params[$key]);
+    $result = http_build_query($get_params);
+
+    if(!empty($result)) {
+        $result = "?$result";
+    }
+    
+    return $result;
+}
+
 // Классы
 class Executer {
     public $error = '';
