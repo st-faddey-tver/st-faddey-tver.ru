@@ -5,7 +5,11 @@
                 <table>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
-                        <td>Храм свмч. Фаддея архиепископа Тверского</td>
+                        <td style="padding-bottom: 10px;">Московская патриархия,<br /> Храм свмч. Фаддея архиепископа Тверского</td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
+                        <td>Художник<br />Артём Петров<br />(картина в заголовке сайта)</td>
                     </tr>
                 </table>
             </div>
