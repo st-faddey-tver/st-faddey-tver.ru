@@ -20,7 +20,7 @@ if(empty($error_message) && $row = $fetcher->Fetch()) {
 }
 
 if(empty($error_message)) {
-    $sql = "select shortname, title from news where is_event = 0 and (date < '$date' or (date = '$date' and id < $id)) order by date desc, id desc limit 1";
+    $sql = "select shortname, title from news where is_event = 1 and (date < '$date' or (date = '$date' and id < $id)) order by date desc, id desc limit 1";
     $fetcher = new Fetcher($sql);
     $error_message = $fetcher->error;
 }
@@ -34,7 +34,7 @@ if(empty($error_message) && $row = $fetcher->Fetch()) {
 }
 
 if(empty($error_message)) {
-    $sql = "select shortname, title from news where is_event = 0 and (date > '$date' or (date = '$date' and id > $id)) order by date asc, id asc limit 1";
+    $sql = "select shortname, title from news where is_event = 1 and (date > '$date' or (date = '$date' and id > $id)) order by date asc, id asc limit 1";
     $fetcher = new Fetcher($sql);
     $error_message = $fetcher->error;
 }
@@ -70,17 +70,17 @@ $news = new News($id);
                 <div class="row">
                     <div class="col-4 text-left">
                         <?php if(!empty($next_shortname)): ?>
-                        <div class="news_title"><a href="<?=APPLICATION ?>/news/<?=$next_shortname ?>" title="<?=$next_title ?>" data-toggle="tooltip" data-placement="right"><i class="fas fa-arrow-left"></i></a></div>
+                        <div class="news_title"><a href="<?=APPLICATION ?>/events/<?=$next_shortname ?>" title="<?=$next_title ?>" data-toggle="tooltip" data-placement="right"><i class="fas fa-arrow-left"></i></a></div>
                         <?php endif; ?>
                     </div>
                     <div class="col-4 text-center">
                         <div class="news_title">
-                            <a href="<?=APPLICATION ?>/news/">Все новости</a>
+                            <a href="<?=APPLICATION ?>/events/">Все события</a>
                         </div>
                     </div>
                     <div class="col-4 text-right">
                         <?php if(!empty($previous_shortname)): ?>
-                        <div class="news_title"><a href="<?=APPLICATION ?>/news/<?=$previous_shortname ?>" title="<?=$previous_title ?>" data-toggle="tooltip" data-placement="left"><i class="fas fa-arrow-right"></i></a></div>
+                        <div class="news_title"><a href="<?=APPLICATION ?>/events/<?=$previous_shortname ?>" title="<?=$previous_title ?>" data-toggle="tooltip" data-placement="left"><i class="fas fa-arrow-right"></i></a></div>
                         <?php endif; ?>
                     </div>
                 </div>

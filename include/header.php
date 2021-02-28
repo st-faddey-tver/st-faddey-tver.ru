@@ -28,8 +28,8 @@
             $about_saints_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints.php' ? ' disabled' : '';
             $about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/schedule.php' ? ' disabled' : '';
             $about_clergy_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/clergy.php' ? ' disabled' : '';
-            $about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/news/index.php' && filter_input(INPUT_GET, 'is_event') == 1 ? ' disabled' : '';
-            $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/news/index.php' && filter_input(INPUT_GET, 'is_event') == 0 ? ' disabled' : '';
+            $about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/events/index.php' ? ' disabled' : '';
+            $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/news/index.php' ? ' disabled' : '';
             
             $youth_volunteer_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/volunteer.php' ? ' disabled' : '';
             $youth_club_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/club.php' ? ' disabled' : '';
