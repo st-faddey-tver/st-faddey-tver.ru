@@ -56,7 +56,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         
         $shortnames_count = 1;
         do {
-            $sql = "select count(id) shortnames_count from news where shortname='$shortname'";
+            $sql = "select count(id) shortnames_count from news where shortname='$shortname' and id<>$id";
             $fetcher = new Fetcher($sql);
             $error_message = $fetcher->error;
             
