@@ -61,7 +61,7 @@ include 'include/topscripts.php';
                     <div class="col-6">
                         <?php if($show_title): ?>
                         <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
-                        <div class="news_title"><a href="<?=APPLICATION."/events/".$shortname ?>"><?=$title ?></a></div>
+                        <div class="news_title"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$title ?></a></div>
                         <?php endif; ?>
                         <div class="news_body"><?=$body ?></div>
                     </div>
