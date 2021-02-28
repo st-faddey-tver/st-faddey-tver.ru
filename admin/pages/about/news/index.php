@@ -67,24 +67,13 @@ if($is_event === null) {
                         $body = $row['body'];
                         $front = $row['front'];
                         $show_title = $row['show_title'];
-                        
-                        if($is_event):
                         ?>
-                        <div class="col-12">
-                            <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
+                        <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
                             <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
-                            <div class="events_body"><?=$body ?></div>
+                            <div class="<?=$is_event ? 'events_body' : 'news_body' ?>"><?=$body ?></div>
                         </div>
                         <?php
-                        else:
-                        ?>
-                        <div class="col-6">
-                            <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
-                            <div class="news_title"><a href="details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></div>
-                            <div class="news_body"><?=$body ?></div>
-                        </div>
-                        <?php
-                        endif;
                         endwhile;
                         ?>
                     </div>

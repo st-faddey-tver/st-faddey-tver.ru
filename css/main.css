@@ -39,8 +39,8 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
 
 /* Главная часть */
 .content {
-    border-left: solid 3px #913d14;
-    border-right: solid 3px #913d14;
+    border-left: solid 3px sienna;
+    border-right: solid 3px sienna;
     padding: 10px;
     font-size: 18px;
     font-family: Arial, Verdana, sans-serif;
@@ -64,6 +64,18 @@ h1 {
 h2 {
     margin-bottom: 30px;
     color: #913d14;
+}
+
+.news_date {
+    background-color: sienna;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.news_body {
+    font-size: 14px;
 }
 
 .news_title a:link, .news_title a:visited {

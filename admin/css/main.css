@@ -18,6 +18,18 @@
     font-size: 24px;
 }
 
+.news_date {
+    background-color: sienna;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.news_body {
+    font-size: 14px;
+}
+
 .news_title a:link, .news_title a:visited {
     color: black;
     font-weight: bold;
