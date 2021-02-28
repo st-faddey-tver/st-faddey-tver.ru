@@ -45,35 +45,51 @@ if($is_event === null) {
                             <a href="create.php<?= BuildQuery('is_event', $is_event) ?>" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;<?=$is_event ? "Создать событие" : "Создать новость" ?></a>
                         </div>
                     </div>
-                    <?php
-                    $sql = "select count(id) pages_total_count from news where is_event=$is_event";
-                    $fetcher = new Fetcher($sql);
-                    $error_message = $fetcher->error;
-                    
-                    if($row = $fetcher->Fetch()) {
-                        $pager_total_count = $row[0];
-                    }
-                    
-                    $sql = "select id, date, title, shortname, body, front, show_title from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
-                    $fetcher = new Fetcher($sql);
-                    $error_message = $fetcher->error;
-                    
-                    while ($row = $fetcher->Fetch()):
-                    $id = $row['id'];
-                    $date = $row['date'];
-                    $title = $row['title'];
-                    $shortname = $row['shortname'];
-                    $body = $row['body'];
-                    $front = $row['front'];
-                    $show_title = $row['show_title'];
-                    ?>
-                    <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
-                    <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
-                    <?=$body ?>
+                    <div class="row">
+                        <?php
+                        $sql = "select count(id) pages_total_count from news where is_event=$is_event";
+                        $fetcher = new Fetcher($sql);
+                        $error_message = $fetcher->error;
+                        
+                        if($row = $fetcher->Fetch()) {
+                            $pager_total_count = $row[0];
+                        }
+                        
+                        $sql = "select id, date, title, shortname, body, front, show_title from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
+                        $fetcher = new Fetcher($sql);
+                        $error_message = $fetcher->error;
+                        
+                        while ($row = $fetcher->Fetch()):
+                        $id = $row['id'];
+                        $date = $row['date'];
+                        $title = $row['title'];
+                        $shortname = $row['shortname'];
+                        $body = $row['body'];
+                        $front = $row['front'];
+                        $show_title = $row['show_title'];
+                        
+                        if($is_event):
+                        ?>
+                        <div class="col-12">
+                            <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
+                            <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
+                            <div class="events_body"><?=$body ?></div>
+                        </div>
+                        <?php
+                        else:
+                        ?>
+                        <div class="col-6">
+                            <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
+                            <div class="news_title"><a href="details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></div>
+                            <div class="news_body"><?=$body ?></div>
+                        </div>
+                        <?php
+                        endif;
+                        endwhile;
+                        ?>
+                    </div>
                     <hr />
                     <?php
-                    endwhile;
-                    
                     include '../../../../include/pager_bottom.php';
                     ?>
                 </div>

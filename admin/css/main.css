@@ -18,9 +18,16 @@
     font-size: 24px;
 }
 
-.news_title {
-    font-size: x-large;
+.news_title a:link, .news_title a:visited {
+    color: black;
     font-weight: bold;
+    text-decoration: none;
+}
+
+.news_title a:active, .news_title a:hover {
+    color: gray;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /* Всплывающее сообщение о копировании ссылки */
