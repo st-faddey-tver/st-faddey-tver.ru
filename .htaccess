@@ -4,13 +4,18 @@ RewriteEngine On
 
 RewriteBase /st-faddey-tver.ru/
 RewriteRule ^images - [L]
+RewriteRule ^admin - [L]
+
+RewriteRule ^(.*)/$ $1 [R=301,L]
 
 RewriteRule ^history pages/about/history.php
 RewriteRule ^saints pages/about/saints.php
 RewriteRule ^schedule pages/about/schedule.php
 RewriteRule ^clergy pages/about/clergy.php
-RewriteRule ^events pages/about/events.php
-RewriteRule ^news pages/about/news.php
+RewriteRule ^events/(.*) pages/about/news/index.php?is_event=1&page=$1
+RewriteRule ^events pages/about/news/index.php?is_event=1
+RewriteRule ^news/(.*) pages/about/news/index.php?is_event=0&page=$1
+RewriteRule ^news pages/about/news/index.php?is_event=0
 
 RewriteRule ^volunteer pages/youth/volunteer.php
 RewriteRule ^club pages/youth/club.php
