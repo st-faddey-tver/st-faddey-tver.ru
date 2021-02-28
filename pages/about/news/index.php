@@ -44,7 +44,7 @@ $is_event = filter_input(INPUT_GET, 'is_event');
                 ?>
                 <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
                 <div class="news_title"><a href="<?=APPLICATION."/".($is_event ? 'events' : 'news')."/".$shortname ?>"><?=$title ?></a></div>
-                <?=$body ?>
+                <div class="news_body"><?=$body ?></div>
                 <?php
                 endwhile;
                 
