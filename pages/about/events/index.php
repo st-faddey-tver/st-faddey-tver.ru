@@ -30,22 +30,25 @@ include '../../../include/topscripts.php';
                     $pager_total_count = $row[0];
                 }
                 
-                $sql = "select date, title, shortname, body from news where is_event=1 order by date desc, id desc limit $pager_skip, $pager_take";
+                $sql = "select date, title, shortname, body, show_title from news where is_event=1 order by date desc, id desc limit $pager_skip, $pager_take";
                 $fetcher = new Fetcher($sql);
-                $error_message = $fetcher->error;
                 
                 while ($row = $fetcher->Fetch()):
                 $date = $row['date'];
                 $title = $row['title'];
                 $shortname = $row['shortname'];
                 $body = $row['body'];
+                $show_title = $row['show_title'];
+                
+                if($show_title):
                 ?>
                 <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
                 <div class="news_title"><a href="<?=APPLICATION."/events/".$shortname ?>"><?=$title ?></a></div>
-                <div class="news_body"><?=$body ?></div>
                 <?php
-                endwhile;
+                endif;
                 
+                echo "<div class='events_body'>$body</div>";
+                endwhile;
                 include '../../../include/pager_bottom.php';
                 ?>
             </div>

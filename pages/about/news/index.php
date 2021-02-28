@@ -32,7 +32,6 @@ include '../../../include/topscripts.php';
                 
                 $sql = "select date, title, shortname, body from news where is_event=0 order by date desc, id desc limit $pager_skip, $pager_take";
                 $fetcher = new Fetcher($sql);
-                $error_message = $fetcher->error;
                 
                 while ($row = $fetcher->Fetch()):
                 $date = $row['date'];
@@ -45,7 +44,6 @@ include '../../../include/topscripts.php';
                 <div class="news_body"><?=$body ?></div>
                 <?php
                 endwhile;
-                
                 include '../../../include/pager_bottom.php';
                 ?>
             </div>
