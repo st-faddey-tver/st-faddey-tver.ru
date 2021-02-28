@@ -12,9 +12,11 @@ RewriteRule ^history pages/about/history.php
 RewriteRule ^saints pages/about/saints.php
 RewriteRule ^schedule pages/about/schedule.php
 RewriteRule ^clergy pages/about/clergy.php
-RewriteRule ^events/(.*) pages/about/news/index.php?is_event=1&page=$1
+RewriteRule ^events/p/(.*) pages/about/news/index.php?is_event=1&page=$1
+RewriteRule ^events/(.*) pages/about/news/details.php?is_event=1&shortname=$1
 RewriteRule ^events pages/about/news/index.php?is_event=1
-RewriteRule ^news/(.*) pages/about/news/index.php?is_event=0&page=$1
+RewriteRule ^news/p/(.*) pages/about/news/index.php?is_event=0&page=$1
+RewriteRule ^news/(.*) pages/about/news/details.php?is_event=0&shortname=$1
 RewriteRule ^news pages/about/news/index.php?is_event=0
 
 RewriteRule ^volunteer pages/youth/volunteer.php
