@@ -80,9 +80,13 @@ $error_message = $news->errorMessage;
                             </div>
                         </div>
                     </div>
-                    <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
-                    <div class="news_title"><?=$title ?></div>
-                    <div class="<?=$is_event ? 'event_body' : 'news_body' ?>"><?=$body ?></div>
+                    <div class="row">
+                        <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
+                            <div class="news_title"><?=$title ?></div>
+                            <div class="<?=$is_event ? 'event_body' : 'news_body' ?>"><?=$body ?></div>
+                        </div>
+                    </div>
                     <hr />
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">

@@ -46,6 +46,10 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     font-family: Arial, Verdana, sans-serif;
 }
 
+.content p {
+    text-align: justify;
+}
+
 .content img {
     float: left;
     margin-right: 10px;

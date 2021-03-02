@@ -14,6 +14,10 @@
     margin-bottom: 10px;
 }
 
+.content p {
+    text-align: justify;
+}
+
 .ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
     font-size: 24px;
 }
