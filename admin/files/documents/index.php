@@ -1,5 +1,5 @@
 <?php
-include '../../include/topscripts.php';
+include '../../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('files', 'admin'))) {
@@ -10,12 +10,12 @@ if(!IsInRole(array('files', 'admin'))) {
 <html>
     <head>
         <?php
-        include '../include/head.php';
+        include '../../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../include/header.php';
+        include '../../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -26,12 +26,12 @@ if(!IsInRole(array('files', 'admin'))) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Звуки</li>
+                <li>Документы</li>
             </ul>
-            <h1>Звуки</h1>
+            <h1>Документы</h1>
         </div>
         <?php
-        include '../include/footer.php';
+        include '../../include/footer.php';
         ?>
     </body>
 </html>
