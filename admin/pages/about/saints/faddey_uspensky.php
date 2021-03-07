@@ -44,11 +44,11 @@ $error_message = $page->errorMessage;
                             <?php
                             if(filter_input(INPUT_GET, 'mode') == 'edit'):
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/history.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
+                            <a href="<?=APPLICATION ?>/admin/pages/about/saints/faddey_uspensky.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
                             <?php
                             else:
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/history.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <a href="<?=APPLICATION ?>/admin/pages/about/saints/faddey_uspensky.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
                             <?php
                             endif;
                             ?>
