@@ -33,7 +33,15 @@ if(!HasRole()) {
                     <p>О храме</p>
                     <ul>
                         <li><a href="pages/about/history.php">История</a></li>
-                        <li><a href="pages/about/saints.php">Святые храма</a></li>
+                        <li>
+                            <a href="pages/about/saints.php">Святые храма</a>
+                            <ul>
+                                <li><a href="pages/about/saints/nikolay_maslov.php">Николай Маслов</a></li>
+                                <li><a href="pages/about/saints/ilya_gromoglasov.php">Илья Громогласов</a></li>
+                                <li><a href="pages/about/saints/ilya_benemansky.php">Илья Бенеманский</a></li>
+                                <li><a href="pages/about/saints/faddey_uspensky.php">Фаддей Успенский</a></li>
+                            </ul>
+                        </li>
                         <li><a href="pages/about/schedule.php">Расписание богослужений</a></li>
                         <li><a href="pages/about/clergy.php">Духовенство</a></li>
                         <li><a href="pages/about/news/<?= BuildQuery('is_event', 1) ?>">Все события</a></li>
