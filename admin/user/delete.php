@@ -59,16 +59,16 @@ $middle_name = $row['middle_name'];
                 <li><a href="<?=APPLICATION ?>/admin/user/details.php?id=<?=$id ?>"><?=$username ?></a></li>
                 <li>Удаление пользователя</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1 class="text-danger">Действительно удалить?</h1>
+                </div>
+                <div class="p-1">
+                    <a href="<?=APPLICATION ?>/admin/user/details.php?id=<?=$id ?>" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1 class="text-danger">Действительно удалить?</h1>
-                        </div>
-                        <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/user/details.php?id=<?=$id ?>" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        </div>
-                    </div>
                     <table class="table table-bordered">
                         <tr>
                             <th>Логин</th>

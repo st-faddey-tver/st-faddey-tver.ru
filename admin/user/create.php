@@ -90,16 +90,16 @@ if(null !== filter_input(INPUT_POST, 'user_create_submit')) {
                 <li><a href="<?=APPLICATION ?>/admin/user/">Пользователи</a></li>
                 <li>Создание пользователя</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Создание пользователя</h1>
+                </div>
+                <div class="p-1">
+                    <a href="<?=APPLICATION ?>/admin/user/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1>Создание пользователя</h1>
-                        </div>
-                        <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/user/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
-                        </div>
-                    </div>
                     <form method="post">
                         <div class="form-group">
                             <label for="username">Логин<span class="text-danger">*</span></label>

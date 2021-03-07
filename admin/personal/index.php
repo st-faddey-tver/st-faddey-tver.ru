@@ -41,19 +41,19 @@ $middle_name = $row['middle_name'];
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li>Личные данные</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Личные данные</h1>
+                </div>
+                <div class="p-1">
+                    <div class="btn-group">
+                        <a href="<?=APPLICATION ?>/admin/personal/edit.php" class="btn btn-outline-dark"><i class="fas fa-user-edit"></i>&nbsp;Редактировать</a>
+                        <a href="<?=APPLICATION ?>/admin/personal/password.php" class="btn btn-outline-dark"><i class="fas fa-key"></i>&nbsp;Сменить пароль</a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1>Личные данные</h1>
-                        </div>
-                        <div class="p-1">
-                            <div class="btn-group">
-                                <a href="<?=APPLICATION ?>/admin/personal/edit.php" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-user-edit"></i></a>
-                                <a href="<?=APPLICATION ?>/admin/personal/password.php" class="btn btn-outline-dark" title="Сменить пароль" data-toggle="tooltip"><i class="fas fa-key"></i></a>
-                            </div>
-                        </div>
-                    </div>
                     <table class="table table-bordered">
                         <tr>
                             <th>Логин</th>

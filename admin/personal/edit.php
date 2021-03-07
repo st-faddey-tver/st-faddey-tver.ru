@@ -101,16 +101,16 @@ if(empty($middle_name)) {
                 <li><a href="<?=APPLICATION ?>/admin/personal/">Личные данные</a></li>
                 <li>Редактирование личных данных</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Редактирование личных данных</h1>
+                </div>
+                <div class="p-1">
+                    <a href="<?=APPLICATION ?>/admin/personal/" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1>Редактирование личных данных</h1>
-                        </div>
-                        <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/personal/" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        </div>
-                    </div>
                     <form method="post">
                         <div class="form-group">
                             <label for="username">Логин</label>

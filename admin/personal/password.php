@@ -73,16 +73,16 @@ if(null !== filter_input(INPUT_POST, 'password_change_submit')) {
                 <li><a href="<?=APPLICATION ?>/admin/personal/">Личные данные</a></li>
                 <li>Смена пароля</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Смена пароля</h1>
+                </div>
+                <div class="p-1">
+                    <a href="<?=APPLICATION ?>/admin/personal/" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1>Смена пароля</h1>
-                        </div>
-                        <div class="p-1">
-                            <a href="<?=APPLICATION ?>/admin/personal/" class="btn btn-outline-dark" title="Отмена" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        </div>
-                    </div>
                     <form method="post">
                         <div class="form-group">
                             <label for="old_password">Текущий пароль<span class="text-danger">*</span></label>
@@ -100,7 +100,7 @@ if(null !== filter_input(INPUT_POST, 'password_change_submit')) {
                             <div class="invalid-feedback">Новый пароль и его подтверждение не совпадают</div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-outline-dark" id="password_change_submit" name="password_change_submit">Сменить</button>
+                            <button type="submit" class="btn btn-outline-dark" id="password_change_submit" name="password_change_submit"><i class="fas fa-save"></i>&nbsp;Сменить</button>
                         </div>
                     </form>
                 </div>
