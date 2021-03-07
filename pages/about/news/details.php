@@ -55,6 +55,7 @@ $news = new News($id);
         <?php
         include '../../../include/head.php';
         ?>
+        <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
     </head>
     <body>
         <?php
@@ -95,5 +96,6 @@ $news = new News($id);
         <?php
         include '../../../include/footer.php';
         ?>
+        <script src="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.js"></script>
     </body>
 </html>
