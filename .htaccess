@@ -9,7 +9,10 @@ RewriteRule ^admin - [L]
 RewriteRule ^(.*)/$ $1 [R=301,L]
 
 RewriteRule ^history pages/about/history.php
-RewriteRule ^saints pages/about/saints.php
+RewriteRule ^nikolay_maslov pages/about/saints/nikolay_maslov.php
+RewriteRule ^ilya_gromoglasov pages/about/saints/ilya_gromoglasov.php
+RewriteRule ^ilya_benemansky pages/about/saints/ilya_benemansky.php
+RewriteRule ^faddey_uspensky pages/about/saints/faddey_uspensky.php
 RewriteRule ^schedule pages/about/schedule.php
 RewriteRule ^clergy pages/about/clergy.php
 RewriteRule ^events/(.*) pages/about/events/details.php?shortname=$1

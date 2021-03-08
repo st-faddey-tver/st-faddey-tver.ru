@@ -2,7 +2,7 @@
 <title>Храм священномученика Фаддея архиепископа Тверского</title>
 <link href="<?=APPLICATION ?>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=APPLICATION ?>/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
-<link href="<?=APPLICATION ?>/admin/css/main.css?version=20210305" rel="stylesheet" />
+<link href="<?=APPLICATION ?>/admin/css/main.css?version=20210308" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/admin/cleditor/jquery.cleditor.css" rel="stylesheet" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="<?=APPLICATION ?>/apple-touch-icon.png">

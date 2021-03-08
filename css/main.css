@@ -73,6 +73,9 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     border-right: 0;
     border-bottom: .3em solid transparent;
     border-left: .3em solid;
+    position: absolute;
+    right: 5px;
+    top: 12px;
 }
 
 /* Главная часть */

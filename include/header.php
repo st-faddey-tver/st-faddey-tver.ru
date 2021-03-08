@@ -25,7 +25,10 @@
             $home_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? ' disabled' : '';
             
             $about_history_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/history.php' ? ' disabled' : '';
-            $about_saints_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints.php' ? ' disabled' : '';
+            $about_saints_nikolay_maslov_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/nikolay_maslov.php' ? ' disabled' : '';
+            $about_saints_ilya_gromoglasov_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/ilya_gromoglasov.php' ? ' disabled' : '';
+            $about_saints_ilya_benemansky_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/ilya_benemansky.php' ? ' disabled' : '';
+            $about_saints_faddey_uspensky_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/faddey_uspensky.php' ? ' disabled' : '';
             $about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/schedule.php' ? ' disabled' : '';
             $about_clergy_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/clergy.php' ? ' disabled' : '';
             $about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/events/index.php' ? ' disabled' : '';
@@ -54,14 +57,22 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop_about" data-toggle="dropdown">О храме</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/history/">История</a>
-                    <a class="dropdown-item<?=$about_saints_status ?>" href="<?=APPLICATION ?>/saints/">Святые храма</a>
-                    <a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a>
-                    <a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/clergy/">Духовенство</a>
-                    <a class="dropdown-item<?=$about_events_status ?>" href="<?=APPLICATION ?>/events/">Все события</a>
-                    <a class="dropdown-item<?=$about_news_status ?>" href="<?=APPLICATION ?>/news/">Все новости</a>
-                </div>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/history/">История</a></li>
+                    <li style="position: relative;">
+                        <a class="dropdown-item dropdown-toggle" id="navbardrop_about_saints" data-toggle="dropdown" href="#">Святые храма</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item<?=$about_saints_nikolay_maslov_status ?>" href="<?=APPLICATION ?>/nikolay_maslov/">Николай Маслов</a>
+                            <a class="dropdown-item<?=$about_saints_ilya_gromoglasov_status ?>" href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a>
+                            <a class="dropdown-item<?=$about_saints_ilya_benemansky_status ?>" href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a>
+                            <a class="dropdown-item<?=$about_saints_faddey_uspensky_status ?>" href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a>
+                        </div>
+                    </li>
+                    <li><a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></li>
+                    <li><a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/clergy/">Духовенство</a></li>
+                    <li><a class="dropdown-item<?=$about_events_status ?>" href="<?=APPLICATION ?>/events/">Все события</a></li>
+                    <li><a class="dropdown-item<?=$about_news_status ?>" href="<?=APPLICATION ?>/news/">Все новости</a></li>
+                </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop_youth" data-toggle="dropdown">Молодёжь храма</a>
