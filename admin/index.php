@@ -34,7 +34,7 @@ if(!HasRole()) {
                     <ul>
                         <li><a href="pages/about/history.php">История</a></li>
                         <li>
-                            <a href="pages/about/saints.php">Святые храма</a>
+                            <p>Святые храма</p>
                             <ul>
                                 <li><a href="pages/about/saints/nikolay_maslov.php">Николай Маслов</a></li>
                                 <li><a href="pages/about/saints/ilya_gromoglasov.php">Илья Громогласов</a></li>
