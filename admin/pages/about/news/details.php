@@ -49,7 +49,6 @@ $error_message = $news->errorMessage;
         <?php
         include '../../../include/head.php';
         ?>
-        <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
     </head>
     <body>
         <?php
@@ -140,6 +139,5 @@ $error_message = $news->errorMessage;
         <?php
         include '../../../include/footer.php';
         ?>
-        <script src="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.js"></script>
     </body>
 </html>
