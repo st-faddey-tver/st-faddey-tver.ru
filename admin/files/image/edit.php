@@ -9,7 +9,7 @@ if(!IsInRole(array('files', 'admin'))) {
 // Если не указан id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION.'/admin/files/images/');
+    header('Location: '.APPLICATION.'/admin/files/image/');
 }
 
 // Валидация формы
@@ -33,7 +33,7 @@ if(null !== filter_input(INPUT_POST, 'image_section_edit_submit')) {
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/files/images/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/files/image/details.php".BuildQuery('id', $id));
         }
     }
 }
@@ -72,8 +72,8 @@ if(empty($name)) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/files/images/">Изображения</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/files/images/details.php<?= BuildQuery("id", $id) ?>"><?=$name ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/files/image/">Изображения</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/files/image/details.php<?= BuildQuery("id", $id) ?>"><?=$name ?></a></li>
                 <li>Редактирование раздела</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">

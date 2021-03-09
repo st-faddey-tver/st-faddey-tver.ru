@@ -10,7 +10,7 @@ if(!IsInRole(array('files', 'admin'))) {
 // Если не указан id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION.'/admin/files/images/');
+    header('Location: '.APPLICATION.'/admin/files/image/');
 }
 
 // Обработка отправки формы
@@ -22,7 +22,7 @@ if(null !== filter_input(INPUT_POST, 'upload_image_submit')) {
     if($_FILES['file']['error'] == 0 && !empty($name)) {
         if(exif_imagetype($_FILES['file']['tmp_name'])) {
             $myimage = new MyImage($_FILES['file']['tmp_name']);
-            $file_uploaded = $myimage->ResizeAndSave($_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/", $max_width, $max_height);
+            $file_uploaded = $myimage->ResizeAndSave($_SERVER['DOCUMENT_ROOT'].APPLICATION."/image/content/", $max_width, $max_height);
             
             if($file_uploaded) {
                 $name = addslashes($name);
@@ -42,7 +42,7 @@ if(null !== filter_input(INPUT_POST, 'upload_image_submit')) {
 if(null !== filter_input(INPUT_POST, 'delete_image_submit')) {
     $id = filter_input(INPUT_POST, 'id');
     $filename = filter_input(INPUT_POST, 'filename');
-    $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/";
+    $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/image/content/";
     $filepath = $upload_path.$filename;
     
     $error_message = (new Executer("delete from image where id=$id"))->error;
@@ -85,7 +85,7 @@ $images_count = $row['images_count'];
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/files/images/">Изображения</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/files/image/">Изображения</a></li>
                 <li><?=$name ?></li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
@@ -113,7 +113,7 @@ $images_count = $row['images_count'];
             $sql = "select id, name, filename, width, height, extension from image where image_section_id=$id limit $pager_skip, $pager_take";
             $fetcher = new Fetcher($sql);
             while ($row = $fetcher->Fetch()) {
-                $src = $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION."/images/content/".$row['filename'];
+                $src = $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION."/image/content/".$row['filename'];
                 ?>
                 <div class="row mb-5">
                     <div class="col-2">

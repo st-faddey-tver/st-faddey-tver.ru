@@ -23,9 +23,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop_files" data-toggle="dropdown">Файлы</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item<?=$files_images_status ?>" href="<?=APPLICATION ?>/admin/files/images/">Изображения</a>
-                    <a class="dropdown-item<?=$files_sounds_status ?>" href="<?=APPLICATION ?>/admin/files/sounds/">Звуки</a>
-                    <a class="dropdown-item<?=$files_documents_status ?>" href="<?=APPLICATION ?>/admin/files/documents/">Документы</a>
+                    <a class="dropdown-item<?=$files_images_status ?>" href="<?=APPLICATION ?>/admin/files/image/">Изображения</a>
+                    <a class="dropdown-item<?=$files_sounds_status ?>" href="<?=APPLICATION ?>/admin/files/sound/">Звуки</a>
+                    <a class="dropdown-item<?=$files_documents_status ?>" href="<?=APPLICATION ?>/admin/files/document/">Документы</a>
                 </div>
             </li>
             <?php
