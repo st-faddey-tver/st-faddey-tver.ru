@@ -116,7 +116,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a data-toggle="tooltip" title="Пожертвовать" href="javascript:void(0);" class="nav-link"><i class="fas fa-ruble-sign"></i></a>
+                <a data-toggle="tooltip" title="Пожертвовать" href="<?=APPLICATION ?>/donation/" class="nav-link"><i class="fas fa-ruble-sign"></i></a>
             </li>
         </ul>
     </nav>

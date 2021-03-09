@@ -35,4 +35,5 @@ RewriteRule ^sunday/teachers pages/education/sunday/teachers.php
 RewriteRule ^pilgrimage pages/pilgrimage.php
 RewriteRule ^contact pages/contact.php
 RewriteRule ^gallery pages/gallery.php
+RewriteRule ^donation pages/donation.php
 </IfModule>

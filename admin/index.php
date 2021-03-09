@@ -55,6 +55,7 @@ if(!HasRole()) {
                         <li><a href="pages/youth/cinema.php">Синематографический клуб</a></li>
                     </ul>
                     <p><a href="pages/contact.php">Контакты</a></p>
+                    <p><a href="pages/donation.php">Пожертвовать</a></p>
                 </div>
             </div>
         </div>
