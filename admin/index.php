@@ -59,6 +59,7 @@ if(!HasRole()) {
                         <li><a href="pages/education/sunday.php">Воскресная школа</a></li>
                         <li><a href="pages/education/preparation.php">Курсы подготовки к поступлению в семинарию</a></li>
                     </ul>
+                    <p><a href="pages/pilgrimage.php">Паломничество</a></p>
                     <p><a href="pages/contact.php">Контакты</a></p>
                     <p><a href="pages/donation.php">Пожертвовать</a></p>
                 </div>

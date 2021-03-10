@@ -1,13 +1,13 @@
 <?php
-include '../../../include/topscripts.php';
-include '../../../include/page/page.php';
+include '../../include/topscripts.php';
+include '../../include/page/page.php';
 
 // Авторизация
-if(!IsInRole(array('education', 'admin'))) {
+if(!IsInRole(array('pilgrimage', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-$page = new Page("sunday");
+$page = new Page("pilgrimage");
 $page->Top();
 $error_message = $page->errorMessage;
 ?>
@@ -15,12 +15,12 @@ $error_message = $page->errorMessage;
 <html>
     <head>
         <?php
-        include '../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -31,24 +31,23 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Воскресная школа</li>
+                <li>Паломничество</li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
-                            <h1>Образовательный центр</h1>
-                            <h2>Воскресная школа</h2>
+                            <h1>Паломничество</h1>
                         </div>
                         <div class="p-1">
                             <?php
                             if(filter_input(INPUT_GET, 'mode') == 'edit'):
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/education/sunday.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
+                            <a href="<?=APPLICATION ?>/admin/pages/pilgrimage.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
                             <?php
                             else:
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/education/sunday.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <a href="<?=APPLICATION ?>/admin/pages/pilgrimage.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
                             <?php
                             endif;
                             ?>
@@ -85,7 +84,7 @@ $error_message = $page->errorMessage;
             </div>
         </div>
         <?php
-        include '../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

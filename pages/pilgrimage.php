@@ -1,7 +1,9 @@
 <?php
 include '../include/topscripts.php';
+include '../include/page/page.php';
+$page = new Page("pilgrimage");
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <?php
@@ -20,8 +22,9 @@ include '../include/topscripts.php';
                 }
                 ?>
                 <h1>Паломничество</h1>
-                <p>Раздел в разработке.</p>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <?php
+                $page->GetFragments();
+                ?>
             </div>
         </div>
         <?php
