@@ -54,6 +54,11 @@ if(!HasRole()) {
                         <li><a href="pages/youth/family.php">Семейный клуб</a></li>
                         <li><a href="pages/youth/cinema.php">Синематографический клуб</a></li>
                     </ul>
+                    <p>Образовательный центр</p>
+                    <ul>
+                        <li><a href="pages/education/sunday.php">Воскресная школа</a></li>
+                        <li><a href="pages/education/preparation.php">Курсы подготовки к поступлению в семинарию</a></li>
+                    </ul>
                     <p><a href="pages/contact.php">Контакты</a></p>
                     <p><a href="pages/donation.php">Пожертвовать</a></p>
                 </div>

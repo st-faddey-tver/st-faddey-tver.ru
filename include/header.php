@@ -39,18 +39,12 @@
             $youth_family_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/family.php' ? ' disabled' : '';
             $youth_cinema_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/cinema.php' ? ' disabled' : '';
             
-            $education_sunday_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/sunday/schedule.php' ? ' disabled' : '';
-            $education_sunday_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/sunday/documents.php' ? ' disabled' : '';
-            $education_sunday_teachers_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/sunday/teachers.php' ? ' disabled' : '';
-            $education_preparation_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/preparation/schedule.php' ? ' disabled' : '';
-            $education_preparation_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/preparation/documents.php' ? ' disabled' : '';
-            $education_preparation_teachers_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/preparation/teachers.php' ? ' disabled' : '';
+            $education_sunday_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/sunday.php' ? ' disabled' : '';
+            $education_preparation_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/preparation.php' ? ' disabled' : '';
             
             $pilgrimage_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/pilgrimage.php' ? ' disabled': '';
             
             $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/contact.php' ? ' disabled' : '';
-            
-            $gallery_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/gallery.php' ? ' disabled' : '';
             ?>
             <li class="nav-item">
                 <a class="nav-link<?=$home_status ?>" href="<?=APPLICATION ?>/"><i class="fas fa-home"></i></a>
@@ -86,22 +80,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop_education" data-toggle="dropdown">Образовательный центр</a>
                 <ul class="dropdown-menu">
-                    <li style="position: relative;">
-                        <a class="dropdown-item dropdown-toggle" id="navbardrop_education_sunday" data-toggle="dropdown" href="#">Воскресная школа</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item<?=$education_sunday_schedule_status ?>" href="<?=APPLICATION ?>/sunday/schedule/">Расписание занятий</a>
-                            <a class="dropdown-item<?=$education_sunday_documents_status ?>" href="<?=APPLICATION ?>/sunday/documents/">Документы</a>
-                            <a class="dropdown-item<?=$education_sunday_teachers_status ?>" href="<?=APPLICATION ?>/sunday/teachers/">Преподаватели</a>
-                        </div>
-                    </li>
-                    <li style="position: relative;">
-                        <a class="dropdown-item dropdown-toggle" id="navbardrop_education_preparation" data-toggle="dropdown" href="#">Курсы подготовки для поступления в семинарию</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item<?=$education_preparation_schedule_status ?>" href="<?=APPLICATION ?>/preparation/schedule/">Расписание занятий</a>
-                            <a class="dropdown-item<?=$education_preparation_documents_status ?>" href="<?=APPLICATION ?>/preparation/documents/">Документы</a>
-                            <a class="dropdown-item<?=$education_preparation_teachers_status ?>" href="<?=APPLICATION ?>/preparation/teachers/">Преподаватели</a>
-                        </div>
-                    </li>
+                    <li><a class="dropdown-item<?=$education_sunday_status ?>" href="<?=APPLICATION ?>/sunday/">Воскресная школа</a></li>
+                    <li><a class="dropdown-item<?=$education_preparation_status ?>" href="<?=APPLICATION ?>/preparation/">Курсы подготовки для поступления в семинарию</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -109,9 +89,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link<?=$contact_status ?>" href="<?=APPLICATION ?>/contact/">Контакты</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link<?=$gallery_status ?>" href="<?=APPLICATION ?>/gallery/">Фотогалерея</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

@@ -1,16 +1,18 @@
 <?php
-include '../../../include/topscripts.php';
+include '../../include/topscripts.php';
+include '../../include/page/page.php';
+$page = new Page("sunday");
 ?>
 <!doctype html>
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../../include/header.php';
         ?>
         <div class="container">
             <div class="content">
@@ -20,13 +22,13 @@ include '../../../include/topscripts.php';
                 }
                 ?>
                 <h1>Воскресная школа</h1>
-                <h2>Документы</h2>
-                <p>Раздел в разработке.</p>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <?php
+                $page->GetFragments();
+                ?>
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../../include/footer.php';
         ?>
     </body>
 </html>

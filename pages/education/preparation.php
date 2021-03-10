@@ -1,16 +1,18 @@
 <?php
-include '../../../include/topscripts.php';
+include '../../include/topscripts.php';
+include '../../include/page/page.php';
+$page = new Page("preparation");
 ?>
 <!doctype html>
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../../include/header.php';
         ?>
         <div class="container">
             <div class="content">
@@ -19,14 +21,14 @@ include '../../../include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <h1>Воскресная школа</h1>
-                <h2>Расписание занятий</h2>
-                <p>Раздел в разработке.</p>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <h1>Курсы подготовки для поступления в семинарию</h1>
+                <?php
+                $page->GetFragments();
+                ?>
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../../include/footer.php';
         ?>
     </body>
 </html>

@@ -25,15 +25,10 @@ RewriteRule ^club pages/youth/club.php
 RewriteRule ^family pages/youth/family.php
 RewriteRule ^cinema pages/youth/cinema.php
 
-RewriteRule ^preparation/documents pages/education/preparation/documents.php
-RewriteRule ^preparation/schedule pages/education/preparation/schedule.php
-RewriteRule ^preparation/teachers pages/education/preparation/teachers.php
-RewriteRule ^sunday/documents pages/education/sunday/documents.php
-RewriteRule ^sunday/schedule pages/education/sunday/schedule.php
-RewriteRule ^sunday/teachers pages/education/sunday/teachers.php
+RewriteRule ^preparation pages/education/preparation.php
+RewriteRule ^sunday pages/education/sunday.php
 
 RewriteRule ^pilgrimage pages/pilgrimage.php
 RewriteRule ^contact pages/contact.php
-RewriteRule ^gallery pages/gallery.php
 RewriteRule ^donation pages/donation.php
 </IfModule>
