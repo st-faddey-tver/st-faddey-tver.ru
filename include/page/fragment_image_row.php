@@ -1,8 +1,9 @@
-<div class="row mb-5">
+<hr style="clear: both;" />
+<div class="row">
     <div class="col-2">
         <a href="<?=$src ?>" title="Открыть в новом окне" target="_blank"><img src="<?=$src ?>" title="<?=$row['name'] ?>" class="img-fluid" /></a>
     </div>
-    <div class="col-10" style="border-top: solid 1px lightgray;">
+    <div class="col-10">
         <p><strong><?= htmlentities($row['name']) ?></strong></p>
         <p><?=$row['extension'] ?>,&nbsp;<?=$row['width'] ?>&nbsp;<i class="fas fa-times"></i>&nbsp;<?=$row['height'] ?></p>
         <p class="src"><?=$src ?></p>
