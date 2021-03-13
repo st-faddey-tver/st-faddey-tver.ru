@@ -89,6 +89,12 @@ nav.neopalimy-navbar .navbar-toggler-icon {
 }
 
 /* Главная часть */
+@media only screen and (max-width:991px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
 .content {
     border-left: solid 3px sienna;
     border-right: solid 3px sienna;
