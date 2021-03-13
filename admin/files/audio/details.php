@@ -59,95 +59,6 @@ if(null !== filter_input(INPUT_POST, 'delete_audio_submit')) {
     }
 }
 
-// Получение иконки по расширению
-function GetAwesomeIcon($extension) {
-    switch ($extension) {
-        case '.txt':
-            return "far fa-file-alt";
-            
-        case '.jpg':
-        case '.jpeg':
-        case '.png':
-        case '.bmp':
-        case '.gif':
-        case '.tif':
-        case '.tiff':
-            return "far fa-file-image";
-
-        case ".doc":
-        case ".docx":
-        case ".odt":
-            return "fas fa-file-word";
-            
-        case ".xls":
-        case ".xlsx":
-        case ".ods":
-            return "fas fa-file-excel";
-
-        case ".pdf":
-            return "fas fa-file-pdf";
-
-        case ".zip":
-        case ".rar":
-        case ".7z":
-        case ".gzip":
-            return "fas fa-file-archive";
-            
-        case ".mp3":
-        case ".wav":
-        case ".midi":
-        case ".aac":
-            return "fas fa-file-audio";
-            
-        case ".mp4":
-        case ".avi":
-        case ".mkv":
-        case ".wmv":
-        case ".flv":
-        case ".mpeg":
-            return "fas fa-file-video";
-
-        case ".html":
-        case ".htm":
-        case ".mht":
-            return "fas fa-file-code";
-            
-        case ".ppt":
-        case ".pptx":
-        case ".odp":
-            return "fas fa-file-powerpoint";
-            
-        case ".mdb":
-        case ".accdb":
-        case ".sql":
-        case ".odb":
-            return "fas fa-database";
-            
-        case ".iso":
-            return "fas fa-compact-disc";
-            
-        case ".cdr":
-        case ".odg";
-            return "fas fa-file-image";
-        
-        case ".torrent":
-            return "fas fa-file-download";
-            
-        case ".djvu":
-            return "fas fa-book-open";
-
-        case ".fb2":
-        case ".epub":
-        case ".mobi":
-            return "fas fa-book";
-            
-        case ".psd":
-            return "far fa-image";
-    }
-    
-    return "far fa-file";
-}
-
 // Получение объекта
 $id = filter_input(INPUT_GET, 'id');
 $sql = "select ds.name, (select count(id) from audio where audio_section_id=ds.id) audio_count from audio_section ds where ds.id=$id";
@@ -210,7 +121,10 @@ $audio_count = $row['audio_count'];
                 <hr />
                 <div class="row">
                     <div class="col-4">
-                        <a href="<?=$src ?>" title="<?=$row['name'] ?>" download="<?=$row['filename'] ?>"><i class="<?= GetAwesomeIcon($row['extension']) ?> fa-5x"></i></a>
+                        <audio controls="controls">
+                            <source src="<?=$src ?>" type="audio/<?= str_replace(".", "", $row['extension']) ?>" />
+                            Ваш браузер не поддерживает этот формат.
+                        </audio>
                     </div>
                     <div class="col-8">
                         <p><strong><?= htmlentities($row['name']) ?></strong></p>
