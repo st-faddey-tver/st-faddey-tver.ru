@@ -59,7 +59,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/history/">История</a></li>
                     <li style="position: relative;">
-                        <a class="dropdown-item dropdown-toggle" id="navbardrop_about_saints" data-toggle="dropdown" href="#">Святые храма</a>
+                        <a class="dropdown-item dropdown-toggle level2" id="navbardrop_about_saints" data-toggle="dropdown" href="#">Святые храма</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item<?=$about_saints_nikolay_maslov_status ?>" href="<?=APPLICATION ?>/nikolay_maslov/">Николай Маслов</a>
                             <a class="dropdown-item<?=$about_saints_ilya_gromoglasov_status ?>" href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a>

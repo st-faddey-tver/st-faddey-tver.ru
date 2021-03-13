@@ -54,4 +54,9 @@
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip(); 
     });
+    
+    $('.level2').click(function(event){
+        event.stopPropagation();
+        $(this).next('.dropdown-menu').toggleClass('show');
+    });
 </script>
