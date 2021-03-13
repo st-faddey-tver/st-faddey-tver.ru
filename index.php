@@ -41,7 +41,7 @@ include 'include/topscripts.php';
                 endwhile;
                 
                 if($events_count > 0) {
-                    echo "<div class='text-right mb-4'><a href='".APPLICATION."/events/' class='btn btn-sm btn-light'>Все события&nbsp;<i class='fas fa-angle-double-right'></i></a></div>";
+                    echo "<div class='text-right mb-4' style='clear: both;'><a href='".APPLICATION."/events/' class='btn btn-sm btn-light'>Все события&nbsp;<i class='fas fa-angle-double-right'></i></a></div>";
                 }
                 ?>              
                 <div class="row">
@@ -71,7 +71,7 @@ include 'include/topscripts.php';
                 </div>
                 <?php
                 if($news_count > 0) {
-                    echo "<div class='text-right mb-4'><a href='".APPLICATION."/news/' class='btn btn-sm btn-light'>Все новости&nbsp;<i class='fas fa-angle-double-right'></i></a></div>";
+                    echo "<div class='text-right mb-4' style='clear: both;'><a href='".APPLICATION."/news/' class='btn btn-sm btn-light'>Все новости&nbsp;<i class='fas fa-angle-double-right'></i></a></div>";
                 }
                 ?>
             </div>
