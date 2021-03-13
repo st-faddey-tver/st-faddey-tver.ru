@@ -29,7 +29,7 @@ if(null !== filter_input(INPUT_POST, 'image_section_edit_submit')) {
     if($form_valid) {
         $id = filter_input(INPUT_POST, 'id');
         $name = addslashes(filter_input(INPUT_POST, 'name'));
-        $sql = "update image_section set name='$name' where id=$id";        echo $sql;
+        $sql = "update image_section set name='$name' where id=$id";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
