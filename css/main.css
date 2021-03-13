@@ -52,7 +52,6 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
         float: left;
         min-width: 10rem;
         padding: .5rem 0;
-        font-size: 1rem;
         color: #212529 !important;
         text-align: left;
         list-style: none;
@@ -99,7 +98,6 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     border-left: solid 3px sienna;
     border-right: solid 3px sienna;
     padding: 10px;
-    font-size: 18px;
     font-family: Arial, Verdana, sans-serif;
 }
 
@@ -114,7 +112,7 @@ nav.neopalimy-navbar .navbar-toggler-icon {
 }
 
 .ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
-    font-size: 24px;
+    font-size: 2em;
 }
 
 h1 {
@@ -130,13 +128,9 @@ h2 {
 .news_date {
     background-color: sienna;
     color: white;
-    font-size: 12px;
     font-weight: bold;
     padding-left: 5px;
-}
-
-.news_body {
-    font-size: 14px;
+    font-size: 0.7em;
 }
 
 .news_title a:link, .news_title a:visited {
