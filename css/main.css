@@ -8,38 +8,38 @@
 
 /* Меню */
 nav.neopalimy-navbar {
-    background-color: sienna;
+    background-color: sienna !important;
     border-top: solid 2px #913d14;
     border-bottom: solid 2px #913d14;
 }
 
 nav.neopalimy-navbar a:link, nav.neopalimy-navbar a:visited {
-    color: gold;
+    color: gold !important;
 }
 
 nav.neopalimy-navbar a:hover, nav.neopalimy-navbar a:active {
-    color: darkorange;
+    color: darkorange !important;
 }
 
 nav.neopalimy-navbar a.dropdown-item:link, nav.neopalimy-navbar a.dropdown-item:visited {
-    color: #913d14;
+    color: #913d14 !important;
 }
 
 nav.neopalimy-navbar a.dropdown-item:hover, nav.neopalimy-navbar a.dropdown-item:active {
-    color: darkorange;
-    background-color: white;
+    color: darkorange !important;
+    background-color: white !important;
 }
 
 nav.neopalimy-navbar a.disabled {
-    color: white;
+    color: white !important;
 }
 
 nav.neopalimy-navbar a.dropdown-item.disabled {
-    color: darkgray;
+    color: darkgray !important;
 }
 
 .dropdown-menu, .dropdown-item {
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
 }
 
 .dropdown-menu .dropdown-menu {
@@ -52,10 +52,10 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     min-width: 10rem;
     padding: .5rem 0;
     font-size: 1rem;
-    color: #212529;
+    color: #212529 !important;
     text-align: left;
     list-style: none;
-    background-color: whitesmoke;
+    background-color: whitesmoke !important;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
@@ -76,6 +76,14 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     position: absolute;
     right: 5px;
     top: 12px;
+}
+
+nav.neopalimy-navbar .navbar-toggler {
+    border-color: rgb(255,215,0);
+}
+
+nav.neopalimy-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,215,0)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 /* Главная часть */

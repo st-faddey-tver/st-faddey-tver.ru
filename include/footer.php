@@ -1,7 +1,7 @@
 <div class="container">
     <div class="footer">
         <div class="row">
-            <div class="col-2">
+            <div class="col-12 col-lg-2">
                 <table>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
@@ -13,13 +13,13 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-2">
+            <div class="d-none d-lg-block col-lg-2">
                 <p><a href="<?=APPLICATION ?>/">На главную</a></p>
                 <p><a href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></p>
                 <p><a href="<?=APPLICATION ?>/contact/">Контакты</a></p>
                 <p><a href="<?=APPLICATION ?>/gallery/">Фотогалерея</a></p>
             </div>
-            <div class="col-2">
+            <div class="d-none d-lg-block col-lg-2">
                 <p>О храме</p>
                 <p><a href="<?=APPLICATION ?>/history/">История</a></p>
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
@@ -27,21 +27,21 @@
                 <p><a href="<?=APPLICATION ?>/events/">Все события</a></p>
                 <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
             </div>
-            <div class="col-2">
+            <div class="d-none d-lg-block col-lg-2">
                 <p>Святые храма</p>
                 <p><a href="<?=APPLICATION ?>/nikolay_maslov/">Николай Маслов</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a></p>
                 <p><a href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a></p>
             </div>
-            <div class="col-2">
+            <div class="d-none d-lg-block col-lg-2">
                 <p>Молодёжь храма</p>
                 <p><a href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a></p>
                 <p><a href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
                 <p><a href="<?=APPLICATION ?>/family/">Семейный клуб</a></p>
                 <p><a href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a></p>
             </div>
-            <div class="col-2">
+            <div class="d-none d-lg-block col-lg-2">
             </div>
         </div>
     </div>
