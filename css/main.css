@@ -21,6 +21,10 @@ nav.neopalimy-navbar a:hover, nav.neopalimy-navbar a:active {
     color: darkorange !important;
 }
 
+nav.neopalimy-navbar a.disabled {
+    color: white !important;
+}
+
 nav.neopalimy-navbar a.dropdown-item:link, nav.neopalimy-navbar a.dropdown-item:visited {
     color: #913d14 !important;
 }
@@ -28,10 +32,6 @@ nav.neopalimy-navbar a.dropdown-item:link, nav.neopalimy-navbar a.dropdown-item:
 nav.neopalimy-navbar a.dropdown-item:hover, nav.neopalimy-navbar a.dropdown-item:active {
     color: darkorange !important;
     background-color: white !important;
-}
-
-nav.neopalimy-navbar a.disabled {
-    color: white !important;
 }
 
 nav.neopalimy-navbar a.dropdown-item.disabled {
@@ -42,40 +42,42 @@ nav.neopalimy-navbar a.dropdown-item.disabled {
     background-color: whitesmoke !important;
 }
 
-.dropdown-menu .dropdown-menu {
-    position: absolute;
-    top: -0.5rem;
-    left: 100%;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 10rem;
-    padding: .5rem 0;
-    font-size: 1rem;
-    color: #212529 !important;
-    text-align: left;
-    list-style: none;
-    background-color: whitesmoke !important;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    display: block;
-}
-
-.dropdown-menu .dropdown-toggle::after {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: .255em;
-    vertical-align: middle;
-    content: "";
-    border-top: .3em solid transparent;
-    border-right: 0;
-    border-bottom: .3em solid transparent;
-    border-left: .3em solid;
-    position: absolute;
-    right: 5px;
-    top: 12px;
+@media only screen and (min-width:992px) {
+    .dropdown-menu .dropdown-menu {
+        position: absolute;
+        top: -0.5rem;
+        left: 100%;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 10rem;
+        padding: .5rem 0;
+        font-size: 1rem;
+        color: #212529 !important;
+        text-align: left;
+        list-style: none;
+        background-color: whitesmoke !important;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: .25rem;
+        display: block;
+    }
+    
+    .dropdown-menu .dropdown-toggle::after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: .255em;
+        vertical-align: middle;
+        content: "";
+        border-top: .3em solid transparent;
+        border-right: 0;
+        border-bottom: .3em solid transparent;
+        border-left: .3em solid;
+        position: absolute;
+        right: 5px;
+        top: 12px;
+    }
 }
 
 nav.neopalimy-navbar .navbar-toggler {
@@ -160,7 +162,7 @@ h2 {
 }
 
 /* Navbar dropdown open on hover */
-@media only screen and (min-width:768px) {
+@media only screen and (min-width:992px) {
     .dropdown:hover .dropdown-menu {
         display: block;
     }

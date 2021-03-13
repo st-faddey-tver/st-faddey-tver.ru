@@ -44,7 +44,7 @@
     $contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/contact.php' ? ' disabled' : '';
     $donation_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/donation.php' ? ' disabled' : '';
     ?>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark neopalimy-navbar">
+    <nav class="navbar navbar-expand-lg neopalimy-navbar">
         <a class="navbar-brand<?=$home_status ?>" href="<?=APPLICATION ?>/">
             <i class="fas fa-home d-none d-lg-block"></i>
             <span class="d-block d-lg-none">Храм сщмч. Фаддея</span>
