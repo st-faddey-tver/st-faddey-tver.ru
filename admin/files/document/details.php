@@ -21,7 +21,7 @@ if(null !== filter_input(INPUT_POST, 'upload_document_submit')) {
         $targetFolder = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/documents/";
         
         while (file_exists($targetFolder.$filename)) {
-            $filename = time().'_'.$romanized_name;
+            $filename = time().'_'.$filename;
         }
         
         $extension = pathinfo($_FILES['file']['name'])['extension'];
