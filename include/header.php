@@ -20,7 +20,7 @@
         ?>
     </div>
     <a href="<?=APPLICATION ?>/">
-    <div class="header d-block d-lg-none" style="background-image: url(<?=APPLICATION ?>/images/shapka1000.jpg); background-position-x: 100%; background-position-y: 50%;">
+    <div class="header d-block d-lg-none" style="background-image: url(<?=APPLICATION ?>/images/shapka1000ps.jpg); background-position-x: 100%; background-position-y: 50%;">
         <div class="row">
             <div class="col-3">
                 <img src="<?=APPLICATION ?>/images/neopalimaya1000.jpg" style="height: 150px;" />
