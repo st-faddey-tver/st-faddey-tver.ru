@@ -15,7 +15,7 @@ $page = new Page("faddey_uspensky");
         include '../../../include/header.php';
         ?>
         <div class="container">
-            <div class="content">
+            <div class="content bigfont">
                 <?php
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
