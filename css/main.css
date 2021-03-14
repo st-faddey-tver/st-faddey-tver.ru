@@ -93,6 +93,19 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     }
 }
 
+.menu-toggler {
+    font-size: 1.4rem;
+    color: rgb(255, 215, 0);
+}
+
+.menu-toggler:active {
+    color: darkorange;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
 /* Главная часть */
 @media only screen and (max-width:991px) {
     .container {

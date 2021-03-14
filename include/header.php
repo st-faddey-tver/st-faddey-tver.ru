@@ -19,6 +19,22 @@
         endif;
         ?>
     </div>
+    <a href="<?=APPLICATION ?>/">
+    <div class="header d-block d-lg-none" style="background-image: url(<?=APPLICATION ?>/images/shapka1000.jpg); background-position-x: 100%; background-position-y: 50%;">
+        <div class="row">
+            <div class="col-3">
+                <img src="<?=APPLICATION ?>/images/neopalimaya1000.jpg" style="height: 150px;" />
+            </div>
+            <div class="col-6">
+                <div class="h-50 pt-3" style="font-size: 1.6rem; font-family: Times New Roman, Times, serif; color: #913d14; font-style: italic; font-weight: bold;">&#8222;Не унывайте, Христос ведь с нами.&#8220;</div>
+                <div class="text-right h-50" style="font-size: 1.4rem; font-family: Times New Roman, Times, serif; color: #913d14; font-style: italic; font-weight: bold;">Св. Фаддей</div>
+            </div>
+            <div class="col-3 text-right">
+                <img src="<?=APPLICATION ?>/images/ikona.jpg" style="height: 150px;" />
+            </div>
+        </div>
+    </div>
+        </a>
     <?php
     $home_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? ' disabled' : '';
     
@@ -46,11 +62,11 @@
     ?>
     <nav class="navbar navbar-expand-lg neopalimy-navbar">
         <a class="navbar-brand<?=$home_status ?>" href="<?=APPLICATION ?>/">
-            <i class="fas fa-home d-none d-lg-block"></i>
-            <span class="d-block d-lg-none">Храм сщмч. Фаддея</span>
+            <i class="fas fa-home"></i><span class="d-inline d-lg-none">&nbsp;&nbsp;Храм сщмч. Фаддея архиепископа Тверского</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
+            <!--span class="navbar-toggler-icon"></span-->
+            <span class="menu-toggler">Меню</span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
