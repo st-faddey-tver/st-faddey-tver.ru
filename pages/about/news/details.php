@@ -67,7 +67,7 @@ $news = new News($id);
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <div class="row">
+                <div class="row small">
                     <div class="col-4 text-left">
                         <?php if(!empty($next_shortname)): ?>
                         <div class="news_title"><a href="<?=APPLICATION ?>/news/<?=$next_shortname ?>" title="<?=$next_title ?>" data-toggle="tooltip" data-placement="right"><i class="fas fa-arrow-left"></i></a></div>
@@ -85,7 +85,7 @@ $news = new News($id);
                     </div>
                 </div>
                 <hr />
-                <p><i><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></i></p>
+                <p class="small"><i><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></i></p>
                 <h1><?=$title ?></h1>
                 <?php
                 $news->GetFragments();

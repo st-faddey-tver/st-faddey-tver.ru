@@ -34,7 +34,7 @@ $error_message = $page->errorMessage;
                 <li>Пожертвовать</li>
             </ul>
             <div class="container" style="margin-left: 0;">
-                <div class="content">
+                <div class="content bigfont">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
                             <h1>Пожертвовать</h1>

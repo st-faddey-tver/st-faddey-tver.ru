@@ -43,7 +43,7 @@ $news = new News($id);
                 
                 if($show_title):
                 ?>
-                <p><i><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></i></p>
+                <p class="small"><i><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></i></p>
                 <h1><?=$title ?></h1>
                 <?php
                 endif;

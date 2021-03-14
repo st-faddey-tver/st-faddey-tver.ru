@@ -106,18 +106,20 @@ $error_message = $news->errorMessage;
                             ?>
                         </div>
                     </div>
-                    <?php
-                    if(filter_input(INPUT_GET, 'mode') == 'edit') {
-                        $news->GetFragmentsEditMode();
-                    }
-                    else {
-                        $news->GetFragments();
-                    }
-                    
-                    $news->ShowCreateFragmentForm();
-                    
-                    if(filter_input(INPUT_GET, 'mode') != 'edit'):
-                    ?>
+                    <div class="bigfont">
+                        <?php
+                        if(filter_input(INPUT_GET, 'mode') == 'edit') {
+                            $news->GetFragmentsEditMode();
+                        }                            
+                        else {
+                            $news->GetFragments();
+                        }
+                        
+                        $news->ShowCreateFragmentForm();
+                        
+                        if(filter_input(INPUT_GET, 'mode') != 'edit'):
+                        ?>
+                    </div>
                     <hr />
                     <h2>Изображения</h2>
                     <?php
