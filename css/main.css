@@ -101,16 +101,6 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     font-family: Arial, Verdana, sans-serif;
 }
 
-.content.bigfont {
-    font-size: 1.4rem;
-}
-
-@media only screen and (max-width:991px) {
-    .content.bigfont {
-        font-size: 1.6em;
-    }
-}
-
 .content p {
     text-align: justify;
 }
@@ -153,6 +143,16 @@ h2 {
     color: gray;
     font-weight: bold;
     text-decoration: underline;
+}
+
+.bigfont {
+    font-size: 1.4rem;
+}
+
+@media only screen and (max-width:991px) {
+    .bigfont {
+        font-size: 1.6em;
+    }
 }
 
 /* Футер */
