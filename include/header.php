@@ -99,7 +99,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a data-toggle="tooltip" title="Пожертвовать" href="<?=APPLICATION ?>/donation/" class="nav-link<?=$donation_status ?>"><span class="d-inline d-lg-none">Пожертвовать&nbsp;</span><i class="fas fa-ruble-sign"></i></a>
+                    <a title="Пожертвовать" href="<?=APPLICATION ?>/donation/" class="nav-link<?=$donation_status ?>">Пожертвовать</a>
                 </li>
             </ul>
         </div>
