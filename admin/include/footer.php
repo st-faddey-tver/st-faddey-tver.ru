@@ -44,6 +44,32 @@
         $(this).removeClass('is-invalid');
     });
     
+    // Виртуальная клавиатура
+    $('.virtual_keyboard').hide();
+    $('.csl_font').hide();
+    $('.vk_keys').hide();
+    $('.vk_keys.russian').show();
+    
+    $('.btn_vk').click(function(){
+        $(this).closest('form').children('.virtual_keyboard').toggle();
+    });
+    
+    $('.vk_close').click(function(){
+        $(this).closest('.virtual_keyboard').hide();
+    });
+    
+    $('.vk_language').change(function(){
+        if($(this).val() == 'slavic') {
+            $(this).parent().next('.csl_font').show();
+        }
+        else {
+            $(this).parent().next('.csl_font').hide();
+        }
+        
+        $('.vk_keys').hide();
+        $('.vk_keys.' + $(this).val()).show();
+    });
+    
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
         $('input[name="scroll"]').val($(window).scrollTop());

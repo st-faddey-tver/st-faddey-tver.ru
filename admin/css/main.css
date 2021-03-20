@@ -99,4 +99,21 @@ ul.breadcrumb li a {
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
-} 
+}
+
+/* Виртуальная клавиатура */
+form {
+    position: relative;
+}
+
+.virtual_keyboard {
+    width: 100%;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.vk_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
