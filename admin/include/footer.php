@@ -10,7 +10,7 @@
         $('textarea.editor').cleditor({
             docCSSFile: '<?=APPLICATION ?>/admin/css/main.css',
             height: 350,
-            bodyStyle: "margin:4px; font-size:18px; font-family: Arial,Verdana, sans-serif; cursor:text"
+            bodyStyle: "margin:4px; font-size:1.2rem; font-family: Arial,Verdana, sans-serif; cursor:text"
         }); //[0].focus();
     });
     
