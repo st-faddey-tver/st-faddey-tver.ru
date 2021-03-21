@@ -29,9 +29,11 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>Святые храма</p>
-                <p><a href="<?=APPLICATION ?>/nikolay_maslov/">Николай Маслов</a></p>
-                <p><a href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a></p>
+                
+                <p><a href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a></p>
+                <p><a href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a></p>
+                <p><a href="<?=APPLICATION ?>/nikolay_maslov/">Николай Маслов</a></p>
                 <p><a href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
