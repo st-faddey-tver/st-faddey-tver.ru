@@ -21,7 +21,7 @@ function ShowKeys($arr_param) {
         </div>
         <div class="form-group csl_font">
             <label for="font">Шрифт</label>
-            <select id="font" name="font" class="form-control ml-1">
+            <select id="font" name="font" class="form-control ml-1 vk_font">
                 <option value="ponomar">Ponomar</option>
                 <option value="fedorovsk">Fedorovsk</option>
                 <option value="menaion">Menaion</option>

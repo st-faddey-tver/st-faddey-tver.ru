@@ -45,6 +45,24 @@
     });
     
     // Виртуальная клавиатура
+    function RemoveCSLClasses(obj) {
+        obj.removeClass('ponomar');
+        obj.removeClass('fedorovsk');
+        obj.removeClass('menaion');
+        obj.removeClass('monomakh');
+        obj.removeClass('cathisma');
+        obj.removeClass('oglavie');
+        obj.removeClass('fira');
+        obj.removeClass('pochaevsk');
+        obj.removeClass('triodion');
+        obj.removeClass('acathist');
+        obj.removeClass('shafarik');
+        obj.removeClass('shafarik3');
+        obj.removeClass('pomorsky-dropcaps');
+        obj.removeClass('indiction-dropcaps');
+        obj.removeClass('vertograd-dropcaps');
+    }
+    
     $('.virtual_keyboard').hide();
     $('.csl_font').hide();
     $('.vk_keys').hide();
@@ -61,6 +79,8 @@
     $('.vk_language').change(function(){
         if($(this).val() == 'slavic') {
             $(this).parent().next('.csl_font').show();
+            RemoveCSLClasses($('.vk_keys.slavic'));
+            $('.vk_keys.slavic').addClass($(this).parent().next('.csl_font').children('select.vk_font').val());
         }
         else {
             $(this).parent().next('.csl_font').hide();
@@ -68,6 +88,11 @@
         
         $('.vk_keys').hide();
         $('.vk_keys.' + $(this).val()).show();
+    });
+    
+    $('.vk_font').change(function(){
+        RemoveCSLClasses($('.vk_keys.slavic'));
+        $('.vk_keys.slavic').addClass($(this).val());
     });
     
     // Прокрутка на прежнее место после отправки формы
