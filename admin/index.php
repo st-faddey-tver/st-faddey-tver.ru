@@ -36,9 +36,10 @@ if(!HasRole()) {
                         <li>
                             Святые храма
                             <ul>
-                                <li><a href="pages/about/saints/nikolay_maslov.php">Николай Маслов</a></li>
-                                <li><a href="pages/about/saints/ilya_gromoglasov.php">Илья Громогласов</a></li>
+                                <li><a href="pages/about/saints/vera_truks.php">Вера Трукс</a></li>
                                 <li><a href="pages/about/saints/ilya_benemansky.php">Илья Бенеманский</a></li>
+                                <li><a href="pages/about/saints/ilya_gromoglasov.php">Илья Громогласов</a></li>
+                                <li><a href="pages/about/saints/nikolay_maslov.php">Николай Маслов</a></li>
                                 <li><a href="pages/about/saints/faddey_uspensky.php">Фаддей Успенский</a></li>
                             </ul>
                         </li>
