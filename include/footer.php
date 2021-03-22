@@ -17,7 +17,7 @@
                 <p><a href="<?=APPLICATION ?>/">На главную</a></p>
                 <p><a href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></p>
                 <p><a href="<?=APPLICATION ?>/contact/">Контакты</a></p>
-                <p><a href="<?=APPLICATION ?>/gallery/">Фотогалерея</a></p>
+                <p><a href="<?=APPLICATION ?>/donation/">Пожертвовать</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>О храме</p>
