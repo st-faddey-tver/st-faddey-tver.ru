@@ -108,6 +108,14 @@ function BuildQueryRemove($key) {
     return $result;
 }
 
+function ShowKeys($arr_param) {
+    if(is_array($arr_param)) {
+        foreach ($arr_param as $key) {
+            echo "<button type='button' class='btn btn-outline-dark mr-2 mb-2 vk_btn' style='width: 40px;'>$key</button>";
+        }
+    }
+}
+
 // Классы
 class Executer {
     public $error = '';
