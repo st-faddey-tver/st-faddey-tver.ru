@@ -95,6 +95,33 @@
         $('.vk_keys.slavic').addClass($(this).val());
     });
     
+    $('.vk_btn').click(function(e){
+        var editorbody = $(e.target).parent().parent().parent().find('iframe').contents().find('body');
+        var content = editorbody.html();
+        var ta = $(e.target).parent().parent().parent().find('textarea');
+        
+        if(editorbody.is(':visible')) {
+            alert('ED');
+            content = content + $(e.target).text();
+            editorbody.html(content);
+            
+            ta.text(editorbody.html());
+        }
+        
+        if(ta.is(':visible')) {
+            ta.focus();
+            var text = ta.val();
+            var selStart = ta.prop('selectionStart');
+            var selEnd = ta.prop('selectionEnd');
+            var textStart = text.substring(0, selStart);
+            var textEnd = text.substring(selEnd);
+            var newText = textStart + $(this).text() + textEnd;
+            ta.val(newText);
+            ta.prop('selectionStart', selStart + $(this).text().length);
+            ta.prop('selectionEnd', selStart + $(this).text().length);
+        }
+    });
+    
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
         $('input[name="scroll"]').val($(window).scrollTop());
