@@ -95,30 +95,43 @@
         $('.vk_keys.slavic').addClass($(this).val());
     });
     
+    var textelement = null;
+    
+    $(document).ready(function(){
+        var editorbody = $('iframe').contents().find('body');
+        
+        editorbody.click(function(e){
+            textelement = e.target;
+        });
+        
+        editorbody.keyup(function(e){
+            textelement = e.target;
+        });
+    });
+    
     $('.vk_btn').click(function(e){
-        var editorbody = $(e.target).parent().parent().parent().find('iframe').contents().find('body');
-        var content = editorbody.html();
-        var ta = $(e.target).parent().parent().parent().find('textarea');
-        
-        if(editorbody.is(':visible')) {
-            alert('ED');
-            content = content + $(e.target).text();
-            editorbody.html(content);
-            
-            ta.text(editorbody.html());
-        }
-        
+        //var ta = $(e.target).parent().parent().parent().find('textarea');
+        var ta = $(e.target).parents('form').find('textarea');
+
         if(ta.is(':visible')) {
             ta.focus();
-            var text = ta.val();
+            var text = ta.text();
             var selStart = ta.prop('selectionStart');
             var selEnd = ta.prop('selectionEnd');
             var textStart = text.substring(0, selStart);
             var textEnd = text.substring(selEnd);
-            var newText = textStart + $(this).text() + textEnd;
-            ta.val(newText);
-            ta.prop('selectionStart', selStart + $(this).text().length);
-            ta.prop('selectionEnd', selStart + $(this).text().length);
+            var newText = textStart + $(e.target).text() + textEnd;
+            ta.text(newText);
+            ta.prop('selectionStart', selStart + $(e.target).text().length);
+            ta.prop('selectionEnd', selStart + $(e.target).text().length);
+        }
+        else if(textelement != null) {
+            if(textelement.nodeName == 'BODY'){
+                textelement = textelement.appendChild(document.createElement('p'));
+            }
+            
+            textelement.textContent += $(e.target).text();
+            ta.text(textelement.parents('body').html());
         }
     });
     
