@@ -2,7 +2,7 @@
     <input type="hidden" id="id" name="id" value="<?=$row['id'] ?>" />
     <input type="hidden" id="scroll" name="scroll" />
     <div class="form-group">
-        <textarea id="body" name="body" class="editor"><?= htmlentities($row['body']) ?></textarea>
+        <textarea id="body" name="body" class="editor" style="font-size: 1.5rem;"><?= htmlentities($row['body']) ?></textarea>
     </div>
     <div class="form-group d-flex justify-content-between mb-2">
         <div class="p-1">
