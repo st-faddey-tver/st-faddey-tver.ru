@@ -95,29 +95,28 @@
         $('.vk_keys.slavic').addClass($(this).val());
     });
     
-    var textelement = null;
-    var body = null;
-    
-    //$(document).ready(function(){
-        var frames = $('iframe').contents();
+    $('.vk_copy_class').click(function(e){
+        var font_class = $(e.target).prev().val();
         
-        frames.click(function(e) {
-            textelement = e.target;
-            if(textelement.nodeName == 'HTML') {
-                textelement = textelement.children[1];
-            };
-            
-            body = textelement.getRootNode().children[0].children[1];
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(font_class).select();
+        document.execCommand("copy");
+        $temp.remove();
+        
+        var alert = $(this).children('.clipboard_alert');
+        alert.slideDown(300, function(){
+            $(this).slideUp(1000);
         });
-    //});
+    });
     
-    $('.vk_btn').click(function(e){
+    /*$('.vk_btn').click(function(e){
         var form = $(e.target).parents('form');
         var ta = form.find('textarea');
 
         if(ta.is(':visible')) {
             ta.focus();
-            var text = ta.text(); // alert(text);
+            var text = ta.text();
             var selStart = ta.prop('selectionStart');
             var selEnd = ta.prop('selectionEnd');
             var textStart = text.substring(0, selStart);
@@ -129,9 +128,10 @@
         }
         else if(textelement != null) {
             textelement.textContent += $(e.target).text(); // alert(body.innerHTML);
+            body = textelement.getRootNode().children[0].children[1];
             ta.text(body.innerHTML);
         }
-    });
+    });*/
     
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){

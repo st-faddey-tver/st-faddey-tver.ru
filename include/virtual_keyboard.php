@@ -29,6 +29,7 @@
                 <option value="indiction-dropcaps">Indiction</option>
                 <option value="vertograd-dropcaps">Vertograd</option>
             </select>
+            <button type="button" class="vk_copy_class btn btn-outline-dark ml-1" style="position: relative;"><i class="fas fa-copy mr-1"></i>Скопировать класс<div class='alert alert-info clipboard_alert'>Скопировано</div></button>
         </div>
     </div>
     <button type="button" class="btn btn-outline-dark vk_close"><i class="fas fa-times"></i></button>
