@@ -52,6 +52,8 @@
         obj.removeClass('pomorsky-dropcaps');
         obj.removeClass('indiction-dropcaps');
         obj.removeClass('vertograd-dropcaps');
+        
+        obj.removeClass('rtl');
     }
     
     $('.virtual_keyboard').hide();
@@ -68,13 +70,20 @@
     });
     
     $('.vk_language').change(function(){
+        RemoveCSLClasses($('.vk_keys.slavic'));
+        RemoveCSLClasses($(this).parents('form').find('textarea'));
+        
         if($(this).val() == 'slavic') {
             $(this).parent().next('.csl_font').show();
-            RemoveCSLClasses($('.vk_keys.slavic'));
             $('.vk_keys.slavic').addClass($(this).parent().next('.csl_font').children('select.vk_font').val());
+            $(this).parents('form').find('textarea').addClass($(this).parent().next('.csl_font').children('select.vk_font').val());
         }
         else {
             $(this).parent().next('.csl_font').hide();
+        }
+        
+        if($(this).val() == 'hebrew') {
+            $(this).parents('form').find('textarea').addClass('rtl');
         }
         
         $('.vk_keys').hide();
@@ -83,7 +92,9 @@
     
     $('.vk_font').change(function(){
         RemoveCSLClasses($('.vk_keys.slavic'));
+        RemoveCSLClasses($(this).parents('form').find('textarea'));
         $('.vk_keys.slavic').addClass($(this).val());
+        $(this).parents('form').find('textarea').addClass($(this).val());
     });
     
     $('.vk_copy_class').click(function(e){
