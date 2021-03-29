@@ -5,15 +5,6 @@
 <script src="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.js"></script>
 <script src='<?=APPLICATION ?>/admin/cleditor/jquery.cleditor.js'></script>
 <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        $('textarea.editor').cleditor({
-            docCSSFile: '<?=APPLICATION ?>/admin/css/main.css',
-            height: 350,
-            bodyStyle: "margin:4px; font-size:1.2rem; font-family: Arial,Verdana, sans-serif; cursor:text"
-        }); //[0].focus();
-    });
-    
     // Подтверждение удаления
     $('button.confirmable').click(function(){
         return confirm('Действительно удалить?');
@@ -110,28 +101,39 @@
         });
     });
     
-    /*$('.vk_btn').click(function(e){
+    $('.vk_btn').click(function(e){
         var form = $(e.target).parents('form');
         var ta = form.find('textarea');
-
-        if(ta.is(':visible')) {
-            ta.focus();
-            var text = ta.text();
-            var selStart = ta.prop('selectionStart');
-            var selEnd = ta.prop('selectionEnd');
-            var textStart = text.substring(0, selStart);
-            var textEnd = text.substring(selEnd);
-            var newText = textStart + $(e.target).text() + textEnd;
-            ta.text(newText);
-            ta.prop('selectionStart', selStart + $(e.target).text().length);
-            ta.prop('selectionEnd', selStart + $(e.target).text().length);
-        }
-        else if(textelement != null) {
-            textelement.textContent += $(e.target).text(); // alert(body.innerHTML);
-            body = textelement.getRootNode().children[0].children[1];
-            ta.text(body.innerHTML);
-        }
-    });*/
+        var str = $(e.target).text();
+        
+        ta.focus();
+        var text = ta.val();
+        var selStart = ta.prop('selectionStart');
+        var selEnd = ta.prop('selectionEnd');
+        var textStart = text.substring(0, selStart);
+        var textEnd = text.substring(selEnd);
+        var newText = textStart + str + textEnd;
+        ta.val(newText);
+        ta.prop('selectionStart', selStart + str.length);
+        ta.prop('selectionEnd', selStart + str.length);
+    });
+    
+    $('.vk_btn_back').click(function(e){
+        var form = $(e.target).parents('form');
+        var ta = form.find('textarea');
+        
+        ta.focus();
+        var text = ta.val();
+        var selStart = ta.prop("selectionStart");
+        if(selStart > 0) selStart -= 1;
+        var selEnd = ta.prop("selectionEnd");
+        var textStart = text.substring(0, selStart);
+        var textEnd = text.substring(selEnd);
+        var newText = textStart + textEnd;
+        ta.val(newText);
+        ta.prop("selectionStart", selStart);
+        ta.prop("selectionEnd", selStart);
+    });
     
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
