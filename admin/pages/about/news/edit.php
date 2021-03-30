@@ -187,7 +187,7 @@ else {
                     </div>
                     <div class="form-group">
                         <label for="body">Текст<span class="text-danger">*</span></label>
-                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" required="required"><?= htmlentities($body) ?></textarea>
+                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= htmlentities($body) ?></textarea>
                         <div class="invalid-feedback">Текст обязательно</div>
                     </div>
                     <div class="form-group">

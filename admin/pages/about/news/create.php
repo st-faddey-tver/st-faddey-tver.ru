@@ -155,7 +155,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                     </div>
                     <div class="form-group">
                         <label for="body">Текст<span class="text-danger">*</span></label>
-                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
+                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
                         <div class="invalid-feedback">Текст обязательно</div>
                     </div>
                     <div class="form-group">
