@@ -52,13 +52,13 @@
     </div>
     <div class="vk_keys slavic">
         <?php
-        ShowKeys(array('А','Б','В','Г','Д','Е','Ж', mb_chr(0x405),'З','И','Й','І', mb_chr(0x407),
+        ShowKeys(array('А','Б','В','Г','Д','Е','Ж', mb_chr(0x405),'З', mb_chr(0xA640),'И','Й','І', mb_chr(0x407),
             'К','Л','М','Н','О', mb_chr(0x47A), mb_chr(0x460), mb_chr(0x47C),'П','Р','С','Т','У', mb_chr(0x478), mb_chr(0xA64A),'Ф',
             'Х', mb_chr(0x47E),'Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Ѣ','Ю', mb_chr(0xA656), mb_chr(0x466), mb_chr(0x46A), mb_chr(0x46E), mb_chr(0x470),'Ѳ','Ѵ', mb_chr(0x476),
-            mb_chr(0x301)/*акут*/, mb_chr(0x300)/*гравис*/, mb_chr(0x302)/*циркумфлекс*/, mb_chr(0x486)/*придыхание*/, mb_chr(0x483)/*титло*/, mb_chr(0x482)/*тысяча*/));
+            mb_chr(0x301)/*акут*/, mb_chr(0x300)/*гравис*/, mb_chr(0x302)/*циркумфлекс*/, mb_chr(0x486)/*придыхание*/, mb_chr(0x483)/*титло*/, mb_chr(0x482)/*тысяча*/, mb_chr(0xA67D)/*ерок*/));
         echo '<br />';
-        ShowKeys(array('а','б','в','г','д','е', mb_chr(0x454),'ж', mb_chr(0x455),'з','и','й','і', mb_chr(0x457),
-            'к','л','м','н','о', mb_chr(0x47B), mb_chr(0x461), mb_chr(0x47D),'п','р','с','т','у', mb_chr(0x479), mb_chr(0xA64B),'ф',
+        ShowKeys(array('а','б','в','г','д','е', mb_chr(0x454),'ж', mb_chr(0x455),'з', mb_chr(0xA641),'и','й','і', mb_chr(0x457),
+            'к','л','м','н','о', mb_chr(0x47B), mb_chr(0x461), mb_chr(0x1C82), mb_chr(0x47D),'п','р','с','т','у', mb_chr(0x479), mb_chr(0xA64B),'ф',
             'х', mb_chr(0x47F),'ц','ч','ш','щ','ъ','ы','ь','ѣ','ю', mb_chr(0xA657), mb_chr(0x467), mb_chr(0x46B), mb_chr(0x46F), mb_chr(0x471),'ѳ','ѵ', mb_chr(0x477),
             mb_chr(0x2DE3)/*д)*/, mb_chr(0x2DE4)/*ж)*/, mb_chr(0x2DE5)/*з)*/, mb_chr(0x2DE8)/*м)*/, mb_chr(0x2DEA)/*о)*/, mb_chr(0x2DED)/*с)*/, mb_chr(0x2DEE)/*т)*/, mb_chr(0x2DEF)/*х)*/, mb_chr(0x487)/*буквенное титло*/));
         echo '<br />';
