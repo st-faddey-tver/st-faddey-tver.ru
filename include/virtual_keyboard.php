@@ -45,7 +45,7 @@
             'х','ц','ч','ш','щ','ъ','ы','ь','ѣ','э','ю','я','ѳ','ѵ'));
         echo '<br />';
         ShowKeys(array('1','2','3','4','5','6','7','8','9','0',
-            '.',',',':',';','-','–','!','?','(',')','’','«','»','*',mb_chr(0x301)/*акут*/));
+            '.',',',':',';','-','–','!','?','(',')','’','«','»', mb_chr(8222), mb_chr(8220)/*другие кавычки*/,'*',mb_chr(0x301)/*акут*/));
         ?>
         <button type='button' class='btn btn-outline-dark mr-2 mb-2 vk_btn_back' style='width: 60px; height: 40px'><i class="fas fa-arrow-left"></i></button>
         <button type='button' class='btn btn-outline-dark mr-2 mb-2 vk_btn' style='width: 60px; height: 40px'> </button>
