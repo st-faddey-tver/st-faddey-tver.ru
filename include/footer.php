@@ -48,14 +48,13 @@
         </div>
         <div class="informers">
             <!-- Yandex.Metrika informer -->
-<a href="https://metrika.yandex.ru/stat/?id=75082543&amp;from=informer"
-target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/75082543/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="75082543" data-lang="ru" /></a>
-<!-- /Yandex.Metrika informer -->
-<!--LiveInternet logo--><a href="https://www.liveinternet.ru/click"
-target="_blank"><img src="https://counter.yadro.ru/logo?11.6"
-title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня"
-alt="" style="border:0" width="88" height="31"/></a><!--/LiveInternet-->
+            <a href="https://metrika.yandex.ru/stat/?id=75082543&amp;from=informer" target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/75082543/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="75082543" data-lang="ru" /></a>
+            <!-- /Yandex.Metrika informer -->
+            <!--LiveInternet logo-->
+            <a href="https://www.liveinternet.ru/click" target="_blank">
+                <img src="https://counter.yadro.ru/logo?11.6" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" style="border:0" width="88" height="31"/>
+            </a>
+            <!--/LiveInternet-->
         </div>
     </div>
 </div>
