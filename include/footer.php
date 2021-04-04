@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="footer">
+<div class="footer">
+    <div class="container">
         <div class="row">
             <div class="col-12 col-lg-2">
                 <table>

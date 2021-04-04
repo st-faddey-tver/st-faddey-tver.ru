@@ -2,6 +2,10 @@
 @import 'sample.css';
 
 /* Заголовок */
+.top {
+    text-align: center;
+}
+
 .header {
     position: relative;
 }
@@ -114,10 +118,11 @@ nav.neopalimy-navbar .navbar-toggler-icon {
 }
 
 .content {
-    border-left: solid 3px sienna;
-    border-right: solid 3px sienna;
+    border: solid 2px sienna;
     padding: 10px;
     font-family: Arial, Verdana, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .content p {
