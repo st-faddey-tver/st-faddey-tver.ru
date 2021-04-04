@@ -4,6 +4,7 @@
 /* Заголовок */
 .top {
     text-align: center;
+    border-bottom: solid 2px #913d14;
 }
 
 .header {
@@ -13,7 +14,6 @@
 /* Меню */
 nav.neopalimy-navbar {
     background-color: sienna !important;
-    border-top: solid 2px #913d14;
     border-bottom: solid 2px #913d14;
 }
 
