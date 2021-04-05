@@ -6,6 +6,7 @@
             
             $files_images_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/admin/files/images.php' ? ' disabled' : '';
             $files_audio_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/admin/files/audio.php' ? ' disabled' : '';
+            $files_video_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/admin/files/video.php' ? ' disabled' : '';
             $files_documents_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/admin/files/documents.php' ? ' disabled' : '';
             
             $user_status = (substr_compare(filter_input(INPUT_SERVER, 'PHP_SELF'), APPLICATION.'/admin/user', 0, strlen(APPLICATION.'/admin/user')) == 0 ? ' disabled' : '');
@@ -25,6 +26,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item<?=$files_images_status ?>" href="<?=APPLICATION ?>/admin/files/image/">Изображения</a>
                     <a class="dropdown-item<?=$files_audio_status ?>" href="<?=APPLICATION ?>/admin/files/audio/">Аудио</a>
+                    <a class="dropdown-item<?=$files_audio_status ?>" href="<?=APPLICATION ?>/admin/files/video/">Видео</a>
                     <a class="dropdown-item<?=$files_documents_status ?>" href="<?=APPLICATION ?>/admin/files/document/">Документы</a>
                 </div>
             </li>
