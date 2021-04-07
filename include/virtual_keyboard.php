@@ -59,8 +59,10 @@
         echo '<br />';
         ShowKeys(array('а','б','в','г','д','е', mb_chr(0x454),'ж', mb_chr(0x455),'з', mb_chr(0xA641),'и','й','і', mb_chr(0x457),
             'к','л','м','н','о', mb_chr(0x47B), mb_chr(0x461), mb_chr(0x1C82), mb_chr(0x47D),'п','р','с','т','у', mb_chr(0x479), mb_chr(0xA64B),'ф',
-            'х', mb_chr(0x47F),'ц','ч','ш','щ','ъ','ы','ь','ѣ','ю', mb_chr(0xA657), mb_chr(0x467), mb_chr(0x46B), mb_chr(0x46F), mb_chr(0x471),'ѳ','ѵ', mb_chr(0x477),
-            mb_chr(0x2DE3)/*д)*/, mb_chr(0x2DE4)/*ж)*/, mb_chr(0x2DE5)/*з)*/, mb_chr(0x2DE8)/*м)*/, mb_chr(0x2DEA)/*о)*/, mb_chr(0x2DED)/*с)*/, mb_chr(0x2DEE)/*т)*/, mb_chr(0x2DEF)/*х)*/, mb_chr(0x487)/*буквенное титло*/));
+            'х', mb_chr(0x47F),'ц','ч','ш','щ','ъ','ы','ь','ѣ','ю', mb_chr(0xA657), mb_chr(0x467), mb_chr(0x46B), mb_chr(0x46F), mb_chr(0x471),'ѳ','ѵ', mb_chr(0x477)));
+        echo '<br />';
+        ShowKeys(array(mb_chr(0x2DE0)/*б)*/, mb_chr(0x2DE1)/*в)*/, mb_chr(0x2DE2)/*г)*/, mb_chr(0x2DE3)/*д)*/, mb_chr(0x2DE4)/*ж)*/, mb_chr(0x2DE5)/*з)*/, mb_chr(0x2DE6)/*к)*/, mb_chr(0x2DE7)/*л)*/,
+            mb_chr(0x2DE8)/*м)*/, mb_chr(0x2DE9)/*н)*/, mb_chr(0x2DEA)/*о)*/, mb_chr(0x2DEB)/*п)*/, mb_chr(0x2DEC)/*р)*/, mb_chr(0x2DED)/*с)*/, mb_chr(0x2DEE)/*т)*/, mb_chr(0x2DEF)/*х)*/, mb_chr(0x487)/*буквенное титло*/));
         echo '<br />';
         ShowKeys(array('.',',',':',';','-','–','!','?','(',')','’'));
         ?>
