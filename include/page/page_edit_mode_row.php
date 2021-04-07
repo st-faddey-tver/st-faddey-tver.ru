@@ -19,7 +19,7 @@
     <div class="col-4 text-right">
         <form method="post">
             <input type="hidden" id="id" name="id" value="<?=$row['id'] ?>" />
-            <input type="hidden" id="page" name="page" value="<?=$row['page'] ?>" />
+            <input type="hidden" id="page_id" name="page_id" value="<?=$row['page_id'] ?>" />
             <input type="hidden" id="position" name="position" value="<?=$row['position'] ?>" />
             <input type="hidden" id="scroll" name="scroll" />
             <div class="btn-group text-right">

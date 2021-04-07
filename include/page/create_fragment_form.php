@@ -2,7 +2,7 @@
     <?php
     include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/virtual_keyboard.php';
     ?>
-    <input type="hidden" id="page" name="page" value="<?=$this->page ?>" />
+    <input type="hidden" id="page_id" name="page_id" value="<?=$this->page_id ?>" />
     <input type="hidden" id="scroll" name="scroll" />
     <div class="form-group">
         <textarea id="body" name="body" class="form-control" style="height: 200px;"></textarea>

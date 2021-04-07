@@ -20,9 +20,7 @@ $page = new Page("ilya_benemansky");
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
-                ?>
-                <h1>Святые храма, Илья Бенеманский</h1>
-                <?php
+                echo "<h1>$page->name</h1>";
                 $page->GetFragments();
                 ?>
             </div>

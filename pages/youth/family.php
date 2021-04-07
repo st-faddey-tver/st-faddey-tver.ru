@@ -20,9 +20,7 @@ $page = new Page("family");
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
-                ?>
-                <h1>Семейный клуб</h1>
-                <?php
+                echo "<h1>$page->name</h1>";
                 $page->GetFragments();
                 ?>
             </div>

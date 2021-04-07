@@ -3,11 +3,21 @@ include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
 
 class Page {
     public function __construct($pageName) {
-        $this->page = $pageName;
+        $sql = "select id, name, title, description, keywords from page where shortname='$pageName'";
+        $row = (new Fetcher($sql))->Fetch();
+        $this->page_id = $row['id'];
+        $this->name = htmlentities($row['name']);
+        $this->title = htmlentities($row['title']);
+        $this->description = htmlentities($row['description']);
+        $this->keywords = htmlentities($row['keywords']);
     }
     
-    private $page;
+    private $page_id;
     public $errorMessage;
+    public $name;
+    public $title;
+    public $description;
+    public $keywords;
 
     public function Top() {
         define('ISINVALID', ' is-invalid');
@@ -18,12 +28,12 @@ class Page {
             $body = filter_input(INPUT_POST, 'body');
             
             if(!empty($body)) {
-                $sql = "select ifnull(max(position), 0) max_position from page_fragment where page = '$this->page'";
+                $sql = "select ifnull(max(position), 0) max_position from page_fragment where page_id = '$this->page_id'";
                 $row = (new Fetcher($sql))->Fetch();
                 $position = intval($row['max_position']) + 1;
                 
                 $body = addslashes($body);
-                $sql = "insert into page_fragment (page, body, position) values ('$this->page', '$body', $position)";
+                $sql = "insert into page_fragment (page_id, body, position) values ('$this->page_id', '$body', $position)";
                 $this->errorMessage = (new Executer($sql))->error;
             }
         }
@@ -46,10 +56,10 @@ class Page {
         
         if(null !== filter_input(INPUT_POST, 'page_fragment_up_submit')) {
             $id = filter_input(INPUT_POST, 'id');
-            $page = filter_input(INPUT_POST, 'page');
+            $page_id = filter_input(INPUT_POST, 'page_id');
             $position = filter_input(INPUT_POST, 'position');
             
-            if($row = (new Fetcher("select id, position from page_fragment where page='$page' and position<$position order by position desc limit 1"))->Fetch()) {
+            if($row = (new Fetcher("select id, position from page_fragment where page_id='$page_id' and position<$position order by position desc limit 1"))->Fetch()) {
                 $previous_id = $row['id'];
                 $previous_position = $row['position'];
                 
@@ -63,10 +73,10 @@ class Page {
         
         if(null !== filter_input(INPUT_POST, 'page_fragment_down_submit')) {
             $id = filter_input(INPUT_POST, 'id');
-            $page = filter_input(INPUT_POST, 'page');
+            $page_id = filter_input(INPUT_POST, 'page');
             $position = filter_input(INPUT_POST, 'position');
             
-            if($row = (new Fetcher("select id, position from page_fragment where page='$page' and position>$position order by position asc limit 1"))->Fetch()) {
+            if($row = (new Fetcher("select id, position from page_fragment where page_id='$page_id' and position>$position order by position asc limit 1"))->Fetch()) {
                 $next_id = $row['id'];
                 $next_position = $row['position'];
                 
@@ -90,7 +100,7 @@ class Page {
                     
                     if($file_uploaded) {
                         $name = addslashes($name);
-                        $sql = "insert into page_image (page, name, filename, width, height, extension) values ('$this->page', '$name', '$myimage->filename', $myimage->width, $myimage->height, '$myimage->extension')";
+                        $sql = "insert into page_image (page_id, name, filename, width, height, extension) values ('$this->page_id', '$name', '$myimage->filename', $myimage->width, $myimage->height, '$myimage->extension')";
                         $this->errorMessage = (new Executer($sql))->error;
                     }
                     else {
@@ -122,7 +132,7 @@ class Page {
     }
 
     public function GetFragments() {
-        $sql = "select id, body from page_fragment where page = '$this->page' order by position";
+        $sql = "select id, body from page_fragment where page_id = '$this->page_id' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             echo $row['body'];
@@ -130,7 +140,7 @@ class Page {
     }
     
     public function GetFragmentsEditMode() {
-        $sql = "select id, page, body, position from page_fragment where page = '$this->page' order by position";
+        $sql = "select id, page_id, body, position from page_fragment where page_id = '$this->page_id' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             include 'page_edit_mode_row.php';
@@ -142,7 +152,7 @@ class Page {
     }
     
     public function GetImages() {
-        $sql = "select id, name, filename, width, height, extension from page_image where page = '$this->page' order by id";
+        $sql = "select id, name, filename, width, height, extension from page_image where page_id = '$this->page_id' order by id";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             $src = $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION."/images/content/".$row['filename'];

@@ -20,9 +20,7 @@ $page = new Page("faddey_uspensky");
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
-                ?>
-                <h1>Святые храма, Фаддей Успенский</h1>
-                <?php
+                echo "<h1>$page->name</h1>";
                 $page->GetFragments();
                 ?>
             </div>

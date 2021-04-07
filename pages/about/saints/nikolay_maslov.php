@@ -20,9 +20,7 @@ $page = new Page("nikolay_maslov");
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
-                ?>
-                <h1>Святые храма, Николай Маслов</h1>
-                <?php
+                echo "<h1>$page->name</h1>";
                 $page->GetFragments();
                 ?>
             </div>
