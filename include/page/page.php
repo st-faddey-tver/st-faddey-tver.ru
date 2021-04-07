@@ -73,7 +73,7 @@ class Page {
         
         if(null !== filter_input(INPUT_POST, 'page_fragment_down_submit')) {
             $id = filter_input(INPUT_POST, 'id');
-            $page_id = filter_input(INPUT_POST, 'page');
+            $page_id = filter_input(INPUT_POST, 'page_id');
             $position = filter_input(INPUT_POST, 'position');
             
             if($row = (new Fetcher("select id, position from page_fragment where page_id='$page_id' and position>$position order by position asc limit 1"))->Fetch()) {
