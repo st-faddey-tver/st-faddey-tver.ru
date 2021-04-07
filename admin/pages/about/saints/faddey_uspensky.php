@@ -31,14 +31,13 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Святые храма, Фаддей Успенский</li>
+                <li><?=$page->name ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
-                            <h1>О храме</h1>
-                            <h2>Святые храма, Фаддей Успенский</h2>
+                            <h1><?=$page->name ?></h1>
                         </div>
                         <div class="p-1">
                             <?php
