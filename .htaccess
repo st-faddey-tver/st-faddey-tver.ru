@@ -8,28 +8,10 @@ RewriteRule ^admin - [L]
 
 RewriteRule ^(.*)/$ $1 [R=301,L]
 
-RewriteRule ^history pages/about/history.php
-RewriteRule ^vera_truks pages/about/saints/vera_truks.php
-RewriteRule ^ilya_benemansky pages/about/saints/ilya_benemansky.php
-RewriteRule ^ilya_gromoglasov pages/about/saints/ilya_gromoglasov.php
-RewriteRule ^nikolay_maslov pages/about/saints/nikolay_maslov.php
-RewriteRule ^faddey_uspensky pages/about/saints/faddey_uspensky.php
-RewriteRule ^schedule pages/about/schedule.php
-RewriteRule ^clergy pages/about/clergy.php
-RewriteRule ^events/(.*) pages/about/events/details.php?shortname=$1
-RewriteRule ^events pages/about/events/index.php
-RewriteRule ^news/(.*) pages/about/news/details.php?shortname=$1
-RewriteRule ^news pages/about/news/index.php
+RewriteRule ^events/(.*) allevents/details.php?shortname=$1
+RewriteRule ^events allevents/index.php
+RewriteRule ^news/(.*) allnews/details.php?shortname=$1
+RewriteRule ^news allnews/index.php
 
-RewriteRule ^volunteer pages/youth/volunteer.php
-RewriteRule ^club pages/youth/club.php
-RewriteRule ^family pages/youth/family.php
-RewriteRule ^cinema pages/youth/cinema.php
-
-RewriteRule ^preparation pages/education/preparation.php
-RewriteRule ^sunday pages/education/sunday.php
-
-RewriteRule ^pilgrimage pages/pilgrimage.php
-RewriteRule ^contact pages/contact.php
-RewriteRule ^donation pages/donation.php
+RewriteRule ^([a-z0-9_\-]+)$ page.php?shortname=$1
 </IfModule>

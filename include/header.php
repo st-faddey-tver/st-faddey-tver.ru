@@ -25,28 +25,28 @@
 <?php
 $home_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? ' disabled' : '';
     
-$about_history_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/history.php' ? ' disabled' : '';
-$about_saints_vera_truks_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/vera_truks.php' ? ' disabled' : '';
-$about_saints_ilya_benemansky_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/ilya_benemansky.php' ? ' disabled' : '';
-$about_saints_ilya_gromoglasov_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/ilya_gromoglasov.php' ? ' disabled' : '';
-$about_saints_nikolay_maslov_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/nikolay_maslov.php' ? ' disabled' : '';
-$about_saints_faddey_uspensky_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/saints/faddey_uspensky.php' ? ' disabled' : '';
-$about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/schedule.php' ? ' disabled' : '';
-$about_clergy_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/clergy.php' ? ' disabled' : '';
-$about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/events/index.php' ? ' disabled' : '';
-$about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/about/news/index.php' ? ' disabled' : '';
+$about_history_status = filter_input(INPUT_GET, 'shortname') == 'history' ? ' disabled' : '';
+$about_saints_vera_truks_status = filter_input(INPUT_GET, 'shortname') == 'vera_truks' ? ' disabled' : '';
+$about_saints_ilya_benemansky_status = filter_input(INPUT_GET, 'shortname') == 'ilya_benemansky' ? ' disabled' : '';
+$about_saints_ilya_gromoglasov_status = filter_input(INPUT_GET, 'shortname') == 'ilya_gromoglasov' ? ' disabled' : '';
+$about_saints_nikolay_maslov_status = filter_input(INPUT_GET, 'shortname') == 'nikolay_maslov' ? ' disabled' : '';
+$about_saints_faddey_uspensky_status = filter_input(INPUT_GET, 'shortname') == 'faddey_uspensky' ? ' disabled' : '';
+$about_schedule_status = filter_input(INPUT_GET, 'shortname') == 'schedule' ? ' disabled' : '';
+$about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disabled' : '';
+$about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allevents/index.php' ? ' disabled' : '';
+$about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
     
-$youth_volunteer_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/volunteer.php' ? ' disabled' : '';
-$youth_club_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/club.php' ? ' disabled' : '';
-$youth_family_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/family.php' ? ' disabled' : '';
-$youth_cinema_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/youth/cinema.php' ? ' disabled' : '';
+$youth_volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
+$youth_club_status = filter_input(INPUT_GET, 'shortname') == 'club' ? ' disabled' : '';
+$youth_family_status = filter_input(INPUT_GET, 'shortname') == 'family' ? ' disabled' : '';
+$youth_cinema_status = filter_input(INPUT_GET, 'shortname') == 'cinema' ? ' disabled' : '';
     
-$education_sunday_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/sunday.php' ? ' disabled' : '';
-$education_preparation_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/education/preparation.php' ? ' disabled' : '';
+$education_sunday_status = filter_input(INPUT_GET, 'shortname') == 'sunday' ? ' disabled' : '';
+$education_preparation_status = filter_input(INPUT_GET, 'shortname') == 'preparation' ? ' disabled' : '';
     
-$pilgrimage_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/pilgrimage.php' ? ' disabled': '';
-$contact_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/contact.php' ? ' disabled' : '';
-$donation_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/pages/donation.php' ? ' disabled' : '';
+$pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled': '';
+$contact_status = filter_input(INPUT_GET, 'shortname') == 'contact' ? ' disabled' : '';
+$donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabled' : '';
 ?>
 <nav class="navbar navbar-expand-lg neopalimy-navbar">
     <div class="container">

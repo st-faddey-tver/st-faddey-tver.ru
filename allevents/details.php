@@ -1,6 +1,6 @@
 <?php
-include '../../../include/topscripts.php';
-include '../../../include/news/news.php';
+include '../include/topscripts.php';
+include '../include/news/news.php';
 
 $shortname = filter_input(INPUT_GET, 'shortname');
 
@@ -27,12 +27,12 @@ $news = new News($id);
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container">
             <div class="content bigfont">
@@ -53,7 +53,7 @@ $news = new News($id);
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

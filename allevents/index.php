@@ -1,17 +1,17 @@
 <?php
-include '../../../include/topscripts.php';
+include '../include/topscripts.php';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
-        include '../../../include/pager_top.php';
+        include '../include/header.php';
+        include '../include/pager_top.php';
         ?>
         <div class="container">
             <div class="content">
@@ -49,12 +49,12 @@ include '../../../include/topscripts.php';
                 
                 echo "<div class='events_body'>$body</div>";
                 endwhile;
-                include '../../../include/pager_bottom.php';
+                include '../include/pager_bottom.php';
                 ?>
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

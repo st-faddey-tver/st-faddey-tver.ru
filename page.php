@@ -1,18 +1,18 @@
 <?php
-include '../../include/topscripts.php';
-include '../../include/page/page.php';
-$page = new Page("club");
+include 'include/topscripts.php';
+include 'include/page/page.php';
+$page = new Page(filter_input(INPUT_GET, 'shortname'));
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <?php
-        include '../../include/head.php';
+        include 'include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../include/header.php';
+        include 'include/header.php';
         ?>
         <div class="container">
             <div class="content bigfont">
@@ -26,7 +26,7 @@ $page = new Page("club");
             </div>
         </div>
         <?php
-        include '../../include/footer.php';
+        include 'include/footer.php';
         ?>
     </body>
 </html>
