@@ -32,37 +32,37 @@ if(!HasRole()) {
                 <div class="col-6">
                     <p>О храме</p>
                     <ul>
-                        <li><a href="pages/about/history.php">История</a></li>
+                        <li><a href="page.php?shortname=history">История</a></li>
                         <li>
                             Святые храма
                             <ul>
-                                <li><a href="pages/about/saints/vera_truks.php">Вера Трукс</a></li>
-                                <li><a href="pages/about/saints/ilya_benemansky.php">Илья Бенеманский</a></li>
-                                <li><a href="pages/about/saints/ilya_gromoglasov.php">Илья Громогласов</a></li>
-                                <li><a href="pages/about/saints/nikolay_maslov.php">Николай Маслов</a></li>
-                                <li><a href="pages/about/saints/faddey_uspensky.php">Фаддей Успенский</a></li>
+                                <li><a href="page.php?shortname=vera_truks">Вера Трукс</a></li>
+                                <li><a href="page.php?shortname=ilya_benemansky">Илья Бенеманский</a></li>
+                                <li><a href="page.php?shortname=ilya_gromoglasov">Илья Громогласов</a></li>
+                                <li><a href="page.php?shortname=nikolay_maslov">Николай Маслов</a></li>
+                                <li><a href="page.php?shortname=faddey_uspensky">Фаддей Успенский</a></li>
                             </ul>
                         </li>
-                        <li><a href="pages/about/schedule.php">Расписание богослужений</a></li>
-                        <li><a href="pages/about/clergy.php">Духовенство</a></li>
-                        <li><a href="pages/about/news/<?= BuildQuery('is_event', 1) ?>">Все события</a></li>
-                        <li><a href="pages/about/news/<?= BuildQuery('is_event', 0) ?>">Все новости</a></li>
+                        <li><a href="page.php?shortname=schedule">Расписание богослужений</a></li>
+                        <li><a href="page.php?shortname=clergy">Духовенство</a></li>
+                        <li><a href="news/<?= BuildQuery('is_event', 1) ?>">Все события</a></li>
+                        <li><a href="news/<?= BuildQuery('is_event', 0) ?>">Все новости</a></li>
                     </ul>
                     <p>Молодёжь храма</p>
                     <ul>
-                        <li><a href="pages/youth/volunteer.php">Добровольческое движение</a></li>
-                        <li><a href="pages/youth/club.php">Молодёжный клуб &laquo;Встреча&raquo;</a></li>
-                        <li><a href="pages/youth/family.php">Семейный клуб</a></li>
-                        <li><a href="pages/youth/cinema.php">Синематографический клуб</a></li>
+                        <li><a href="page.php?shortname=volunteer">Добровольческое движение</a></li>
+                        <li><a href="page.php?shortname=club">Молодёжный клуб &laquo;Встреча&raquo;</a></li>
+                        <li><a href="page.php?shortname=family">Семейный клуб</a></li>
+                        <li><a href="page.php?shortname=cinema">Синематографический клуб</a></li>
                     </ul>
                     <p>Образовательный центр</p>
                     <ul>
-                        <li><a href="pages/education/sunday.php">Воскресная школа</a></li>
-                        <li><a href="pages/education/preparation.php">Курсы подготовки к поступлению в семинарию</a></li>
+                        <li><a href="page.php?shortname=sunday">Воскресная школа</a></li>
+                        <li><a href="page.php?shortname=preparation">Курсы подготовки к поступлению в семинарию</a></li>
                     </ul>
-                    <p><a href="pages/pilgrimage.php">Паломничество</a></p>
-                    <p><a href="pages/contact.php">Контакты</a></p>
-                    <p><a href="pages/donation.php">Пожертвовать</a></p>
+                    <p><a href="page.php?shortname=pilgrimage">Паломничество</a></p>
+                    <p><a href="page.php?shortname=contact">Контакты</a></p>
+                    <p><a href="page.php?shortname=donation">Пожертвовать</a></p>
                 </div>
             </div>
         </div>

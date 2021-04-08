@@ -1,5 +1,5 @@
 <?php
-include '../../../../include/topscripts.php';
+include '../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -73,7 +73,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $error_message = $executer->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/pages/about/news/". BuildQuery('is_event', $is_event));
+            header('Location: '.APPLICATION."/admin/news/". BuildQuery('is_event', $is_event));
         }
     }
 }
@@ -82,12 +82,12 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -98,7 +98,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQuery('is_event', $is_event) ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQuery('is_event', $is_event) ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
                 <li><?=$is_event ? "Новое событие" : "Новая новость" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -165,7 +165,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

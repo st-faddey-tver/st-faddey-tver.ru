@@ -1,5 +1,5 @@
 <?php
-include '../../../../include/topscripts.php';
+include '../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -72,14 +72,14 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         $sql = "update news set date='$date', title='$title', shortname='$shortname', body='$body', front=$front, show_title=$show_title where id=$id";
         $error_message = (new Executer($sql))->error;
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/pages/about/news/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/news/details.php".BuildQuery('id', $id));
         }
     }
 }
 
 // Если нет параметра id, переходим к списку
 if(null === filter_input(INPUT_GET, 'id')) {
-    header('Location: '.APPLICATION.'/admin/pages/about/news/'. BuildQuery('is_event', $is_event));
+    header('Location: '.APPLICATION.'/admin/news/'. BuildQuery('is_event', $is_event));
 }
 
 // Получение объекта
@@ -124,12 +124,12 @@ else {
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -140,8 +140,8 @@ else {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
                 <li><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -197,7 +197,7 @@ else {
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include '../../../../include/topscripts.php';
+include '../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -16,13 +16,13 @@ if($is_event === null) {
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
-        include '../../../../include/pager_top.php';
+        include '../include/header.php';
+        include '../../include/pager_top.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -79,13 +79,13 @@ if($is_event === null) {
                     </div>
                     <hr />
                     <?php
-                    include '../../../../include/pager_bottom.php';
+                    include '../../include/pager_bottom.php';
                     ?>
                 </div>
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

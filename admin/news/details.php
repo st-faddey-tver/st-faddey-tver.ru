@@ -1,6 +1,6 @@
 <?php
-include '../../../../include/topscripts.php';
-include '../../../../include/news/news.php';
+include '../../include/topscripts.php';
+include '../../include/news/news.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -16,7 +16,7 @@ if($is_event === null) {
 // Если нет параметра id, переход к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION."/admin/pages/about/news/". BuildQuery('is_event', $is_event));
+    header('Location: '.APPLICATION."/admin/news/". BuildQuery('is_event', $is_event));
 }
 
 // Получение объекта
@@ -47,12 +47,12 @@ $error_message = $news->errorMessage;
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -63,7 +63,7 @@ $error_message = $news->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/pages/about/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
                 <li><?=$title ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -139,7 +139,7 @@ $error_message = $news->errorMessage;
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

@@ -1,13 +1,19 @@
 <?php
-include '../../../../include/topscripts.php';
-include '../../../../include/page/page.php';
+include '../include/topscripts.php';
+include '../include/page/page.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-$page = new Page("faddey_uspensky");
+// Если нет параметра shortname, переходим к списку
+$shortname = filter_input(INPUT_GET, 'shortname');
+if(empty($shortname)) {
+    header('Location: '.APPLICATION.'/admin/');
+}
+
+$page = new Page($shortname);
 $page->Top();
 $error_message = $page->errorMessage;
 ?>
@@ -15,12 +21,12 @@ $error_message = $page->errorMessage;
 <html>
     <head>
         <?php
-        include '../../../include/head.php';
+        include 'include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../../../include/header.php';
+        include 'include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -43,11 +49,11 @@ $error_message = $page->errorMessage;
                             <?php
                             if(filter_input(INPUT_GET, 'mode') == 'edit'):
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/saints/faddey_uspensky.php" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
+                            <a href="<?= BuildQueryRemove("mode") ?>" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
                             <?php
                             else:
                             ?>
-                            <a href="<?=APPLICATION ?>/admin/pages/about/saints/faddey_uspensky.php?mode=edit" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
                             <?php
                             endif;
                             ?>
@@ -84,7 +90,7 @@ $error_message = $page->errorMessage;
             </div>
         </div>
         <?php
-        include '../../../include/footer.php';
+        include 'include/footer.php';
         ?>
     </body>
 </html>
