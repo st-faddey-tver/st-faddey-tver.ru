@@ -5,12 +5,20 @@
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/css/main.css?version=20210321" rel="stylesheet" />
 
-<link rel="apple-touch-icon" sizes="180x180" href="<?=APPLICATION ?>/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="<?=APPLICATION ?>/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="<?=APPLICATION ?>/favicon-16x16.png">
-<link rel="1manifest" href="<?= APPLICATION ?>/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="<?=APPLICATION ?>/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="<?=APPLICATION ?>/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="<?=APPLICATION ?>/favicon-16x16.png" />
+<link rel="1manifest" href="<?= APPLICATION ?>/site.webmanifest" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#ffffff" />
+<?php
+const TITLE = "Храм священномученика Фаддея архиепископа Тверского";
+const DESCRIPTION = "Храм священномученика Фаддея построен на месте обретения мощей священномученика Фаддея архиепископа Тверского. На этом месте расположено старинное кладбище храма иконы Божией Матери Неопалимая Купина. С этим храмом связаны целых пять имён, прославленных Церковью в лике новомучеников и исповеданников Российских.";
+const KEYWORDS = "храм Фаддея, церковь Фаддея, храм святого Фаддея, церковь святого Фаддея, святой Фаддей архиепископ Тверской, священномученик Фаддей";
+?>
+<meta name="title" content="<?= empty($title) ? TITLE : $title ?>" />
+<meta name="description" content="<?= empty($description) ? DESCRIPTION : $description ?>" />
+<meta name="keywords" content="<?= empty($keywords) ? KEYWORDS : $keywords ?>" />
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};

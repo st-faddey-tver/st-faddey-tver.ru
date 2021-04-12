@@ -2,6 +2,9 @@
 include 'include/topscripts.php';
 include 'include/page/page.php';
 $page = new Page(filter_input(INPUT_GET, 'shortname'));
+$title = $page->title;
+$description = $page->description;
+$keywords = $page->keywords;
 ?>
 <!DOCTYPE html>
 <html>
