@@ -53,7 +53,10 @@ $error_message = $page->errorMessage;
                             <?php
                             else:
                             ?>
-                            <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <div class="btn-group">
+                                <a href="seo.php<?= BuildQuery("shortname", filter_input(INPUT_GET, "shortname")) ?>" class="btn btn-outline-dark" title="SEO" data-toggle="tooltip"><i class="fas fa-globe"></i>&nbsp;SEO</a>
+                                <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            </div>
                             <?php
                             endif;
                             ?>
