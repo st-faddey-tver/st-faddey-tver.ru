@@ -30,20 +30,20 @@ include '../include/topscripts.php';
                     $pager_total_count = $row[0];
                 }
                 
-                $sql = "select date, title, shortname, body, show_title from news where is_event=1 order by date desc, id desc limit $pager_skip, $pager_take";
+                $sql = "select date, name, shortname, body, show_name from news where is_event=1 order by date desc, id desc limit $pager_skip, $pager_take";
                 $fetcher = new Fetcher($sql);
                 
                 while ($row = $fetcher->Fetch()):
                 $date = $row['date'];
-                $title = $row['title'];
+                $name = $row['name'];
                 $shortname = $row['shortname'];
                 $body = $row['body'];
-                $show_title = $row['show_title'];
+                $show_name = $row['show_name'];
                 
-                if($show_title):
+                if($show_name):
                 ?>
                 <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
-                <div class="news_title"><a href="<?=APPLICATION."/events/".$shortname ?>"><?=$title ?></a></div>
+                <div class="news_name"><a href="<?=APPLICATION."/events/".$shortname ?>"><?=$name ?></a></div>
                 <?php
                 endif;
                 

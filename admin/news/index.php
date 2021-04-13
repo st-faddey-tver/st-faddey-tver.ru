@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('about', 'admin'))) {
+if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
@@ -55,22 +55,22 @@ if($is_event === null) {
                             $pager_total_count = $row[0];
                         }
                         
-                        $sql = "select id, date, title, shortname, body, front, show_title from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
+                        $sql = "select id, date, name, shortname, body, front, show_name from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
                         $fetcher = new Fetcher($sql);
                         $error_message = $fetcher->error;
                         
                         while ($row = $fetcher->Fetch()):
                         $id = $row['id'];
                         $date = $row['date'];
-                        $title = $row['title'];
+                        $name = $row['name'];
                         $shortname = $row['shortname'];
                         $body = $row['body'];
                         $front = $row['front'];
-                        $show_title = $row['show_title'];
+                        $show_name = $row['show_name'];
                         ?>
                         <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
-                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_title ? 'title' : '' ?></div>
-                            <div class="news_title"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$title ?></a></div>
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_name ? 'name' : '' ?></div>
+                            <div class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></div>
                             <div class="<?=$is_event ? 'events_body' : 'news_body' ?>"><?=$body ?></div>
                         </div>
                         <?php

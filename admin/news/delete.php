@@ -57,21 +57,21 @@ if(null !== filter_input(INPUT_POST, 'delete_news_submit')) {
 
 // Получение объекта
 $date = '';
-$title = '';
+$name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, title, shortname, body, front, show_title from news where id=$id";
+$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
 if($row = $fetcher->Fetch()) {
     $date = $row['date'];
-    $title = $row['title'];
+    $name = $row['name'];
     $shortname = $row['shortname'];
     $body = $row['body'];
     $front = $row['front'];
-    $show_title = $row['show_title'];
+    $show_name = $row['show_name'];
 }
 
 // Фрагменты
@@ -99,7 +99,7 @@ $error_message = $news->errorMessage;
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
                 <li><?=$is_event ? "Удаление события" : "Удаление новости" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -111,8 +111,8 @@ $error_message = $news->errorMessage;
                         <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                     </div>
                 </div>
-                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
-                <div class="news_title"><?=$title ?></div>
+                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_name ? 'show_name' : '' ?></div>
+                <div class="news_name"><?=$name ?></div>
                 <?=$body ?>
                 <hr />
                 <?php

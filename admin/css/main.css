@@ -29,13 +29,13 @@
     font-size: 0.7rem;
 }
 
-.news_title a:link, .news_title a:visited {
+.news_name a:link, .news_name a:visited {
     color: black;
     font-weight: bold;
     text-decoration: none;
 }
 
-.news_title a:active, .news_title a:hover {
+.news_name a:active, .news_name a:hover {
     color: gray;
     font-weight: bold;
     text-decoration: underline;

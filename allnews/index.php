@@ -31,18 +31,18 @@ include '../include/topscripts.php';
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select date, title, shortname, body from news where is_event=0 order by date desc, id desc limit $pager_skip, $pager_take";
+                    $sql = "select date, name, shortname, body from news where is_event=0 order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     
                     while ($row = $fetcher->Fetch()):
                     $date = $row['date'];
-                    $title = $row['title'];
+                    $name = $row['name'];
                     $shortname = $row['shortname'];
                     $body = $row['body'];
                     ?>
                     <div class="col-6">
                         <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
-                        <div class="news_title"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$title ?></a></div>
+                        <div class="news_name"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$name ?></a></div>
                         <div class="news_body"><?=$body ?></div>
                     </div>
                     <?php

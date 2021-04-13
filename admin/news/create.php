@@ -17,14 +17,14 @@ define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
-$title_valid = '';
+$name_valid = '';
 $shortname_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
-    if(empty(filter_input(INPUT_POST, 'title'))) {
-        $title_valid = ISINVALID;
+    if(empty(filter_input(INPUT_POST, 'name'))) {
+        $name_valid = ISINVALID;
         $form_valid = false;
     }
     
@@ -40,14 +40,14 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
     
     if($form_valid) {
         $date = filter_input(INPUT_POST, 'date');
-        $title = addslashes(filter_input(INPUT_POST, 'title'));
+        $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-        $show_title = filter_input(INPUT_POST, 'show_title') == 'on' ? 1 : 0;
+        $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
 
         if(empty($shortname)) {
-            $shortname = Romanize($title);
+            $shortname = Romanize($name);
         }
         if(empty($shortname)) {
             $shortname = time().'_'.$shortname;
@@ -68,7 +68,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (is_event, date, title, shortname, body, front, show_title) values ($is_event, '$date', '$title', '$shortname', '$body', $front, $show_title)";
+        $sql = "insert into news (is_event, date, name, shortname, body, front, show_name) values ($is_event, '$date', '$name', '$shortname', '$body', $front, $show_name)";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         
@@ -134,18 +134,18 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                             <div class="form-check">
                                 <?php
                                 $checked = " checked='checked'";
-                                if(null != filter_input(INPUT_POST, 'show_title') && !filter_input(INPUT_POST, 'show_title')) {
+                                if(null != filter_input(INPUT_POST, 'show_name') && !filter_input(INPUT_POST, 'show_name')) {
                                     $checked = '';
                                 }
                                 ?>
-                                <input type="checkbox" class="form-check-input" id="show_title" name="show_title"<?=$checked ?>" />
-                                <label class="form-check-label" for="show_title">Показывать заголовок</label>
+                                <input type="checkbox" class="form-check-input" id="show_name" name="show_name"<?=$checked ?>" />
+                                <label class="form-check-label" for="show_name">Показывать заголовок</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="title">Заголовок<span class="text-danger">*</span></label>
-                        <input type="text" id="title" name="title" class="form-control<?=$title_valid ?>" value="<?= filter_input(INPUT_POST, 'title') ?>" required="required" />
+                        <label for="name">Заголовок<span class="text-danger">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= filter_input(INPUT_POST, 'name') ?>" required="required" />
                         <div class="invalid-feedback">Заголовок обязательно</div>
                     </div>
                     <div class="form-group">

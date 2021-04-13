@@ -21,21 +21,21 @@ if(empty($id)) {
 
 // Получение объекта
 $date = '';
-$title = '';
+$name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, title, shortname, body, front, show_title from news where id=$id";
+$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
 if($row = $fetcher->Fetch()) {
     $date = $row['date'];
-    $title = $row['title'];
+    $name = $row['name'];
     $shortname = $row['shortname'];
     $body = $row['body'];
     $front = $row['front'];
-    $show_title = $row['show_title'];
+    $show_name = $row['show_name'];
 }
 
 // Фрагменты
@@ -64,13 +64,13 @@ $error_message = $news->errorMessage;
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><?=$title ?></li>
+                <li><?=$name ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
-                            <h1><?=$title ?></h1>
+                            <h1><?=$name ?></h1>
                         </div>
                         <div class="p-1">
                             <div class="btn-group">
@@ -82,8 +82,8 @@ $error_message = $news->errorMessage;
                     </div>
                     <div class="row">
                         <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
-                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_title ? 'show_title' : '' ?></div>
-                            <div class="news_title"><?=$title ?></div>
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_name ? 'show_name' : '' ?></div>
+                            <div class="news_name"><?=$name ?></div>
                             <div class="<?=$is_event ? 'event_body' : 'news_body' ?>"><?=$body ?></div>
                         </div>
                     </div>
@@ -100,7 +100,10 @@ $error_message = $news->errorMessage;
                             <?php
                             else:
                             ?>
-                            <a href="details.php<?= BuildQuery('mode', 'edit') ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            <div class="btn-group">
+                                <a href="seo.php<?= BuildQuery("id", filter_input(INPUT_GET, "id")) ?>" class="btn btn-outline-dark" title="SEO" data-toggle="tooltip"><i class="fas fa-globe"></i>&nbsp;SEO</a>
+                                <a href="details.php<?= BuildQuery('mode', 'edit') ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
+                            </div>
                             <?php
                             endif;
                             ?>

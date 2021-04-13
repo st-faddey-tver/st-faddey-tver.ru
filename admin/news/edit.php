@@ -17,14 +17,14 @@ define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
-$title_valid = '';
+$name_valid = '';
 $shortname_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
-    if(empty(filter_input(INPUT_POST, 'title'))) {
-        $title_valid = ISINVALID;
+    if(empty(filter_input(INPUT_POST, 'name'))) {
+        $name_valid = ISINVALID;
         $form_valid = false;
     }
     
@@ -41,14 +41,14 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     if($form_valid) {
         $id = filter_input(INPUT_POST, 'id');
         $date = filter_input(INPUT_POST, 'date');
-        $title = addslashes(filter_input(INPUT_POST, 'title'));
+        $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-        $show_title = filter_input(INPUT_POST, 'show_title') == 'on' ? 1 : 0;
+        $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
         
         if(empty($shortname)) {
-            $shortname = Romanize($title);
+            $shortname = Romanize($name);
         }
         if(empty($shortname)) {
             $shortname = strval(time());
@@ -69,7 +69,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update news set date='$date', title='$title', shortname='$shortname', body='$body', front=$front, show_title=$show_title where id=$id";
+        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, show_name=$show_name where id=$id";
         $error_message = (new Executer($sql))->error;
         if(empty($error_message)) {
             header('Location: '.APPLICATION."/admin/news/details.php".BuildQuery('id', $id));
@@ -88,7 +88,7 @@ if(empty($id)) {
     $id = filter_input(INPUT_GET, 'id');
 }
 
-$sql = "select date, title, shortname, body, front, show_title from news where id=$id";
+$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');
@@ -96,9 +96,9 @@ if(empty($date)) {
     $date = $row['date'];
 }
 
-$title = filter_input(INPUT_POST, 'title');
-if(empty($title)) {
-    $title = $row['title'];
+$name = filter_input(INPUT_POST, 'name');
+if(empty($name)) {
+    $name = $row['name'];
 }
 
 $shortname = filter_input(INPUT_POST, 'shortname');
@@ -113,11 +113,11 @@ if(empty($body)) {
 
 if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-    $show_title = filter_input(INPUT_POST, 'show_title') == 'on' ? 1 : 0;
+    $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
 }
 else {
     $front = $row['front'];
-    $show_title = $row['show_title'];
+    $show_name = $row['show_name'];
 }
 ?>
 <!DOCTYPE html>
@@ -141,7 +141,7 @@ else {
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$title ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
                 <li><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -170,14 +170,14 @@ else {
                         </div>
                         <div class="col-4" style="padding-top: 30px;">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="show_title" name="show_title"<?=($show_title ? " checked='checked'" : '') ?>" />
-                                <label class="form-check-label" for="show_title">Показывать заголовок</label>
+                                <input type="checkbox" class="form-check-input" id="show_name" name="show_name"<?=($show_name ? " checked='checked'" : '') ?>" />
+                                <label class="form-check-label" for="show_name">Показывать заголовок</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="title">Заголовок<span class="text-danger">*</span></label>
-                        <input type="text" id="title" name="title" class="form-control<?=$title_valid ?>" value="<?= htmlentities($title) ?>" required="required" />
+                        <label for="name">Заголовок<span class="text-danger">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= htmlentities($name) ?>" required="required" />
                         <div class="invalid-feedback">Заголовок обязательно</div>
                     </div>
                     <div class="form-group">
