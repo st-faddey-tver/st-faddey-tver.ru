@@ -25,7 +25,7 @@ $name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible from news where id=$id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
@@ -35,7 +35,7 @@ if($row = $fetcher->Fetch()) {
     $shortname = $row['shortname'];
     $body = $row['body'];
     $front = $row['front'];
-    $show_name = $row['show_name'];
+    $visible = $row['visible'];
 }
 
 // Фрагменты
@@ -82,7 +82,7 @@ $error_message = $news->errorMessage;
                     </div>
                     <div class="row">
                         <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
-                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_name ? 'show_name' : '' ?></div>
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
                             <div class="news_name"><?=$name ?></div>
                             <div class="<?=$is_event ? 'event_body' : 'news_body' ?>"><?=$body ?></div>
                         </div>

@@ -61,7 +61,7 @@ $name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible from news where id=$id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
@@ -71,7 +71,7 @@ if($row = $fetcher->Fetch()) {
     $shortname = $row['shortname'];
     $body = $row['body'];
     $front = $row['front'];
-    $show_name = $row['show_name'];
+    $visible = $row['visible'];
 }
 
 // Фрагменты
@@ -111,7 +111,7 @@ $error_message = $news->errorMessage;
                         <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                     </div>
                 </div>
-                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$show_name ? 'show_name' : '' ?></div>
+                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
                 <div class="news_name"><?=$name ?></div>
                 <?=$body ?>
                 <hr />

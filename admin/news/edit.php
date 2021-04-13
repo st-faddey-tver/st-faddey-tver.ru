@@ -45,7 +45,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-        $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
+        $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -69,7 +69,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, show_name=$show_name where id=$id";
+        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, visible=$visible where id=$id";
         $error_message = (new Executer($sql))->error;
         if(empty($error_message)) {
             header('Location: '.APPLICATION."/admin/news/details.php".BuildQuery('id', $id));
@@ -88,7 +88,7 @@ if(empty($id)) {
     $id = filter_input(INPUT_GET, 'id');
 }
 
-$sql = "select date, name, shortname, body, front, show_name from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible from news where id=$id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');
@@ -113,11 +113,11 @@ if(empty($body)) {
 
 if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-    $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
+    $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
 }
 else {
     $front = $row['front'];
-    $show_name = $row['show_name'];
+    $visible = $row['visible'];
 }
 ?>
 <!DOCTYPE html>
@@ -170,8 +170,8 @@ else {
                         </div>
                         <div class="col-4" style="padding-top: 30px;">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="show_name" name="show_name"<?=($show_name ? " checked='checked'" : '') ?>" />
-                                <label class="form-check-label" for="show_name">Показывать заголовок</label>
+                                <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=($visible ? " checked='checked'" : '') ?>" />
+                                <label class="form-check-label" for="visible">Показывать</label>
                             </div>
                         </div>
                     </div>

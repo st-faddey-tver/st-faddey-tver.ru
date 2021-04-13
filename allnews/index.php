@@ -31,7 +31,7 @@ include '../include/topscripts.php';
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select date, name, shortname, body from news where is_event=0 order by date desc, id desc limit $pager_skip, $pager_take";
+                    $sql = "select date, name, shortname, body from news where is_event=0 and visible=1 order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     
                     while ($row = $fetcher->Fetch()):

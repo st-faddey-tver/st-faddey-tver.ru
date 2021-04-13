@@ -44,7 +44,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
-        $show_name = filter_input(INPUT_POST, 'show_name') == 'on' ? 1 : 0;
+        $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
 
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -68,7 +68,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (is_event, date, name, shortname, body, front, show_name) values ($is_event, '$date', '$name', '$shortname', '$body', $front, $show_name)";
+        $sql = "insert into news (is_event, date, name, shortname, body, front, visible) values ($is_event, '$date', '$name', '$shortname', '$body', $front, $visible)";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         
@@ -133,13 +133,13 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                         <div class="col-4" style="padding-top: 30px;">
                             <div class="form-check">
                                 <?php
-                                $checked = " checked='checked'";
-                                if(null != filter_input(INPUT_POST, 'show_name') && !filter_input(INPUT_POST, 'show_name')) {
-                                    $checked = '';
+                                $checked = "";
+                                if(null != filter_input(INPUT_POST, 'visible') && filter_input(INPUT_POST, 'visible')) {
+                                    $checked = " checked='checked'";
                                 }
                                 ?>
-                                <input type="checkbox" class="form-check-input" id="show_name" name="show_name"<?=$checked ?>" />
-                                <label class="form-check-label" for="show_name">Показывать заголовок</label>
+                                <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=$checked ?>" />
+                                <label class="form-check-label" for="visible">Показывать</label>
                             </div>
                         </div>
                     </div>

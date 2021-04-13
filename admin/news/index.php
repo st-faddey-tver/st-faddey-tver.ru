@@ -55,7 +55,7 @@ if($is_event === null) {
                             $pager_total_count = $row[0];
                         }
                         
-                        $sql = "select id, date, name, shortname, body, front, show_name from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
+                        $sql = "select id, date, name, shortname, body, front, visible from news n where n.is_event=$is_event order by n.date desc, n.id desc limit $pager_skip, $pager_take";
                         $fetcher = new Fetcher($sql);
                         $error_message = $fetcher->error;
                         
@@ -66,10 +66,10 @@ if($is_event === null) {
                         $shortname = $row['shortname'];
                         $body = $row['body'];
                         $front = $row['front'];
-                        $show_name = $row['show_name'];
+                        $visible = $row['visible'];
                         ?>
                         <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
-                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$show_name ? 'name' : '' ?></div>
+                            <div class="<?=$is_event ? 'text-info' : 'news_date' ?>"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
                             <div class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></div>
                             <div class="<?=$is_event ? 'events_body' : 'news_body' ?>"><?=$body ?></div>
                         </div>

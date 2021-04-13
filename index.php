@@ -19,7 +19,7 @@ include 'include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 
-                $sql = "select date, name, shortname, body, show_name from news where is_event=1 and front=1 order by date desc, id desc";
+                $sql = "select date, name, shortname, body from news where is_event=1 and front=1 and visible=1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $events_count = 0;
                 
@@ -28,15 +28,7 @@ include 'include/topscripts.php';
                 $name = $row['name'];
                 $shortname = $row['shortname'];
                 $body = $row['body'];
-                $show_name = $row['show_name'];
                 $events_count++;
-                
-                if($show_name):
-                ?>
-                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
-                <div class="news_name"><a href="<?=APPLICATION."/events/".$shortname ?>"><?=$name ?></a></div>
-                <?php
-                endif;
                 echo "<div class='events_body'>$body</div>";
                 endwhile;
                 
@@ -46,7 +38,7 @@ include 'include/topscripts.php';
                 ?>              
                 <div class="row">
                 <?php
-                $sql = "select date, name, shortname, body, show_name from news where is_event=0 and front=1 order by date desc, id desc";
+                $sql = "select date, name, shortname, body from news where is_event=0 and front=1 and visible=1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $news_count = 0;
                 
@@ -55,14 +47,11 @@ include 'include/topscripts.php';
                 $name = $row['name'];
                 $shortname = $row['shortname'];
                 $body = $row['body'];
-                $show_name = $row['show_name'];
                 $news_count++;
                 ?>
                     <div class="col-6">
-                        <?php if($show_name): ?>
                         <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
                         <div class="news_name"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$name ?></a></div>
-                        <?php endif; ?>
                         <div class="news_body"><?=$body ?></div>
                     </div>
                 <?php
