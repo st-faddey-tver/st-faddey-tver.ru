@@ -49,7 +49,7 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/page.php<?= BuildQuery("shortname", filter_input(INPUT_GET, "shortname")) ?>"><?=$page->name ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page.php<?= BuildQueryRemove("mode") ?>"><?=$page->name ?></a></li>
                 <li>SEO</li>
             </ul>
             <div class="container" style="margin-left: 0;">
