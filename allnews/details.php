@@ -5,18 +5,24 @@ include '../include/news/news.php';
 $shortname = filter_input(INPUT_GET, 'shortname');
 
 // Получение объекта
-$sql = "select id, date, name from news where shortname='$shortname'";
+$sql = "select id, date, name, title, description, keywords from news where shortname='$shortname'";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
 $id = '';
 $date = '';
 $name = '';
+$title = '';
+$description = '';
+$keywords = '';
 
 if(empty($error_message) && $row = $fetcher->Fetch()) {
     $id = $row['id'];
     $date = $row['date'];
     $name = $row['name'];
+    $title = $row['title'];
+    $description = $row['description'];
+    $keywords = $row['keywords'];
 }
 
 if(empty($error_message)) {
