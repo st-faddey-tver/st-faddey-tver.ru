@@ -3,18 +3,22 @@ include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
 
 class Page {
     public function __construct($pageName) {
-        $sql = "select id, name, title, description, keywords from page where shortname='$pageName'";
+        $sql = "select id, name, inmenu, title, description, keywords from page where shortname='$pageName'";
         $row = (new Fetcher($sql))->Fetch();
-        $this->page_id = $row['id'];
+        $this->shortname = $pageName;
+        $this->id = $row['id'];
         $this->name = htmlentities($row['name']);
+        $this->inmenu = $row['inmenu'];
         $this->title = htmlentities($row['title']);
         $this->description = htmlentities($row['description']);
         $this->keywords = htmlentities($row['keywords']);
     }
     
-    private $page_id;
+    public $id;
+    public $shortname;
     public $errorMessage;
     public $name;
+    public $inmenu;
     public $title;
     public $description;
     public $keywords;
@@ -28,12 +32,12 @@ class Page {
             $body = filter_input(INPUT_POST, 'body');
             
             if(!empty($body)) {
-                $sql = "select ifnull(max(position), 0) max_position from page_fragment where page_id = '$this->page_id'";
+                $sql = "select ifnull(max(position), 0) max_position from page_fragment where page_id = '$this->id'";
                 $row = (new Fetcher($sql))->Fetch();
                 $position = intval($row['max_position']) + 1;
                 
                 $body = addslashes($body);
-                $sql = "insert into page_fragment (page_id, body, position) values ('$this->page_id', '$body', $position)";
+                $sql = "insert into page_fragment (page_id, body, position) values ('$this->id', '$body', $position)";
                 $this->errorMessage = (new Executer($sql))->error;
             }
         }
@@ -100,7 +104,7 @@ class Page {
                     
                     if($file_uploaded) {
                         $name = addslashes($name);
-                        $sql = "insert into page_image (page_id, name, filename, width, height, extension) values ('$this->page_id', '$name', '$myimage->filename', $myimage->width, $myimage->height, '$myimage->extension')";
+                        $sql = "insert into page_image (page_id, name, filename, width, height, extension) values ('$this->id', '$name', '$myimage->filename', $myimage->width, $myimage->height, '$myimage->extension')";
                         $this->errorMessage = (new Executer($sql))->error;
                     }
                     else {
@@ -132,7 +136,7 @@ class Page {
     }
 
     public function GetFragments() {
-        $sql = "select id, body from page_fragment where page_id = '$this->page_id' order by position";
+        $sql = "select id, body from page_fragment where page_id = '$this->id' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             echo $row['body'];
@@ -140,7 +144,7 @@ class Page {
     }
     
     public function GetFragmentsEditMode() {
-        $sql = "select id, page_id, body, position from page_fragment where page_id = '$this->page_id' order by position";
+        $sql = "select id, page_id, body, position from page_fragment where page_id = '$this->id' order by position";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             include 'page_edit_mode_row.php';
@@ -152,7 +156,7 @@ class Page {
     }
     
     public function GetImages() {
-        $sql = "select id, name, filename, width, height, extension from page_image where page_id = '$this->page_id' order by id";
+        $sql = "select id, name, filename, width, height, extension from page_image where page_id = '$this->id' order by id";
         $fetcher = new Fetcher($sql);
         while ($row = $fetcher->Fetch()) {
             $src = $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION."/images/content/".$row['filename'];

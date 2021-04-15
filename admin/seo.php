@@ -49,7 +49,7 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/page.php<?= BuildQueryRemove("mode") ?>"><?=$page->name ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQueryRemove("mode") ?>"><?=$page->name ?></a></li>
                 <li>SEO</li>
             </ul>
             <div class="container" style="margin-left: 0;">
@@ -66,7 +66,7 @@ $error_message = $page->errorMessage;
                         else:
                         ?>
                         <div class="btn-group">
-                            <a href="page.php<?= BuildQuery("shortname", filter_input(INPUT_GET, "shortname")) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход из SEO</a>
+                            <a href="details.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход из SEO</a>
                             <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
                         </div>
                         <?php
@@ -78,7 +78,7 @@ $error_message = $page->errorMessage;
                     <div class="col-12 col-md-6">
                         <?php if(filter_input(INPUT_GET, "mode") == "edit"): ?>
                         <form method="post" action="<?= BuildQueryRemove("mode") ?>">
-                            <input type="hidden" id="shortname" name="shortname" value="<?= filter_input(INPUT_GET, "shortname") ?>" />
+                            <input type="hidden" id="shortname" name="shortname" value="<?= $page->shortname ?>" />
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" id="title" name="title" class="form-control" value="<?=$page->title ?>" />
