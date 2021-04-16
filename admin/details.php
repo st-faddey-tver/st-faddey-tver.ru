@@ -137,7 +137,7 @@ $error_message = $page->errorMessage;
                                 <a href="seo.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="SEO" data-toggle="tooltip"><i class="fas fa-globe"></i>&nbsp;SEO</a>
                                 <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
                                 <?php if(!$page->inmenu): ?>
-                                <a href="delete.php<?= BuildQuery("id", $page->id) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i>&nbsp;Удалить</a>
+                                <a href="delete.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i>&nbsp;Удалить</a>
                                 <?php endif; ?>
                             </div>
                             <?php
