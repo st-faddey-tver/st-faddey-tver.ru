@@ -85,7 +85,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
                             <div class="invalid-feedback">Наименование обязательно</div>
                         </div>
                         <div class="form-group">
-                            <label for="shortname">Краткое наименование<span class="text-danger">*</span></label>
+                            <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)<span class="text-danger">*</span></label>
                             <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= htmlentities(filter_input(INPUT_POST, 'shortname')) ?>" required="required" />
                             <div class="invalid-feedback">Краткое наименование обязательно: только латинские буквы, цифры, точка и подчёркивание</div>
                         </div>
