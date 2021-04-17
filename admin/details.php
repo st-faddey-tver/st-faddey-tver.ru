@@ -39,32 +39,33 @@ $error_message = $page->errorMessage;
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
                 <li><?=$page->name ?></li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1><?=$page->name ?></h1>
+                </div>
+                <div class="p-1">
+                    <?php
+                    if(filter_input(INPUT_GET, 'mode') == 'edit'):
+                    ?>
+                    <a href="<?= BuildQueryRemove("mode") ?>" class="btn btn-outline-dark" title="В обычный режим" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;В обычный режим</a>
+                    <?php
+                    else:
+                    ?>
+                    <div class="btn-group">
+                        <a href="" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
+                        <a href="edit.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></i></a>
+                        <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать содержимое" data-toggle="tooltip"><i class="fas fa-scroll"></i></a>
+                            <?php if(!$page->inmenu): ?>
+                            <a href="delete.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
+                            <?php endif; ?>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
+                </div>
+            </div>
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div class="p-1">
-                            <h1><?=$page->name ?></h1>
-                        </div>
-                        <div class="p-1">
-                            <?php
-                            if(filter_input(INPUT_GET, 'mode') == 'edit'):
-                            ?>
-                            <a href="<?= BuildQueryRemove("mode") ?>" class="btn btn-outline-dark" title="Выход из редактирования" data-toggle="tooltip"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
-                            <?php
-                            else:
-                            ?>
-                            <div class="btn-group">
-                                <a href="seo.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="SEO" data-toggle="tooltip"><i class="fas fa-globe"></i>&nbsp;SEO</a>
-                                <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
-                                <?php if(!$page->inmenu): ?>
-                                <a href="delete.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i>&nbsp;Удалить</a>
-                                <?php endif; ?>
-                            </div>
-                            <?php
-                            endif;
-                            ?>
-                        </div>
-                    </div>
                     <?php
                     if(filter_input(INPUT_GET, 'mode') == 'edit') {
                         $page->GetFragmentsEditMode();

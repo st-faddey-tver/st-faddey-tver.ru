@@ -76,24 +76,25 @@ $error_message = $page->errorMessage;
                 <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQuery("shortname", $page->shortname) ?>"><?=$page->name ?></a></li>
                 <li>Удаление страницы</li>
             </ul>
-            <div class="container" style="margin-left: 0;">
-                <div class="d-flex justify-content-between mb-2">
-                    <div class="p-1">
-                        <h1 class="text-danger">Действительно удалить?</h1>
-                    </div>
-                    <div class="p-1">
-                        <a href="details.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
-                    </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1 class="text-danger">Действительно удалить?</h1>
                 </div>
+                <div class="p-1">
+                    <a href="details.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
+            <div class="container" style="margin-left: 0;">
+                <h1><?=$page->name ?></h1>
                 <?php
                 $page->GetFragments();
                 ?>
                 <hr style="clear: both;" />
-                <form method="post">
-                    <input type="hidden" id="id" name="id" value="<?=$page->id ?>" />
-                    <button type="submit" id="delete_page_submit" name="delete_page_submit" class="btn btn-danger">Удалить</button>
-                </form>
             </div>
+            <form method="post">
+                <input type="hidden" id="id" name="id" value="<?=$page->id ?>" />
+                <button type="submit" id="delete_page_submit" name="delete_page_submit" class="btn btn-danger">Удалить</button>
+            </form>
         </div>
         <?php
         include 'include/footer.php';
