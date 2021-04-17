@@ -21,12 +21,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
         $form_valid = false;
     }
     
-    if(empty(filter_input(INPUT_POST, 'shortname'))) {
-        $shortname_valid = ISINVALID;
-        $form_valid = false;
-    }
-    
-    if(!filter_var(filter_input(INPUT_POST, 'shortname'), FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>"/^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/")))) {
+    if(!empty(filter_input(INPUT_POST, 'shortname')) && !filter_var(filter_input(INPUT_POST, 'shortname'), FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>"/^[a-z0-9]+([._]?[a-z0-9]+)*$/")))) {
         $shortname_valid = ISINVALID;
         $form_valid = false;
     }
@@ -34,8 +29,33 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
     if($form_valid) {
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
+        $title = addslashes(filter_input(INPUT_POST, 'title'));
+        $description = addslashes(filter_input(INPUT_POST, 'description'));
+        $keywords = addslashes(filter_input(INPUT_POST, 'keyword'));
         
-        $sql = "insert into page (name, shortname) values ('$name', '$shortname')";
+        if(empty($shortname)) {
+            $shortname = Romanize($name);
+        }
+        if(empty($shortname)) {
+            $shortname = time().'_'.$shortname;
+        }
+        
+        $shortnames_count = 1;
+        do {
+            $sql = "select count(id) shortnames_count from page where shortname='$shortname'";
+            $fetcher = new Fetcher($sql);
+            $error_message = $fetcher->error;
+            
+            if($row = $fetcher->Fetch()) {
+                $shortnames_count = $row['shortnames_count'];
+            }
+            
+            if($shortnames_count > 0) {
+                $shortname = strval(time());
+            }
+        }while ($shortnames_count > 0);
+        
+        $sql = "insert into page (name, shortname, title, description, keywords) values ('$name', '$shortname', '$title', '$description', '$keywords')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
@@ -77,7 +97,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6">
                     <form method="post">
                         <div class="form-group">
                             <label for="name">Наименование<span class="text-danger">*</span></label>
@@ -88,6 +108,18 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
                             <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)<span class="text-danger">*</span></label>
                             <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= htmlentities(filter_input(INPUT_POST, 'shortname')) ?>" required="required" />
                             <div class="invalid-feedback">Краткое наименование обязательно: только латинские буквы, цифры, точка и подчёркивание</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" class="form-control" value="<?= htmlentities(filter_input(INPUT_POST, 'title')) ?>" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'description')) ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="keywords">Keywords</label>
+                            <textarea id="keywords" name="keywords" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'keywords')) ?></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-outline-dark" id="page_create_submit" name="page_create_submit">Создать</button>

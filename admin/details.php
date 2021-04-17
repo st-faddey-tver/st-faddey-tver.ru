@@ -13,63 +13,6 @@ if(empty($shortname)) {
     header('Location: '.APPLICATION.'/admin/');
 }
 
-// Валидация формы
-$form_valid = true;
-$error_message = '';
-
-$name_valid = '';
-$shortname_valid = '';
-
-// Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'page_edit_submit')) {
-    if(empty(filter_input(INPUT_POST, 'name'))) {
-        $name_valid = ISINVALID;
-        $form_valid = false;
-    }
-    
-    if(!empty(filter_input(INPUT_POST, 'shortname')) && !filter_var(filter_input(INPUT_POST, 'shortname'), FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>"/^[a-z0-9]+([._]?[a-z0-9]+)*$/")))) {
-        $shortname_valid = ISINVALID;
-        $form_valid = false;
-    }
-    
-    if($form_valid) {
-        $id = filter_input(INPUT_POST, 'id');
-        $name = addslashes(filter_input(INPUT_POST, 'name'));
-        $shortname = filter_input(INPUT_POST, 'shortname');
-        
-        if(empty($shortname)) {
-            $shortname = Romanize($name);
-        }
-        if(empty($shortname)) {
-            $shortname = strval(time());
-        }
-        
-        $shortnames_count = 1;
-        do {
-            $sql = "select count(id) shortnames_count from page where shortname='$shortname' and id<>$id";
-            $fetcher = new Fetcher($sql);
-            $error_message = $fetcher->error;
-            
-            if($row = $fetcher->Fetch()) {
-                $shortnames_count = $row['shortnames_count'];
-            }
-            
-            if($shortnames_count > 0) {
-                $shortname = time().'_'.$shortname;
-            }
-        }while ($shortnames_count > 0);
-        
-        $sql = "update page set name='$name', shortname='$shortname' where id=$id";
-        $error_message = (new Executer($sql))->error;
-        if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/details.php?shortname=$shortname");
-        }
-    }
-    
-    $shortnames_count = 1;
-}
-
-// Получение данных
 $page = new Page($shortname);
 $page->Top();
 $error_message = $page->errorMessage;
@@ -100,30 +43,7 @@ $error_message = $page->errorMessage;
                 <div class="content bigfont">
                     <div class="d-flex justify-content-between mb-2">
                         <div class="p-1">
-                            <?php if(filter_input(INPUT_GET, "mode") == "edit"): ?>
-                            <form method="post">
-                                <input type="hidden" id="id" name="id" value="<?=$page->id ?>" />
-                                <div class="form-group">
-                                    <label for="name">Наименование</label>
-                                    <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= htmlentities($page->name) ?>" required="required" />
-                                    <div class="invalid-feedback">Наименование обязательно</div>
-                                </div>
-                                <?php if($page->inmenu): ?>
-                                <input type="hidden" id="shortname" name="shortname" value="<?=$page->shortname ?>" />
-                                <?php else: ?>
-                                <div class="form-group">
-                                    <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)</label>
-                                    <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?=$shortname ?>" />
-                                    <div class="invalid-feedback">Только маленькие латинские буквы, точка или подчёркивание. Можно поле оставить пустым.</div>
-                                </div>
-                                <?php endif; ?>
-                                <div class="form-group">
-                                    <button type="submit" id="page_edit_submit" name="page_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
-                                </div>
-                            </form>
-                            <?php else: ?>
                             <h1><?=$page->name ?></h1>
-                            <?php endif; ?>
                         </div>
                         <div class="p-1">
                             <?php
