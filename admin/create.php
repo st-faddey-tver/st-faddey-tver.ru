@@ -31,7 +31,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
         $shortname = filter_input(INPUT_POST, 'shortname');
         $title = addslashes(filter_input(INPUT_POST, 'title'));
         $description = addslashes(filter_input(INPUT_POST, 'description'));
-        $keywords = addslashes(filter_input(INPUT_POST, 'keyword'));
+        $keywords = addslashes(filter_input(INPUT_POST, 'keywords'));
         
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -106,8 +106,8 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
                         </div>
                         <div class="form-group">
                             <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)<span class="text-danger">*</span></label>
-                            <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= htmlentities(filter_input(INPUT_POST, 'shortname')) ?>" required="required" />
-                            <div class="invalid-feedback">Краткое наименование обязательно: только латинские буквы, цифры, точка и подчёркивание</div>
+                            <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= htmlentities(filter_input(INPUT_POST, 'shortname')) ?>" />
+                            <div class="invalid-feedback">Только маленькие латинские буквы, цифры, точка и подчёркивание</div>
                         </div>
                         <div class="form-group">
                             <label for="title">Title</label>
