@@ -1,33 +1,107 @@
 <?php
 include '../include/topscripts.php';
-include '../include/page/page.php';
 
 // Авторизация
-if(!IsInRole(array('about', 'admin'))) {
+if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра shortname, переходим к списку
-$shortname = filter_input(INPUT_GET, 'shortname');
-if(empty($shortname)) {
+
+// Если нет параметра id, переходим к списку
+$id = filter_input(INPUT_GET, 'id');
+if(empty($id)) {
     header('Location: '.APPLICATION.'/admin/');
 }
 
+// Валидация формы
+define('ISINVALID', ' is-invalid');
+$form_valid = true;
+$error_message = '';
+
+$name_valid = '';
+$shortname_valid = '';
+
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, "seo-submit")) {
-    $title = addslashes(filter_input(INPUT_POST, "title"));
-    $description = addslashes(filter_input(INPUT_POST, "description"));
-    $keywords = addslashes(filter_input(INPUT_POST, "keywords"));
-    $shortname = filter_input(INPUT_POST, "shortname");
+if(null !== filter_input(INPUT_POST, "edit_page_submit")) {
+    if(empty(filter_input(INPUT_POST, "name"))) {
+        $name_valid = ISINVALID;
+        $form_valid = false;
+    }
     
-    $sql = "update page set title = '$title', description = '$description', keywords = '$keywords' where shortname = '$shortname'";
-    $error_message = (new Executer($sql))->error;
+    if(!empty(filter_input(INPUT_POST, 'shortname')) && !filter_var(filter_input(INPUT_POST, 'shortname'), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-z0-9]+([._]?[a-z0-9]+)*$/")))) {
+        $shortname_valid = ISINVALID;
+        $form_valid = false;
+    }
+    
+    if($form_valid) {
+        $id = filter_input(INPUT_POST, 'id');
+        $name = addslashes(filter_input(INPUT_POST, "name"));
+        $shortname = filter_input(INPUT_POST, "shortname");
+        $title = addslashes(filter_input(INPUT_POST, "title"));
+        $description = addslashes(filter_input(INPUT_POST, "description"));
+        $keywords = addslashes(filter_input(INPUT_POST, "keywords"));
+        
+        if(empty($shortname)) {
+            $shortname = Romanize($name);
+        }
+        if(empty($shortname)) {
+            $shortname = strval(time());
+        }
+        
+        $shortnames_count = 1;
+        do {
+            $sql = "select count(id) shortnames_count from page where shortname='$shortname' and id<>$id";
+            $fetcher = new Fetcher($sql);
+            $error_message = $fetcher->error;
+            
+            if($row = $fetcher->Fetch()) {
+                $shortnames_count = $row['shortnames_count'];
+            }
+            
+            if($shortnames_count > 0) {
+                $shortname = time().'_'.$shortname;
+            }
+        }while ($shortnames_count > 0);
+        
+        $sql = "update page set name='$name', shortname='$shortname', title='$title', description='$description', keywords='$keywords' where id='$id'";
+        $error_message = (new Executer($sql))->error;
+        
+        if(empty($error_message)) {
+            header('Location: '.APPLICATION."/admin/details.php".BuildQuery("shortname", $shortname));
+        }
+    }
 }
 
 // Получение объекта
-$page = new Page($shortname);
-$page->Top();
-$error_message = $page->errorMessage;
+$sql = "select name, shortname, title, description, keywords from page where id=$id";
+$row = (new Fetcher($sql))->Fetch();
+
+$name = filter_input(INPUT_POST, 'name');
+if(empty($name)) {
+    $name = $row['name'];
+}
+
+$shortname = filter_input(INPUT_POST, 'shortname');
+if(empty($shortname)) {
+    $shortname = $row['shortname'];
+}
+
+$old_shortname = $row['shortname'];
+
+$title = filter_input(INPUT_POST, 'title');
+if(empty($title)) {
+    $title = $row['title'];
+}
+
+$description = filter_input(INPUT_POST, 'description');
+if(empty($description)) {
+    $description = $row['description'];
+}
+
+$keywords = filter_input(INPUT_POST, 'keywords');
+if(empty($keywords)) {
+    $keywords = $row['keywords'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,59 +123,45 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQueryRemove("mode") ?>"><?=$page->name ?></a></li>
-                <li>SEO</li>
+                <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQuery("shortname", $old_shortname) ?>"><?=$name ?></a></li>
+                <li>Редактирование страницы</li>
             </ul>
-            <div class="container" style="margin-left: 0;">
-                <div class="d-flex justify-content-between mb-2">
-                    <div class="p-1">
-                        <h1><?=$page->name ?></h1>
-                    </div>
-                    <div class="p-1">
-                        <?php
-                        if(filter_input(INPUT_GET, "mode") == "edit"):
-                        ?>
-                        <a href="<?= BuildQueryRemove("mode") ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход из редактирования</a>
-                        <?php
-                        else:
-                        ?>
-                        <div class="btn-group">
-                            <a href="details.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход из SEO</a>
-                            <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark"><i class="fas fa-edit"></i>&nbsp;Редактировать</a>
-                        </div>
-                        <?php
-                        endif;
-                        ?>
-                    </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Редактирование страницы</h1>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <?php if(filter_input(INPUT_GET, "mode") == "edit"): ?>
-                        <form method="post" action="<?= BuildQueryRemove("mode") ?>">
-                            <input type="hidden" id="shortname" name="shortname" value="<?= $page->shortname ?>" />
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" id="title" name="title" class="form-control" value="<?=$page->title ?>" />
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control" rows="7"><?=$page->description ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="keywords">Keywords</label>
-                                <textarea id="keywords" name="keywords" class="form-control" rows="7"><?=$page->keywords ?></textarea>
-                            </div>
-                            <button type="submit" id="seo-submit" name="seo-submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
-                        </form>
-                        <?php else: ?>
-                        <h2>Title</h2>
-                        <?=$page->title ?>
-                        <h2>Description</h2>
-                        <?=$page->description ?>
-                        <h2>Keywords</h2>
-                        <?=$page->keywords ?>
-                        <?php endif; ?>
-                    </div>
+                <div class="p-1">
+                    <a href="details.php<?= BuildQuery("shortname", $old_shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form method="post" action="<?= BuildQueryRemove("mode") ?>">
+                        <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
+                        <div class="form-group">
+                            <label for="name">Наименование<span class="text-danger">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= htmlentities($name) ?>" required="required" />
+                            <div class="invalid-feedback">Наименование обязательно</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)</label>
+                            <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= htmlentities($shortname) ?>" />
+                            <div class="invalid-feedback">Только маленькие латинские буквы, цифры, точка и подчёркивание</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" class="form-control" value="<?=$title ?>" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" class="form-control" rows="7"><?=$description ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="keywords">Keywords</label>
+                            <textarea id="keywords" name="keywords" class="form-control" rows="7"><?=$keywords ?></textarea>
+                        </div>
+                        <button type="submit" id="edit_page_submit" name="edit_page_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -53,11 +53,11 @@ $error_message = $page->errorMessage;
                     ?>
                     <div class="btn-group">
                         <a href="" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        <a href="edit.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></i></a>
+                        <a href="edit.php<?= BuildQuery("id", $page->id) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></i></a>
                         <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать содержимое" data-toggle="tooltip"><i class="fas fa-scroll"></i></a>
-                            <?php if(!$page->inmenu): ?>
-                            <a href="delete.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
-                            <?php endif; ?>
+                        <?php if(!$page->inmenu): ?>
+                        <a href="delete.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
+                        <?php endif; ?>
                     </div>
                     <?php
                     endif;
