@@ -171,7 +171,7 @@ if($row = $fetcher->Fetch()) {
                         </div>
                         <div class="form-group">
                             <label for="file">Файл изображения<span class="text-danger">*</span></label>
-                            <input type="file" id="file" class="form-control" />
+                            <input type="file" id="file" name="file" class="form-control" />
                         </div>
                         <div class="form-group">
                             <button type="submit" id="upload_image_submit" name="upload_image_submit" class="btn btn-outline-dark"><i class="fas fa-upload"></i>&nbsp;Загрузить</button>
