@@ -4,7 +4,7 @@
 <link href="<?=APPLICATION ?>/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/admin/cleditor/jquery.cleditor.css" rel="stylesheet" />
-<link href="<?=APPLICATION ?>/admin/css/main.css?version=20210322" rel="stylesheet" />
+<link href="<?=APPLICATION ?>/admin/css/main.css?version=20210323" rel="stylesheet" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="<?=APPLICATION ?>/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="<?=APPLICATION ?>/favicon-32x32.png">

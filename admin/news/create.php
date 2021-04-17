@@ -122,7 +122,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                             <div class="form-check">
                                 <?php
                                 $checked = " checked='checked'";
-                                if(null != filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
+                                if(null !== filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
                                     $checked = '';
                                 }
                                 ?>
@@ -134,7 +134,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                             <div class="form-check">
                                 <?php
                                 $checked = "";
-                                if(null != filter_input(INPUT_POST, 'visible') && filter_input(INPUT_POST, 'visible')) {
+                                if(null !== filter_input(INPUT_POST, 'visible') && filter_input(INPUT_POST, 'visible')) {
                                     $checked = " checked='checked'";
                                 }
                                 ?>

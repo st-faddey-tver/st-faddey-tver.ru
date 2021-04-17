@@ -114,6 +114,7 @@ form {
     width: 100%;
     background-color: lightgray;
     padding: 10px;
+    position: relative;
 }
 
 .vk_close {

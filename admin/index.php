@@ -91,6 +91,7 @@ if(!HasRole()) {
                     <p><a href="page.php?shortname=donation">Пожертвовать</a></p>
                 </div>
                 <div class="col-6">
+                    <p><a href="event/">Все события</a>
                     <p><a href="news/">Все новости</a></p>
                 </div>
             </div>
