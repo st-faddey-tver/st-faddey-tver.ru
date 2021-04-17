@@ -57,6 +57,7 @@ if(null !== filter_input(INPUT_POST, 'delete_image_submit')) {
 }
 
 // Получение объекта
+$id = filter_input(INPUT_GET, "id");
 $date = '';
 $body = '';
 $front = 0;
