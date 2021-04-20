@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title>Храм священномученика Фаддея архиепископа Тверского</title>
+<title><?= empty($title) ? "Храм священномученика Фаддея архиепископа Тверского" : $title ?></title>
 <link href="<?=APPLICATION ?>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=APPLICATION ?>/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
