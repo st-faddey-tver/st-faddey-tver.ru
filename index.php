@@ -1,7 +1,7 @@
 <?php
 include 'include/topscripts.php';
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <?php
@@ -19,14 +19,12 @@ include 'include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 
-                $sql = "select date, name, shortname, body from news where is_event=1 and front=1 and visible=1 order by date desc, id desc";
+                $sql = "select date, body from event where front=1 and visible=1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $events_count = 0;
                 
                 while ($row = $fetcher->Fetch()):
                 $date = $row['date'];
-                $name = $row['name'];
-                $shortname = $row['shortname'];
                 $body = $row['body'];
                 $events_count++;
                 echo "<div class='events_body'>$body</div>";
