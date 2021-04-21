@@ -104,8 +104,8 @@ if($row = $fetcher->Fetch()) {
                 <div class="p-1">
                     <div class="btn-group">
                         <a href="<?=APPLICATION ?>/admin/event/" class="btn btn-outline-dark" title="К списку"><i class="fas fa-undo-alt"></i></a>
-                        <a href="edit.php" class="btn btn-outline-dark" title="Редактировать"><i class="fas fa-edit"></i></a>
-                        <a href="delete.php" class="btn btn-outline-dark" title="Удалить"><i class="fas fa-trash-alt"></i></a>
+                        <a href="edit.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Редактировать"><i class="fas fa-edit"></i></a>
+                        <a href="delete.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Удалить"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
             </div>

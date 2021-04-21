@@ -6,10 +6,9 @@ if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра is_event, переход на главную страницу администратора
-$is_event = filter_input(INPUT_GET, 'is_event');
-if($is_event === null) {
-    header('Location: '.APPLICATION."/admin/");
+// Если нет параметра id, переходим к списку
+if(null === filter_input(INPUT_GET, 'id')) {
+    header('Location: '.APPLICATION.'/admin/event/');
 }
 
 // Валидация формы
@@ -17,19 +16,13 @@ define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
-$name_valid = '';
-$shortname_valid = '';
+$date_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
-    if(empty(filter_input(INPUT_POST, 'name'))) {
-        $name_valid = ISINVALID;
-        $form_valid = false;
-    }
-    
-    if(!empty(filter_input(INPUT_POST, 'shortname')) && !filter_var(filter_input(INPUT_POST, 'shortname'), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-z0-9]+([._]?[a-z0-9]+)*$/")))) {
-        $shortname_valid = ISINVALID;
+if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
+    if(empty(filter_input(INPUT_POST, 'date'))) {
+        $date_valid = ISINVALID;
         $form_valid = false;
     }
     
@@ -41,45 +34,17 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
     if($form_valid) {
         $id = filter_input(INPUT_POST, 'id');
         $date = filter_input(INPUT_POST, 'date');
-        $name = addslashes(filter_input(INPUT_POST, 'name'));
-        $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         
-        if(empty($shortname)) {
-            $shortname = Romanize($name);
-        }
-        if(empty($shortname)) {
-            $shortname = strval(time());
-        }
-        
-        $shortnames_count = 1;
-        do {
-            $sql = "select count(id) shortnames_count from news where shortname='$shortname' and id<>$id";
-            $fetcher = new Fetcher($sql);
-            $error_message = $fetcher->error;
-            
-            if($row = $fetcher->Fetch()) {
-                $shortnames_count = $row['shortnames_count'];
-            }
-            
-            if($shortnames_count > 0) {
-                $shortname = time().'_'.$shortname;
-            }
-        }while ($shortnames_count > 0);
-        
-        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, visible=$visible where id=$id";
+        $sql = "update event set date='$date', body='$body', front=$front, visible=$visible where id=$id";
         $error_message = (new Executer($sql))->error;
+        
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/news/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/event/details.php".BuildQuery('id', $id));
         }
     }
-}
-
-// Если нет параметра id, переходим к списку
-if(null === filter_input(INPUT_GET, 'id')) {
-    header('Location: '.APPLICATION.'/admin/news/'. BuildQuery('is_event', $is_event));
 }
 
 // Получение объекта
@@ -88,7 +53,7 @@ if(empty($id)) {
     $id = filter_input(INPUT_GET, 'id');
 }
 
-$sql = "select date, name, shortname, body, front, visible from news where id=$id";
+$sql = "select date, body, front, visible from event where id=$id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');
@@ -96,22 +61,12 @@ if(empty($date)) {
     $date = $row['date'];
 }
 
-$name = filter_input(INPUT_POST, 'name');
-if(empty($name)) {
-    $name = $row['name'];
-}
-
-$shortname = filter_input(INPUT_POST, 'shortname');
-if(empty($shortname)) {
-    $shortname = $row['shortname'];
-}
-
 $body = filter_input(INPUT_POST, 'body');
 if(empty($body)) {
     $body = $row['body'];
 }
 
-if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
+if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
     $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
     $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
 }
@@ -140,14 +95,14 @@ else {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
-                <li><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
+                <li>Редактирование события</li>
             </ul>
             <div class="container" style="margin-left: 0;">
                 <div class="d-flex justify-content-between mb-2">
                     <div class="p-1">
-                        <h1><?=$is_event ? "Редактирование события" : "Редактирование новости" ?></h1>
+                        <h1>Редактирование события</h1>
                     </div>
                     <div class="p-1">
                         <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
@@ -158,7 +113,7 @@ else {
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="date">Дата</label>
+                                <label for="date">Дата<span class="text-danger">*</span></label>
                                 <input type="date" id="date" name="date" class="form-control" value="<?=$date ?>" />
                             </div>
                         </div>
@@ -176,22 +131,12 @@ else {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name">Заголовок<span class="text-danger">*</span></label>
-                        <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= htmlentities($name) ?>" required="required" />
-                        <div class="invalid-feedback">Заголовок обязательно</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)</label>
-                        <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?=$shortname ?>" />
-                        <div class="invalid-feedback">Только маленькие латинские буквы, точка или подчёркивание. Можно поле оставить пустым.</div>
-                    </div>
-                    <div class="form-group">
                         <label for="body">Текст<span class="text-danger">*</span></label>
-                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= htmlentities($body) ?></textarea>
+                        <textarea id="body" name="body" class="form-control<?=$body_valid ?>" style="height: 200px;" required="required"><?= htmlentities($body) ?></textarea>
                         <div class="invalid-feedback">Текст обязательно</div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" id="news_edit_submit" name="news_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
+                        <button type="submit" id="event_edit_submit" name="event_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
                     </div>
                 </form>
             </div>

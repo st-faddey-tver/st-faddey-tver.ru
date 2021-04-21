@@ -11,10 +11,16 @@ define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
+$date_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
+    if(empty(filter_input(INPUT_POST, 'date'))) {
+        $date_valid = ISINVALID;
+        $form_valid = false;
+    }
+    
     if(empty(filter_input(INPUT_POST, 'body'))) {
         $body_valid = ISINVALID;
         $form_valid = false;
@@ -74,8 +80,9 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="date">Дата</label>
+                                    <label for="date">Дата<span class="text-danger">*</span></label>
                                     <input type="date" id="date" name="date" class="form-control" value="<?= filter_input(INPUT_POST, 'date') ?? date('Y-m-d') ?>" />
+                                    <div class="invalid-feedback">Дата обязательно</div>
                                 </div>
                             </div>
                             <div class="col-4" style="padding-top: 30px;">

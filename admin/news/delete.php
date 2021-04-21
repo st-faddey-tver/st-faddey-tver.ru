@@ -3,7 +3,7 @@ include '../../include/topscripts.php';
 include '../../include/news/news.php';
 
 // Авторизация
-if(!IsInRole(array('about', 'admin'))) {
+if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
