@@ -25,7 +25,7 @@ $keywords = "События храма святого Фаддея";
                 ?>
                 <h1>Все события</h1>
                 <?php
-                $sql = "select count(id) pages_total_count from news where is_event=1";
+                $sql = "select count(id) pages_total_count from event";
                 $fetcher = new Fetcher($sql);
                 $error_message = $fetcher->error;
                 
@@ -33,18 +33,16 @@ $keywords = "События храма святого Фаддея";
                     $pager_total_count = $row[0];
                 }
                 
-                $sql = "select date, name, shortname, body from news where is_event=1 and visible=1 order by date desc, id desc limit $pager_skip, $pager_take";
+                $sql = "select date, body from event where visible=1 order by date desc, id desc limit $pager_skip, $pager_take";
                 $fetcher = new Fetcher($sql);
                 
                 while ($row = $fetcher->Fetch()):
                 $date = $row['date'];
-                $name = $row['name'];
-                $shortname = $row['shortname'];
                 $body = $row['body'];
                 
                 echo "<div class='events_body'>$body</div>";
                 endwhile;
-                include '../include/pager_bottom.php';
+                include "../include/pager_bottom.php";
                 ?>
             </div>
         </div>
