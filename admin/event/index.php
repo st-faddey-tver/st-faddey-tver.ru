@@ -48,7 +48,7 @@ if(!IsInRole(array('admin'))) {
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select id, date, body, front, visible from event order by date, id desc limit $pager_skip, $pager_take";
+                    $sql = "select id, date, body, front, visible from event order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     

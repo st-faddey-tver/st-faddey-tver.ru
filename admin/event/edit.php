@@ -95,19 +95,19 @@ else {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">Все события</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
                 <li>Редактирование события</li>
             </ul>
-            <div class="container" style="margin-left: 0;">
-                <div class="d-flex justify-content-between mb-2">
-                    <div class="p-1">
-                        <h1>Редактирование события</h1>
-                    </div>
-                    <div class="p-1">
-                        <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
-                    </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Редактирование события</h1>
                 </div>
+                <div class="p-1">
+                    <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
+            <div class="container" style="margin-left: 0;">
                 <form method="post">
                     <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
                     <div class="row">
