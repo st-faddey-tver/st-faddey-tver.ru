@@ -109,9 +109,10 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
                                     <label class="form-check-label" for="visible">Показывать</label>
                                 </div>
                             </div>
-                        </div><?php
-                            include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/virtual_keyboard.php';
-                            ?>
+                        </div>
+                        <?php
+                        include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/virtual_keyboard.php';
+                        ?>
                         <div class="form-group">
                             <label for="body">Текст<span class="text-danger">*</span></label>
                             <textarea id="body" name="body" class="form-control<?=$body_valid ?>" style="height: 200px;" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
