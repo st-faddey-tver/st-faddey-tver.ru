@@ -136,7 +136,7 @@ if(empty($keywords)) {
             </div>
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <form method="post" action="<?= BuildQueryRemove("mode") ?>">
+                    <form method="post">
                         <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
                         <div class="form-group">
                             <label for="name">Наименование<span class="text-danger">*</span></label>

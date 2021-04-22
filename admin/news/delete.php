@@ -7,16 +7,10 @@ if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра is_event, переход на главную страницу администратора
-$is_event = filter_input(INPUT_GET, 'is_event');
-if($is_event === null) {
-    header('Location: '.APPLICATION."/admin/");
-}
-
 // Если нет параметра id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION.'/admin/news/'. BuildQuery('is_event', $is_event));
+    header('Location: '.APPLICATION.'/admin/news/');
 }
 
 // Обработка отправки формы
@@ -98,32 +92,39 @@ $error_message = $news->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>">Все новости</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
-                <li><?=$is_event ? "Удаление события" : "Удаление новости" ?></li>
+                <li>Удаление новости</li>
             </ul>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1 class="text-danger">Действительно удалить?</h1>
+                </div>
+                <div class="p-1">
+                    <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
             <div class="container" style="margin-left: 0;">
-                <div class="d-flex justify-content-between mb-2">
-                    <div class="p-1">
-                        <h1 class="text-danger">Действительно удалить?</h1>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
+                            <div class="news_name"><?=$name ?></div>
+                            <div class="news_body"><?=$body ?></div>
+                        </div>
                     </div>
-                    <div class="p-1">
-                        <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                    <hr />
+                    <div class="bigfont">
+                        <?php
+                        $news->GetFragments();
+                        ?>
                     </div>
                 </div>
-                <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
-                <div class="news_name"><?=$name ?></div>
-                <?=$body ?>
-                <hr />
-                <?php
-                $news->GetFragments();
-                ?>
-                <hr />
-                <form method="post">
-                    <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
-                    <button type="submit" id="delete_news_submit" name="delete_news_submit" class="btn btn-danger">Удалить</button>
-                </form>
             </div>
+            <form method="post">
+                <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
+                <button type="submit" id="delete_news_submit" name="delete_news_submit" class="btn btn-danger">Удалить</button>
+            </form>
         </div>
         <?php
         include '../include/footer.php';

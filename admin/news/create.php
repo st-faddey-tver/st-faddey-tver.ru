@@ -6,12 +6,6 @@ if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра is_event, переход на главную страницу администратора
-$is_event = filter_input(INPUT_GET, 'is_event');
-if($is_event === null) {
-    header('Location: '.APPLICATION."/admin/");
-}
-
 // Валидация формы
 define('ISINVALID', ' is-invalid');
 $form_valid = true;
@@ -45,6 +39,9 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
+        $title = addslashes(filter_input(INPUT_POST, 'title'));
+        $description = addslashes(filter_input(INPUT_POST, 'description'));
+        $keywords = addslashes(filter_input(INPUT_POST, 'keywords'));
 
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -68,12 +65,13 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (is_event, date, name, shortname, body, front, visible) values ($is_event, '$date', '$name', '$shortname', '$body', $front, $visible)";
+        $sql = "insert into news (date, name, shortname, body, front, visible, title, description, keywords) values ('$date', '$name', '$shortname', '$body', $front, $visible, '$title', '$description', '$keywords')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
+        $insert_id = $executer->insert_id;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/news/". BuildQuery('is_event', $is_event));
+            header('Location: '.APPLICATION."/admin/news/details.php". BuildQuery('id', $insert_id));
         }
     }
 }
@@ -98,70 +96,84 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQuery('is_event', $is_event) ?>"><?=$is_event ? "Все события" : "Все новости" ?></a></li>
-                <li><?=$is_event ? "Новое событие" : "Новая новость" ?></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/">Все новости</a></li>
+                <li>Новая новость</li>
             </ul>
-            <div class="container" style="margin-left: 0;">
-                <div class="d-flex justify-content-between mb-2">
-                    <div class="p-1">
-                        <h1><?=$is_event ? "Новое событие" : "Новая новость" ?></h1>
-                    </div>
-                    <div class="p-1">
-                        <a href="index.php" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
-                    </div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="p-1">
+                    <h1>Новая новость</h1>
                 </div>
-                <form method="post">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="date">Дата</label>
-                                <input type="date" id="date" name="date" class="form-control" value="<?= filter_input(INPUT_POST, 'date') ?? date('Y-m-d') ?>" />
+                <div class="p-1">
+                    <a href="<?=APPLICATION ?>/admin/news/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="date">Дата</label>
+                                    <input type="date" id="date" name="date" class="form-control" value="<?= filter_input(INPUT_POST, 'date') ?? date('Y-m-d') ?>" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4" style="padding-top: 30px;">
-                            <div class="form-check">
-                                <?php
-                                $checked = " checked='checked'";
-                                if(null !== filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
-                                    $checked = '';
-                                }
-                                ?>
-                                <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?>" />
-                                <label class="form-check-label" for="front">На первой странице</label>
-                            </div>
-                        </div>
-                        <div class="col-4" style="padding-top: 30px;">
-                            <div class="form-check">
-                                <?php
-                                $checked = "";
-                                if(null !== filter_input(INPUT_POST, 'visible') && filter_input(INPUT_POST, 'visible')) {
+                            <div class="col-4" style="padding-top: 30px;">
+                                <div class="form-check">
+                                    <?php
                                     $checked = " checked='checked'";
-                                }
-                                ?>
-                                <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=$checked ?>" />
-                                <label class="form-check-label" for="visible">Показывать</label>
+                                    if(null !== filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
+                                        $checked = '';
+                                    }
+                                    ?>
+                                    <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?>" />
+                                    <label class="form-check-label" for="front">На первой странице</label>
+                                </div>
+                            </div>
+                            <div class="col-4" style="padding-top: 30px;">
+                                <div class="form-check">
+                                    <?php
+                                    $checked = "";
+                                    if(null !== filter_input(INPUT_POST, 'visible') && filter_input(INPUT_POST, 'visible')) {
+                                        $checked = " checked='checked'";
+                                    }
+                                    ?>
+                                    <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=$checked ?>" />
+                                    <label class="form-check-label" for="visible">Показывать</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Заголовок<span class="text-danger">*</span></label>
-                        <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= filter_input(INPUT_POST, 'name') ?>" required="required" />
-                        <div class="invalid-feedback">Заголовок обязательно</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)</label>
-                        <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= filter_input(INPUT_POST, 'shortname') ?>" />
-                        <div class="invalid-feedback">Только маленькие латинские буквы, точка или подчёркивание. Можно поле оставить пустым.</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="body">Текст<span class="text-danger">*</span></label>
-                        <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
-                        <div class="invalid-feedback">Текст обязательно</div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" id="news_create_submit" name="news_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="name">Заголовок<span class="text-danger">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control<?=$name_valid ?>" value="<?= filter_input(INPUT_POST, 'name') ?>" required="required" />
+                            <div class="invalid-feedback">Заголовок обязательно</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shortname">Краткое наименование (только маленькие латинские буквы, точка или подчёркивание)</label>
+                            <input type="text" id="shortname" name="shortname" class="form-control<?=$shortname_valid ?>" value="<?= filter_input(INPUT_POST, 'shortname') ?>" />
+                            <div class="invalid-feedback">Только маленькие латинские буквы, точка или подчёркивание. Можно поле оставить пустым.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="body">Текст<span class="text-danger">*</span></label>
+                            <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
+                            <div class="invalid-feedback">Текст обязательно</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" class="form-control" value="<?= htmlentities(filter_input(INPUT_POST, 'title')) ?>" />
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'description')) ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="keywords">Keywords</label>
+                            <textarea id="keywords" name="keywords" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'keywords')) ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="news_create_submit" name="news_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <?php
