@@ -26,7 +26,7 @@ if(empty($error_message) && $row = $fetcher->Fetch()) {
 }
 
 if(empty($error_message)) {
-    $sql = "select shortname, name from news where is_event = 0 and (date < '$date' or (date = '$date' and id < $id)) order by date desc, id desc limit 1";
+    $sql = "select shortname, name from news where (date < '$date' or (date = '$date' and id < $id)) order by date desc, id desc limit 1";
     $fetcher = new Fetcher($sql);
     $error_message = $fetcher->error;
 }
@@ -40,7 +40,7 @@ if(empty($error_message) && $row = $fetcher->Fetch()) {
 }
 
 if(empty($error_message)) {
-    $sql = "select shortname, name from news where is_event = 0 and (date > '$date' or (date = '$date' and id > $id)) order by date asc, id asc limit 1";
+    $sql = "select shortname, name from news where (date > '$date' or (date = '$date' and id > $id)) order by date asc, id asc limit 1";
     $fetcher = new Fetcher($sql);
     $error_message = $fetcher->error;
 }
