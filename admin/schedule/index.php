@@ -24,6 +24,20 @@ if(null !== filter_input(INPUT_POST, 'period_create_submit')) {
     }
 }
 
+// Создание дня
+if(null !== filter_input(INPUT_POST, 'day_create_submit')) {
+    $schedule_period_id = filter_input(INPUT_POST, 'schedule_period_id');
+    $date = filter_input(INPUT_POST, 'date');
+    
+    if(empty($date)) {
+        $error_message = "Дата обязательно.";
+    }
+    else {
+        $sql = "insert into schedule_day (schedule_period_id, date) values ($schedule_period_id, '$date')";
+        $error_message = (new Executer($sql))->error;
+    }
+}
+
 // Получение объекта
 $sql = "select sp.id sp_id, sp.start_date, sp.name period, sd.id sd_id, sd.date, ss.id ss_id, ss.time, ss.name service "
         . "from schedule_period sp "
@@ -40,29 +54,44 @@ foreach ($schedule as $row) {
     $sp_id = $row['sp_id'];
     if(!array_key_exists($sp_id, $periods)) {
         $period = array();
+        $period['id'] = $sp_id;
         $period['period'] = $row['period'];
         $period['start_date'] = $row['start_date'];
         $period['days'] = array();
         $periods[$sp_id] = $period;
     }
-    $days = $periods[$sp_id]['days'];
+    else {
+        $period = $periods[$sp_id];
+    }
+    $days = $period['days'];
     
     $sd_id = $row['sd_id'];
     if(!empty($sd_id)) {
         if(!array_key_exists($sd_id, $days)) {
             $day = array();
+            $day['id'] = $sd_id;
             $day['date'] = $row['date'];
             $day['services'] = array();
             $days[$sd_id] = $day;
+            $period['days'] = $days;
+            $periods[$sp_id] = $period;
         }
-        $services = $days[$sd_id]['services'];
+        else {
+            $day = $days[$sd_id];
+        }
+        $services = $day['services'];
         
         $ss_id = $row['ss_id'];
         if(!empty($ss_id)) {
             $service = array();
+            $service['id'] = $ss_id;
             $service['time'] = $row['time'];
             $service['service'] = $row['service'];
             $services[$ss_id] = $service;
+            $day['services'] = $services;
+            $days[$sd_id] = $day;
+            $period['days'] = $days;
+            $periods[$sp_id] = $period;
         }
     }
 }
@@ -92,14 +121,29 @@ foreach ($schedule as $row) {
             <h1>Расписание богослужений</h1>
             <?php foreach ($periods as $period): ?>
             <hr />
-            <h2><?=$period['period'] ?>&nbsp;(<?= DateTime::createFromFormat('Y-m-d', $period['start_date'])->format('d.m.Y') ?>)</h2>
+            <h2><?=$period['period'] ?>&nbsp;(<?= DateTime::createFromFormat('Y-m-d', $period['start_date'])->format('d.m.Y') ?>)<a href="period_edit.php<?= BuildQuery('id', $period['id']) ?>" class="ml-2 mr-2 btn btn-outline-dark"><i class="fas fa-edit"></i></a><a href="period_delete.php<?= BuildQuery('id', $period['id']) ?>" class="btn btn-outline-dark"><i class="fas fa-trash"></i></a></h2>
             <table class="table">
+                <?php foreach ($period['days'] as $day): ?>
+                <thead class="thead-light">
+                    <tr>
+                        <th><?=$day['date'] ?></th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                            <div class="btn-group">
+                                <a class="btn btn-outline-dark" href="day_edit.php<?= BuildQuery('id', $day['id']) ?>"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-outline-dark" href="day_delete.php<?= BuildQuery('id', $day['id']) ?>"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <?php endforeach; ?>
                 <thead class="thead-light">
                     <tr>
                         <th colspan="4">
                             <form method="post" class="form-inline">
                                 <input type="hidden" id="scroll" name="scroll" />
-                                <input type="hidden" id="id" name="id" value="<?=$period['sp_id'] ?>" />
+                                <input type="hidden" id="schedule_period_id" name="schedule_period_id" value="<?=$period['id'] ?>" />
                                 <div class="form-group">
                                     <label for="date">Дата</label>
                                     <input type="date" id="date" name="date" class="form-control ml-2 mr-2" required="required" />
