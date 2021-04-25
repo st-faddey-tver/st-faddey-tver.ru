@@ -4,13 +4,13 @@ include 'define.php';
 global $weekdays;
 
 $weekdays = array();
-$weekdays[0] = 'Вс';
-$weekdays[1] = 'Пн';
-$weekdays[2] = 'Вт';
-$weekdays[3] = 'Ср';
-$weekdays[4] = 'Чт';
-$weekdays[5] = 'Пт';
-$weekdays[6] = 'Сб';
+$weekdays[1] = 'Понедельник';
+$weekdays[2] = 'Вторник';
+$weekdays[3] = 'Среда';
+$weekdays[4] = 'Четверг';
+$weekdays[5] = 'Пятница';
+$weekdays[6] = 'Суббота';
+$weekdays[7] = 'Воскресенье';
 
 // Функции
 function LoggedIn() {
