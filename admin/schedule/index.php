@@ -261,9 +261,9 @@ foreach ($schedule as $row) {
                 ?>
                 <thead class="thead-light">
                     <tr>
-                        <th class="w-25"><?=$dDate->format("d.m.Y") ?></th>
-                        <th><?=$weekdays[$dDate->format("N")] ?></th>
-                        <th>
+                        <th class="w-25 align-top"><?=$dDate->format("d.m.Y") ?></th>
+                        <th class="align-top"><?=$weekdays[$dDate->format("N")] ?></th>
+                        <th class="align-top">
                             <?php foreach ($date['holidays'] as $holiday): ?>
                             <div class="mt-1 mb-1 text-danger">
                                 <?=$holiday['holiday'] ?>
@@ -285,7 +285,7 @@ foreach ($schedule as $row) {
                                 </div>
                             </form>
                         </th>
-                        <th class="text-right">
+                        <th class="text-right align-top">
                             <?php if(count($date['times']) == 0): ?>
                             <form method="post">
                                 <input type="hidden" id="scroll" name="scroll" />
@@ -304,8 +304,8 @@ foreach ($schedule as $row) {
                     $tTime = DateTime::createFromFormat("H:i:s", $time['time']);
                     ?>
                     <tr>
-                        <td><?=$tTime->format('H:i') ?></td>
-                        <td colspan="2">
+                        <td class="align-top"><?=$tTime->format('H:i') ?></td>
+                        <td class="align-top" colspan="2">
                             <?php foreach ($time['services'] as $service): ?>
                             <div class="mt-1 mb-1">
                                 <?=$service['service'] ?>
@@ -327,7 +327,7 @@ foreach ($schedule as $row) {
                                 </div>
                             </form>
                         </td>
-                        <td class="text-right">
+                        <td class="text-right align-top">
                             <?php if(count($time['services']) == 0): ?>
                             <form method="post">
                                 <input type="hidden" id="scroll" name="scroll" />
