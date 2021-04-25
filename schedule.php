@@ -162,5 +162,8 @@ foreach ($schedule as $row) {
                 <?php endforeach; ?>
             </div>
         </div>
+        <?php
+        include 'include/footer.php';
+        ?>
     </body>
 </html>
