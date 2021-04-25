@@ -146,6 +146,11 @@
         ta.prop("selectionEnd", selStart);
     });
     
+    // Всплывающая подсказка
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    
     // Прокрутка на прежнее место после отправки формы
     $(window).on("scroll", function(){
         $('input[name="scroll"]').val($(window).scrollTop());

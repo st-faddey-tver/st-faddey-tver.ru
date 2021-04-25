@@ -106,7 +106,7 @@ $sql = "select sp.id sp_id, sp.start_date, sp.name period, "
         . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
         . "left join schedule_time st on st.schedule_date_id = sd.id "
         . "left join schedule_service ss on ss.schedule_time_id = st.id "
-        . "order by sp.start_date, sd.date, st.time";
+        . "order by sp.start_date, sd.date, st.time, ss.id";
 $grabber = new Grabber($sql);
 $schedule = $grabber->result;
 $error_message = $grabber->error;
@@ -227,7 +227,7 @@ foreach ($schedule as $row) {
                     <input type="hidden" id="scroll" name="scroll" />
                     <input type="hidden" id="id" name="id" value="<?=$period['id'] ?>" />
                     <div class="btn-group">
-                        <button class="btn btn-outline-dark confirmable" type="submit" id="period_delete_submit" name="period_delete_submit"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-outline-dark confirmable" type="submit" id="period_delete_submit" name="period_delete_submit" title="Удалить период" data-toggle="tooltip"><i class="fas fa-trash"></i></button>
                     </div>
                 </form>
                 <?php endif; ?>
@@ -248,7 +248,7 @@ foreach ($schedule as $row) {
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="id" name="id" value="<?=$date['id'] ?>" />
                                 <div class="btn-group">
-                                    <button class="btn btn-outline-dark confirmable" type="submit" id="date_delete_submit" name="date_delete_submit"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-outline-dark confirmable" type="submit" id="date_delete_submit" name="date_delete_submit" title="Удалить дату" data-toggle="tooltip"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
                             <?php endif; ?>
@@ -269,7 +269,7 @@ foreach ($schedule as $row) {
                                 <form method="post" class="form-inline d-inline">
                                     <input type="hidden" id="scroll" name="scroll" />
                                     <input type="hidden" id="id" name="id" value="<?=$service['id'] ?>" />
-                                    <button type="submit" id="service_delete_submit" name="service_delete_submit" class="btn btn-outline-dark confirmable"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" id="service_delete_submit" name="service_delete_submit" class="btn btn-outline-dark confirmable" title="Удалить службу" data-toggle="tooltip"><i class="fas fa-trash"></i></button>
                                 </form>
                             </div>
                             <?php endforeach; ?>
@@ -279,7 +279,7 @@ foreach ($schedule as $row) {
                                 <div class="input-group">
                                     <input type="text" maxlength="100" id="name" name="name" class="form-control" placeholder="Добавить службу" required="required" />
                                     <div class="input-group-append">
-                                        <button type="submit" id="service_create_submit" name="service_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                        <button type="submit" id="service_create_submit" name="service_create_submit" class="btn btn-outline-dark" title="Добавить службу" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -290,7 +290,7 @@ foreach ($schedule as $row) {
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="id" name="id" value="<?=$time['id'] ?>" />
                                 <div class="btn-group">
-                                    <button class="btn btn-outline-dark confirmable" type="submit" id="time_delete_submit" name="time_delete_submit"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-outline-dark confirmable" type="submit" id="time_delete_submit" name="time_delete_submit" title="Удалить время" data-toggle="tooltip"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
                             <?php endif; ?>
@@ -305,7 +305,7 @@ foreach ($schedule as $row) {
                                 <div class="input-group">
                                     <input type="time" id="time" name="time" class="form-control" required="required" />
                                     <div class="input-group-append">
-                                        <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                        <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark" title="Добавить время" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -322,7 +322,7 @@ foreach ($schedule as $row) {
                                 <div class="input-group">
                                     <input type="date" id="date" name="date" class="form-control" required="required" />
                                     <div class="input-group-append">
-                                        <button type="submit" id="date_create_submit" name="date_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                        <button type="submit" id="date_create_submit" name="date_create_submit" class="btn btn-outline-dark" title="Добавить дату" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -342,7 +342,7 @@ foreach ($schedule as $row) {
                     <label for="name">Наименование</label>
                     <input type="text" maxlength="50" id="name" name="name" class="form-control ml-2 mr-2" required="required" />
                 </div>
-                <button type="submit" id="period_create_submit" name="period_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Добавить период</button>
+                <button type="submit" id="period_create_submit" name="period_create_submit" class="btn btn-outline-dark" title="Добавить период" data-toggle="tooltip"><i class="fas fa-plus"></i>&nbsp;Добавить период</button>
             </form>
         </div>
         <?php
