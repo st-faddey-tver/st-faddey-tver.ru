@@ -57,7 +57,7 @@ if(!HasRole()) {
                     ?>
                 </div>
                 <div class="col-6">
-                    <p><a href="schedule/">Расписание богослужений</a></p>
+                    <p><a href="schedule.php">Расписание богослужений</a></p>
                     <p><a href="event/">Все события</a>
                     <p><a href="news/">Все новости</a></p>
                 </div>

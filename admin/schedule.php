@@ -1,5 +1,5 @@
 <?php
-include '../../include/topscripts.php';
+include '../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('admin'))) {
@@ -221,12 +221,12 @@ foreach ($schedule as $row) {
 <html>
     <head>
         <?php
-        include '../include/head.php';
+        include 'include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include '../include/header.php';
+        include 'include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -286,7 +286,7 @@ foreach ($schedule as $row) {
                             </form>
                         </th>
                         <th class="text-right align-top">
-                            <?php if(count($date['times']) == 0): ?>
+                            <?php if(count($date['times']) == 0 && count($date['holidays']) == 0): ?>
                             <form method="post">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="id" name="id" value="<?=$date['id'] ?>" />
@@ -389,7 +389,7 @@ foreach ($schedule as $row) {
             </form>
         </div>
         <?php
-        include '../include/footer.php';
+        include 'include/footer.php';
         ?>
     </body>
 </html>
