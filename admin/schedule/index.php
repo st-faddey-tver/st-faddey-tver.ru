@@ -52,6 +52,28 @@ if(null !== filter_input(INPUT_POST, 'date_delete_submit')) {
     $error_message = (new Executer($sql))->error;
 }
 
+// Создание праздника
+if(null !== filter_input(INPUT_POST, 'holiday_create_submit')) {
+    $schedule_date_id = filter_input(INPUT_POST, 'schedule_date_id');
+    $name = filter_input(INPUT_POST, 'name');
+    
+    if(empty($name)) {
+        $error_message = "Наименование праздника обязательно.";
+    }
+    else {
+        $name = addslashes($name);
+        $sql = "insert into schedule_holiday (schedule_date_id, name) values ($schedule_date_id, '$name')";
+        $error_message = (new Executer($sql))->error;
+    }
+}
+
+// Удаление праздника
+if(null !== filter_input(INPUT_POST, 'holiday_delete_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from schedule_holiday where id = $id";
+    $error_message = (new Executer($sql))->error;
+}
+
 // Создание времени
 if(null !== filter_input(INPUT_POST, 'time_create_submit')) {
     $schedule_date_id = filter_input(INPUT_POST, 'schedule_date_id');
@@ -241,7 +263,28 @@ foreach ($schedule as $row) {
                     <tr>
                         <th class="w-25"><?=$dDate->format("d.m.Y") ?></th>
                         <th><?=$weekdays[$dDate->format("N")] ?></th>
-                        <th></th>
+                        <th>
+                            <?php foreach ($date['holidays'] as $holiday): ?>
+                            <div class="mt-1 mb-1 text-danger">
+                                <?=$holiday['holiday'] ?>
+                                <form method="post" class="form-inline d-inline">
+                                    <input type="hidden" id="scroll" name="scroll" />
+                                    <input type="hidden" id="id" name="id" value="<?=$holiday['id'] ?>" />
+                                    <button type="submit" id="holiday_delete_submit" name="holiday_delete_submit" class="btn btn-outline-dark confirmable" title="Удалить праздник" data-toggle="tooltip"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </div>
+                            <?php endforeach; ?>
+                            <form method="post">
+                                <input type="hidden" id="scroll" name="scroll" />
+                                <input type="hidden" id="schedule_date_id" name="schedule_date_id" value="<?=$date['id'] ?>" />
+                                <div class="input-group">
+                                    <input type="text" maxlength="50" id="name" name="name" class="form-control" placeholder="Добавить праздник" required="required" />
+                                    <div class="input-group-append">
+                                        <button type="submit" id="holiday_create_submit" name="holiday_create_submit" class="btn btn-outline-dark" title="Добавить праздник" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </th>
                         <th class="text-right">
                             <?php if(count($date['times']) == 0): ?>
                             <form method="post">
