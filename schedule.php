@@ -160,6 +160,7 @@ foreach ($schedule as $row) {
                     <?php endforeach; ?>
                 </table>
                 <?php endforeach; ?>
+                <hr />
             </div>
         </div>
         <?php
