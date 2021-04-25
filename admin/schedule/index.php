@@ -24,6 +24,13 @@ if(null !== filter_input(INPUT_POST, 'period_create_submit')) {
     }
 }
 
+// Удаление периода
+if(null !== filter_input(INPUT_POST, 'period_delete_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from schedule_period where id = $id";
+    $error_message = (new Executer($sql))->error;
+}
+
 // Создание даты
 if(null !== filter_input(INPUT_POST, 'date_create_submit')) {
     $schedule_period_id = filter_input(INPUT_POST, 'schedule_period_id');
@@ -36,6 +43,13 @@ if(null !== filter_input(INPUT_POST, 'date_create_submit')) {
         $sql = "insert into schedule_date (schedule_period_id, date) values ($schedule_period_id, '$date')";
         $error_message = (new Executer($sql))->error;
     }
+}
+
+// Удаление даты
+if(null !== filter_input(INPUT_POST, 'date_delete_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from schedule_date where id = $id";
+    $error_message = (new Executer($sql))->error;
 }
 
 // Создание времени
@@ -52,10 +66,44 @@ if(null !== filter_input(INPUT_POST, 'time_create_submit')) {
     }
 }
 
+// Удаление времени
+if(null !== filter_input(INPUT_POST, 'time_delete_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from schedule_time where id = $id";
+    $error_message = (new Executer($sql))->error;
+}
+
+// Создание службы
+if(null !== filter_input(INPUT_POST, 'service_create_submit')) {
+    $schedule_time_id = filter_input(INPUT_POST, 'schedule_time_id');
+    $name = filter_input(INPUT_POST, 'name');
+    
+    if(empty($name)) {
+        $error_message = "Наименование службы обязательно.";
+    }
+    else {
+        $name = addslashes($name);
+        $sql = "insert into schedule_service (schedule_time_id, name) values ($schedule_time_id, '$name')";
+        $error_message = (new Executer($sql))->error;
+    }
+}
+
+// Удаление службы
+if(null !== filter_input(INPUT_POST, 'service_delete_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from schedule_service where id = $id";
+    $error_message = (new Executer($sql))->error;
+}
+
 // Получение объекта
-$sql = "select sp.id sp_id, sp.start_date, sp.name period, sd.id sd_id, sd.date, st.id st_id, st.time, ss.id ss_id, ss.name service "
+$sql = "select sp.id sp_id, sp.start_date, sp.name period, "
+        . "sd.id sd_id, sd.date, "
+        . "sh.id sh_id, sh.name holiday, "
+        . "st.id st_id, st.time, "
+        . "ss.id ss_id, ss.name service "
         . "from schedule_period sp "
         . "left join schedule_date sd on sd.schedule_period_id = sp.id "
+        . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
         . "left join schedule_time st on st.schedule_date_id = sd.id "
         . "left join schedule_service ss on ss.schedule_time_id = st.id "
         . "order by sp.start_date, sd.date, st.time";
@@ -86,6 +134,7 @@ foreach ($schedule as $row) {
             $date = array();
             $date['id'] = $sd_id;
             $date['date'] = $row['date'];
+            $date['holidays'] = array();
             $date['times'] = array();
             $dates[$sd_id] = $date;
             $period['dates'] = $dates;
@@ -94,7 +143,22 @@ foreach ($schedule as $row) {
         else {
             $date = $dates[$sd_id];
         }
+        $holidays = $date['holidays'];
         $times = $date['times'];
+        
+        $sh_id = $row['sh_id'];
+        if(!empty($sh_id)) {
+            if(!array_key_exists($sh_id, $holidays)) {
+                $holiday = array();
+                $holiday['id'] = $sh_id;
+                $holiday['holiday'] = $row['holiday'];
+                $holidays[$sh_id] = $holiday;
+                $date['holidays'] = $holidays;
+                $dates[$sd_id] = $date;
+                $period['dates'] = $dates;
+                $periods[$sp_id] = $period;
+            }
+        }
         
         $st_id = $row['st_id'];
         if(!empty($st_id)) {
@@ -158,14 +222,15 @@ foreach ($schedule as $row) {
             <hr />
             <h2>
                 <?=$period['period'] ?>&nbsp;(<?= DateTime::createFromFormat('Y-m-d', $period['start_date'])->format('d.m.Y') ?>)
+                <?php if(count($period['dates']) == 0): ?>
                 <form method="post" class="form-inline d-inline">
                     <input type="hidden" id="scroll" name="scroll" />
                     <input type="hidden" id="id" name="id" value="<?=$period['id'] ?>" />
                     <div class="btn-group">
-                        <a class="btn btn-outline-dark" href="period_edit.php<?= BuildQuery('id', $period['id']) ?>"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-outline-dark confirmable" type="submit" id="period_delete_submit" name="period_delete_submit"><i class="fas fa-trash"></i></button>
                     </div>
                 </form>
+                <?php endif; ?>
             </h2>
             <table class="table">
                 <?php
@@ -178,14 +243,15 @@ foreach ($schedule as $row) {
                         <th><?=$weekdays[$dDate->format("N")] ?></th>
                         <th></th>
                         <th class="text-right">
+                            <?php if(count($date['times']) == 0): ?>
                             <form method="post">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="id" name="id" value="<?=$date['id'] ?>" />
                                 <div class="btn-group">
-                                    <a class="btn btn-outline-dark" href="date_edit.php<?= BuildQuery('id', $date['id']) ?>"><i class="fas fa-edit"></i></a>
                                     <button class="btn btn-outline-dark confirmable" type="submit" id="date_delete_submit" name="date_delete_submit"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
+                            <?php endif; ?>
                         </th>
                     </tr>
                 </thead>
@@ -196,16 +262,38 @@ foreach ($schedule as $row) {
                     ?>
                     <tr>
                         <td><?=$tTime->format('H:i') ?></td>
-                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <?php foreach ($time['services'] as $service): ?>
+                            <div class="mt-1 mb-1">
+                                <?=$service['service'] ?>
+                                <form method="post" class="form-inline d-inline">
+                                    <input type="hidden" id="scroll" name="scroll" />
+                                    <input type="hidden" id="id" name="id" value="<?=$service['id'] ?>" />
+                                    <button type="submit" id="service_delete_submit" name="service_delete_submit" class="btn btn-outline-dark confirmable"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </div>
+                            <?php endforeach; ?>
+                            <form method="post">
+                                <input type="hidden" id="scroll" name="scroll" />
+                                <input type="hidden" id="schedule_time_id" name="schedule_time_id" value="<?=$time['id'] ?>" />
+                                <div class="input-group">
+                                    <input type="text" maxlength="100" id="name" name="name" class="form-control" placeholder="Добавить службу" required="required" />
+                                    <div class="input-group-append">
+                                        <button type="submit" id="service_create_submit" name="service_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
                         <td class="text-right">
+                            <?php if(count($time['services']) == 0): ?>
                             <form method="post">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="id" name="id" value="<?=$time['id'] ?>" />
                                 <div class="btn-group">
-                                    <a class="btn btn-outline-dark" href="service_edit.php<?= BuildQuery('id', $time['id']) ?>"><i class="fas fa-edit"></i></a>
                                     <button class="btn btn-outline-dark confirmable" type="submit" id="time_delete_submit" name="time_delete_submit"><i class="fas fa-trash"></i></button>
                                 </div>
                             </form>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -214,11 +302,12 @@ foreach ($schedule as $row) {
                             <form method="post" class="form-inline">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="schedule_date_id" name="schedule_date_id" value="<?=$date['id'] ?>" />
-                                <div class="form-group">
-                                    <label for="time">Время</label>
-                                    <input type="time" id="time" name="time" class="form-control ml-2 mr-2" required="required" />
+                                <div class="input-group">
+                                    <input type="time" id="time" name="time" class="form-control" required="required" />
+                                    <div class="input-group-append">
+                                        <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                    </div>
                                 </div>
-                                <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Добавить время</button>
                             </form>
                         </td>
                     </tr>
@@ -230,11 +319,12 @@ foreach ($schedule as $row) {
                             <form method="post" class="form-inline">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="schedule_period_id" name="schedule_period_id" value="<?=$period['id'] ?>" />
-                                <div class="form-group">
-                                    <label for="date">Дата</label>
-                                    <input type="date" id="date" name="date" class="form-control ml-2 mr-2" required="required" />
+                                <div class="input-group">
+                                    <input type="date" id="date" name="date" class="form-control" required="required" />
+                                    <div class="input-group-append">
+                                        <button type="submit" id="date_create_submit" name="date_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i></button>
+                                    </div>
                                 </div>
-                                <button type="submit" id="date_create_submit" name="date_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Добавить дату</button>
                             </form>
                         </th>
                     </tr>
