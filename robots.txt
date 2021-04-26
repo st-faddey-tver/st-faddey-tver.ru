@@ -1,7 +1,13 @@
 User-agent: Yandex
+
 Sitemap: https://st-faddey-tver.ru/sitemap.xml
+
 Disallow: /events
+
 Disallow: /club
+
 Disallow: /family
+
 Disallow: /cinema
+
 Disallow: /gallery
