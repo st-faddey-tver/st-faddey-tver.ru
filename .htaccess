@@ -13,6 +13,7 @@ RewriteRule ^events allevents/index.php
 RewriteRule ^news/(.*) allnews/details.php?shortname=$1
 RewriteRule ^news allnews/index.php
 RewriteRule ^schedule schedule.php
+RewriteRule ^sitemap.xml sitemap.php
 
 RewriteRule ^([a-z0-9_\-]+)$ page.php?shortname=$1
 </IfModule>
