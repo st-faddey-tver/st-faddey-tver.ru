@@ -133,6 +133,14 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     margin-bottom: 10px;
 }
 
+@media only screen and (max-width:991px) {
+    .content img {
+        float: none;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
 .ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
     font-size: 2rem;
 }
@@ -171,11 +179,11 @@ h2 {
     font-size: 1.4rem;
 }
 
-@media only screen and (max-width:991px) {
+/*@media only screen and (max-width:991px) {
     .bigfont {
         font-size: 1.6em;
     }
-}
+}*/
 
 /* Футер */
 .footer {

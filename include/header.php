@@ -1,12 +1,12 @@
-<div class="top" style="background-image: url(<?=APPLICATION ?>/images/shapka_zima.jpg); background-position-x: center; background-position-y: top;">
+<div class="top" style="background-image: url(<?=APPLICATION ?>/images/shapka_zima.jpg); background-position-x: center; background-position-y: top; background-size: cover;">
     <div class="container" style="margin-bottom: 0;">
         <div class="header">
             <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_prozrachny.png" class="img-fluid" /></a>
-            <div style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
+            <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Сними обувь твою с ног твоих, ибо место, на котором ты стоишь, есть земля святая.&#8220;
                 <div style="text-align: right; font-size: smaller;">Исх 3:5</div>
             </div>
-            <div style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; right: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
+            <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; right: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
                 <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
             </div>
@@ -51,7 +51,7 @@ $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabl
 <nav class="navbar navbar-expand-lg neopalimy-navbar">
     <div class="container">
         <a class="navbar-brand<?=$home_status ?>" href="<?=APPLICATION ?>/">
-            <i class="fas fa-home"></i><span class="d-inline d-lg-none">&nbsp;&nbsp;Храм сщмч. Фаддея архиепископа Тверского, г. Тверь</span>
+            <i class="fas fa-home"></i>
         </a>
         <a href="<?=APPLICATION ?>/donation/" class="nav-link<?=$donation_status ?> d-inline d-lg-none" data-toggle="tooltip" title="Пожертвовать"><i class="fas fa-ruble-sign"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
