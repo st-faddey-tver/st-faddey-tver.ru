@@ -55,8 +55,8 @@ $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabl
         </a>
         <a href="<?=APPLICATION ?>/donation/" class="nav-link<?=$donation_status ?> d-inline d-lg-none" data-toggle="tooltip" title="Пожертвовать"><i class="fas fa-ruble-sign"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <!--span class="navbar-toggler-icon"></span-->
             <span class="menu-toggler">Меню</span>
+            <!--span class="navbar-toggler-icon"></span-->
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
