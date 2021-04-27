@@ -51,7 +51,7 @@ $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabl
 <nav class="navbar navbar-expand-lg neopalimy-navbar">
     <div class="container">
         <a class="navbar-brand<?=$home_status ?>" href="<?=APPLICATION ?>/">
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home"></i><span class="d-none d-md-inline d-lg-none">&nbsp;Храм сщмч. Фаддея</span>
         </a>
         <a href="<?=APPLICATION ?>/donation/" class="nav-link<?=$donation_status ?> d-inline d-lg-none" data-toggle="tooltip" title="Пожертвовать"><i class="fas fa-ruble-sign"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
