@@ -132,10 +132,18 @@ foreach ($schedule as $row) {
                     $dDate = DateTime::createFromFormat ('Y-m-d', $date['date']);
                     ?>
                     <thead class="thead-light">
-                        <tr>
+                        <tr class="d-none d-md-table-row">
                             <th class="w-25 align-top"><?=$dDate->format("d.m.Y") ?></th>
                             <th class="align-top"><?=$weekdays[$dDate->format("N")] ?></th>
                             <th class="align-top">
+                                <?php foreach ($date['holidays'] as $holiday): ?>
+                                <div class="text-danger"><?=$holiday['holiday'] ?></div>
+                                <?php endforeach; ?>
+                            </th>
+                        </tr>
+                        <tr class="d-table-row d-md-none">
+                            <th colspan="2">
+                                <?=$dDate->format("d.m.Y") ?>&nbsp;&nbsp;<?=$weekdays[$dDate->format("N")] ?>
                                 <?php foreach ($date['holidays'] as $holiday): ?>
                                 <div class="text-danger"><?=$holiday['holiday'] ?></div>
                                 <?php endforeach; ?>
@@ -148,7 +156,7 @@ foreach ($schedule as $row) {
                         $tTime = DateTime::createFromFormat("H:i:s", $time['time']);
                         ?>
                         <tr>
-                            <td class="align-top"><?=$tTime->format('H:i') ?></td>
+                            <td class="align-top w-25"><?=$tTime->format('H:i') ?></td>
                             <td class="align-top" colspan="2">
                                 <?php foreach ($time['services'] as $service): ?>
                                 <div><?=$service['service'] ?></div>
