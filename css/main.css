@@ -132,7 +132,7 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     text-align: justify;
 }
 
-.content img {
+.content img, .events_body img, .news_body img {
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -143,6 +143,10 @@ nav.neopalimy-navbar .navbar-toggler-icon {
         float: none;
         max-width: 100%;
         height: auto;
+    }
+    
+    .events_body img, .news_body img {
+        float: left;
     }
 }
 
