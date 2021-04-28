@@ -1,5 +1,5 @@
 <?php
-include '../include/topscripts.php';
+include '../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('admin'))) {
@@ -61,7 +61,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
         $insert_id = $executer->insert_id;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/details.php".BuildQuery("shortname", $shortname));
+            header('Location: '.APPLICATION."/admin/page/details.php".BuildQuery("shortname", $shortname));
         }
     }
 }
@@ -70,12 +70,12 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
 <html>
     <head>
         <?php
-        include 'include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include 'include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -86,6 +86,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/">Страницы</a></li>
                 <li>Создание страницы</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
@@ -93,7 +94,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
                     <h1>Создание страницы</h1>
                 </div>
                 <div class="p-1">
-                    <a href="<?=APPLICATION ?>/admin/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                    <a href="<?=APPLICATION ?>/admin/page/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
             <div class="row">
@@ -129,7 +130,7 @@ if(null !== filter_input(INPUT_POST, 'page_create_submit')) {
             </div>
         </div>
         <?php
-        include 'include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

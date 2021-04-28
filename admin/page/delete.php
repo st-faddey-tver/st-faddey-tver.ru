@@ -1,6 +1,6 @@
 <?php
-include '../include/topscripts.php';
-include '../include/page/page.php';
+include '../../include/topscripts.php';
+include '../../include/page/page.php';
 
 // Авторизация
 if(!IsInRole(array('about', 'admin'))) {
@@ -10,7 +10,7 @@ if(!IsInRole(array('about', 'admin'))) {
 // Если нет параметра id, переходим к списку
 $shortname = filter_input(INPUT_GET, 'shortname');
 if(empty($shortname)) {
-    header('Location: '.APPLICATION.'/admin/');
+    header('Location: '.APPLICATION.'/admin/page/');
 }
 
 // Обработка отправки формы
@@ -42,7 +42,7 @@ if(null !== filter_input(INPUT_POST, 'delete_page_submit')) {
                 $error_message = (new Executer($sql))->error;
                 
                 if(empty($error_message)) {
-                    header('Location: '.APPLICATION.'/admin/');
+                    header('Location: '.APPLICATION.'/admin/page/');
                 }
             }
         }
@@ -57,12 +57,12 @@ $error_message = $page->errorMessage;
 <html>
     <head>
         <?php
-        include 'include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include 'include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -73,7 +73,8 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQuery("shortname", $page->shortname) ?>"><?=$page->name ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/">Страницы</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/details.php<?= BuildQuery("shortname", $page->shortname) ?>"><?=$page->name ?></a></li>
                 <li>Удаление страницы</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
@@ -97,7 +98,7 @@ $error_message = $page->errorMessage;
             </form>
         </div>
         <?php
-        include 'include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

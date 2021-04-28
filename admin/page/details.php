@@ -1,6 +1,6 @@
 <?php
-include '../include/topscripts.php';
-include '../include/page/page.php';
+include '../../include/topscripts.php';
+include '../../include/page/page.php';
 
 // Авторизация
 if(!IsInRole(array('admin'))) {
@@ -10,7 +10,7 @@ if(!IsInRole(array('admin'))) {
 // Если нет параметра shortname, переходим к списку
 $shortname = filter_input(INPUT_GET, 'shortname');
 if(empty($shortname)) {
-    header('Location: '.APPLICATION.'/admin/');
+    header('Location: '.APPLICATION.'/admin/page/');
 }
 
 $page = new Page($shortname);
@@ -21,12 +21,12 @@ $error_message = $page->errorMessage;
 <html>
     <head>
         <?php
-        include 'include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include 'include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -37,6 +37,7 @@ $error_message = $page->errorMessage;
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/">Страницы</a></li>
                 <li><?=$page->name ?></li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
@@ -52,7 +53,7 @@ $error_message = $page->errorMessage;
                     else:
                     ?>
                     <div class="btn-group">
-                        <a href="<?=APPLICATION ?>/admin/" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
+                        <a href="<?=APPLICATION ?>/admin/page/" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
                         <a href="edit.php<?= BuildQuery("id", $page->id) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></i></a>
                         <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать содержимое" data-toggle="tooltip"><i class="fas fa-scroll"></i></a>
                         <?php if(!$page->inmenu): ?>
@@ -97,7 +98,7 @@ $error_message = $page->errorMessage;
             </div>
         </div>
         <?php
-        include 'include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>

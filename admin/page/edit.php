@@ -1,5 +1,5 @@
 <?php
-include '../include/topscripts.php';
+include '../../include/topscripts.php';
 
 // Авторизация
 if(!IsInRole(array('admin'))) {
@@ -10,7 +10,7 @@ if(!IsInRole(array('admin'))) {
 // Если нет параметра id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION.'/admin/');
+    header('Location: '.APPLICATION.'/admin/page/');
 }
 
 // Валидация формы
@@ -67,7 +67,7 @@ if(null !== filter_input(INPUT_POST, "edit_page_submit")) {
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/details.php".BuildQuery("shortname", $shortname));
+            header('Location: '.APPLICATION."/admin/page/details.php".BuildQuery("shortname", $shortname));
         }
     }
 }
@@ -107,12 +107,12 @@ if(empty($keywords)) {
 <html>
     <head>
         <?php
-        include 'include/head.php';
+        include '../include/head.php';
         ?>
     </head>
     <body>
         <?php
-        include 'include/header.php';
+        include '../include/header.php';
         ?>
         <div class="container-fluid">
             <?php
@@ -123,7 +123,8 @@ if(empty($keywords)) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/details.php<?= BuildQuery("shortname", $old_shortname) ?>"><?=$name ?></a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/">Страницы</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/page/details.php<?= BuildQuery("shortname", $old_shortname) ?>"><?=$name ?></a></li>
                 <li>Редактирование страницы</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
@@ -166,7 +167,7 @@ if(empty($keywords)) {
             </div>
         </div>
         <?php
-        include 'include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>
