@@ -15,8 +15,8 @@
                 <div class="col-4">
                     <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/petrov_image_400.png" class="img-fluid" /></a>
                 </div>
-                <div class="col-8 ponomar p-1 font-weight-bold" style="font-size: 1.4rem; color: sienna;">
-                    <a href="<?=APPLICATION ?>/" style="color: sienna; text-decoration: none;">Храм сщмч. Фаддея архиепископа Тверского</a>
+                <div class="col-8 pt-2">
+                    <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_slav_transparent.png" class="img-fluid" /></a>
                 </div>
             </div>
             
