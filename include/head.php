@@ -5,13 +5,8 @@
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/css/main.css?version=8" rel="stylesheet" />
 
-<link rel="apple-touch-icon" sizes="180x180" href="<?=APPLICATION ?>/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="<?=APPLICATION ?>/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="<?=APPLICATION ?>/favicon-16x16.png" />
-<link rel="1manifest" href="<?= APPLICATION ?>/site.webmanifest" />
+<link rel="shortcut icon" type="image/x-icon" href="<?=APPLICATION ?>/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="msapplication-TileColor" content="#da532c" />
-<meta name="theme-color" content="#ffffff" />
 <?php
 const TITLE = "Храм священномученика Фаддея архиепископа Тверского";
 const DESCRIPTION = "Наш храм построен на месте обретения мощей священномученика Фаддея архиепископа Тверского. Здесь раньше находился храм иконы Божией Матери Неопалимая Купина, разрушенный в советское время. И с ним связаны целых пять имён, прославленных Церковью в лике новомучеников и исповеданников Российских.";
