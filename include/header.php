@@ -1,7 +1,7 @@
 <div class="top" style="background-image: url(<?=APPLICATION ?>/images/shapka_zima.jpg); background-position-x: center; background-position-y: top; background-size: cover;">
     <div class="container" style="margin-bottom: 0;">
         <div class="header">
-            <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_prozrachny.png" class="img-fluid" /></a>
+            <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_prozrachny.png" class="img-fluid d-none d-md-block" /></a>
             <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Сними обувь твою с ног твоих, ибо место, на котором ты стоишь, есть земля святая.&#8220;
                 <div style="text-align: right; font-size: smaller;">Исх 3:5</div>
@@ -10,6 +10,16 @@
                 &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
                 <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
             </div>
+            
+            <div class="d-flex d-md-none row">
+                <div class="col-4">
+                    <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/petrov_image_400.png" class="img-fluid" /></a>
+                </div>
+                <div class="col-8 ponomar p-1 font-weight-bold" style="font-size: 1.4rem; color: sienna;">
+                    <a href="<?=APPLICATION ?>/" style="color: sienna; text-decoration: none;">Храм сщмч. Фаддея архиепископа Тверского</a>
+                </div>
+            </div>
+            
             <?php
             if(HasRole()):
             ?>
