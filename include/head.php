@@ -5,7 +5,7 @@
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/css/main.css?version=8" rel="stylesheet" />
 
-<link rel="shortcut icon" type="image/x-icon" href="<?=APPLICATION ?>/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="<?=$_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION ?>/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
 const TITLE = "Храм священномученика Фаддея архиепископа Тверского";
