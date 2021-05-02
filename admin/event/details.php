@@ -94,7 +94,7 @@ if($row = $fetcher->Fetch()) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/">События</a></li>
                 <li><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></li>
             </ul>
             <div class="d-flex justify-content-between mb-2">

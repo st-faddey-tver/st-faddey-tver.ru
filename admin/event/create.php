@@ -63,7 +63,7 @@ if(null !== filter_input(INPUT_POST, 'event_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/">События</a></li>
                 <li>Новое событие</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">

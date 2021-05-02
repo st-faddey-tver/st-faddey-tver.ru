@@ -27,11 +27,11 @@ if(!IsInRole(array('admin'))) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Все новости</li>
+                <li>Новости</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Все новости</h1>
+                    <h1>Новости</h1>
                 </div>
                 <div class="p-1">
                     <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать новость</a>

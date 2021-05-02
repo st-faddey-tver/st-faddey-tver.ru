@@ -151,7 +151,7 @@ if(empty($keywords)) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>">Все новости</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/<?= BuildQueryRemove('id') ?>">Новости</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/news/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
                 <li>Редактирование новости</li>
             </ul>

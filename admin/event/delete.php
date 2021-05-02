@@ -80,7 +80,7 @@ if($row = $fetcher->Fetch()) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">Все события</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">События</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
                 <li>Удаление новости</li>
             </ul>

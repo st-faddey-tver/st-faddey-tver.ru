@@ -96,7 +96,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/news/">Все новости</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/news/">Новости</a></li>
                 <li>Новая новость</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
