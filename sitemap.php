@@ -3,82 +3,34 @@ header("Content-Type: text/xml");
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <?php
+    include 'include/topscripts.php';
+    $sql = "select id, loc, lastmod, changefreq, priority from sitemap order by loc";
+    $fetcher = new Fetcher($sql);
+    
+    while ($row = $fetcher->Fetch()):
+    ?>
     <url>
-        <loc>https://st-faddey-tver.ru/</loc>
-        <lastmod>2021-04-24</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
+        <loc><?=$row['loc'] ?></loc>
+        <?php
+        if(!empty($row['lastmod'])):
+        ?>
+        <lastmod><?=$row['lastmod'] ?></lastmod>
+        <?php
+        endif;
+        if(!empty($row['changefreq'])):
+        ?>
+        <changefreq><?=$row['changefreq'] ?></changefreq>
+        <?php
+        endif;
+        if(is_numeric($row['priority'])):
+        ?>
+        <priority><?=$row['priority'] ?></priority>
+        <?php
+        endif;
+        ?>
     </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/history</loc>
-        <lastmod>2021-04-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/vera_truks</loc>
-        <lastmod>2021-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/ilya_benemansky</loc>
-        <lastmod>2021-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/ilya_gromoglasov</loc>
-        <lastmod>2021-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/nikolay_maslov</loc>
-        <lastmod>2021-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/faddey_uspensky</loc>
-        <lastmod>2021-03-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/clergy</loc>
-        <lastmod>2021-03-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/volunteer</loc>
-        <lastmod>2021-03-10</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/contact</loc>
-        <lastmod>2021-03-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/donation</loc>
-        <lastmod>2021-03-20</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/news/poezdka_v_krasnyy_kholm</loc>
-        <lastmod>2021-04-12</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://st-faddey-tver.ru/news/saints_of_faddey_temple</loc>
-        <lastmod>2021-04-05</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>1.0</priority>
-    </url>
+    <?php
+    endwhile;
+    ?>
 </urlset>
