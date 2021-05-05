@@ -20,11 +20,6 @@ if(null !== filter_input(INPUT_POST, 'sitemap_create_submit')) {
         $form_valid = false;
     }
     
-    if(!filter_var(filter_input(INPUT_POST, 'loc'), FILTER_VALIDATE_URL)) {
-        $loc_valid = ISINVALID;
-        $form_valid = false;
-    }
-    
     if($form_valid) {
         $loc = filter_input(INPUT_POST, 'loc');
         $lastmod = filter_input(INPUT_POST, 'lastmod');
@@ -79,7 +74,7 @@ if(null !== filter_input(INPUT_POST, 'sitemap_create_submit')) {
                     <form method="post">
                         <div class="form-group">
                             <label for="loc">loc<span class="text-danger">*</span></label>
-                            <input type="text" id="loc" name="loc" class="form-control<?=$loc_valid ?>" value="<?= filter_input(INPUT_POST, 'loc') ?>" required="required" />
+                            <input type="url" id="loc" name="loc" class="form-control<?=$loc_valid ?>" value="<?= filter_input(INPUT_POST, 'loc') ?>" required="required" />
                             <div class="invalid-feedback">Неправильный формат URL</div>
                         </div>
                         <div class="row">
