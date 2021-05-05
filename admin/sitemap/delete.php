@@ -6,10 +6,21 @@ if(!IsInRole(array('admin'))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра id, переход к списку
+// Если нет параметра id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION."/admin/sitemap/");
+    header('Location: '.APPLICATION.'/admin/sitemap/');
+}
+
+// Обработка отправки формы
+if(null !== filter_input(INPUT_POST, 'delete_sitemap_submit')) {
+    $id = filter_input(INPUT_POST, 'id');
+    $sql = "delete from sitemap where id=$id";
+    $error_message = (new Executer($sql))->error;
+    
+    if(empty($error_message)) {
+        header('Location: '.APPLICATION.'/admin/sitemap/'.BuildQueryRemove('id'));
+    }
 }
 
 // Получение объекта
@@ -50,19 +61,16 @@ if($row = $fetcher->Fetch()) {
             <ul class="breadcrumb">
                 <li><a href="<?=APPLICATION ?>/">На главную</a></li>
                 <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/sitemap/">sitemap.xml</a></li>
-                <li>Просмотр узла</li>
+                <li><a href="<?=APPLICATION ?>/admin/sitemap/<?= BuildQueryRemove('id') ?>">sitemap.xml</a></li>
+                <li><a href="<?=APPLICATION ?>/admin/sitemap/details.php<?= BuildQuery('id', $id) ?>">Просмотр узла</a></li>
+                <li>Удаление узла</li>
             </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Просмотр узла</h1>
+                    <h1 class="text-danger">Действительно удалить?</h1>
                 </div>
                 <div class="p-1">
-                    <div class="btn-group">
-                        <a href="<?=APPLICATION ?>/admin/sitemap/" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        <a href="edit.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                        <a href="delete.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
-                    </div>
+                    <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
             &nbsp;&nbsp;&lt;url&gt;<br />
@@ -85,6 +93,11 @@ if($row = $fetcher->Fetch()) {
                 endif;
                 ?>
             &nbsp;&nbsp;&lt;/url&gt;
+            <hr style="clear: both" />
+            <form method="post">
+                <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
+                <button type="submit" id="delete_sitemap_submit" name="delete_sitemap_submit" class="btn btn-danger">Удалить</button>
+            </form>
         </div>
         <?php
         include '../include/footer.php';
