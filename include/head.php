@@ -6,6 +6,7 @@
 <link href="<?=APPLICATION ?>/css/main.css?version=8" rel="stylesheet" />
 
 <link rel="icon" type="image/x-icon" href="<?=$_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION ?>/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="<?=$_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION ?>/favicon.svg" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php
 const TITLE = "Храм священномученика Фаддея архиепископа Тверского";
