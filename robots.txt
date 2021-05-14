@@ -4,6 +4,8 @@ Sitemap: https://st-faddey-tver.ru/sitemap.xml
 
 Disallow: /events
 
+Disallow: /saints
+
 Disallow: /club
 
 Disallow: /family
@@ -11,3 +13,7 @@ Disallow: /family
 Disallow: /cinema
 
 Disallow: /gallery
+
+Disallow: /preparation
+
+Disallow: /sunday
