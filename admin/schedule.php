@@ -278,7 +278,7 @@ foreach ($schedule as $row) {
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="schedule_date_id" name="schedule_date_id" value="<?=$date['id'] ?>" />
                                 <div class="input-group">
-                                    <input type="text" maxlength="50" id="name" name="name" class="form-control" placeholder="Добавить праздник" required="required" />
+                                    <input type="text" maxlength="100" id="name" name="name" class="form-control" placeholder="Добавить праздник" required="required" />
                                     <div class="input-group-append">
                                         <button type="submit" id="holiday_create_submit" name="holiday_create_submit" class="btn btn-outline-dark" title="Добавить праздник" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
