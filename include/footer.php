@@ -81,15 +81,21 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
         $(window).trigger('scroll');
     });
     
+    navbarHideable = $('#navbar_hideable');
+    
     $(window).scroll(function(){
         var navbarPosition = topHeight - $(window).scrollTop();
         
         // Удержание верхнего меню в верхней части экрана
-        if(navbarPosition < 18) {
-            $('#navbar_hideable').slideDown();
+        if(navbarPosition < 0) {
+            if(!navbarHideable.is(':visible')) {
+                navbarHideable.slideDown();
+            }
         }
         else {
-            $('#navbar_hideable').slideUp();
+            if(navbarHideable.is(':visible')) {
+                navbarHideable.slideUp();
+            }
         }
     });
 </script>
