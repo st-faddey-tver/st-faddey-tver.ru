@@ -142,10 +142,11 @@ foreach ($schedule as $row) {
                             </th>
                         </tr>
                         <tr class="d-table-row d-md-none">
-                            <th colspan="2">
-                                <?=$dDate->format("d.m.Y") ?>&nbsp;&nbsp;<?=$weekdays[$dDate->format("N")] ?>
+                            <th>
+                                <div class="d-block font-italic"><?=$dDate->format("d.m.Y") ?></div>
+                                <div class="d-block"><?=$weekdays[$dDate->format("N")] ?></div>
                                 <?php foreach ($date['holidays'] as $holiday): ?>
-                                <div class="text-danger"><?=$holiday['holiday'] ?></div>
+                                <div class="text-danger d-block"><?=$holiday['holiday'] ?></div>
                                 <?php endforeach; ?>
                             </th>
                         </tr>
@@ -155,11 +156,19 @@ foreach ($schedule as $row) {
                         foreach ($date['times'] as $time):
                         $tTime = DateTime::createFromFormat("H:i:s", $time['time']);
                         ?>
-                        <tr>
+                        <tr class="d-none d-md-table-row">
                             <td class="align-top w-25"><?=$tTime->format('H:i') ?></td>
                             <td class="align-top" colspan="2">
                                 <?php foreach ($time['services'] as $service): ?>
                                 <div><?=$service['service'] ?></div>
+                                <?php endforeach; ?>
+                            </td>
+                        </tr>
+                        <tr class="d-table-row d-md-none">
+                            <td>
+                                <div class="d-block font-italic"><?=$tTime->format('H:i') ?></div>
+                                <?php foreach ($time['services'] as $service): ?>
+                                <div class="d-block"><?=$service['service'] ?></div>
                                 <?php endforeach; ?>
                             </td>
                         </tr>
