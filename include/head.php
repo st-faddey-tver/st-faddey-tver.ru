@@ -3,7 +3,7 @@
 <link href="<?=APPLICATION ?>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=APPLICATION ?>/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" />
 <link href="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
-<link href="<?=APPLICATION ?>/css/main.css?version=8" rel="stylesheet" />
+<link href="<?=APPLICATION ?>/css/main.css?version=9" rel="stylesheet" />
 
 <link rel="icon" type="image/x-icon" href="<?=$_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION ?>/favicon.ico" />
 <link rel="icon" type="image/svg+xml" href="<?=$_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].APPLICATION ?>/favicon.svg" />

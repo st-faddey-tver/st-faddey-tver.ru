@@ -66,11 +66,30 @@ style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" tit
 <script src="<?=APPLICATION ?>/fancybox-master/dist/jquery.fancybox.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip(); 
+        $('[data-toggle="tooltip"]').tooltip();
     });
     
     $('.dropdown-item.dropdown-toggle').click(function(event){
         event.stopPropagation();
         $(this).next('.dropdown-menu').toggleClass('show');
+    });
+    
+    var topHeight = $('#top').innerHeight();
+    
+    $(window).on('resize', function(){
+        topHeight = $('#top').innerHeight();
+        $(window).trigger('scroll');
+    });
+    
+    $(window).scroll(function(){
+        var navbarPosition = topHeight - $(window).scrollTop();
+        
+        // Удержание верхнего меню в верхней части экрана
+        if(navbarPosition < 18) {
+            $('#navbar_hideable').slideDown();
+        }
+        else {
+            $('#navbar_hideable').slideUp();
+        }
     });
 </script>

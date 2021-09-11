@@ -115,6 +115,14 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     font-size: 1.5rem;
 }
 
+#navbar_hideable {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
 /* Главная часть */
 @media only screen and (max-width:991px) {
     .container {
