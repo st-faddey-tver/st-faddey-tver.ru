@@ -41,6 +41,8 @@ $about_saints_ilya_benemansky_status = filter_input(INPUT_GET, 'shortname') == '
 $about_saints_ilya_gromoglasov_status = filter_input(INPUT_GET, 'shortname') == 'ilya_gromoglasov' ? ' disabled' : '';
 $about_saints_nikolay_maslov_status = filter_input(INPUT_GET, 'shortname') == 'nikolay_maslov' ? ' disabled' : '';
 $about_saints_faddey_uspensky_status = filter_input(INPUT_GET, 'shortname') == 'faddey_uspensky' ? ' disabled' : '';
+$about_treasures_spyridon_status = filter_input(INPUT_GET, 'shortname') == 'st_spyridon' ? ' disabled' : '';
+$about_treasures_alexander_nevsky_status = filter_input(INPUT_GET, 'shortname') == 'st_alexander_nevsky' ? ' disabled' : '';
 $about_schedule_status = filter_input(INPUT_GET, 'shortname') == 'schedule' ? ' disabled' : '';
 $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disabled' : '';
 $about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allevents/index.php' ? ' disabled' : '';

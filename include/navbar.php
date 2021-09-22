@@ -13,6 +13,13 @@
                     <a class="dropdown-item<?=$about_saints_faddey_uspensky_status ?>" href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a>
                 </div>
             </li>
+            <li style="position: relative;">
+                <a class="dropdown-item dropdown-toggle" id="navbardrop_about_treasures" data-toggle="dropdown" href="javascript: return false;">Святыни храма</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item<?=$about_treasures_spyridon_status ?>" href="<?=APPLICATION ?>/st_spyridon/">Икона св. Спиридона Тримифунтского</a>
+                    <a class="dropdown-item<?=$about_treasures_alexander_nevsky_status ?>" href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Александра Невского</a>
+                </div>
+            </li>
             <li><a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></li>
             <li><a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/clergy/">Духовенство</a></li>
             <li><a class="dropdown-item<?=$about_events_status ?>" href="<?=APPLICATION ?>/events/">Все события</a></li>
