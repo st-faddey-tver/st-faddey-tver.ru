@@ -29,7 +29,6 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>Святые храма</p>
-                
                 <p><a href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a></p>
@@ -37,13 +36,16 @@
                 <p><a href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
+                <p>Святыни храма</p>
+                <p><a href="<?=APPLICATION ?>/st_spyridon/">Икона св. Спиридона</a></p>
+                <p><a href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Ал. Невского</a></p>
+            </div>
+            <div class="d-none d-lg-block col-lg-2">
                 <p>Молодёжь храма</p>
                 <p><a href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a></p>
                 <p><a href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
                 <p><a href="<?=APPLICATION ?>/family/">Семейный клуб</a></p>
                 <p><a href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a></p>
-            </div>
-            <div class="d-none d-lg-block col-lg-2">
             </div>
         </div>
         <div class="informers mt-3">
