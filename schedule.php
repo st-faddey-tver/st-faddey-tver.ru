@@ -171,7 +171,7 @@ foreach ($schedule as $row) {
                         </tr>
                         <tr class="d-table-row d-md-none">
                             <td>
-                                <div class="d-block font-italic"><?=$tTime->format('H:i') ?></div>
+                                <div class="d-block font-italic"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?></div>
                                 <?php foreach ($time['services'] as $service): ?>
                                 <div class="d-block"><?=$service['service'] ?></div>
                                 <?php endforeach; ?>

@@ -78,12 +78,13 @@ if(null !== filter_input(INPUT_POST, 'holiday_delete_submit')) {
 if(null !== filter_input(INPUT_POST, 'time_create_submit')) {
     $schedule_date_id = filter_input(INPUT_POST, 'schedule_date_id');
     $time = filter_input(INPUT_POST, 'time');
+    $endtime = empty(filter_input(INPUT_POST, 'endtime')) ? 'NULL' : "'".filter_input(INPUT_POST, 'endtime')."'";
     
     if(empty($time)) {
         $error_message = "Время обязательно.";
     }
     else {
-        $sql = "insert into schedule_time (schedule_date_id, time) values ($schedule_date_id, '$time')";
+        $sql = "insert into schedule_time (schedule_date_id, time, endtime) values ($schedule_date_id, '$time', $endtime)";
         $error_message = (new Executer($sql))->error;
     }
 }
@@ -350,8 +351,9 @@ foreach ($schedule as $row) {
                             <form method="post" class="form-inline">
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="schedule_date_id" name="schedule_date_id" value="<?=$date['id'] ?>" />
+                                <input type="time" id="time" name="time" class="form-control" required="required" />
                                 <div class="input-group">
-                                    <input type="time" id="time" name="time" class="form-control" required="required" />
+                                    <input type="time" id="endtime" name="endtime" class="form-control" />
                                     <div class="input-group-append">
                                         <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark" title="Добавить время" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
