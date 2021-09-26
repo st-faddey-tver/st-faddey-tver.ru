@@ -128,7 +128,7 @@ $sql = "select sp.id sp_id, sp.start_date, sp.name period, "
         . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
         . "left join schedule_time st on st.schedule_date_id = sd.id "
         . "left join schedule_service ss on ss.schedule_time_id = st.id "
-        . "order by sp.start_date, sd.date, st.time, ss.id";
+        . "order by sp.start_date, sd.date, sh.id, st.time, ss.id";
 $grabber = new Grabber($sql);
 $schedule = $grabber->result;
 $error_message = $grabber->error;
