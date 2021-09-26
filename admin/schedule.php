@@ -121,14 +121,14 @@ if(null !== filter_input(INPUT_POST, 'service_delete_submit')) {
 $sql = "select sp.id sp_id, sp.start_date, sp.name period, "
         . "sd.id sd_id, sd.date, "
         . "sh.id sh_id, sh.name holiday, "
-        . "st.id st_id, st.time, "
+        . "st.id st_id, st.time, st.endtime, "
         . "ss.id ss_id, ss.name service "
         . "from schedule_period sp "
         . "left join schedule_date sd on sd.schedule_period_id = sp.id "
         . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
         . "left join schedule_time st on st.schedule_date_id = sd.id "
         . "left join schedule_service ss on ss.schedule_time_id = st.id "
-        . "order by sp.start_date, sd.date, sh.id, st.time, ss.id";
+        . "order by sp.start_date, sd.date, sh.id, st.time, st.endtime, ss.id";
 $grabber = new Grabber($sql);
 $schedule = $grabber->result;
 $error_message = $grabber->error;
@@ -188,6 +188,7 @@ foreach ($schedule as $row) {
                 $time = array();
                 $time['id'] = $st_id;
                 $time['time'] = $row['time'];
+                $time['endtime'] = $row['endtime'];
                 $time['services'] = array();
                 $times[$st_id] = $time;
                 $date['times'] = $times;
@@ -302,9 +303,13 @@ foreach ($schedule as $row) {
                     <?php
                     foreach ($date['times'] as $time):
                     $tTime = DateTime::createFromFormat("H:i:s", $time['time']);
+                    $tEndTime = null;
+                    if(!empty($time['endtime'])) {
+                        $tEndTime = DateTime::createFromFormat("H:i:s", $time['endtime']);
+                    }
                     ?>
                     <tr>
-                        <td class="align-top"><?=$tTime->format('H:i') ?></td>
+                        <td class="align-top"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?></td>
                         <td class="align-top" colspan="2">
                             <?php foreach ($time['services'] as $service): ?>
                             <div class="mt-1 mb-1">
