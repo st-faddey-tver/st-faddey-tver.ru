@@ -36,11 +36,7 @@
         </div>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_education" data-toggle="dropdown">Образовательный центр</a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item<?=$education_sunday_status ?>" href="<?=APPLICATION ?>/sunday/">Воскресная школа</a></li>
-            <li><a class="dropdown-item<?=$education_preparation_status ?>" href="<?=APPLICATION ?>/preparation/">Курсы подготовки для поступления в семинарию</a></li>
-        </ul>
+        <a class="nav-link<?=$education_sunday_status ?>" href="<?=APPLICATION ?>/sunday/">Воскресная школа</a>
     </li>
     <li class="nav-item">
         <a class="nav-link<?=$pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a>
