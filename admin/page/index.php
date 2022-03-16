@@ -18,17 +18,17 @@ if(!HasRole()) {
         include '../include/header.php';
         include '../../include/pager_top.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li>Страницы</li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
                 echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Страницы</li>
-            </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
                     <h1>Страницы</h1>

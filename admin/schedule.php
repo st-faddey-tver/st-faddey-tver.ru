@@ -230,17 +230,17 @@ foreach ($schedule as $row) {
         <?php
         include 'include/header.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li>Расписание богослужений</li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
                 echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Расписание богослужений</li>
-            </ul>
             <h1>Расписание богослужений</h1>
             <?php foreach ($periods as $period): ?>
             <hr />

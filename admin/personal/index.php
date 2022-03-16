@@ -24,6 +24,11 @@ $middle_name = $row['middle_name'];
         <?php
         include '../include/header.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li>Личные данные</li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
@@ -36,11 +41,6 @@ $middle_name = $row['middle_name'];
                 echo "<div class='alert alert-info'>Пароль успешно изменён</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li>Личные данные</li>
-            </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
                     <h1>Личные данные</h1>

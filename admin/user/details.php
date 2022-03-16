@@ -70,18 +70,18 @@ $myroles = (new Grabber("select ur.user_id, ur.role_id, r.local_name from role r
         <?php
         include '../include/header.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/user/">Пользователи</a></li>
+            <li><?=$username ?></li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
                 echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/user/">Пользователи</a></li>
-                <li><?=$username ?></li>
-            </ul>
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="d-flex justify-content-between mb-2">

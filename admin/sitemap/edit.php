@@ -82,19 +82,19 @@ if(null === $priority) {
         <?php
         include '../include/header.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/sitemap/<?= BuildQueryRemove('id') ?>">sitemap.xml</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/sitemap/details.php<?= BuildQuery('id', $id) ?>">Просмотр узла</a></li>
+            <li>Редактирование узла</li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
                 echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/sitemap/<?= BuildQueryRemove('id') ?>">sitemap.xml</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/sitemap/details.php<?= BuildQuery('id', $id) ?>">Просмотр узла</a></li>
-                <li>Редактирование узла</li>
-            </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
                     <h1>Редактирование узла</h1>

@@ -71,19 +71,19 @@ if($row = $fetcher->Fetch()) {
         <?php
         include '../include/header.php';
         ?>
+        <ul class="breadcrumb">
+            <li><a href="<?=APPLICATION ?>/">На главную</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">События</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
+            <li>Удаление новости</li>
+        </ul>
         <div class="container-fluid">
             <?php
             if(!empty($error_message)) {
                 echo "<div class='alert alert-danger'>$error_message</div>";
             }
             ?>
-            <ul class="breadcrumb">
-                <li><a href="<?=APPLICATION ?>/">На главную</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">События</a></li>
-                <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
-                <li>Удаление новости</li>
-            </ul>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
                     <h1 class="text-danger">Действительно удалить?</h1>
