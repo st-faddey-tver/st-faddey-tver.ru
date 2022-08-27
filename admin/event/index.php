@@ -63,6 +63,9 @@ if(!IsInRole(array('admin'))) {
                     <h2><a href="details.php<?= BuildQuery("id", $id) ?>"><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></a></h2>
                     <?=$body ?>
                     <?php endwhile; ?>
+                    <?php
+                    include '../../include/pager_bottom.php';
+                    ?>
                 </div>
             </div>
         </div>
