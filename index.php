@@ -31,9 +31,9 @@ include 'include/topscripts.php';
                 endwhile;
                 
                 if($events_count > 0) {
-                    echo "<div class='text-right mb-4' style='clear: both;'><a href='".APPLICATION."/events/' class='btn btn-sm btn-light'>Все события&nbsp;<i class='fas fa-angle-double-right'></i></a></div>";
+                    echo "<br />";
                 }
-                ?>              
+                ?>
                 <div class="row">
                 <?php
                 $sql = "select date, name, shortname, body from news where front=1 and visible=1 order by date desc, id desc";

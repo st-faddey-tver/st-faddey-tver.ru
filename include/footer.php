@@ -11,6 +11,10 @@
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
                         <td>Художник<br />Артём Петров<br />(картина в заголовке сайта)</td>
                     </tr>
+                    <tr>
+                        <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
+                        <td>Дмитрий Пантелеичев<br />(разработка сайта)</td>
+                    </tr>
                 </table>
             </div>
             <div class="d-none d-lg-block col-lg-2">
