@@ -9,7 +9,7 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
-                        <td>Художник<br />Артём Петров<br />(картина в заголовке сайта)</td>
+                        <td style="padding-bottom: 10px;">Художник<br />Артём Петров<br />(картина в заголовке сайта)</td>
                     </tr>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
