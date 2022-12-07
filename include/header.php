@@ -56,7 +56,8 @@ $youth_cinema_status = filter_input(INPUT_GET, 'shortname') == 'cinema' ? ' disa
 $education_sunday_status = filter_input(INPUT_GET, 'shortname') == 'sunday' ? ' disabled' : '';
 $education_preparation_status = filter_input(INPUT_GET, 'shortname') == 'preparation' ? ' disabled' : '';
     
-$pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled': '';
+$pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled' : '';
+$icon_status = filter_input(INPUT_GET, 'shortname') == 'icon' ? ' disabled' : '';
 $contact_status = filter_input(INPUT_GET, 'shortname') == 'contact' ? ' disabled' : '';
 $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabled' : '';
 ?>

@@ -41,6 +41,9 @@
         <a class="nav-link<?=$pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link<?=$icon_status ?>" href="<?=APPLICATION ?>/icon/">Иконопись</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link<?=$contact_status ?>" href="<?=APPLICATION ?>/contact/">Контакты</a>
     </li>
 </ul>
