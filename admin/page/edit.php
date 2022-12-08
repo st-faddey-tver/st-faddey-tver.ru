@@ -40,6 +40,7 @@ if(null !== filter_input(INPUT_POST, "edit_page_submit")) {
         $title = addslashes(filter_input(INPUT_POST, "title"));
         $description = addslashes(filter_input(INPUT_POST, "description"));
         $keywords = addslashes(filter_input(INPUT_POST, "keywords"));
+        $image = addslashes(filter_input(INPUT_POST, 'image'));
         
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -63,7 +64,7 @@ if(null !== filter_input(INPUT_POST, "edit_page_submit")) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update page set name='$name', shortname='$shortname', title='$title', description='$description', keywords='$keywords' where id='$id'";
+        $sql = "update page set name='$name', shortname='$shortname', title='$title', description='$description', keywords='$keywords', image='$image' where id='$id'";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
@@ -73,7 +74,7 @@ if(null !== filter_input(INPUT_POST, "edit_page_submit")) {
 }
 
 // Получение объекта
-$sql = "select name, shortname, title, description, keywords from page where id=$id";
+$sql = "select name, shortname, title, description, keywords, image from page where id=$id";
 $row = (new Fetcher($sql))->Fetch();
 
 $name = filter_input(INPUT_POST, 'name');
@@ -101,6 +102,11 @@ if(empty($description)) {
 $keywords = filter_input(INPUT_POST, 'keywords');
 if(empty($keywords)) {
     $keywords = $row['keywords'];
+}
+
+$image = filter_input(INPUT_POST, 'image');
+if(empty($image)) {
+    $image = $row['image'];
 }
 ?>
 <!DOCTYPE html>
@@ -160,6 +166,10 @@ if(empty($keywords)) {
                         <div class="form-group">
                             <label for="keywords">Keywords</label>
                             <textarea id="keywords" name="keywords" class="form-control" rows="7"><?=$keywords ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <textarea id="image" name="image" class="form-control" rows="7"><?=$image ?></textarea>
                         </div>
                         <button type="submit" id="edit_page_submit" name="edit_page_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
                     </form>

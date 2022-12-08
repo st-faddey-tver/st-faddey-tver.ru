@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
 
 class Page {
     public function __construct($pageName) {
-        $sql = "select id, name, inmenu, title, description, keywords from page where shortname='$pageName'";
+        $sql = "select id, name, inmenu, title, description, keywords, image from page where shortname='$pageName'";
         $row = (new Fetcher($sql))->Fetch();
         $this->shortname = $pageName;
         $this->id = $row['id'];
@@ -12,6 +12,7 @@ class Page {
         $this->title = htmlentities($row['title']);
         $this->description = htmlentities($row['description']);
         $this->keywords = htmlentities($row['keywords']);
+        $this->image = htmlentities($row['image']);
     }
     
     public $id;
@@ -22,6 +23,7 @@ class Page {
     public $title;
     public $description;
     public $keywords;
+    public $image;
 
     public function Top() {
         define('ISINVALID', ' is-invalid');

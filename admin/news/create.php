@@ -42,6 +42,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $title = addslashes(filter_input(INPUT_POST, 'title'));
         $description = addslashes(filter_input(INPUT_POST, 'description'));
         $keywords = addslashes(filter_input(INPUT_POST, 'keywords'));
+        $image = addslashes(filter_input(INPUT_POST, 'image'));
 
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -65,7 +66,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (date, name, shortname, body, front, visible, title, description, keywords) values ('$date', '$name', '$shortname', '$body', $front, $visible, '$title', '$description', '$keywords')";
+        $sql = "insert into news (date, name, shortname, body, front, visible, title, description, keywords, image) values ('$date', '$name', '$shortname', '$body', $front, $visible, '$title', '$description', '$keywords', '$image')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
@@ -154,7 +155,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                         </div>
                         <div class="form-group">
                             <label for="body">Текст<span class="text-danger">*</span></label>
-                            <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
+                            <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" rows="7" required="required"><?= filter_input(INPUT_POST, 'body') ?></textarea>
                             <div class="invalid-feedback">Текст обязательно</div>
                         </div>
                         <div class="form-group">
@@ -163,11 +164,15 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'description')) ?></textarea>
+                            <textarea id="description" name="description" class="form-control" rows="7"><?= htmlentities(filter_input(INPUT_POST, 'description')) ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="keywords">Keywords</label>
-                            <textarea id="keywords" name="keywords" class="form-control" style="height: 200px;"><?= htmlentities(filter_input(INPUT_POST, 'keywords')) ?></textarea>
+                            <textarea id="keywords" name="keywords" class="form-control" rows="7"><?= htmlentities(filter_input(INPUT_POST, 'keywords')) ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <textarea id="image" name="image" class="form-control" rows="7"><?= htmlentities(filter_input(INPUT_POST, 'image')) ?></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" id="news_create_submit" name="news_create_submit" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать</button>

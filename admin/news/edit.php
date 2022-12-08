@@ -49,6 +49,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         $title = addslashes(filter_input(INPUT_POST, 'title'));
         $description = addslashes(filter_input(INPUT_POST, 'description'));
         $keywords = addslashes(filter_input(INPUT_POST, 'keywords'));
+        $image = addslashes(filter_input(INPUT_POST, 'image'));
         
         if(empty($shortname)) {
             $shortname = Romanize($name);
@@ -72,7 +73,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, visible=$visible, title='$title', description='$description', keywords='$keywords' where id=$id";
+        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, visible=$visible, title='$title', description='$description', keywords='$keywords', image='$image' where id=$id";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
@@ -82,7 +83,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
 }
 
 // Получение объекта
-$sql = "select date, name, shortname, body, front, visible, title, description, keywords from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible, title, description, keywords, image from news where id=$id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');
@@ -129,6 +130,11 @@ if(empty($description)) {
 $keywords = filter_input(INPUT_POST, 'keywords');
 if(empty($keywords)) {
     $keywords = $row['keywords'];
+}
+
+$image = filter_input(INPUT_POST, 'image');
+if(empty($image)) {
+    $image = $row['image'];
 }
 ?>
 <!DOCTYPE html>
@@ -199,7 +205,7 @@ if(empty($keywords)) {
                         </div>
                         <div class="form-group">
                             <label for="body">Текст<span class="text-danger">*</span></label>
-                            <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" style="height: 200px;" required="required"><?= htmlentities($body) ?></textarea>
+                            <textarea id="body" name="body" class="form-control editor<?=$body_valid ?>" rows="7" required="required"><?= htmlentities($body) ?></textarea>
                             <div class="invalid-feedback">Текст обязательно</div>
                         </div>
                         <div class="form-group">
@@ -213,6 +219,10 @@ if(empty($keywords)) {
                         <div class="form-group">
                             <label for="keywords">Keywords</label>
                             <textarea id="keywords" name="keywords" class="form-control" rows="7"><?=$keywords ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <textarea id="image" name="image" class="form-control" rows="7"><?=$image ?></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" id="news_edit_submit" name="news_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>

@@ -5,6 +5,7 @@ $page = new Page(filter_input(INPUT_GET, 'shortname'));
 $title = $page->title;
 $description = $page->description;
 $keywords = $page->keywords;
+$image = $page->image;
 ?>
 <!DOCTYPE html>
 <html>
