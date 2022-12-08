@@ -20,6 +20,8 @@ const KEYWORDS = "храм Фаддея, церковь Фаддея, храм �
 <meta property="og:url" content="<?= $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
 <meta property="og:description" content="<?= empty($description) ? DESCRIPTION : $description ?>" />
 <meta property="og:image" content="<?= empty($image) ? $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/images/ikona.jpg" : $image ?>" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="ru_RU" />
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
