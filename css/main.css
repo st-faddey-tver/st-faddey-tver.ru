@@ -156,6 +156,10 @@ nav.neopalimy-navbar .navbar-toggler-icon {
     .events_body img, .news_body img {
         float: left;
     }
+    
+    .content p {
+        text-align: left;
+    }
 }
 
 .ponomar, .fedorovsk, .menaion, .monomakh, .cathisma, .oglavie, .fira, .pochaevsk, .triodion, .acathist, .shafarik, .shafarik3, .pomorsky-dropcaps, .indiction-dropcaps, .vertograd-dropcaps, .sample, .decoration {
