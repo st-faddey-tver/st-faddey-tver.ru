@@ -29,7 +29,6 @@
                 <p><a href="<?=APPLICATION ?>/history/">История</a></p>
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
                 <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
-                <p><a href="<?=APPLICATION ?>/events/">Все события</a></p>
                 <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
