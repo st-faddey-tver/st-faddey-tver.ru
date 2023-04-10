@@ -6,7 +6,7 @@
             <li style="position: relative;">
                 <a class="dropdown-item dropdown-toggle" id="navbardrop_about_saints" data-toggle="dropdown" href="javascript: return false;">Святые храма</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item<?=$about_saints_alexey_benemansky_status ?>" href="<?=APPLICATION ?>/alexey_benemansky/">Алексий Бенеманский</a>
+                    <a class="dropdown-item<?=$about_saints_alexey_benemansky_status ?>" href="<?=APPLICATION ?>/alexey_benemansky/">Алексей Бенеманский</a>
                     <a class="dropdown-item<?=$about_saints_vera_truks_status ?>" href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a>
                     <a class="dropdown-item<?=$about_saints_ilya_benemansky_status ?>" href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a>
                     <a class="dropdown-item<?=$about_saints_ilya_gromoglasov_status ?>" href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a>
