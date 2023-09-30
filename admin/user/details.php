@@ -2,12 +2,11 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
 // Валидация формы
-define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
         
@@ -56,8 +55,7 @@ if($row = $fetcher->Fetch()) {
     $middle_name = $row['middle_name'];
 }
 
-$roles = (new Grabber("select id, local_name from role where id not in (select role_id from user_role where user_id = $id) order by local_name"))->result;
-$myroles = (new Grabber("select ur.user_id, ur.role_id, r.local_name from role r inner join user_role ur on r.id = ur.role_id where ur.user_id = $id order by local_name"))->result;
+$myroles = (new Grabber("select user_id, role_id from user_role where user_id = $id order by local_name"))->result;
 ?>
 <!DOCTYPE html>
 <html>

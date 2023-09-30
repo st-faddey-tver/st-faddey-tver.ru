@@ -3,7 +3,7 @@ include '../../../include/topscripts.php';
 require_once '../../../getid3/getid3.php';
 
 // Авторизация
-if(!IsInRole(array('files', 'admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 

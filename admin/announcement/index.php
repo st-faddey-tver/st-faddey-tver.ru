@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>
@@ -21,7 +21,7 @@ if(!IsInRole(array('admin'))) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li>События</li>
+            <li>Объявления</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -31,16 +31,17 @@ if(!IsInRole(array('admin'))) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>События</h1>
+                    <h1>Объявления</h1>
                 </div>
                 <div class="p-1">
-                    <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать событие</a>
+                    <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать объявление</a>
                 </div>
             </div>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <?php
-                    $sql = "select count(id) events_count from event";
+                    $event_type_announcement = EVENT_TYPE_ANNOUNCEMENT;
+                    $sql = "select count(id) events_count from event where event_type_id = $event_type_announcement";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     
@@ -48,7 +49,7 @@ if(!IsInRole(array('admin'))) {
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select id, date, body, front, visible from event order by date desc, id desc limit $pager_skip, $pager_take";
+                    $sql = "select id, date, body, front, visible from event where event_type_id = $event_type_announcement order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     

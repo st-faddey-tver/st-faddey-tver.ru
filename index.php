@@ -19,7 +19,8 @@ include 'include/topscripts.php';
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 
-                $sql = "select date, body from event where front=1 and visible=1 order by date desc, id desc";
+                $event_type_announcement = EVENT_TYPE_ANNOUNCEMENT;
+                $sql = "select date, body from event where event_type_id = $event_type_announcement and front = 1 and visible = 1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $events_count = 0;
                 

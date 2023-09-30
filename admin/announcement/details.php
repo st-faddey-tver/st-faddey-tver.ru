@@ -3,14 +3,14 @@ include '../../include/topscripts.php';
 include '../../include/myimage/myimage.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
 // Если нет параметра id, переход к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION."/admin/event/");
+    header('Location: '.APPLICATION."/admin/announcement/");
 }
 
 // Обработка отправки формы
@@ -88,7 +88,7 @@ if($row = $fetcher->Fetch()) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/event/">События</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/announcement/">Объявления</a></li>
             <li><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></li>
         </ul>
         <div class="container-fluid">
@@ -103,7 +103,7 @@ if($row = $fetcher->Fetch()) {
                 </div>
                 <div class="p-1">
                     <div class="btn-group">
-                        <a href="<?=APPLICATION ?>/admin/event/" class="btn btn-outline-dark" title="К списку"><i class="fas fa-undo-alt"></i></a>
+                        <a href="<?=APPLICATION ?>/admin/announcement/" class="btn btn-outline-dark" title="К списку"><i class="fas fa-undo-alt"></i></a>
                         <a href="edit.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Редактировать"><i class="fas fa-edit"></i></a>
                         <a href="delete.php<?= BuildQuery("id", $id) ?>" class="btn btn-outline-dark" title="Удалить"><i class="fas fa-trash-alt"></i></a>
                     </div>

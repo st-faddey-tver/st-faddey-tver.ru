@@ -10,7 +10,6 @@ class News {
     public $errorMessage;
 
     public function Top() {
-        define('ISINVALID', ' is-invalid');
         $form_valid = true;
         $error_message = '';
 

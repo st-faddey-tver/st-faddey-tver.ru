@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>
@@ -62,7 +62,7 @@ if(!IsInRole(array('admin'))) {
                         $front = $row['front'];
                         $visible = $row['visible'];
                         ?>
-                        <div class="<?=$is_event ? 'col-12' : 'col-6' ?>">
+                        <div class="col-6">
                             <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
                             <div class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></div>
                             <div class="news_body"><?=$body ?></div>

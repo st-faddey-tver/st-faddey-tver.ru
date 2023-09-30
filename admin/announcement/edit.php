@@ -2,17 +2,16 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
 // Если нет параметра id, переходим к списку
 if(null === filter_input(INPUT_GET, 'id')) {
-    header('Location: '.APPLICATION.'/admin/event/');
+    header('Location: '.APPLICATION.'/admin/announcement/');
 }
 
 // Валидация формы
-define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
@@ -20,7 +19,7 @@ $date_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
+if(null !== filter_input(INPUT_POST, 'announcement_edit_submit')) {
     if(empty(filter_input(INPUT_POST, 'date'))) {
         $date_valid = ISINVALID;
         $form_valid = false;
@@ -42,7 +41,7 @@ if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/event/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/announcement/details.php".BuildQuery('id', $id));
         }
     }
 }
@@ -66,7 +65,7 @@ if(empty($body)) {
     $body = $row['body'];
 }
 
-if(null !== filter_input(INPUT_POST, 'event_edit_submit')) {
+if(null !== filter_input(INPUT_POST, 'announcement_edit_submit')) {
     $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
     $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
 }
@@ -89,9 +88,9 @@ else {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">События</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
-            <li>Редактирование события</li>
+            <li><a href="<?=APPLICATION ?>/admin/announcement/<?= BuildQueryRemove('id') ?>">Объявления</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/announcement/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
+            <li>Редактирование объявление</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -101,7 +100,7 @@ else {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Редактирование события</h1>
+                    <h1>Редактирование объявлени</h1>
                 </div>
                 <div class="p-1">
                     <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
@@ -141,7 +140,7 @@ else {
                         </div>
                         <div class="form-group d-flex justify-content-between mb-auto">
                             <div class="p-1">
-                                <button type="submit" id="event_edit_submit" name="event_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
+                                <button type="submit" id="announcement_edit_submit" name="announcement_edit_submit" class="btn btn-outline-dark"><i class="fas fa-save"></i>&nbsp;Сохранить</button>
                             </div>
                             <div class="p-1">
                                 <button type="button" class="btn btn-outline-dark btn_vk"><i class="fas fa-keyboard"></i>&nbsp;Виртуальная клавиатура</button>

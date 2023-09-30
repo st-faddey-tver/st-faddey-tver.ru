@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>
@@ -53,7 +53,7 @@ if(!IsInRole(array('admin'))) {
                 <tbody>
                     <?php
                     $sql = "select u.id, date_format(u.date, '%d.%m.%Y') date, u.username, u.last_name, u.first_name, u.middle_name, "
-                            . "(select group_concat(distinct r.local_name separator ', ') from role r inner join user_role ur on ur.role_id = r.id where ur.user_id = u.id) roles "
+                            . "(select group_concat(distinct role_id separator ',') from user_role ur where user_id = u.id) roles "
                             . "from user u order by u.last_name asc";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
@@ -66,7 +66,16 @@ if(!IsInRole(array('admin'))) {
                         <td><?= htmlentities($row['last_name']) ?></td>
                         <td><?= htmlentities($row['first_name']) ?></td>
                         <td><?= htmlentities($row['middle_name']) ?></td>
-                        <td><?= htmlentities($row['roles']) ?></td>
+                        <td>
+                            <?php
+                            $role_ids = explode(',', $row['roles']);
+                            $role_local_names = array();
+                            foreach ($role_ids as $role_id) {
+                                array_push($role_local_names, ROLE_LOCAL_NAMES[$role_id]);
+                            }
+                            echo implode(', ', $role_local_names);
+                            ?>
+                        </td>
                         <td><a href="details.php?id=<?=$row['id'] ?>" class="btn btn-outline-dark" title="Подробно" data-toggle="tooltip"><i class="fas fa-user"></i></a></td>
                     </tr>
                     <?php

@@ -1,5 +1,6 @@
 <?php
 include 'define.php';
+include 'constants.php';
 
 global $weekdays;
 
@@ -22,7 +23,7 @@ function GetUserId() {
 }
 
 function IsInRole($param) {
-    $roles = filter_input(INPUT_COOKIE, ROLES);
+    $roles = filter_input(INPUT_COOKIE, ROLE);
     
     if(!empty($roles)){
         $arr_roles = unserialize($roles);
@@ -43,7 +44,7 @@ function IsInRole($param) {
 }
 
 function HasRole() {
-    $roles = filter_input(INPUT_COOKIE, ROLES);
+    $roles = filter_input(INPUT_COOKIE, ROLE);
     
     if(!empty($roles)) {
         $arr_roles = unserialize($roles);
@@ -192,7 +193,6 @@ class Fetcher {
 }
 
 // Валидация формы логина
-define('LOGINISINVALID', ' is-invalid');
 $login_form_valid = true;
 
 $login_username_valid = '';
@@ -202,13 +202,13 @@ $login_password_valid = '';
 if(null !== filter_input(INPUT_POST, 'login_submit')) {
     $login_username = filter_input(INPUT_POST, 'login_username');
     if(empty($login_username)) {
-        $login_username_valid = LOGINISINVALID;
+        $login_username_valid = ISINVALID;
         $login_form_valid = false;
     }
     
     $login_password = filter_input(INPUT_POST, 'login_password');
     if(empty($login_password)) {
-        $login_password_valid = LOGINISINVALID;
+        $login_password_valid = ISINVALID;
         $login_form_valid = false;
     }
     
@@ -242,13 +242,13 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
             
             $roles = array();
             $role_i = 0;
-            $roles_result = (new Grabber("select r.name from user_role ur inner join role r on ur.role_id = r.id where ur.user_id = $user_id"))->result;
+            $roles_result = (new Grabber("select role_id from user_role where user_id = $user_id"))->result;
             
             foreach ($roles_result as $role_row) {
-                $roles[$role_i++] = $role_row['name'];
+                $roles[$role_i++] = ROLE_NAMES[$role_row['role_id']];
             }
             
-            setcookie(ROLES, serialize($roles), 0, '/');
+            setcookie(ROLE, serialize($roles), 0, '/');
             
             header("Refresh:0");
             header('Location: '.APPLICATION.'/admin/');
@@ -263,7 +263,7 @@ if(null !== filter_input(INPUT_POST, 'logout_submit')) {
     setcookie(LAST_NAME, '', 0, "/");
     setcookie(FIRST_NAME, '', 0, "/");
     setcookie(MIDDLE_NAME, '', 0, "/");
-    setcookie(ROLES, '', 0, "/");
+    setcookie(ROLE, '', 0, "/");
     header("Refresh:0");
     header('Location: '.APPLICATION.'/');
 }

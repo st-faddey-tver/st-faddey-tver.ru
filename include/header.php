@@ -46,7 +46,6 @@ $about_treasures_spyridon_status = filter_input(INPUT_GET, 'shortname') == 'st_s
 $about_treasures_alexander_nevsky_status = filter_input(INPUT_GET, 'shortname') == 'st_alexander_nevsky' ? ' disabled' : '';
 $about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/schedule.php' ? ' disabled' : '';
 $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disabled' : '';
-$about_events_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allevents/index.php' ? ' disabled' : '';
 $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
     
 $youth_volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';

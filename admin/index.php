@@ -30,7 +30,7 @@ if(!HasRole()) {
             <h1>Администратор</h1>
             <p><a href="page/">Страницы</a>
             <p><a href="schedule.php">Расписание богослужений</a></p>
-            <p><a href="event/">События</a>
+            <p><a href="announcement">Объявления</a>
             <p><a href="news/">Новости</a></p>
             <p><a href="sitemap/">sitemap.xml</a></p>
         </div>

@@ -18,7 +18,7 @@
             <a class="nav-link<?=$admin_status ?>" href="<?=APPLICATION ?>/admin/">Администратор</a>
         </li>
         <?php
-        if(IsInRole(array('files', 'admin'))):
+        if(IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))):
         ?>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop_files" data-toggle="dropdown">Файлы</a>
@@ -29,10 +29,6 @@
                 <a class="dropdown-item<?=$files_documents_status ?>" href="<?=APPLICATION ?>/admin/files/document/">Документы</a>
             </div>
         </li>
-        <?php
-        endif;
-        if(IsInRole(array('admin'))):
-        ?>
         <li class="nav_item">
             <a class="nav-link<?=$user_status ?>" href="<?=APPLICATION ?>/admin/user/">Пользователи</a>
         </li>

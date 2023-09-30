@@ -26,7 +26,6 @@ class Page {
     public $image;
 
     public function Top() {
-        define('ISINVALID', ' is-invalid');
         $form_valid = true;
         $error_message = '';
 

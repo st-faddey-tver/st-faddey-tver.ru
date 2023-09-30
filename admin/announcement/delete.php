@@ -2,18 +2,18 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
 // Если нет параметра id, переходим к списку
 $id = filter_input(INPUT_GET, 'id');
 if(empty($id)) {
-    header('Location: '.APPLICATION.'/admin/event/');
+    header('Location: '.APPLICATION.'/admin/announcement/');
 }
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'delete_event_submit')) {
+if(null !== filter_input(INPUT_POST, 'delete_announcement_submit')) {
     $id = filter_input(INPUT_POST, 'id');
     $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content";
     
@@ -37,7 +37,7 @@ if(null !== filter_input(INPUT_POST, 'delete_event_submit')) {
             $error_message = (new Executer($sql))->error;
             
             if(empty($error_message)) {
-                header('Location: '.APPLICATION.'/admin/event/'.BuildQueryRemove('id'));
+                header('Location: '.APPLICATION.'/admin/announcement/'.BuildQueryRemove('id'));
             }
         }
     }
@@ -74,8 +74,8 @@ if($row = $fetcher->Fetch()) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/event/<?= BuildQueryRemove('id') ?>">События</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/event/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
+            <li><a href="<?=APPLICATION ?>/admin/announcement/<?= BuildQueryRemove('id') ?>">Объявления</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/announcement/details.php<?= BuildQuery('id', $id) ?>"><?=$date ?></a></li>
             <li>Удаление новости</li>
         </ul>
         <div class="container-fluid">
@@ -101,7 +101,7 @@ if($row = $fetcher->Fetch()) {
             </div>
             <form method="post">
                 <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
-                <button type="submit" id="delete_event_submit" name="delete_event_submit" class="btn btn-danger">Удалить</button>
+                <button type="submit" id="delete_announcement_submit" name="delete_announcement_submit" class="btn btn-danger">Удалить</button>
             </form>
         </div>
         <?php

@@ -2,7 +2,7 @@
 include '../../include/topscripts.php';
 
 // Авторизация
-if(!IsInRole(array('admin'))) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
@@ -14,7 +14,6 @@ if(empty($id)) {
 }
 
 // Валидация формы
-define('ISINVALID', ' is-invalid');
 $form_valid = true;
 $error_message = '';
 
