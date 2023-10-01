@@ -3,6 +3,7 @@ include 'include/topscripts.php';
 $title = "Детская театральная студия &laquo;Раёк&raquo;";
 $description = "Детская театральная студия \"Раёк\"";
 $keywords = "театральная студия, детская театральная студия, студия Раёк";
+$image = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/images/rayok.jpg";
 ?>
 <!DOCTYPE html>
 <html>
