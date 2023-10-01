@@ -13,6 +13,23 @@ $weekdays[5] = 'Пятница';
 $weekdays[6] = 'Суббота';
 $weekdays[7] = 'Воскресенье';
 
+global $months_genitive;
+
+$months_genitive = array();
+
+$months_genitive[1] = "января";
+$months_genitive[2] = "февраля";
+$months_genitive[3] = "марта";
+$months_genitive[4] = "апреля";
+$months_genitive[5] = "мая";
+$months_genitive[6] = "июня";
+$months_genitive[7] = "июля";
+$months_genitive[8] = "августа";
+$months_genitive[9] = "сентабря";
+$months_genitive[10] = "октября";
+$months_genitive[11] = "ноября";
+$months_genitive[12] = "декабря";
+
 // Функции
 function LoggedIn() {
     return !empty(filter_input(INPUT_COOKIE, USERNAME));
@@ -37,20 +54,6 @@ function IsInRole($param) {
         }
         else {
             return in_array($param, $arr_roles);
-        }
-    }
-    
-    return false;
-}
-
-function HasRole() {
-    $roles = filter_input(INPUT_COOKIE, ROLE);
-    
-    if(!empty($roles)) {
-        $arr_roles = unserialize($roles);
-        
-        if(is_array($arr_roles) && count($arr_roles) > 0) {
-            return true;
         }
     }
     
@@ -102,6 +105,51 @@ function BuildQueryRemove($key) {
     unset($get_params[$key]);
     $result = http_build_query($get_params);
 
+    if(!empty($result)) {
+        $result = "?$result";
+    }
+    
+    return $result;
+}
+
+function BuildQueryRemoveArray($array) {
+    $result = '';
+    $get_params = $_GET;
+    foreach($array as $key) {
+        unset($get_params[$key]);
+    }
+    $result = http_build_query($get_params);
+
+    if(!empty($result)) {
+        $result = "?$result";
+    }
+    
+    return $result;
+}
+
+function BuildQueryAddRemove($key, $value, $remove) {
+    $result = '';
+    $get_params = $_GET;
+    $get_params[$key] = $value;
+    unset($get_params[$remove]);
+    $result = http_build_query($get_params);
+    
+    if(!empty($result)) {
+        $result = "?$result";
+    }
+    
+    return $result;
+}
+
+function BuildQueryAddRemoveArray($key, $value, $array) {
+    $result = '';
+    $get_params = $_GET;
+    $get_params[$key] = $value;
+    foreach($array as $item_key) {
+        unset($get_params[$item_key]);
+    }
+    $result = http_build_query($get_params);
+    
     if(!empty($result)) {
         $result = "?$result";
     }
@@ -218,6 +266,8 @@ if(null !== filter_input(INPUT_POST, 'login_submit')) {
         $last_name = '';
         $first_name = '';
         $middle_name = '';
+        $role = '';
+        $role_local = '';
         
         $sql = "select id, username, last_name, first_name, middle_name from user where username='$login_username' and password=password('$login_password')";
         $users_result = (new Grabber($sql))->result;

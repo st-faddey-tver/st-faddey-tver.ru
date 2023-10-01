@@ -2,7 +2,7 @@
 include '../include/topscripts.php';
 
 // Авторизация
-if(!HasRole()) {
+if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 ?>
@@ -32,6 +32,7 @@ if(!HasRole()) {
             <p><a href="schedule.php">Расписание богослужений</a></p>
             <p><a href="announcement">Объявления</a>
             <p><a href="news/">Новости</a></p>
+            <p><a href="theater/">Детская театральная студия &laquo;Раёк&raquo;</a></p>
             <p><a href="sitemap/">sitemap.xml</a></p>
         </div>
         <?php

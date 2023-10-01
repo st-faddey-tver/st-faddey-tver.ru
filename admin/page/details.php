@@ -79,22 +79,22 @@ $error_message = $page->errorMessage;
                     
                     if(filter_input(INPUT_GET, 'mode') != 'edit'):
                     ?>
-                    <hr />
-                    <h2>Изображения</h2>
-                    <?php
-                    $page->GetImages();
-                    ?>
-                    <div class="row">
-                        <div class="col-8">
-                            <?php
-                            $page->ShowUploadImageForm();
-                            ?>
-                        </div>
-                    </div>
-                    <?php
-                    endif;
-                    ?>
                 </div>
+                <hr />
+                <h2>Изображения</h2>
+                <?php
+                $page->GetImages();
+                ?>
+                <div class="row">
+                    <div class="col-8">
+                        <?php
+                        $page->ShowUploadImageForm();
+                        ?>
+                    </div>
+                </div>
+                <?php
+                endif;
+                ?>
             </div>
         </div>
         <?php

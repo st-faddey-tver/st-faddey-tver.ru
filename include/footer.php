@@ -47,6 +47,7 @@
             <div class="d-none d-lg-block col-lg-2">
                 <p>Молодёжь храма</p>
                 <p><a href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a></p>
+                <p><a href="<?=APPLICATION ?>/theater/">Детская театральная студия &laquo;Раёк&raquo;</a></p>
                 <p><a href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
                 <p><a href="<?=APPLICATION ?>/family/">Семейный клуб</a></p>
                 <p><a href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a></p>

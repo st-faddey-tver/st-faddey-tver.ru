@@ -21,7 +21,7 @@
             </div>
             
             <?php
-            if(HasRole()):
+            if(IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))):
             ?>
             <div style="position: absolute; right: 0; bottom: 0;">
                 <a class="btn btn-danger" href="<?=APPLICATION ?>/admin/">Администратор</a>
@@ -49,6 +49,7 @@ $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disa
 $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
     
 $youth_volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
+$youth_theater_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/theater.php' ? ' disabled' : '';
 $youth_club_status = filter_input(INPUT_GET, 'shortname') == 'club' ? ' disabled' : '';
 $youth_family_status = filter_input(INPUT_GET, 'shortname') == 'family' ? ' disabled' : '';
 $youth_cinema_status = filter_input(INPUT_GET, 'shortname') == 'cinema' ? ' disabled' : '';
