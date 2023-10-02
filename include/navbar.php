@@ -27,17 +27,17 @@
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_youth" data-toggle="dropdown">Молодёжь храма</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_education" data-toggle="dropdown">Образование</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item<?=$youth_volunteer_status ?>" href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a>
-            <a class="dropdown-item<?=$youth_theater_status ?>" href="<?=APPLICATION ?>/theater/">Детская театральная студия &laquo;Раёк&raquo;</a>
-            <a class="dropdown-item<?=$youth_club_status ?>" href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a>
-            <a class="dropdown-item<?=$youth_family_status ?>" href="<?=APPLICATION ?>/family/">Семейный клуб</a>
-            <a class="dropdown-item<?=$youth_cinema_status ?>" href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a>
+            <a class="dropdown-item<?=$education_children_status ?>" href="<?=APPLICATION ?>/children/">Воскресная школа для детей</a>
+            <a class="dropdown-item<?=$education_adults_status ?>" href="<?=APPLICATION ?>/adults/">Воскресная школа для взрослых</a>
         </div>
     </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link<?=$education_sunday_status ?>" href="<?=APPLICATION ?>/sunday/">Воскресная школа</a>
+    <li class="nav-item">
+        <a class="nav-link<?=$theater_status ?>" href="<?=APPLICATION ?>/theater/">Театральная студия</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link<?=$volunteer_status ?>" href="<?=APPLICATION ?>/volunteer/">Волонтёры</a>
     </li>
     <li class="nav-item">
         <a class="nav-link<?=$pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a>

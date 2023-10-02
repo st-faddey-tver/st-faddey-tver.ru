@@ -19,8 +19,10 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p><a href="<?=APPLICATION ?>/">На главную</a></p>
-                <p><a href="<?=APPLICATION ?>/sunday/">Воскресная школа</a></p>
+                <p><a href="<?=APPLICATION ?>/theater/">Театральная студия</a></p>
+                <p><a href="<?=APPLICATION ?>/volunteer/">Волонтёры</a></p>
                 <p><a href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></p>
+                <p><a href="<?=APPLICATION ?>/icon/">Иконопись</a></p>
                 <p><a href="<?=APPLICATION ?>/contact/">Контакты</a></p>
                 <p><a href="<?=APPLICATION ?>/donation/">Пожертвовать</a></p>
             </div>
@@ -45,12 +47,9 @@
                 <p><a href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Ал. Невского</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
-                <p>Молодёжь храма</p>
-                <p><a href="<?=APPLICATION ?>/volunteer/">Добровольческое движение</a></p>
-                <p><a href="<?=APPLICATION ?>/theater/">Детская театральная студия &laquo;Раёк&raquo;</a></p>
-                <p><a href="<?=APPLICATION ?>/club/">Молодёжный клуб &laquo;Встреча&raquo;</a></p>
-                <p><a href="<?=APPLICATION ?>/family/">Семейный клуб</a></p>
-                <p><a href="<?=APPLICATION ?>/cinema/">Синематографический клуб</a></p>
+                <p>Образование</p>
+                <p><a href="<?=APPLICATION ?>/children/">Воскресная школа для детей</a></p>
+                <p><a href="<?=APPLICATION ?>/adults/">Воскресная школа для взрослых</a></p>
             </div>
         </div>
         <div class="informers mt-3">

@@ -47,15 +47,12 @@ $about_treasures_alexander_nevsky_status = filter_input(INPUT_GET, 'shortname') 
 $about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/schedule.php' ? ' disabled' : '';
 $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disabled' : '';
 $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
-    
-$youth_volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
-$youth_theater_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/theater.php' ? ' disabled' : '';
-$youth_club_status = filter_input(INPUT_GET, 'shortname') == 'club' ? ' disabled' : '';
-$youth_family_status = filter_input(INPUT_GET, 'shortname') == 'family' ? ' disabled' : '';
-$youth_cinema_status = filter_input(INPUT_GET, 'shortname') == 'cinema' ? ' disabled' : '';
-    
-$education_sunday_status = filter_input(INPUT_GET, 'shortname') == 'sunday' ? ' disabled' : '';
-$education_preparation_status = filter_input(INPUT_GET, 'shortname') == 'preparation' ? ' disabled' : '';
+
+$education_children_status = filter_input(INPUT_GET, 'shortname') == 'children' ? ' disabled' : '';
+$education_adults_status = filter_input(INPUT_GET, 'shortname') == 'adults' ? ' disabled' : '';
+
+$theater_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/theater.php' ? ' disabled' : '';
+$volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
     
 $pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled' : '';
 $icon_status = filter_input(INPUT_GET, 'shortname') == 'icon' ? ' disabled' : '';
