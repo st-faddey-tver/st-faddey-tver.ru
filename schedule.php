@@ -144,8 +144,8 @@ foreach ($schedule as $row) {
                         </tr>
                         <tr class="d-table-row d-md-none">
                             <th>
-                                <div class="d-block font-italic"><?=$dDate->format('j ').$months_genitive[$dDate->format('n')].$dDate->format(' Y г.') ?></div>
-                                <div class="d-block"><?=$weekdays[$dDate->format("N")] ?></div>
+                                <div class="d-block"><?=$dDate->format('j ').$months_genitive[$dDate->format('n')].$dDate->format(' Y г.') ?></div>
+                                <div class="d-block font-italic"><?=$weekdays[$dDate->format("N")] ?></div>
                                 <?php foreach ($date['holidays'] as $holiday): ?>
                                 <div class="text-danger d-block"><?=$holiday['holiday'] ?></div>
                                 <?php endforeach; ?>
