@@ -245,7 +245,10 @@ foreach ($schedule as $row) {
             <?php foreach ($periods as $period): ?>
             <hr />
             <h2>
-                <?=$period['period'] ?>&nbsp;(<?= DateTime::createFromFormat('Y-m-d', $period['start_date'])->format('d.m.Y') ?>)
+                <?php
+                $period_date = DateTime::createFromFormat('Y-m-d', $period['start_date']);
+                ?>
+                <?=$period['period'] ?>&nbsp;(<?=$period_date->format('j ').$months_genitive[$period_date->format('n')].$period_date->format(' Y г.') ?>)
                 <?php if(count($period['dates']) == 0): ?>
                 <form method="post" class="form-inline d-inline">
                     <input type="hidden" id="scroll" name="scroll" />
