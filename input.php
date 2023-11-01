@@ -18,6 +18,15 @@ $keywords = "Ввод на разных языках";
             .rtl {
                 direction: rtl;
             }
+            
+            /* Всплывающее сообщение о копировании ссылки */
+.clipboard_alert {
+    position: absolute;
+    left: 20px;
+    top: 100%;
+    z-index: 100;
+    display: none;
+}
 
             .virtual_keyboard {
                 width: 100%;
