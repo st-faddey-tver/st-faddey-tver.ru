@@ -16,7 +16,7 @@
                     <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/petrov_image_400.png" class="img-fluid" /></a>
                 </div>
                 <div class="col-8 pt-2">
-                    <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_slav_transparent.png?date=20220317" class="img-fluid" /></a>
+                    <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_slav_transparent.png?date=20231120" class="img-fluid" /></a>
                 </div>
             </div>
             
