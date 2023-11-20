@@ -8,7 +8,7 @@
             </div>
             <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; right: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
-                <div style="text-align: right; font-size: smaller;">Св. Фаддей</div>
+                <div style="text-align: right; font-size: smaller;">Сщмч. Фаддей</div>
             </div>
             
             <div class="d-flex d-md-none row">
