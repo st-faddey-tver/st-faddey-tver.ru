@@ -1,7 +1,7 @@
 <div class="top" id="top" style="background-image: url(<?=APPLICATION ?>/images/shapka_zima.jpg); background-position-x: center; background-position-y: top; background-size: cover;">
     <div class="container" style="margin-bottom: 0;">
         <div class="header">
-            <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_prozrachny.png?date=20220317" class="img-fluid d-none d-md-block" /></a>
+            <a href="<?=APPLICATION ?>/"><img src="<?=APPLICATION ?>/images/header_prozrachny.png?date=20231120" class="img-fluid d-none d-md-block" /></a>
             <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Сними обувь твою с ног твоих, ибо место, на котором ты стоишь, есть земля святая.&#8220;
                 <div style="text-align: right; font-size: smaller;">Исх 3:5</div>
