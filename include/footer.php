@@ -35,6 +35,7 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>Святые храма</p>
+                <p><a href="<?=APPLICATION ?>/alexey_benemansky/">Алексей Бенеманский</a></p>
                 <p><a href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_gromoglasov/">Илья Громогласов</a></p>
