@@ -41,7 +41,7 @@ $image = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/im
                 while ($row = $fetcher->Fetch()) {
                     $date = $row['date'];
                     $body = $row['body'];
-                    echo "<hr />";
+                    echo "<hr style='clear: both;' />";
                     echo "<div style='font-size: smaller; font-style: italic;'>".DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y')."</div>";
                     echo $body;
                 }
