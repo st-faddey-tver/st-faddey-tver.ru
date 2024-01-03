@@ -46,7 +46,7 @@ $keywords = "Новости храма святого Фаддея";
                     <div class="col-12 col-md-6">
                         <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
                         <div class="news_name"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$name ?></a></div>
-                        <div class="news_body"><?=$body ?></div>
+                        <div class="news_body"><a href="<?=APPLICATION."/news/".$shortname ?>"><?=$body ?></a></div>
                     </div>
                     <?php
                     endwhile;
