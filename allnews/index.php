@@ -26,7 +26,7 @@ $keywords = "Новости храма святого Фаддея";
                 <h1>Все новости</h1>
                 <div class="row">
                     <?php
-                    $sql = "select count(id) pages_total_count from news";
+                    $sql = "select count(id) pages_total_count from news where visible = 1";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     
@@ -34,7 +34,7 @@ $keywords = "Новости храма святого Фаддея";
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select date, name, shortname, body from news where visible=1 order by date desc, id desc limit $pager_skip, $pager_take";
+                    $sql = "select date, name, shortname, body from news where visible = 1 order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     
                     while ($row = $fetcher->Fetch()):
