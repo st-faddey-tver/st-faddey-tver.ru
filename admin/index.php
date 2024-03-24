@@ -33,6 +33,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
             <p><a href="announcement">Объявления</a>
             <p><a href="news/">Новости</a></p>
             <p><a href="theater/">Детская театральная студия &laquo;Раёк&raquo;</a></p>
+            <p><a href="ustav/">Видеолекции Е. С. Кустовского</a></p>
             <p><a href="sitemap/">sitemap.xml</a></p>
         </div>
         <?php

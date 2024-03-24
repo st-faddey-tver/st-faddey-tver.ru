@@ -50,6 +50,7 @@ $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/all
 
 $education_children_status = filter_input(INPUT_GET, 'shortname') == 'children' ? ' disabled' : '';
 $education_adults_status = filter_input(INPUT_GET, 'shortname') == 'adults' ? ' disabled' : '';
+$education_ustav_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/ustav.php' ? ' disabled' : '';
 
 $theater_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/theater.php' ? ' disabled' : '';
 $volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
