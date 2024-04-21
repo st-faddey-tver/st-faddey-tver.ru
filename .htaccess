@@ -10,8 +10,8 @@ RewriteRule ^(.*)/$ $1 [R=301,L]
 
 RewriteRule ^news/(.*) allnews/details.php?shortname=$1
 RewriteRule ^news allnews/index.php
-RewriteRule ^media/(.*) mediacenter/details.php?shortname=$1
-RewriteRule ^media mediacenter/index.php
+RewriteRule ^mediacenter/(.*) media/details.php?shortname=$1
+RewriteRule ^mediacenter media/index.php
 RewriteRule ^schedule schedule.php
 RewriteRule ^theater theater.php
 RewriteRule ^ustav ustav.php

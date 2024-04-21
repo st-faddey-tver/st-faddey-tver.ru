@@ -32,7 +32,7 @@
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
                 <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
                 <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
-                <p><a href="<?=APPLICATION ?>/media/">Медиацентр</a></p>
+                <p><a href="<?=APPLICATION ?>/mediacenter/">Медиацентр</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>Святые храма</p>
