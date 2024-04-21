@@ -19,7 +19,7 @@ $name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, name, shortname, body, front, visible from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible from news where id = $id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 

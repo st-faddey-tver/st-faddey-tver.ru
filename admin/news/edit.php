@@ -43,6 +43,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
+        $news_type_id = NEWS_TYPE_NEWS;
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         $title = addslashes(filter_input(INPUT_POST, 'title'));
@@ -59,7 +60,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         
         $shortnames_count = 1;
         do {
-            $sql = "select count(id) shortnames_count from news where shortname='$shortname' and id<>$id";
+            $sql = "select count(id) shortnames_count from news where shortname='$shortname' and news_type_id = $news_type_id and id <> $id";
             $fetcher = new Fetcher($sql);
             $error_message = $fetcher->error;
             
@@ -72,7 +73,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update news set date='$date', name='$name', shortname='$shortname', body='$body', front=$front, visible=$visible, title='$title', description='$description', keywords='$keywords', image='$image' where id=$id";
+        $sql = "update news set date = '$date', name = '$name', shortname = '$shortname', body = '$body', front = $front, visible = $visible, title = '$title', description = '$description', keywords = '$keywords', image = '$image' where id = $id";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
@@ -82,7 +83,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
 }
 
 // Получение объекта
-$sql = "select date, name, shortname, body, front, visible, title, description, keywords, image from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible, title, description, keywords, image from news where id = $id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');

@@ -37,7 +37,8 @@ include 'include/topscripts.php';
                 ?>
                 <div class="row">
                 <?php
-                $sql = "select date, name, shortname, body from news where front=1 and visible=1 order by date desc, id desc";
+                $news_type_id = NEWS_TYPE_NEWS;
+                $sql = "select date, name, shortname, body from news where news_type_id = $news_type_id and front = 1 and visible = 1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $news_count = 0;
                 

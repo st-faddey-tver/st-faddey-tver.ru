@@ -18,7 +18,7 @@ if(null !== filter_input(INPUT_POST, 'delete_news_submit')) {
     $id = filter_input(INPUT_POST, 'id');
     $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/";
     
-    $sql = "select filename from news_image where news_id=$id";
+    $sql = "select filename from news_image where news_id = $id";
     $fetcher = new Fetcher($sql);
     while ($row = $fetcher->Fetch()) {
         $filename = $row['filename'];
@@ -30,15 +30,15 @@ if(null !== filter_input(INPUT_POST, 'delete_news_submit')) {
     }
     
     if(empty($error_message)) {
-        $sql = "delete from news_image where news_id=$id";
+        $sql = "delete from news_image where news_id = $id";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
-            $sql = "delete from news_fragment where news_id=$id";
+            $sql = "delete from news_fragment where news_id = $id";
             $error_message = (new Executer($sql))->error;
             
             if(empty($error_message)) {
-                $sql = "delete from news where id=$id";
+                $sql = "delete from news where id = $id";
                 $error_message = (new Executer($sql))->error;
                 
                 if(empty($error_message)) {
@@ -55,7 +55,7 @@ $name = '';
 $shortname = '';
 $body = '';
 
-$sql = "select date, name, shortname, body, front, visible from news where id=$id";
+$sql = "select date, name, shortname, body, front, visible from news where id = $id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 

@@ -3,7 +3,7 @@ include '../include/topscripts.php';
 include '../include/news/news.php';
 
 $shortname = filter_input(INPUT_GET, 'shortname');
-$news_type_id = NEWS_TYPE_NEWS;
+$news_type_id = NEWS_TYPE_MEDIACENTER;
 
 // Получение объекта
 $sql = "select id, date, name, title, description, keywords, image from news where news_type_id = $news_type_id and shortname = '$shortname'";

@@ -41,7 +41,8 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                 <div class="content">
                     <div class="row">
                         <?php
-                        $sql = "select count(id) pages_total_count from news";
+                        $news_type_id = NEWS_TYPE_NEWS;
+                        $sql = "select count(id) pages_total_count from news where news_type_id = $news_type_id";
                         $fetcher = new Fetcher($sql);
                         $error_message = $fetcher->error;
                         
@@ -49,7 +50,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                             $pager_total_count = $row[0];
                         }
                         
-                        $sql = "select id, date, name, shortname, body, front, visible from news order by date desc, id desc limit $pager_skip, $pager_take";
+                        $sql = "select id, date, name, shortname, body, front, visible from news where news_type_id = $news_type_id order by date desc, id desc limit $pager_skip, $pager_take";
                         $fetcher = new Fetcher($sql);
                         $error_message = $fetcher->error;
                         

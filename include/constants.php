@@ -13,6 +13,12 @@ const EVENT_TYPE_USTAV = 3;
 
 const EVENT_TYPES = array(EVENT_TYPE_ANNOUNCEMENT, EVENT_TYPE_THEATER);
 
+// Типы новостей
+const NEWS_TYPE_NEWS = 1;
+const NEWS_TYPE_MEDIACENTER = 2;
+
+const NEW_TYPES = array(NEWS_TYPE_NEWS, NEWS_TYPE_MEDIACENTER);
+
 // Другое
 const ISINVALID = ' is-invalid';
 ?>

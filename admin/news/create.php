@@ -36,6 +36,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
+        $news_type_id = NEWS_TYPE_NEWS;
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         $title = addslashes(filter_input(INPUT_POST, 'title'));
@@ -52,7 +53,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         
         $shortnames_count = 1;
         do {
-            $sql = "select count(id) shortnames_count from news where shortname='$shortname'";
+            $sql = "select count(id) shortnames_count from news where shortname = '$shortname' and news_type_id = $news_type_id";
             $fetcher = new Fetcher($sql);
             $error_message = $fetcher->error;
             
@@ -65,7 +66,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (date, name, shortname, body, front, visible, title, description, keywords, image) values ('$date', '$name', '$shortname', '$body', $front, $visible, '$title', '$description', '$keywords', '$image')";
+        $sql = "insert into news (date, name, shortname, body, news_type_id, front, visible, title, description, keywords, image) values ('$date', '$name', '$shortname', '$body', $news_type_id, $front, $visible, '$title', '$description', '$keywords', '$image')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
