@@ -79,17 +79,17 @@ $news = new News($id);
                 <div class="row small">
                     <div class="col-4 text-left">
                         <?php if(!empty($next_shortname)): ?>
-                        <div class="news_name"><a href="<?=APPLICATION ?>/news/<?=$next_shortname ?>" title="<?=$next_name ?>" data-toggle="tooltip" data-placement="right"><i class="fas fa-arrow-left"></i></a></div>
+                        <div class="news_name"><a href="<?=APPLICATION ?>/mediacenter/<?=$next_shortname ?>" title="<?=$next_name ?>" data-toggle="tooltip" data-placement="right"><i class="fas fa-arrow-left"></i></a></div>
                         <?php endif; ?>
                     </div>
                     <div class="col-4 text-center">
                         <div class="news_name">
-                            <a href="<?=APPLICATION ?>/news/">Все новости</a>
+                            <a href="<?=APPLICATION ?>/mediacenter/">Медиацентр</a>
                         </div>
                     </div>
                     <div class="col-4 text-right">
                         <?php if(!empty($previous_shortname)): ?>
-                        <div class="news_name"><a href="<?=APPLICATION ?>/news/<?=$previous_shortname ?>" title="<?=$previous_name ?>" data-toggle="tooltip" data-placement="left"><i class="fas fa-arrow-right"></i></a></div>
+                        <div class="news_name"><a href="<?=APPLICATION ?>/mediacenter/<?=$previous_shortname ?>" title="<?=$previous_name ?>" data-toggle="tooltip" data-placement="left"><i class="fas fa-arrow-right"></i></a></div>
                         <?php endif; ?>
                     </div>
                 </div>
