@@ -151,9 +151,9 @@ if(empty($image)) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/mediacenter/<?= BuildQueryRemove('id') ?>">Новости</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/mediacenter/<?= BuildQueryRemove('id') ?>">Медиацентр</a></li>
             <li><a href="<?=APPLICATION ?>/admin/mediacenter/details.php<?= BuildQuery('id', $id) ?>"><?=$name ?></a></li>
-            <li>Редактирование новости</li>
+            <li>Редактирование медиа</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -163,7 +163,7 @@ if(empty($image)) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Редактирование новости</h1>
+                    <h1>Редактирование медиа</h1>
                 </div>
                 <div class="p-1">
                     <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
