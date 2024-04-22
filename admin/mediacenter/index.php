@@ -71,7 +71,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                         <div class="col-6">
                             <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=($front ? 'front' : '') ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
                             <div class="news_body"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$body ?></a></div>
-                            <div class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></div>
+                            <div class="news_name mb-4"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></div>
                         </div>
                         <?php
                         endwhile;
