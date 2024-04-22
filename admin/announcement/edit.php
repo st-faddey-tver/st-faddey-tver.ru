@@ -125,7 +125,7 @@ else {
                             </div>
                             <div class="col-4" style="padding-top: 30px;">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=($visible ? " checked='checked'" : '') ?>" />
+                                    <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=($visible ? " checked='checked'" : '') ?> />
                                     <label class="form-check-label" for="visible">Показывать</label>
                                 </div>
                             </div>
