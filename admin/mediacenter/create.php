@@ -36,7 +36,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
-        $news_type_id = NEWS_TYPE_NEWS;
+        $news_type_id = NEWS_TYPE_MEDIACENTER;
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         $title = addslashes(filter_input(INPUT_POST, 'title'));
@@ -72,7 +72,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         $insert_id = $executer->insert_id;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/news/details.php". BuildQuery('id', $insert_id));
+            header('Location: '.APPLICATION."/admin/mediacenter/details.php". BuildQuery('id', $insert_id));
         }
     }
 }
@@ -91,7 +91,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/news/">Новости</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/mediacenter/">Медиацентр</a></li>
             <li>Новая новость</li>
         </ul>
         <div class="container-fluid">
@@ -102,10 +102,10 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Новая новость</h1>
+                    <h1>Новое медиа</h1>
                 </div>
                 <div class="p-1">
-                    <a href="<?=APPLICATION ?>/admin/news/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                    <a href="<?=APPLICATION ?>/admin/mediacenter/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
             <div class="row">
@@ -121,12 +121,12 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                             <div class="col-4" style="padding-top: 30px;">
                                 <div class="form-check">
                                     <?php
-                                    $checked = " checked='checked'";
+                                    $checked = ''; // " checked='checked'";
                                     if(null !== filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
                                         $checked = '';
                                     }
                                     ?>
-                                    <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?>" />
+                                    <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?> disabled="disabled" />
                                     <label class="form-check-label" for="front">На первой странице</label>
                                 </div>
                             </div>

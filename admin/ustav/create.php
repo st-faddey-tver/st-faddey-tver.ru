@@ -105,7 +105,7 @@ if(null !== filter_input(INPUT_POST, 'ustav_create_submit')) {
                                         $checked = " checked='checked'";
                                     }
                                     ?>
-                                    <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=$checked ?>" />
+                                    <input type="checkbox" class="form-check-input" id="visible" name="visible"<?=$checked ?> />
                                     <label class="form-check-label" for="visible">Показывать</label>
                                 </div>
                             </div>
