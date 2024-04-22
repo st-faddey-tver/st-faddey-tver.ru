@@ -77,7 +77,7 @@ if(null !== filter_input(INPUT_POST, 'news_edit_submit')) {
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/news/details.php".BuildQuery('id', $id));
+            header('Location: '.APPLICATION."/admin/mediacenter/details.php".BuildQuery('id', $id));
         }
     }
 }

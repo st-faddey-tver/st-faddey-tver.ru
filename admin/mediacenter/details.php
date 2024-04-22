@@ -88,7 +88,6 @@ $error_message = $news->errorMessage;
                     <div class="row">
                         <div class="col-6">
                             <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>
-                            <div class="news_name"><?=$name ?></div>
                             <div class="news_body"><?=$body ?></div>
                         </div>
                     </div>
