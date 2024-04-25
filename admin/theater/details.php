@@ -60,17 +60,17 @@ if(null !== filter_input(INPUT_POST, 'delete_image_submit')) {
 $id = filter_input(INPUT_GET, "id");
 $date = '';
 $body = '';
-$front = 0;
+$top = 0;
 $visible = 0;
 
-$sql = "select date, body, front, visible from event where id=$id";
+$sql = "select date, body, top, visible from event where id=$id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
 if($row = $fetcher->Fetch()) {
     $date = $row['date'];
     $body = $row['body'];
-    $front = $row['front'];
+    $top = $row['top'];
     $visible = $row['visible'];
 }
 ?>
@@ -89,7 +89,7 @@ if($row = $fetcher->Fetch()) {
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
             <li><a href="<?=APPLICATION ?>/admin/theater/">Детская театральная студия &laquo;Раёк&raquo;</a></li>
-            <li><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></li>
+            <li><?=$date ?> <?=($top ? "top" : "") ?> <?=($visible ? "visible" : "") ?></li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -99,7 +99,7 @@ if($row = $fetcher->Fetch()) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></h1>
+                    <h1><?=$date ?> <?=($top ? "top" : "") ?> <?=($visible ? "visible" : "") ?></h1>
                 </div>
                 <div class="p-1">
                     <div class="btn-group">

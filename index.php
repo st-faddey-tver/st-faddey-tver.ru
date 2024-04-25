@@ -20,7 +20,7 @@ include 'include/topscripts.php';
                 }
                 
                 $event_type_announcement = EVENT_TYPE_ANNOUNCEMENT;
-                $sql = "select date, body from event where event_type_id = $event_type_announcement and front = 1 and visible = 1 order by date desc, id desc";
+                $sql = "select date, body from event where event_type_id = $event_type_announcement and top = 1 and visible = 1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
                 $events_count = 0;
                 

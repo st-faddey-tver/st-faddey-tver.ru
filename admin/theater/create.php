@@ -29,10 +29,10 @@ if(null !== filter_input(INPUT_POST, 'theater_create_submit')) {
         $date = filter_input(INPUT_POST, 'date');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
         $event_type_id = EVENT_TYPE_THEATER;
-        $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
+        $top = filter_input(INPUT_POST, 'top') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1: 0;
         
-        $sql = "insert into event (date, body, event_type_id, front, visible) values ('$date', '$body', $event_type_id, $front, $visible)";
+        $sql = "insert into event (date, body, event_type_id, top, visible) values ('$date', '$body', $event_type_id, $top, $visible)";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
@@ -89,12 +89,12 @@ if(null !== filter_input(INPUT_POST, 'theater_create_submit')) {
                                 <div class="form-check">
                                     <?php
                                     $checked = ''; // " checked='checked'";
-                                    if(null !== filter_input(INPUT_POST, 'front') && !filter_input(INPUT_POST, 'front')) {
+                                    if(null !== filter_input(INPUT_POST, 'top') && !filter_input(INPUT_POST, 'top')) {
                                         $checked = '';
                                     }
                                     ?>
-                                    <input type="checkbox" class="form-check-input" id="front" name="front"<?=$checked ?> disabled="disabled" />
-                                    <label class="form-check-label" for="front">На первой странице</label>
+                                    <input type="checkbox" class="form-check-input" id="top" name="top"<?=$checked ?> disabled="disabled" />
+                                    <label class="form-check-label" for="top">Наверху</label>
                                 </div>
                             </div>
                             <div class="col-4" style="padding-top: 30px;">

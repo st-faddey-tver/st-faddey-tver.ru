@@ -49,7 +49,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select id, date, body, front, visible from event where event_type_id = $event_type_announcement order by date desc, id desc limit $pager_skip, $pager_take";
+                    $sql = "select id, date, body, top, visible from event where event_type_id = $event_type_announcement order by date desc, id desc limit $pager_skip, $pager_take";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     
@@ -57,11 +57,11 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                     $id = $row['id'];
                     $date = $row['date'];
                     $body = $row['body'];
-                    $front = $row['front'];
+                    $top = $row['top'];
                     $visible = $row['visible'];
                     ?>
                     <hr style="clear: both;" />
-                    <h2><a href="details.php<?= BuildQuery("id", $id) ?>"><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></a></h2>
+                    <h2><a href="details.php<?= BuildQuery("id", $id) ?>"><?=$date ?> <?=($top ? "top" : "") ?> <?=($visible ? "visible" : "") ?></a></h2>
                     <?=$body ?>
                     <?php endwhile; ?>
                     <?php

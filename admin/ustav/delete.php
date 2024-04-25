@@ -46,17 +46,17 @@ if(null !== filter_input(INPUT_POST, 'delete_ustav_submit')) {
 // Получение объекта
 $date = '';
 $body = '';
-$front = 0;
+$top = 0;
 $visible = 0;
 
-$sql = "select date, body, front, visible from event where id = $id";
+$sql = "select date, body, top, visible from event where id = $id";
 $fetcher = new Fetcher($sql);
 $error_message = $fetcher->error;
 
 if($row = $fetcher->Fetch()) {
     $date = $row['date'];
     $body = $row['body'];
-    $front = $row['front'];
+    $top = $row['top'];
     $visible = $row['visible'];
 }
 ?>
@@ -92,7 +92,7 @@ if($row = $fetcher->Fetch()) {
                     <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
-            <h2><?=$date ?> <?=($front ? "front" : "") ?> <?=($visible ? "visible" : "") ?></h2>
+            <h2><?=$date ?> <?=($top ? "top" : "") ?> <?=($visible ? "visible" : "") ?></h2>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
                     <hr />

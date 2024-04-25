@@ -34,10 +34,10 @@ if(null !== filter_input(INPUT_POST, 'theater_edit_submit')) {
         $id = filter_input(INPUT_POST, 'id');
         $date = filter_input(INPUT_POST, 'date');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
-        $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
+        $top = filter_input(INPUT_POST, 'top') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         
-        $sql = "update event set date='$date', body='$body', front=$front, visible=$visible where id=$id";
+        $sql = "update event set date='$date', body='$body', top = $top, visible = $visible where id = $id";
         $error_message = (new Executer($sql))->error;
         
         if(empty($error_message)) {
@@ -52,7 +52,7 @@ if(empty($id)) {
     $id = filter_input(INPUT_GET, 'id');
 }
 
-$sql = "select date, body, front, visible from event where id=$id";
+$sql = "select date, body, top, visible from event where id = $id";
 $row = (new Fetcher($sql))->Fetch();
 
 $date = filter_input(INPUT_POST, 'date');
@@ -66,11 +66,11 @@ if(empty($body)) {
 }
 
 if(null !== filter_input(INPUT_POST, 'theater_edit_submit')) {
-    $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
+    $top = filter_input(INPUT_POST, 'top') == 'on' ? 1 : 0;
     $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
 }
 else {
-    $front = $row['front'];
+    $top = $row['top'];
     $visible = $row['visible'];
 }
 ?>
@@ -119,8 +119,8 @@ else {
                             </div>
                             <div class="col-4" style="padding-top: 30px;">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="front" name="front"<?=($front ? " checked='checked'" : '') ?>" disabled="disabled" />
-                                    <label class="form-check-label" for="front">На первой странице</label>
+                                    <input type="checkbox" class="form-check-input" id="top" name="top"<?=($top ? " checked='checked'" : '') ?>" disabled="disabled" />
+                                    <label class="form-check-label" for="top">Наверху</label>
                                 </div>
                             </div>
                             <div class="col-4" style="padding-top: 30px;">
