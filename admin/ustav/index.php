@@ -58,7 +58,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                     $front = $row['front'];
                     $visible = $row['visible'];
                     ?>
-                    <p class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></p>
+                    <p class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a> <?=$visible == 1 ? '(visible)' : '' ?></p>
                     <?php
                     endwhile;
                     ?>
