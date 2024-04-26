@@ -12,11 +12,15 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
         <?php
         include '../include/head.php';
         ?>
+        <style>
+            .news_name {
+                font-size: 1.4rem;
+            }
+        </style>
     </head>
     <body>
         <?php
         include '../include/header.php';
-        include '../../include/pager_top.php';
         ?>
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
@@ -34,40 +38,29 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                     <h1>Видеолекции Е. С. Кустовского</h1>
                 </div>
                 <div class="p-1">
-                    <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать запись</a>
+                    <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать лекцию</a>
                 </div>
             </div>
             <div class="container" style="margin-left: 0;">
-                <div class="content bigfont">
+                <div class="content">
                     <?php
-                    $event_type_ustav = EVENT_TYPE_USTAV;
-                    $sql = "select count(id) events_count from event where event_type_id = $event_type_ustav";
+                    $news_type_id = NEWS_TYPE_USTAV;    
+                    $sql = "select id, date, name, shortname, body, front, visible from news where news_type_id = $news_type_id order by date desc, id desc";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
-                    
-                    if($row = $fetcher->Fetch()) {
-                        $pager_total_count = $row[0];
-                    }
-                    
-                    $sql = "select id, date, body, top, visible from event where event_type_id = $event_type_ustav order by date desc, id desc limit $pager_skip, $pager_take";
-                    $fetcher = new Fetcher($sql);
-                    $error_message = $fetcher->error;
-                    
+                        
                     while ($row = $fetcher->Fetch()):
                     $id = $row['id'];
                     $date = $row['date'];
+                    $name = $row['name'];
+                    $shortname = $row['shortname'];
                     $body = $row['body'];
-                    $top = $row['top'];
+                    $front = $row['front'];
                     $visible = $row['visible'];
                     ?>
-                    <hr style="clear: both;" />
-                    <h2><a href="details.php<?= BuildQuery("id", $id) ?>"><?=$date ?> <?=($top ? "top" : "") ?> <?=($visible ? "visible" : "") ?></a></h2>
-                    <hr />
-                    <div style='font-size: smaller; font-style: italic;'><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?></div>
-                    <?=$body ?>
-                    <?php endwhile; ?>
+                    <p class="news_name"><a href='details.php<?= BuildQuery('id', $id) ?>'><?=$name ?></a></p>
                     <?php
-                    include '../../include/pager_bottom.php';
+                    endwhile;
                     ?>
                 </div>
             </div>
