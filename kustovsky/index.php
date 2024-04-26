@@ -1,24 +1,27 @@
 <?php
-include 'include/topscripts.php';
+include '../include/topscripts.php';
 $title = "Видеолекции Е. С. Кустовского";
-$description = "Видеолекции Евгения Сергеевича Кустовского из группы @posledovanie 'в контакте', а также из канала @KustUstav 'телеграм' с разрешения автора";
-$keywords = "богослужебный устав, лекции по богослужебному уставу, Е. С. Кустовский, Евгений Сергеевич Кустовский";
-$image = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/images/kustovsky.jpg";
+$description = "Видеолекции Е. С. Кустовского";
+$keywords = "Видеолекции Е. С. Кустовского";
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php
-        include 'include/head.php';
+        include '../include/head.php';
         ?>
+        <style>
+            .news_name {
+                font-size: 1.4rem;
+            }
+        </style>
     </head>
     <body>
         <?php
-        include 'include/header.php';
-        include 'include/pager_top.php';
+        include '../include/header.php';
         ?>
         <div class="container">
-            <div class="content bigfont">
+            <div class="content">
                 <?php
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
@@ -29,35 +32,27 @@ $image = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/im
                 <p>За 30 лет Евгений Сергеевич обучил не одну сотню регентов (его ученики служат не только в Москве и Подмосковье, но и за рубежом), подготовил и выпустил много сборников для клироса и учебных пособий.</p>
                 <p>Лекции публикуются с согласия автора.</p>
                 <p><img style='height: 1.8rem; width: auto;' src='https://st-faddey-tver.ru/documents/VK_Compact_Logo.svg' title='ВКонтакте' /><a href='https://vk.com/regentskiekursy' title='ВКонтакте' target='_blank'>https://vk.com/regentskiekursy</a></p>
+                <hr />
                 <?php
-                $event_type_ustav = EVENT_TYPE_USTAV;
-                $sql = "select count(id) from event where event_type_id = $event_type_ustav and visible = 1";
+                $news_type_id = NEWS_TYPE_USTAV;
+                $sql = "select date, name, shortname, body from news where news_type_id = $news_type_id and visible = 1 order by date desc, id desc";
                 $fetcher = new Fetcher($sql);
-                $error_message = $fetcher->error;
-                
-                if($row = $fetcher->Fetch()) {
-                    $pager_total_count = $row[0];
-                }
-                
-                $sql = "select date, body from event where event_type_id = $event_type_ustav and visible = 1 order by date desc, id desc limit $pager_skip, $pager_take";
-                $fetcher = new Fetcher($sql);
-                
-                while ($row = $fetcher->Fetch()) {
-                    $date = $row['date'];
-                    $body = $row['body'];
-                    echo "<hr style='clear: both' />";
-                    // echo "<div style='font-size: smaller; font-style: italic;'>".DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y')."</div>";
-                    echo $body;
-                }
+                    
+                while ($row = $fetcher->Fetch()):
+                $date = $row['date'];
+                $name = $row['name'];
+                $shortname = $row['shortname'];
+                $body = $row['body'];
                 ?>
-                <br style="clear: both;" />
+                <p class="news_name mb-4"><a href="<?=APPLICATION."/ustav/".$shortname ?>"><?=$name ?></a></p>
                 <?php
-                include 'include/pager_bottom.php';
+                endwhile;
                 ?>
             </div>
         </div>
         <?php
-        include 'include/footer.php';
+        include '../include/footer.php';
         ?>
     </body>
 </html>
+
