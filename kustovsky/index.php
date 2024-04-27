@@ -10,18 +10,13 @@ $keywords = "Видеолекции Е. С. Кустовского";
         <?php
         include '../include/head.php';
         ?>
-        <style>
-            .news_name {
-                font-size: 1.4rem;
-            }
-        </style>
     </head>
     <body>
         <?php
         include '../include/header.php';
         ?>
         <div class="container">
-            <div class="content">
+            <div class="content bigfont">
                 <?php
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";

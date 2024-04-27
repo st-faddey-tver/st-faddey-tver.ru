@@ -12,11 +12,6 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
         <?php
         include '../include/head.php';
         ?>
-        <style>
-            .news_name {
-                font-size: 1.4rem;
-            }
-        </style>
     </head>
     <body>
         <?php
@@ -42,7 +37,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                 </div>
             </div>
             <div class="container" style="margin-left: 0;">
-                <div class="content">
+                <div class="content bigfont">
                     <?php
                     $news_type_id = NEWS_TYPE_USTAV;    
                     $sql = "select id, date, name, shortname, body, front, visible from news where news_type_id = $news_type_id order by date desc, id desc";
