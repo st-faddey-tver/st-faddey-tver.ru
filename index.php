@@ -34,7 +34,7 @@ include 'include/topscripts.php';
                                 . "left join schedule_time st on st.schedule_date_id = sd.id "
                                 . "left join schedule_service ss on ss.schedule_time_id = st.id "
                                 . "where sd.date > curdate() "
-                                . "order by sd.date desc, sh.id, st.time, st.endtime, ss.id";
+                                . "order by sd.date desc, sh.id asc, st.time asc, st.endtime asc, ss.id asc";
                         $grabber = new Grabber($sql);
                         $schedule = $grabber->result;
                         $error_message = $grabber->error;
