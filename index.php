@@ -33,7 +33,7 @@ include 'include/topscripts.php';
                                 . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
                                 . "left join schedule_time st on st.schedule_date_id = sd.id "
                                 . "left join schedule_service ss on ss.schedule_time_id = st.id "
-                                . "where sd.date > curdate() "
+                                . "where sd.date >= curdate() "
                                 . "order by sd.date desc, sh.id asc, st.time asc, st.endtime asc, ss.id asc";
                         $grabber = new Grabber($sql);
                         $schedule = $grabber->result;
@@ -110,8 +110,11 @@ include 'include/topscripts.php';
                         ?>
                         <table class="table table-sm">
                             <?php
+                            $current_date = date("Y-m-d");
+                            while($current_date == date("Y-m-d")):
                             $date = array_pop($dates);
                             if(!empty($date)):
+                            $current_date = $date['date'];
                             $dDate = DateTime::createFromFormat ('Y-m-d', $date['date']);
                             ?>
                             <thead class="thead-light">
@@ -144,7 +147,10 @@ include 'include/topscripts.php';
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            <?php endif; ?>
+                            <?php 
+                            endif;
+                            endwhile;
+                            ?>
                         </table>
                         <div class='text-right mb-4' style='clear: both;'><a href='/schedule/' class='btn btn-sm btn-light'>Расписание богослужений&nbsp;<i class='fas fa-angle-double-right'></i></a></div>
                     </div>
