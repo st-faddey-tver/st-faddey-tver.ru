@@ -148,6 +148,8 @@ include 'include/topscripts.php';
                                 <?php endforeach; ?>
                             </tbody>
                             <?php 
+                            else:
+                                $current_date = null;
                             endif;
                             endwhile;
                             ?>
