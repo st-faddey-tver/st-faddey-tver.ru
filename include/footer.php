@@ -13,7 +13,11 @@
                     </tr>
                     <tr>
                         <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
-                        <td>Дмитрий Пантелеичев<br />(разработка сайта)</td>
+                        <td style="padding-bottom: 10px;">Дмитрий Пантелеичев<br />(разработка сайта)</td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top; padding-right: 10px;"><i class="far fa-copyright"></i></td>
+                        <td>Владимир Левицкий (VLStudio)<br />(медийное сопровождение)</td>
                     </tr>
                 </table>
             </div>
