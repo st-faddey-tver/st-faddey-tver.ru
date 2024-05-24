@@ -1,3 +1,13 @@
+<!--LiveInternet counter-->
+<script>
+new Image().src = "https://counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,150))+
+";"+Math.random();
+</script>
+<!--/LiveInternet-->
 <div class="top" id="top" style="background-image: url(<?=APPLICATION ?>/images/shapka_zima.jpg); background-position-x: center; background-position-y: top; background-size: cover;">
     <div class="container" style="margin-bottom: 0;">
         <div class="header">
