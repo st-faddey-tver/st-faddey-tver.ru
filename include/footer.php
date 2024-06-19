@@ -65,6 +65,11 @@
                 target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/75082543/3_0_FFFFFFFF_EFEFEFFF_0_pageviews" 
                 style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="75082543" data-lang="ru" /></a>
             <!-- /Yandex.Metrika informer -->
+            <!-- Top.Mail.Ru logo -->
+            <a href="https://top-fwz1.mail.ru/jump?from=3527895">
+                <img src="https://top-fwz1.mail.ru/counter?id=3527895;t=470;l=1" height="31" width="88" alt="Top.Mail.Ru" style="border:0;" />
+            </a>
+            <!-- /Top.Mail.Ru logo -->
             <!--LiveInternet logo-->
             <a href="https://www.liveinternet.ru/click" 
                 target="_blank"><img src="https://counter.yadro.ru/logo?11.6" 
