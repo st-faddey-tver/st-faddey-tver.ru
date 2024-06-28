@@ -67,8 +67,7 @@
             <!-- /Yandex.Metrika informer -->
             <!-- Top.Mail.Ru logo -->
             <a href="https://top-fwz1.mail.ru/jump?from=3527895">
-                <img src="https://top-fwz1.mail.ru/counter?id=3527895;t=470;l=1" height="31" width="88" alt="Top.Mail.Ru" style="border:0;" />
-            </a>
+            <img src="https://top-fwz1.mail.ru/counter?id=3527895;t=494;l=1" height="31" width="88" alt="Top.Mail.Ru" style="border:0;" /></a>
             <!-- /Top.Mail.Ru logo -->
             <!--LiveInternet logo-->
             <a href="https://www.liveinternet.ru/click" 
