@@ -26,7 +26,7 @@ const TEMPLE_MINA = 2;
 const TEMPLE_MAIN = TEMPLE_FADDEY;
 
 const TEMPLE_NAMES = array(TEMPLE_FADDEY => "Храм сщмч. Фаддея", TEMPLE_MINA => "Храм мчч. Мины, Викентия и Виктора");
-const TEMPLE_COLORS = array(TEMPLE_FADDEY => "Black", TEMPLE_MINA => "Fuchsia");
+const TEMPLE_COLORS = array(TEMPLE_FADDEY => "Black", TEMPLE_MINA => "Blue");
 
 // Другое
 const ISINVALID = ' is-invalid';
