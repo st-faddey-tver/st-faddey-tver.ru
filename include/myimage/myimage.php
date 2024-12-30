@@ -32,7 +32,7 @@ class MyImage {
         $dest_height = 0;
         $dest_width = 0;
         
-        if((empty($max_height) || $max_height >= $this->height) && ($max_width == 0 || $max_width >= $this->width)) {
+        if((empty($max_height) || $max_height >= $this->height) && (empty($max_width) || $max_width >= $this->width)) {
             $result = move_uploaded_file($this->sourcefile, $targetFolder.$this->filename);
         }
         else {
