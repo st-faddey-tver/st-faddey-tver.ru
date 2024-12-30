@@ -18,7 +18,15 @@ const NEWS_TYPE_NEWS = 1;
 const NEWS_TYPE_MEDIACENTER = 2;
 const NEWS_TYPE_USTAV = 3;
 
-const NEW_TYPES = array(NEWS_TYPE_NEWS, NEWS_TYPE_MEDIACENTER);
+const NEWS_TYPES = array(NEWS_TYPE_NEWS, NEWS_TYPE_MEDIACENTER);
+
+// Храмы
+const TEMPLE_FADDEY = 1;
+const TEMPLE_MINA = 2;
+const TEMPLE_MAIN = TEMPLE_FADDEY;
+
+const TEMPLE_NAMES = array(TEMPLE_FADDEY => "Храм сщмч. Фаддея", TEMPLE_MINA => "Храм мчч. Мины, Викентия и Виктора");
+const TEMPLE_COLORS = array(TEMPLE_FADDEY => "Black", TEMPLE_MINA => "Fuchsia");
 
 // Другое
 const ISINVALID = ' is-invalid';

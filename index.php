@@ -27,7 +27,7 @@ include 'include/topscripts.php';
                         <?php
                         $sql = "select sd.id sd_id, sd.date, "
                                 . "sh.id sh_id, sh.name holiday, "
-                                . "st.id st_id, st.time, st.endtime, "
+                                . "st.id st_id, st.time, st.endtime, st.temple_id, "
                                 . "ss.id ss_id, ss.name service "
                                 . "from schedule_date sd "
                                 . "left join schedule_holiday sh on sh.schedule_date_id = sd.id "
@@ -81,6 +81,7 @@ include 'include/topscripts.php';
                                         $time['id'] = $st_id;
                                         $time['time'] = $row['time'];
                                         $time['endtime'] = $row['endtime'];
+                                        $time['temple_id'] = $row['temple_id'];
                                         $time['services'] = array();
                                         $times[$st_id] = $time;
                                         $date['times'] = $times;
@@ -130,16 +131,30 @@ include 'include/topscripts.php';
                             </thead>
                             <tbody style="border-bottom: 1px solid #dee2e6;">
                                 <?php
+                                $old_temple = TEMPLE_FADDEY;
+                                
                                 foreach ($date['times'] as $time):
                                 $tTime = DateTime::createFromFormat("H:i:s", $time['time']);
                                 $tEndTime = null;
                                 if(!empty($time['endtime'])) {
                                     $tEndTime = DateTime::createFromFormat("H:i:s", $time['endtime']);
                                 }
+                                $tTempleId = $time['temple_id'];
+                                
+                                $new_temple = $tTempleId;
+                                if($new_temple != $old_temple):
                                 ?>
                                 <tr>
-                                    <td class="align-top w-25"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?></td>
-                                    <td class="align-top">
+                                    <td class="w-25"></td>
+                                    <td class="align-top" style="font-weight: bold; font-size: small; padding-top: .1rem; padding-bottom: .1rem; color: <?=TEMPLE_COLORS[$new_temple] ?>"><?=TEMPLE_NAMES[$new_temple] ?></td>
+                                </tr>
+                                <?php
+                                $old_temple = $new_temple;
+                                endif;
+                                ?>
+                                <tr>
+                                    <td class="align-top w-25" style="color: <?=TEMPLE_COLORS[$tTempleId] ?>"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?></td>
+                                    <td class="align-top" style="color: <?=TEMPLE_COLORS[$tTempleId] ?>">
                                         <?php foreach ($time['services'] as $service): ?>
                                         <div><?=$service['service'] ?></div>
                                         <?php endforeach; ?>

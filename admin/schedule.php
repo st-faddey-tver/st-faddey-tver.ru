@@ -79,12 +79,13 @@ if(null !== filter_input(INPUT_POST, 'time_create_submit')) {
     $schedule_date_id = filter_input(INPUT_POST, 'schedule_date_id');
     $time = filter_input(INPUT_POST, 'time');
     $endtime = empty(filter_input(INPUT_POST, 'endtime')) ? 'NULL' : "'".filter_input(INPUT_POST, 'endtime')."'";
+    $temple_id = filter_input(INPUT_POST, 'temple_id');
     
     if(empty($time)) {
         $error_message = "Время обязательно.";
     }
     else {
-        $sql = "insert into schedule_time (schedule_date_id, time, endtime) values ($schedule_date_id, '$time', $endtime)";
+        $sql = "insert into schedule_time (schedule_date_id, time, endtime, temple_id) values ($schedule_date_id, '$time', $endtime, $temple_id)";
         $error_message = (new Executer($sql))->error;
     }
 }
@@ -122,7 +123,7 @@ if(null !== filter_input(INPUT_POST, 'service_delete_submit')) {
 $sql = "select sp.id sp_id, sp.start_date, sp.name period, "
         . "sd.id sd_id, sd.date, "
         . "sh.id sh_id, sh.name holiday, "
-        . "st.id st_id, st.time, st.endtime, "
+        . "st.id st_id, st.time, st.endtime, st.temple_id, "
         . "ss.id ss_id, ss.name service "
         . "from schedule_period sp "
         . "left join schedule_date sd on sd.schedule_period_id = sp.id "
@@ -190,6 +191,7 @@ foreach ($schedule as $row) {
                 $time['id'] = $st_id;
                 $time['time'] = $row['time'];
                 $time['endtime'] = $row['endtime'];
+                $time['temple_id'] = $row['temple_id'];
                 $time['services'] = array();
                 $times[$st_id] = $time;
                 $date['times'] = $times;
@@ -311,9 +313,10 @@ foreach ($schedule as $row) {
                     if(!empty($time['endtime'])) {
                         $tEndTime = DateTime::createFromFormat("H:i:s", $time['endtime']);
                     }
+                    $tTempleId = $time['temple_id'];
                     ?>
                     <tr>
-                        <td class="align-top"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?></td>
+                        <td class="align-top"><?=$tTime->format('H:i') ?><?= empty($tEndTime) ? '' : '&nbsp;&ndash;&nbsp;'.$tEndTime->format('H:i') ?> (<?=TEMPLE_NAMES[$tTempleId] ?>)</td>
                         <td class="align-top" colspan="2">
                             <?php foreach ($time['services'] as $service): ?>
                             <div class="mt-1 mb-1">
@@ -355,8 +358,13 @@ foreach ($schedule as $row) {
                                 <input type="hidden" id="scroll" name="scroll" />
                                 <input type="hidden" id="schedule_date_id" name="schedule_date_id" value="<?=$date['id'] ?>" />
                                 <input type="time" id="time" name="time" class="form-control" required="required" />
+                                <input type="time" id="endtime" name="endtime" class="form-control" />
                                 <div class="input-group">
-                                    <input type="time" id="endtime" name="endtime" class="form-control" />
+                                    <select name="temple_id" class="form-control">
+                                        <?php foreach (TEMPLE_NAMES as $key => $value): ?>
+                                        <option value="<?=$key ?>"><?=$value ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <div class="input-group-append">
                                         <button type="submit" id="time_create_submit" name="time_create_submit" class="btn btn-outline-dark" title="Добавить время" data-toggle="tooltip"><i class="fas fa-plus"></i></button>
                                     </div>
