@@ -60,6 +60,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 $home_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? ' disabled' : '';
     
 $about_history_status = filter_input(INPUT_GET, 'shortname') == 'history' ? ' disabled' : '';
+$about_mina_status = filter_input(INPUT_GET, 'shortname') == 'mina_viktor_vikenty' ? ' disabled' : '';
 $about_saints_alexey_benemansky_status = filter_input(INPUT_GET, 'shortname') == 'alexey_benemansky' ? ' disabled' : '';
 $about_saints_vera_truks_status = filter_input(INPUT_GET, 'shortname') == 'vera_truks' ? ' disabled' : '';
 $about_saints_ilya_benemansky_status = filter_input(INPUT_GET, 'shortname') == 'ilya_benemansky' ? ' disabled' : '';

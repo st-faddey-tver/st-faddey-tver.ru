@@ -31,15 +31,16 @@
                 <p><a href="<?=APPLICATION ?>/donation/">Пожертвовать</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
-                <p>О храме</p>
-                <p><a href="<?=APPLICATION ?>/history/">История</a></p>
+                <p>О приходе</p>
+                <p><a href="<?=APPLICATION ?>/history/">Храм сщмч. Фаддея архиепископа Тверского</a></p>
+                <p><a href="<?=APPLICATION ?>/mina_viktor_vikenty/">Храм мчч. Мины, Виктора и Викентия</a></p>
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
                 <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
                 <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
                 <p><a href="<?=APPLICATION ?>/mediacenter/">Медиацентр</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
-                <p>Святые храма</p>
+                <p>Святые прихода</p>
                 <p><a href="<?=APPLICATION ?>/alexey_benemansky/">Алексей Бенеманский</a></p>
                 <p><a href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a></p>
                 <p><a href="<?=APPLICATION ?>/ilya_benemansky/">Илья Бенеманский</a></p>
@@ -48,7 +49,7 @@
                 <p><a href="<?=APPLICATION ?>/faddey_uspensky/">Фаддей Успенский</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
-                <p>Святыни храма</p>
+                <p>Святыни прихода</p>
                 <p><a href="<?=APPLICATION ?>/st_spyridon/">Икона св. Спиридона</a></p>
                 <p><a href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Ал. Невского</a></p>
             </div>

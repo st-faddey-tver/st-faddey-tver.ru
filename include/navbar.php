@@ -1,10 +1,11 @@
 <ul class="navbar-nav">
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_about" data-toggle="dropdown">О храме</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_about" data-toggle="dropdown">О приходе</a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/history/">История</a></li>
+            <li><a class="dropdown-item<?=$about_history_status ?>" href="<?=APPLICATION ?>/history/">Храм сщмч. Фаддея архиепископа Тверского</a></li>
+            <li><a class="dropdown-item<?=$about_mina_status ?>" href="<?=APPLICATION ?>/mina_viktor_vikenty/">Храм мчч. Мины, Виктора и Викентия</a></li>
             <li style="position: relative;">
-                <a class="dropdown-item dropdown-toggle" id="navbardrop_about_saints" data-toggle="dropdown" href="javascript: return false;">Святые храма</a>
+                <a class="dropdown-item dropdown-toggle" id="navbardrop_about_saints" data-toggle="dropdown" href="javascript: return false;">Святые прихода</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item<?=$about_saints_alexey_benemansky_status ?>" href="<?=APPLICATION ?>/alexey_benemansky/">Алексей Бенеманский</a>
                     <a class="dropdown-item<?=$about_saints_vera_truks_status ?>" href="<?=APPLICATION ?>/vera_truks/">Вера Трукс</a>
@@ -15,7 +16,7 @@
                 </div>
             </li>
             <li style="position: relative;">
-                <a class="dropdown-item dropdown-toggle" id="navbardrop_about_treasures" data-toggle="dropdown" href="javascript: return false;">Святыни храма</a>
+                <a class="dropdown-item dropdown-toggle" id="navbardrop_about_treasures" data-toggle="dropdown" href="javascript: return false;">Святыни прихода</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item<?=$about_treasures_spyridon_status ?>" href="<?=APPLICATION ?>/st_spyridon/">Икона св. Спиридона Тримифунтского</a>
                     <a class="dropdown-item<?=$about_treasures_alexander_nevsky_status ?>" href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Александра Невского</a>
