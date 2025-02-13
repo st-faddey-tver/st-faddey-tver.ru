@@ -69,6 +69,8 @@ $about_saints_nikolay_maslov_status = filter_input(INPUT_GET, 'shortname') == 'n
 $about_saints_faddey_uspensky_status = filter_input(INPUT_GET, 'shortname') == 'faddey_uspensky' ? ' disabled' : '';
 $about_treasures_spyridon_status = filter_input(INPUT_GET, 'shortname') == 'st_spyridon' ? ' disabled' : '';
 $about_treasures_alexander_nevsky_status = filter_input(INPUT_GET, 'shortname') == 'st_alexander_nevsky' ? ' disabled' : '';
+$about_volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';    
+$about_pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled' : '';
 $about_schedule_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/schedule.php' ? ' disabled' : '';
 $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disabled' : '';
 $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
@@ -78,10 +80,8 @@ $education_children_status = filter_input(INPUT_GET, 'shortname') == 'children' 
 $education_adults_status = filter_input(INPUT_GET, 'shortname') == 'adults' ? ' disabled' : '';
 $education_ustav_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/kustovsky/index.php' ? ' disabled' : '';
 
+$articles_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/article/index.php' ? ' disabled' : '';
 $theater_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/theater.php' ? ' disabled' : '';
-$volunteer_status = filter_input(INPUT_GET, 'shortname') == 'volunteer' ? ' disabled' : '';
-    
-$pilgrimage_status = filter_input(INPUT_GET, 'shortname') == 'pilgrimage' ? ' disabled' : '';
 $icon_status = filter_input(INPUT_GET, 'shortname') == 'icon' ? ' disabled' : '';
 $contact_status = filter_input(INPUT_GET, 'shortname') == 'contact' ? ' disabled' : '';
 $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabled' : '';

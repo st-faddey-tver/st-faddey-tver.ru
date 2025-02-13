@@ -22,6 +22,8 @@
                     <a class="dropdown-item<?=$about_treasures_alexander_nevsky_status ?>" href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Александра Невского</a>
                 </div>
             </li>
+            <li><a class="dropdown-item<?=$about_volunteer_status ?>" href="<?=APPLICATION ?>/volunteer/">Волонтёры</a></li>
+            <li><a class="dropdown-item<?=$about_pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></li>
             <li><a class="dropdown-item<?=$about_schedule_status ?>" href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></li>
             <li><a class="dropdown-item<?=$about_clergy_status ?>" href="<?=APPLICATION ?>/clergy/">Духовенство</a></li>
             <li><a class="dropdown-item<?=$about_news_status ?>" href="<?=APPLICATION ?>/news/">Все новости</a></li>
@@ -37,13 +39,10 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link<?=$articles_status ?>" href="<?=APPLICATION ?>/articles/">Приходские заметки</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link<?=$theater_status ?>" href="<?=APPLICATION ?>/theater/">Театральная студия</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link<?=$volunteer_status ?>" href="<?=APPLICATION ?>/volunteer/">Волонтёры</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link<?=$pilgrimage_status ?>" href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a>
     </li>
     <li class="nav-item">
         <a class="nav-link<?=$icon_status ?>" href="<?=APPLICATION ?>/icon/">Иконопись</a>

@@ -10,6 +10,8 @@ RewriteRule ^(.*)/$ $1 [R=301,L]
 
 RewriteRule ^news/(.*) allnews/details.php?shortname=$1
 RewriteRule ^news allnews/index.php
+RewriteRule ^articles/(.*) article/details.php?shortname=$1
+RewriteRule ^articles article/index.php
 RewriteRule ^mediacenter/(.*) media/details.php?shortname=$1
 RewriteRule ^mediacenter media/index.php
 RewriteRule ^ustav/(.*) kustovsky/details.php?shortname=$1
