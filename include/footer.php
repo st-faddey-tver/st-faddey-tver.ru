@@ -23,9 +23,8 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p><a href="<?=APPLICATION ?>/">На главную</a></p>
+                <p><a href="<?=APPLICATION ?>/articles/">Приходские заметки</a></p>
                 <p><a href="<?=APPLICATION ?>/theater/">Театральная студия</a></p>
-                <p><a href="<?=APPLICATION ?>/volunteer/">Волонтёры</a></p>
-                <p><a href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></p>
                 <p><a href="<?=APPLICATION ?>/icon/">Иконопись</a></p>
                 <p><a href="<?=APPLICATION ?>/contact/">Контакты</a></p>
                 <p><a href="<?=APPLICATION ?>/donation/">Пожертвовать</a></p>
@@ -34,6 +33,8 @@
                 <p>О приходе</p>
                 <p><a href="<?=APPLICATION ?>/history/">Храм сщмч. Фаддея архиепископа Тверского</a></p>
                 <p><a href="<?=APPLICATION ?>/mina_viktor_vikenty/">Храм мчч. Мины, Виктора и Викентия</a></p>
+                <p><a href="<?=APPLICATION ?>/volunteer/">Волонтёры</a></p>
+                <p><a href="<?=APPLICATION ?>/pilgrimage/">Паломничество</a></p>
                 <p><a href="<?=APPLICATION ?>/schedule/">Расписание богослужений</a></p>
                 <p><a href="<?=APPLICATION ?>/clergy/">Духовенство</a></p>
                 <p><a href="<?=APPLICATION ?>/news/">Все новости</a></p>
