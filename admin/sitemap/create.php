@@ -87,7 +87,7 @@ if(null !== filter_input(INPUT_POST, 'sitemap_create_submit')) {
                                 <div class="form-group">
                                     <label for="changefreq">changefreq</label>
                                     <select class="form-control" id="changefreq" name="changefreq">
-                                        <option value="">...</option>
+                                        <option value="" hidden="">...</option>
                                         <option value="always"<?= filter_input(INPUT_POST, 'changefreq') == "always" ? " selected='selected'" : "" ?>>always</option>
                                         <option value="hourly"<?= filter_input(INPUT_POST, 'changefreq') == "hourly" ? " selected='selected'" : "" ?>>hourly</option>
                                         <option value="daily"<?= filter_input(INPUT_POST, 'changefreq') == "daily" ? " selected='selected'" : "" ?>>daily</option>

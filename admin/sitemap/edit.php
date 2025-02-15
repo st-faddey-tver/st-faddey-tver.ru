@@ -122,7 +122,7 @@ if(null === $priority) {
                                 <div class="form-group">
                                     <label for="changefreq">changefreq</label>
                                     <select class="form-control" id="changefreq" name="changefreq">
-                                        <option value="">...</option>
+                                        <option value="" hidden="">...</option>
                                         <option value="always"<?= $changefreq == "always" ? " selected='selected'" : "" ?>>always</option>
                                         <option value="hourly"<?= $changefreq == "hourly" ? " selected='selected'" : "" ?>>hourly</option>
                                         <option value="daily"<?= $changefreq == "daily" ? " selected='selected'" : "" ?>>daily</option>

@@ -76,9 +76,9 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
             ?>
             </table>
             <p>&lt;/urlset&gt;</p>
-            <?php
-            include '../include/footer.php';
-            ?>
         </div>
+        <?php
+        include '../include/footer.php';
+        ?>
     </body>
 </html>

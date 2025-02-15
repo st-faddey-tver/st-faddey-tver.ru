@@ -13,7 +13,6 @@ if(empty($id)) {
 }
 
 // Получение объекта
-$id = filter_input(INPUT_GET, "id");
 $loc = '';
 $lastmod = '';
 $changefreq = '';

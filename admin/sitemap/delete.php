@@ -24,7 +24,6 @@ if(null !== filter_input(INPUT_POST, 'delete_sitemap_submit')) {
 }
 
 // Получение объекта
-$id = filter_input(INPUT_GET, "id");
 $loc = '';
 $lastmod = '';
 $changefreq = '';
@@ -95,7 +94,7 @@ if($row = $fetcher->Fetch()) {
             &nbsp;&nbsp;&lt;/url&gt;
             <hr style="clear: both" />
             <form method="post">
-                <input type="hidden" id="id" name="id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
+                <input type="hidden" id="id" name="id" value="<?= $id ?>" />
                 <button type="submit" id="delete_sitemap_submit" name="delete_sitemap_submit" class="btn btn-danger">Удалить</button>
             </form>
         </div>
