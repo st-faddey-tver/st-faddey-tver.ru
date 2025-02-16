@@ -73,7 +73,7 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (date, author_id, name, shortname, body, news_type_id, front, visible, title, description, keywords, image) values ('$date', $author_id, '$name', '$shortname', '$body', $news_type_id, $front, $visible, '$title', '$description', '$keywords', '$image')"; echo $sql;
+        $sql = "insert into news (date, author_id, name, shortname, body, news_type_id, front, visible, title, description, keywords, image) values ('$date', $author_id, '$name', '$shortname', '$body', $news_type_id, $front, $visible, '$title', '$description', '$keywords', '$image')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
