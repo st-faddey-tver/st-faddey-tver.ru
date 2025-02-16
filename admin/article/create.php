@@ -10,12 +10,18 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
 $form_valid = true;
 $error_message = '';
 
+$author_id_valid = '';
 $name_valid = '';
 $shortname_valid = '';
 $body_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
+    if(empty(filter_input(INPUT_POST, 'author_id'))) {
+        $author_id_valid = ISINVALID;
+        $form_valid = false;
+    }
+    
     if(empty(filter_input(INPUT_POST, 'name'))) {
         $name_valid = ISINVALID;
         $form_valid = false;
@@ -33,10 +39,11 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
     
     if($form_valid) {
         $date = filter_input(INPUT_POST, 'date');
+        $author_id = filter_input(INPUT_POST, 'author_id');
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = filter_input(INPUT_POST, 'shortname');
         $body = addslashes(filter_input(INPUT_POST, 'body'));
-        $news_type_id = NEWS_TYPE_USTAV;
+        $news_type_id = NEWS_TYPE_ARTICLES;
         $front = filter_input(INPUT_POST, 'front') == 'on' ? 1 : 0;
         $visible = filter_input(INPUT_POST, 'visible') == 'on' ? 1 : 0;
         $title = addslashes(filter_input(INPUT_POST, 'title'));
@@ -66,13 +73,13 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into news (date, name, shortname, body, news_type_id, front, visible, title, description, keywords, image) values ('$date', '$name', '$shortname', '$body', $news_type_id, $front, $visible, '$title', '$description', '$keywords', '$image')";
+        $sql = "insert into news (date, author_id, name, shortname, body, news_type_id, front, visible, title, description, keywords, image) values ('$date', $author_id, '$name', '$shortname', '$body', $news_type_id, $front, $visible, '$title', '$description', '$keywords', '$image')"; echo $sql;
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/ustav/details.php". BuildQuery('id', $insert_id));
+            header('Location: '.APPLICATION."/admin/article/details.php". BuildQuery('id', $insert_id));
         }
     }
 }
@@ -91,8 +98,8 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/ustav/">Видеолекции Е. С. Кустовского</a></li>
-            <li>Новая лекция</li>
+            <li><a href="<?=APPLICATION ?>/admin/article/">Приходские заметки</a></li>
+            <li>Новая статья</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -102,10 +109,10 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Новая лекция</h1>
+                    <h1>Новая статья</h1>
                 </div>
                 <div class="p-1">
-                    <a href="<?=APPLICATION ?>/admin/ustav/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                    <a href="<?=APPLICATION ?>/admin/article/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
             <div class="row">
@@ -142,6 +149,20 @@ if(null !== filter_input(INPUT_POST, 'news_create_submit')) {
                                     <label class="form-check-label" for="visible">Показывать</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="author_id">Автор<span class="text-danger">*</span></label>
+                            <select class="form-control<?=$author_id_valid ?>" name="author_id" required="required">
+                                <option value="" hidden="">...</option>
+                                <?php
+                                $sql = "select id, holy_order, last_name, first_name, middle_name from author order by last_name, first_name, middle_name";
+                                $fetcher = new Fetcher($sql);
+                                while($row = $fetcher->Fetch()):
+                                ?>
+                                <option value="<?=$row['id'] ?>"<?= filter_input(INPUT_POST, 'author_id') == $row['id'] ? " selected='selected'" : "" ?>><?= GetAuthorsFullName($row['holy_order'], $row['last_name'], $row['first_name'], $row['middle_name']) ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                            <div class="invalid-feedback">Автор обязательно</div>
                         </div>
                         <div class="form-group">
                             <label for="name">Заголовок<span class="text-danger">*</span></label>

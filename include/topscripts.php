@@ -165,6 +165,10 @@ function ShowKeys($arr_param) {
     }
 }
 
+function GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) {
+    return (empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name;
+}
+
 // Классы
 class Executer {
     public $error = '';

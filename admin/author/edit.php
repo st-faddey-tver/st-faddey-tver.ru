@@ -85,7 +85,7 @@ if(empty($middle_name)) {
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
             <li><a href="<?=APPLICATION ?>/admin/author/">Авторы</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/author/details.php<?= BuildQuery('id', $id) ?>"><?=(empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name ?></a></li>
+            <li><a href="<?=APPLICATION ?>/admin/author/details.php<?= BuildQuery('id', $id) ?>"><?= GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) ?></a></li>
             <li>Редактирование автора</li>
         </ul>
         <div class="container-fluid">

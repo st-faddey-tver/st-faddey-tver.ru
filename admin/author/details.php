@@ -55,7 +55,7 @@ if($row = $fetcher->Fetch()) {
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
             <li><a href="<?=APPLICATION ?>/admin/author/">Авторы</a></li>
-            <li><?=(empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name ?></li>
+            <li><?= GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) ?></li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -65,7 +65,7 @@ if($row = $fetcher->Fetch()) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1><?=(empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name ?></h1>
+                    <h1><?= GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) ?></h1>
                 </div>
                 <div class="p-1">
                     <div class="btn-group">
@@ -79,15 +79,17 @@ if($row = $fetcher->Fetch()) {
             </div>
             <!-- Список статей -->
             <?php
-            $sql = "select id, name from news where news_type_id = $news_type_id and author_id = $id order by date desc, id desc limit $pager_skip, $pager_take";
+            $sql = "select id, date, name from news where news_type_id = $news_type_id and author_id = $id order by date desc, id desc limit $pager_skip, $pager_take";
             $fetcher = new Fetcher($sql);
             $error_message = $fetcher->error;
             
             while($row = $fetcher->Fetch()):
             $article_id = $row['id'];
+            $article_date = $row['date'];
             $article_name = $row['name'];
             ?>
-            <p><a href="<?=APPLICATION ?>/admin/article/details.php<?= BuildQuery('id', $article_id) ?>"><?= $article_name ?></a></p>
+            <div class="font-weight-bold" style="font-size: larger;"><a href="<?=APPLICATION ?>/admin/article/details.php<?= BuildQuery('id', $article_id) ?>"><?= $article_name ?></a></div>
+            <div class="mb-3" style="font-size: smaller;"><?= DateTime::createFromFormat('Y-m-d', $article_date)->format('d.m.Y') ?></div>
             <?php
             endwhile;
             

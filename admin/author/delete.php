@@ -66,7 +66,7 @@ if($row = $fetcher->Fetch()) {
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
             <li><a href="<?=APPLICATION ?>/admin/author/">Авторы</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/author/details.php<?= BuildQuery('id', $id) ?>"><?=(empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name ?></a></li>
+            <li><a href="<?=APPLICATION ?>/admin/author/details.php<?= BuildQuery('id', $id) ?>"><?= GetAuthorsFullName($holy_order, $first_name, $middle_name, $last_name) ?></a></li>
             <li>Удаление автора</li>
         </ul>
         <div class="container-fluid">
@@ -83,7 +83,7 @@ if($row = $fetcher->Fetch()) {
                     <a href="details.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
-            <h2><?=(empty($holy_order) ? "" : HOLY_ORDER_NAMES[$holy_order].' ').$last_name.(empty($last_name) ? '' : ' ').$first_name.(empty($middle_name) ? '' : ' ').$middle_name ?></h2>
+            <h2><?= GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) ?></h2>
             <?php if($pager_total_count == 0): ?>
             <form method="post">
                 <input type="hidden" name="id" value="<?=$id ?>" />
