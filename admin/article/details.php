@@ -72,9 +72,9 @@ $error_message = $news->errorMessage;
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
+                    <div style="font-size: smaller;"><?= DateTime::createFromFormat('Y-m-d', $row['date'])->format('d.m.Y') ?></div>
                     <div class="text-right font-italic"><?= GetAuthorsFullName($holy_order, $last_name, $first_name, $middle_name) ?></div>
                     <h1><?=$name ?></h1>
-                    <div style="font-size: smaller;"><?= DateTime::createFromFormat('Y-m-d', $row['date'])->format('d.m.Y') ?></div>
                 </div>
                 <div class="p-1">
                     <?php
@@ -97,6 +97,7 @@ $error_message = $news->errorMessage;
             </div>
             <div class="container" style="margin-left: 0;">
                 <div class="content">
+                    
                     <div class="row">
                         <div class="col-6">
                             <div class="news_date"><?= DateTime::createFromFormat('Y-m-d', $date)->format('d.m.Y') ?>&nbsp;<?=$shortname ?>&nbsp;<?=$front ? 'front' : '' ?>&nbsp;<?=$visible ? 'visible' : '' ?></div>

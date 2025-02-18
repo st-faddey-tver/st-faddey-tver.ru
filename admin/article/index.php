@@ -50,7 +50,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                         $pager_total_count = $row[0];
                     }
                     
-                    $sql = "select n.id, n.date, a.holy_order, a.last_name, a.first_name, a.middle_name, n.name "
+                    $sql = "select n.id, n.date, a.holy_order, a.last_name, a.first_name, a.middle_name, n.name, n.visible "
                             . "from news n inner join author a on n.author_id = a.id "
                             . "where n.news_type_id = $news_type_id "
                             . "order by n.id desc";
@@ -60,7 +60,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                     while($row = $fetcher->Fetch()):
                     ?>
                     <div class="font-italic"><?= GetAuthorsFullName($row['holy_order'], $row['last_name'], $row['first_name'], $row['middle_name']) ?></div>
-                    <div class="font-weight-bold" style="font-size: larger;"><a href="details.php<?= BuildQuery('id', $row['id']) ?>"><?=$row['name'] ?></a></div>
+                    <div class="font-weight-bold" style="font-size: larger;"><a href="details.php<?= BuildQuery('id', $row['id']) ?>"><?=$row['name'] ?></a><?=$row['visible'] ? '' : " <span class='text-danger'>INVISIBLE</span>" ?></div>
                     <div class="mb-4" style="font-size: smaller;"><?= DateTime::createFromFormat('Y-m-d', $row['date'])->format('d.m.Y') ?></div>
                     <?php
                     endwhile;
