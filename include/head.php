@@ -14,12 +14,12 @@ const TITLE = "Храм священномученика Фаддея архие
 const DESCRIPTION = "Наш храм построен на месте обретения мощей священномученика Фаддея архиепископа Тверского. Здесь раньше находился храм иконы Божией Матери Неопалимая Купина, разрушенный в советское время. И с ним связаны целых пять имён, прославленных Церковью в лике новомучеников и исповеданников Российских.";
 const KEYWORDS = "храм Фаддея, церковь Фаддея, храм святого Фаддея, церковь святого Фаддея, святой Фаддей архиепископ Тверской, священномученик Фаддей";
 ?>
-<meta name="title" content="<?= empty($title) ? TITLE : $title ?>" />
-<meta name="description" content="<?= empty($description) ? DESCRIPTION : $description ?>" />
-<meta name="keywords" content="<?= empty($keywords) ? KEYWORDS : $keywords ?>" />
-<meta property="og:title" content="<?= empty($title) ? TITLE : $title ?>" />
+<meta name="title" content="<?= empty($title) ? TITLE : addslashes($title) ?>" />
+<meta name="description" content="<?= empty($description) ? DESCRIPTION : addslashes($description) ?>" />
+<meta name="keywords" content="<?= empty($keywords) ? KEYWORDS : addslashes($keywords) ?>" />
+<meta property="og:title" content="<?= empty($title) ? TITLE : addslashes($title) ?>" />
 <meta property="og:url" content="<?= $_SERVER['REQUEST_SCHEME'].'://'. $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
-<meta property="og:description" content="<?= empty($description) ? DESCRIPTION : $description ?>" />
+<meta property="og:description" content="<?= empty($description) ? DESCRIPTION : addslashes($description) ?>" />
 <meta property="og:image" content="<?= empty($image) ? $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].APPLICATION."/images/ikona.jpg" : $image ?>" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="ru_RU" />
