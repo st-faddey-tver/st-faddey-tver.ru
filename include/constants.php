@@ -3,8 +3,8 @@
 const ROLE_ADMIN = 1;
 
 const ROLES = array(ROLE_ADMIN);
-const ROLE_NAMES = array(ROLE_ADMIN => 'Администратор');
-const ROLE_LOCAL_NAMES = array(ROLE_ADMIN => 'admin');
+const ROLE_NAMES = array(ROLE_ADMIN => 'admin');
+const ROLE_LOCAL_NAMES = array(ROLE_ADMIN => 'Администратор');
 
 // Типы событий
 const EVENT_TYPE_ANNOUNCEMENT = 1;

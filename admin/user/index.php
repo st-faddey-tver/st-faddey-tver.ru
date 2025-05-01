@@ -71,7 +71,9 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
                             $role_ids = explode(',', $row['roles']);
                             $role_local_names = array();
                             foreach ($role_ids as $role_id) {
-                                array_push($role_local_names, ROLE_LOCAL_NAMES[$role_id]);
+                                if(!empty($role_id)) {
+                                    array_push($role_local_names, ROLE_LOCAL_NAMES[$role_id]);
+                                }
                             }
                             echo implode(', ', $role_local_names);
                             ?>

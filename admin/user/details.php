@@ -55,7 +55,7 @@ if($row = $fetcher->Fetch()) {
     $middle_name = $row['middle_name'];
 }
 
-$myroles = (new Grabber("select user_id, role_id from user_role where user_id = $id order by local_name"))->result;
+$myroles = (new Grabber("select role_id from user_role where user_id = $id"))->result;
 ?>
 <!DOCTYPE html>
 <html>
@@ -130,13 +130,9 @@ $myroles = (new Grabber("select user_id, role_id from user_role where user_id = 
                                 <div class="form-group">
                                     <select id="role_id" name="role_id" class="form-control<?=$role_id_valid ?>" required="required">
                                         <option value="">...</option>
-                                        <?php
-                                        foreach ($roles as $role) {
-                                            $id = $role['id'];
-                                            $local_name = $role['local_name'];
-                                            echo "<option value='$id'>$local_name</option>";
-                                        }
-                                        ?>
+                                        <?php foreach (ROLES as $role): ?>
+                                        <option value="<?=$role ?>"><?=ROLE_LOCAL_NAMES[$role] ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">*</div>
                                 </div>
@@ -151,14 +147,14 @@ $myroles = (new Grabber("select user_id, role_id from user_role where user_id = 
                     <table class="table table-bordered">
                         <tbody>
                             <?php
-                            foreach ($myroles as $row):
+                            foreach ($myroles as $role):
                             ?>
                             <tr>
-                                <td><?=$row['local_name'] ?></td>
+                                <td><?=ROLE_LOCAL_NAMES[$role['role_id']] ?></td>
                                 <td style="width: 15%;">
                                     <form method="post">
-                                        <input type="hidden" id="user_id" name="user_id" value="<?=$row['user_id'] ?>" />
-                                        <input type="hidden" id="role_id" name="role_id" value="<?=$row['role_id'] ?>" />
+                                        <input type="hidden" id="user_id" name="user_id" value="<?= filter_input(INPUT_GET, 'id') ?>" />
+                                        <input type="hidden" id="role_id" name="role_id" value="<?=$role['role_id'] ?>" />
                                         <button type="submit" id="delete_user_role_submit" name="delete_user_role_submit" class="form-control confirmable text-nowrap"><i class="fas fa-trash-alt"></i>&nbsp;Удалить</button>
                                     </form>
                                 </td>
