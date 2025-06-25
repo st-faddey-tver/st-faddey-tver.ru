@@ -31,11 +31,9 @@
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_education" data-toggle="dropdown">Образование</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop_cantus" data-toggle="dropdown">Церковное пение</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item<?=$education_children_status ?>" href="<?=APPLICATION ?>/children/">Воскресная школа для детей</a>
-            <a class="dropdown-item<?=$education_adults_status ?>" href="<?=APPLICATION ?>/adults/">Воскресная школа для взрослых</a>
-            <a class="dropdown-item<?=$education_ustav_status ?>" href="<?=APPLICATION ?>/ustav/">Видеолекции Е. С. Кустовского</a>
+            <a class="dropdown-item<?=$cantus_ustav_status ?>" href="<?=APPLICATION ?>/ustav/">Видеолекции Е. С. Кустовского</a>
         </div>
     </li>
     <li class="nav-item">

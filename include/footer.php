@@ -55,9 +55,7 @@
                 <p><a href="<?=APPLICATION ?>/st_alexander_nevsky/">Икона св. Ал. Невского</a></p>
             </div>
             <div class="d-none d-lg-block col-lg-2">
-                <p>Образование</p>
-                <p><a href="<?=APPLICATION ?>/children/">Воскресная школа для детей</a></p>
-                <p><a href="<?=APPLICATION ?>/adults/">Воскресная школа для взрослых</a></p>
+                <p>Церковное пение</p>
                 <p><a href="<?=APPLICATION ?>/ustav/">Видеолекции <span class="text-nowrap">Е. С. Кустовского</span></a></p>
             </div>
         </div>
