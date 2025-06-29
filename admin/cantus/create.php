@@ -13,7 +13,7 @@ $error_message = '';
 $beginning_valid = '';
 $name_valid = '';
 $shortname_valid = '';
-$cyclus_id_valid = '';
+$cycle_id_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
@@ -32,8 +32,8 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         $form_valid = false;
     }
     
-    if(empty(filter_input(INPUT_POST, 'cyclus_id'))) {
-        $cyclus_id_valid = ISINVALID;
+    if(empty(filter_input(INPUT_POST, 'cycle_id'))) {
+        $cycle_id_valid = ISINVALID;
         $form_valid = false;
     }
     
@@ -41,10 +41,11 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         $beginning = addslashes(filter_input(INPUT_POST, 'beginning'));
         $name = addslashes(filter_input(INPUT_POST, 'name'));
         $shortname = addslashes(filter_input(INPUT_POST, 'shortname'));
-        $cyclus_id = filter_input(INPUT_POST, 'cyclus_id');
-        $tonus = filter_input(INPUT_POST, 'tonus'); if(empty($tonus)) { $tonus = "NULL"; }
+        $cycle_id = filter_input(INPUT_POST, 'cycle_id');
+        $tone = filter_input(INPUT_POST, 'tone'); if(empty($tone)) { $tone = "NULL"; }
         $month = filter_input(INPUT_POST, 'month'); if(empty($month)) { $month = "NULL"; }
         $day = filter_input(INPUT_POST, 'day'); if(empty($day)) { $day = "NULL"; }
+        $number = filter_input(INPUT_POST, 'number');
         $title = filter_input(INPUT_POST, 'title');
         $description = addslashes(filter_input(INPUT_POST, 'description'));
         $keywords = addslashes(filter_input(INPUT_POST, 'keywords'));
@@ -73,7 +74,7 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "insert into cantus (beginning, name, shortname, cyclus_id, tonus, month, day, title, description, keywords) values ('$beginning', '$name', '$shortname', $cyclus_id, $tonus, $month, $day, '$title', '$description', '$keywords')";
+        $sql = "insert into cantus (beginning, name, shortname, cycle_id, tone, month, day, number, title, description, keywords) values ('$beginning', '$name', '$shortname', $cycle_id, $tone, $month, $day, $number, '$title', '$description', '$keywords')";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         $insert_id = $executer->insert_id;
@@ -136,11 +137,11 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
-                                    <label for="cyclus_id">Круг богослужений<span class="text-danger">*</span></label>
-                                    <select id="cyclus_id" name="cyclus_id" class="form-control<?=$cyclus_id_valid ?>" title="Круг богослужений" required="required">
+                                    <label for="cycle_id">Круг богослужений<span class="text-danger">*</span></label>
+                                    <select id="cycle_id" name="cycle_id" class="form-control<?=$cycle_id_valid ?>" title="Круг богослужений" required="required">
                                         <option value="" hidden="">...</option>
                                         <?php foreach (CYCLES as $cycle): ?>
-                                        <option value="<?=$cycle ?>"<?= filter_input(INPUT_POST, 'cyclus_id') == $cycle ? " selected='selected'" : "" ?>><?=CYCLE_NAMES[$cycle] ?></option>
+                                        <option value="<?=$cycle ?>"<?= filter_input(INPUT_POST, 'cycle_id') == $cycle ? " selected='selected'" : "" ?>><?=CYCLE_NAMES[$cycle] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">Круг богослужений обязательно</div>
@@ -148,10 +149,18 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
-                                    <label for="tonus">Глас</label>
-                                    <input type="number" min="1" max="8" id="tonus" name="tonus" class="form-control" value="<?= filter_input(INPUT_POST, 'tonus') ?>" />
+                                    <label for="tone">Глас</label>
+                                    <input type="number" min="1" max="8" id="tone" name="tone" class="form-control" value="<?= filter_input(INPUT_POST, 'tone') ?>" />
                                 </div>
                             </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
+                                    <label for="number">Порядковый номер</label>
+                                    <input type="number" min="0" id="number" name="number" class="form-control" value="<?= filter_input(INPUT_POST, 'number') ?? 0 ?>" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
                                     <label for="month">Месяц (юлианск.)</label>
