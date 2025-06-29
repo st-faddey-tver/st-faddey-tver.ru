@@ -80,7 +80,7 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         $insert_id = $executer->insert_id;
         
         if(empty($error_message)) {
-            header('Location: '.APPLICATION."/admin/cantus/details.php", BuildQuery('id', $insert_id));
+            header('Location: '.APPLICATION."/admin/cantus/details.php".BuildQuery('id', $insert_id));
         }
     }
 }
