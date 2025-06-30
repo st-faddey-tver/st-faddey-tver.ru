@@ -1,47 +1,22 @@
 <?php
 include '../../include/topscripts.php';
-//include '../../include/news/news.php';
+include '../../include/cantus.php';
 
 // Авторизация
 if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
     header('Location: '.APPLICATION.'/admin/login.php');
 }
 
-// Если нет параметра id, переходим к списку
-$id = filter_input(INPUT_GET, 'id'); echo "ID = $id --- <br />";
-if(empty($id)) {
+// Если нет параметра shortname, переходим к списку
+$shortname = filter_input(INPUT_GET, 'shortname');
+if(empty($shortname)) {
     header('Location: '.APPLICATION."/admin/cantus/");
 }
 
 // Получение объекта
-$beginning = '';
-$name = '';
-$shortname = '';
-$cycle_id = null;
-$tone = null;
-$month = null;
-$day = null;
-$number = null;
-
-$sql = "select beginning, name, shortname, cycle_id, tone, month, day, number from cantus where id = $id";
-$fetcher = new Fetcher($sql);
-$error_message = $fetcher->error;
-
-if($row = $fetcher->Fetch()) {
-    $beginning = $row['beginning'];
-    $name = $row['name'];
-    $shortname = $row['shortname'];
-    $cycle_id = $row['cycle_id'];
-    $tone = $row['tone'];
-    $month = $row['month'];
-    $day = $row['day'];
-    $number = $row['number'];
-}
-
-// Фрагменты
-//$news = new News($id);
-//$news->Top();
-//$error_message = $news->errorMessage;
+$cantus = new Cantus($shortname);
+$cantus->Top();
+$error_message = $cantus->errorMessage;
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +33,7 @@ if($row = $fetcher->Fetch()) {
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
             <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения по алфавиту</a></li>
-            <li><?=$name ?></li>
+            <li><?=$cantus->name ?></li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -68,7 +43,7 @@ if($row = $fetcher->Fetch()) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1><?=$name ?></h1>
+                    <h1><?=$cantus->name ?></h1>
                 </div>
                 <div class="p-1">
                     <?php
@@ -90,18 +65,36 @@ if($row = $fetcher->Fetch()) {
                 </div>
             </div>
             <table class="table">
-                <tr><td>Начало</td><td><?=$beginning ?></td></tr>
-                <tr><td>Краткое наименование</td><td><?=$shortname ?></td></tr>
-                <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cycle_id] ?></td></tr>
-                <tr><td>Глас</td><td><?=$tone ?></td></tr>
-                <tr><td>Месяц / день (юлианск.)</td><td><?=MONTH_NAMES[$month]." / ".$day ?></td></tr>
-                <tr><td>Номер по порядку</td><td><?=$number ?></td></tr>
+                <tr><td>Начало</td><td><?=$cantus->beginning ?></td></tr>
+                <tr><td>Краткое наименование</td><td><?=$cantus->shortname ?></td></tr>
+                <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cantus->cycle_id] ?></td></tr>
+                <tr><td>Глас</td><td><?=$cantus->tone ?></td></tr>
+                <tr><td>Месяц / день (юлианск.)</td><td><?=MONTH_NAMES[$cantus->month]." / ".$cantus->day ?></td></tr>
+                <tr><td>Номер по порядку</td><td><?=$cantus->number ?></td></tr>
             </table>
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">
+                    <?php
+                    if(filter_input(INPUT_GET, 'mode') == 'edit') {
+                        $cantus->GetFragmentsEditMode();
+                    }
+                    else {
+                        $cantus->GetFragments();
+                    }
+                    
+                    $cantus->ShowCreateFragmentForm();
+                    ?>
                     <hr />
-                    <h2>Изображения</h2>
                 </div>
+                <?php if(filter_input(INPUT_GET, 'mode') != 'edit'): ?>
+                <h2>Изображения</h2>
+                <?php $cantus->GetImages(); ?>
+                <div class="row">
+                    <div class="col-8">
+                        <?php $cantus->ShowUploadImageForm(); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         <?php

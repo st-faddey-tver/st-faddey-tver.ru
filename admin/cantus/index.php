@@ -39,15 +39,15 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">
                     <?php
-                    $sql = "select id, beginning from cantus order by beginning";
+                    $sql = "select beginning, shortname from cantus order by beginning";
                     $fetcher = new Fetcher($sql);
                     $error_message = $fetcher->error;
                     
                     while($row = $fetcher->Fetch()):
-                        $id = $row['id'];
                     $beginning = $row['beginning'];
+                    $shortname = $row['shortname'];
                     ?>
-                    <p><a href="details.php<?= BuildQuery('id', $id) ?>"><?=$beginning ?></a></p>
+                    <p><a href="details.php<?= BuildQuery('shortname', $shortname) ?>"><?=$beginning ?></a></p>
                     <?php
                     endwhile;
                     ?>
