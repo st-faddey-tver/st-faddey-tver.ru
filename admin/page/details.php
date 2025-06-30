@@ -1,6 +1,6 @@
 <?php
 include '../../include/topscripts.php';
-include '../../include/page/page.php';
+include '../../include/page.php';
 
 // Авторизация
 if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
@@ -13,6 +13,7 @@ if(empty($shortname)) {
     header('Location: '.APPLICATION.'/admin/page/');
 }
 
+// Получение объекта
 $page = new Page($shortname);
 $page->Top();
 $error_message = $page->errorMessage;
@@ -76,25 +77,18 @@ $error_message = $page->errorMessage;
                     }
                     
                     $page->ShowCreateFragmentForm();
-                    
-                    if(filter_input(INPUT_GET, 'mode') != 'edit'):
                     ?>
                 </div>
+                <?php if(filter_input(INPUT_GET, 'mode') == 'edit'): ?>
                 <hr />
                 <h2>Изображения</h2>
-                <?php
-                $page->GetImages();
-                ?>
+                <?php $page->GetImages(); ?>
                 <div class="row">
                     <div class="col-8">
-                        <?php
-                        $page->ShowUploadImageForm();
-                        ?>
+                        <?php $page->ShowUploadImageForm(); ?>
                     </div>
                 </div>
-                <?php
-                endif;
-                ?>
+                <?php endif; ?>
             </div>
         </div>
         <?php

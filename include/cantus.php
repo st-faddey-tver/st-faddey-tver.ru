@@ -8,17 +8,17 @@ class Cantus {
         
         if($row = $fetcher->Fetch()) {
             $this->id = $row["id"];
-            $this->beginning = $row["beginning"];
-            $this->name = $row["name"];
+            $this->beginning = htmlentities($row["beginning"]);
+            $this->name = htmlentities($row["name"]);
             $this->shortname = $row["shortname"];
             $this->cycle_id = $row["cycle_id"];
             $this->tone = $row["tone"];
             $this->month = $row["month"];
             $this->day = $row["day"];
             $this->number = $row["number"];
-            $this->title = $row["title"];
-            $this->description = $row["description"];
-            $this->keywords = $row["keywords"];
+            $this->title = htmlentities($row["title"]);
+            $this->description = htmlentities($row["description"]);
+            $this->keywords = htmlentities($row["keywords"]);
         }
     }
     

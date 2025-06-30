@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
+include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage.php';
 
 class News {
     public function __construct($news_id) {

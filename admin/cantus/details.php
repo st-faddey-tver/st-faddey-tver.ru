@@ -84,9 +84,9 @@ $error_message = $cantus->errorMessage;
                     
                     $cantus->ShowCreateFragmentForm();
                     ?>
-                    <hr />
                 </div>
                 <?php if(filter_input(INPUT_GET, 'mode') != 'edit'): ?>
+                <hr />
                 <h2>Изображения</h2>
                 <?php $cantus->GetImages(); ?>
                 <div class="row">
