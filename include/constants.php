@@ -6,6 +6,9 @@ const ROLES = array(ROLE_ADMIN);
 const ROLE_NAMES = array(ROLE_ADMIN => 'admin');
 const ROLE_LOCAL_NAMES = array(ROLE_ADMIN => 'Администратор');
 
+// Дни недели
+const WEEKDAYS = array(1 => "Понедельник", 2 => "Вторник", 3 => "Среда", 4 => "Четверг", 5 => "Пятница", 6 => "Суббота", 7 => "Воскресенье");
+
 // Месяца
 const MONTH_JANUARY = 1;
 const MONTH_FEBRUARY = 2;
@@ -22,6 +25,7 @@ const MONTH_DECEMBER = 12;
 
 const MONTHS = array(MONTH_JANUARY, MONTH_FEBRUARY, MONTH_MARCH, MONTH_APRIL, MONTH_MAY, MONTH_JUNE, MONTH_JULY, MONTH_AUGUST, MONTH_SEPTEMBER, MONTH_OCTOBER, MONTH_NOVEMBER, MONTH_DECEMBER);
 const MONTH_NAMES = array(MONTH_JANUARY => "январь", MONTH_FEBRUARY => "февраль", MONTH_MARCH => "март", MONTH_APRIL => "апрель", MONTH_MAY => "май", MONTH_JUNE => "июнь", MONTH_JULY => "июль", MONTH_AUGUST => "август", MONTH_SEPTEMBER => "сентябрь", MONTH_OCTOBER => "октябрь", MONTH_NOVEMBER => "ноябрь", MONTH_DECEMBER => "декабрь");
+const MONTH_GENETIVES = array(MONTH_JANUARY => "января", MONTH_FEBRUARY => "февраля", MONTH_MARCH => "марта", MONTH_APRIL => "апреля", MONTH_MAY => "мая", MONTH_JUNE => "июня", MONTH_JULY => "июля", MONTH_AUGUST => "августа", MONTH_SEPTEMBER => "сентября", MONTH_OCTOBER => "октября", MONTH_NOVEMBER => "ноября", MONTH_DECEMBER => "декабря");
 
 // Типы событий
 const EVENT_TYPE_ANNOUNCEMENT = 1;

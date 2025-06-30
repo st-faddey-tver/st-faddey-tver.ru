@@ -135,8 +135,8 @@ foreach ($schedule as $row) {
                     ?>
                     <thead class="thead-light">
                         <tr class="d-none d-md-table-row">
-                            <th class="w-25 align-top"><?=$dDate->format('j ').$months_genitive[$dDate->format('n')].$dDate->format(' Y г.') ?></th>
-                            <th class="align-top"><?=$weekdays[$dDate->format("N")] ?></th>
+                            <th class="w-25 align-top"><?=$dDate->format('j ').MONTH_GENETIVES[$dDate->format('n')].$dDate->format(' Y г.') ?></th>
+                            <th class="align-top"><?=WEEKDAYS[$dDate->format("N")] ?></th>
                             <th class="align-top">
                                 <?php foreach ($date['holidays'] as $holiday): ?>
                                 <div class="text-danger"><?=$holiday['holiday'] ?></div>
@@ -145,8 +145,8 @@ foreach ($schedule as $row) {
                         </tr>
                         <tr class="d-table-row d-md-none">
                             <th>
-                                <div class="d-block"><?=$dDate->format('j ').$months_genitive[$dDate->format('n')].$dDate->format(' Y г.') ?></div>
-                                <div class="d-block font-italic"><?=$weekdays[$dDate->format("N")] ?></div>
+                                <div class="d-block"><?=$dDate->format('j ').MONTH_GENETIVES[$dDate->format('n')].$dDate->format(' Y г.') ?></div>
+                                <div class="d-block font-italic"><?=WEEKDAYS[$dDate->format("N")] ?></div>
                                 <?php foreach ($date['holidays'] as $holiday): ?>
                                 <div class="text-danger d-block"><?=$holiday['holiday'] ?></div>
                                 <?php endforeach; ?>

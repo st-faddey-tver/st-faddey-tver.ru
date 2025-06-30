@@ -2,34 +2,6 @@
 include 'define.php';
 include 'constants.php';
 
-global $weekdays;
-
-$weekdays = array();
-$weekdays[1] = 'Понедельник';
-$weekdays[2] = 'Вторник';
-$weekdays[3] = 'Среда';
-$weekdays[4] = 'Четверг';
-$weekdays[5] = 'Пятница';
-$weekdays[6] = 'Суббота';
-$weekdays[7] = 'Воскресенье';
-
-global $months_genitive;
-
-$months_genitive = array();
-
-$months_genitive[1] = "января";
-$months_genitive[2] = "февраля";
-$months_genitive[3] = "марта";
-$months_genitive[4] = "апреля";
-$months_genitive[5] = "мая";
-$months_genitive[6] = "июня";
-$months_genitive[7] = "июля";
-$months_genitive[8] = "августа";
-$months_genitive[9] = "сентября";
-$months_genitive[10] = "октября";
-$months_genitive[11] = "ноября";
-$months_genitive[12] = "декабря";
-
 // Функции
 function LoggedIn() {
     return !empty(filter_input(INPUT_COOKIE, USERNAME));

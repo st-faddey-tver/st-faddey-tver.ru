@@ -250,7 +250,7 @@ foreach ($schedule as $row) {
                 <?php
                 $period_date = DateTime::createFromFormat('Y-m-d', $period['start_date']);
                 ?>
-                <?=$period['period'] ?>&nbsp;(<?=$period_date->format('j ').$months_genitive[$period_date->format('n')].$period_date->format(' Y г.') ?>)
+                <?=$period['period'] ?>&nbsp;(<?=$period_date->format('j ').MONTH_GENETIVES[$period_date->format('n')].$period_date->format(' Y г.') ?>)
                 <?php if(count($period['dates']) == 0): ?>
                 <form method="post" class="form-inline d-inline">
                     <input type="hidden" id="scroll" name="scroll" />
@@ -269,7 +269,7 @@ foreach ($schedule as $row) {
                 <thead class="thead-light">
                     <tr>
                         <th class="w-25 align-top"><?=$dDate->format("d.m.Y") ?></th>
-                        <th class="align-top"><?=$weekdays[$dDate->format("N")] ?></th>
+                        <th class="align-top"><?=WEEKDAYS[$dDate->format("N")] ?></th>
                         <th class="align-top">
                             <?php foreach ($date['holidays'] as $holiday): ?>
                             <div class="mt-1 mb-1 text-danger">

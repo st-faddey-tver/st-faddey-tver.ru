@@ -120,9 +120,9 @@ include 'include/topscripts.php';
                             ?>
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="w-25 align-top"><?=$dDate->format('j ').$months_genitive[$dDate->format('n')].$dDate->format(' Y г.') ?></th>
+                                    <th class="w-25 align-top"><?=$dDate->format('j ').MONTH_GENETIVES[$dDate->format('n')].$dDate->format(' Y г.') ?></th>
                                     <th class="align-top">
-                                        <?=$weekdays[$dDate->format("N")] ?>
+                                        <?=WEEKDAYS[$dDate->format("N")] ?>
                                         <?php foreach ($date['holidays'] as $holiday): ?>
                                         <div class="text-danger"><?=$holiday['holiday'] ?></div>
                                         <?php endforeach; ?>
