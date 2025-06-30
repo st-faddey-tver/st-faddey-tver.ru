@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage/myimage.php';
+include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage.php';
 
 class Cantus {
     public function __construct($shortname) {
