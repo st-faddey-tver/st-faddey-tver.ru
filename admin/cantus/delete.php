@@ -1,6 +1,6 @@
 <?php
 include '../../include/topscripts.php';
-include '../../include/page.php';
+include '../../include/cantus.php';
 
 // Авторизация
 if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
@@ -10,15 +10,15 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
 // Если нет параметра shortname, переходим к списку
 $shortname = filter_input(INPUT_GET, 'shortname');
 if(empty($shortname)) {
-    header('Location: '.APPLICATION.'/admin/page/');
+    header('Location: '.APPLICATION.'/admin/cantus/');
 }
 
 // Обработка отправки формы
-if(null !== filter_input(INPUT_POST, 'delete_page_submit')) {
+if(null !== filter_input(INPUT_POST, 'delete_cantus_submit')) {
     $id = filter_input(INPUT_POST, 'id');
     $upload_path = $_SERVER['DOCUMENT_ROOT'].APPLICATION."/images/content/";
     
-    $sql = "select filename from page_image where page_id=$id";
+    $sql = "select filename from cantus_image where cantus_id = $id";
     $fetcher = new Fetcher($sql);
     while ($row = $fetcher->Fetch()) {
         $filename = $row['filename'];
@@ -30,19 +30,22 @@ if(null !== filter_input(INPUT_POST, 'delete_page_submit')) {
     }
     
     if(empty($error_message)) {
-        $sql = "delete from page_image where page_id = $id";
-        $error_message = (new Executer($sql))->error;
+        $sql = "delete from cantus_image where cantus_id = $id";
+        $executer = new Executer($sql);
+        $error_message = $executer->error;
         
         if(empty($error_message)) {
-            $sql = "delete from page_fragment where page_id = $id";
-            $error_message = (new Executer($sql))->error;
+            $sql = "delete from cantus_fragment where cantus_id = $id";
+            $executer = new Executer($sql);
+            $error_message = $executer->error;
             
             if(empty($error_message)) {
-                $sql = "delete from page where id=$id";
-                $error_message = (new Executer($sql))->error;
+                $sql = "delete from cantus where id = $id";
+                $executer = new Executer($sql);
+                $error_message = $executer->error;
                 
                 if(empty($error_message)) {
-                    header('Location: '.APPLICATION.'/admin/page/');
+                    header('Location: '.APPLICATION.'/admin/cantus/');
                 }
             }
         }
@@ -50,8 +53,8 @@ if(null !== filter_input(INPUT_POST, 'delete_page_submit')) {
 }
 
 // Получение объекта
-$page = new Page($shortname);
-$error_message = $page->errorMessage;
+$cantus = new Cantus($shortname);
+$error_message = $cantus->errorMessage;
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,9 +70,9 @@ $error_message = $page->errorMessage;
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/page/">Страницы</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/page/details.php<?= BuildQuery("shortname", $page->shortname) ?>"><?=$page->name ?></a></li>
-            <li>Удаление страницы</li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения по алфавиту</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/details.php<?= BuildQuery("shortname", $cantus->shortname) ?>"><?=$cantus->name ?></a></li>
+            <li>Удаление песнопения</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -79,22 +82,20 @@ $error_message = $page->errorMessage;
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1 class="text-danger">Действительно удалить?</h1>
+                    <p class="text-danger" style="font-size: xx-large;">Действительно удалить?</p>
                 </div>
                 <div class="p-1">
-                    <a href="details.php<?= BuildQuery("shortname", $page->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
+                    <a href="details.php<?= BuildQuery("shortname", $cantus->shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>
                 </div>
             </div>
             <div class="container" style="margin-left: 0;">
-                <h1><?=$page->name ?></h1>
-                <?php
-                $page->GetFragments();
-                ?>
+                <h1><?=$cantus->name ?></h1>
+                <?php $cantus->GetFragments(); ?>
                 <hr style="clear: both;" />
             </div>
             <form method="post">
-                <input type="hidden" id="id" name="id" value="<?=$page->id ?>" />
-                <button type="submit" id="delete_page_submit" name="delete_page_submit" class="btn btn-danger">Удалить</button>
+                <input type="hidden" id="id" name="id" value="<?=$cantus->id ?>" />
+                <button type="submit" id="delete_cantus_submit" name="delete_cantus_submit" class="btn btn-danger">Удалить</button>
             </form>
         </div>
         <?php

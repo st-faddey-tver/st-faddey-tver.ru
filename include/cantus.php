@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage.php';
 
 class Cantus {
     public function __construct($shortname) {
-        $sql = "select id, beginning, name, shortname, cycle_id, tone, month, day, number, title, description, keywords from cantus where shortname = '$shortname'";
+        $sql = "select id, beginning, name, shortname, cycle, tone, month, day, position, title, description, keywords from cantus where shortname = '$shortname'";
         $fetcher = new Fetcher($sql);
         
         if($row = $fetcher->Fetch()) {
@@ -11,11 +11,11 @@ class Cantus {
             $this->beginning = htmlentities($row["beginning"]);
             $this->name = htmlentities($row["name"]);
             $this->shortname = $row["shortname"];
-            $this->cycle_id = $row["cycle_id"];
+            $this->cycle = $row["cycle"];
             $this->tone = $row["tone"];
             $this->month = $row["month"];
             $this->day = $row["day"];
-            $this->number = $row["number"];
+            $this->position = $row["position"];
             $this->title = htmlentities($row["title"]);
             $this->description = htmlentities($row["description"]);
             $this->keywords = htmlentities($row["keywords"]);
@@ -26,11 +26,11 @@ class Cantus {
     public $beginning;
     public $name;
     public $shortname;
-    public $cycle_id;
+    public $cycle;
     public $tone;
     public $month;
     public $day;
-    public $number;
+    public $position;
     public $title;
     public $description;
     public $keywords;

@@ -137,7 +137,7 @@ if(empty($image)) {
                     <h1>Редактирование страницы</h1>
                 </div>
                 <div class="p-1">
-                    <a href="details.php<?= BuildQuery("shortname", $old_shortname) ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход</a>
+                    <a href="details.php<?= BuildQueryAddRemove("shortname", $old_shortname, 'id') ?>" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Выход</a>
                 </div>
             </div>
             <div class="row">

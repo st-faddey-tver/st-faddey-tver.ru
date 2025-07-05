@@ -55,9 +55,9 @@ $error_message = $cantus->errorMessage;
                     ?>
                     <div class="btn-group">
                         <a href="<?=APPLICATION ?>/admin/cantus/" class="btn btn-outline-dark" title="К списку" data-toggle="tooltip"><i class="fas fa-undo-alt"></i></a>
-                        <a href="edit.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                        <a href="edit.php<?= BuildQueryAddRemove('id', $cantus->id, 'shortname') ?>" class="btn btn-outline-dark" title="Редактировать" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
                         <a href="<?= BuildQuery("mode", "edit") ?>" class="btn btn-outline-dark" title="Редактировать содержимое" data-toggle="tooltip"><i class="fas fa-scroll"></i></a>
-                        <a href="delete.php<?= BuildQuery('id', $id) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
+                        <a href="delete.php<?= BuildQuery('shortname', $cantus->shortname) ?>" class="btn btn-outline-dark" title="Удалить" data-toggle="tooltip"><i class="fas fa-trash-alt"></i></a>
                     </div>
                     <?php
                     endif;
@@ -67,10 +67,10 @@ $error_message = $cantus->errorMessage;
             <table class="table">
                 <tr><td>Начало</td><td><?=$cantus->beginning ?></td></tr>
                 <tr><td>Краткое наименование</td><td><?=$cantus->shortname ?></td></tr>
-                <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cantus->cycle_id] ?></td></tr>
+                <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cantus->cycle] ?></td></tr>
                 <tr><td>Глас</td><td><?=$cantus->tone ?></td></tr>
-                <tr><td>Месяц / день (юлианск.)</td><td><?=MONTH_NAMES[$cantus->month]." / ".$cantus->day ?></td></tr>
-                <tr><td>Номер по порядку</td><td><?=$cantus->number ?></td></tr>
+                <tr><td>Месяц / день (юлианск.)</td><td><?=(key_exists($cantus->month, MONTH_NAMES) ? MONTH_NAMES[$cantus->month] : "").((!empty($cantus->month) && !empty($cantus->day)) ? " / " : "").$cantus->day ?></td></tr>
+                <tr><td>Номер по порядку</td><td><?=$cantus->position ?></td></tr>
             </table>
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">
