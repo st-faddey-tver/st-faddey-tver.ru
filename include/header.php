@@ -76,6 +76,7 @@ $about_clergy_status = filter_input(INPUT_GET, 'shortname') == 'clergy' ? ' disa
 $about_news_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/allnews/index.php' ? ' disabled' : '';
 $about_media_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/media/index.php' ? ' disabled' : '';
 
+$cantus_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/cantus/index.php' ? ' disabled' : '';
 $cantus_ustav_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/kustovsky/index.php' ? ' disabled' : '';
 
 $articles_status = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/article/index.php' ? ' disabled' : '';

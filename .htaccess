@@ -16,6 +16,8 @@ RewriteRule ^mediacenter/(.*) media/details.php?shortname=$1
 RewriteRule ^mediacenter media/index.php
 RewriteRule ^ustav/(.*) kustovsky/details.php?shortname=$1
 RewriteRule ^ustav kustovsky/index.php
+RewriteRule ^cantus/(.*) cant/details.php?shortname=$1
+RewriteRule ^cantus cant/index.php
 RewriteRule ^schedule schedule.php
 RewriteRule ^theater theater.php
 RewriteRule ^sitemap.xml sitemap.php
