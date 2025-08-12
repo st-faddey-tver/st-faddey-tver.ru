@@ -1,6 +1,6 @@
 <?php
 include '../../../include/topscripts.php';
-include '../../../include/myimage/myimage.php';
+include '../../../include/myimage.php';
 
 // Авторизация
 if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
