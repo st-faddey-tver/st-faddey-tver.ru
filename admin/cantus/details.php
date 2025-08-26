@@ -32,7 +32,7 @@ $error_message = $cantus->errorMessage;
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения по алфавиту</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения</a></li>
             <li><?=$cantus->name ?></li>
         </ul>
         <div class="container-fluid">

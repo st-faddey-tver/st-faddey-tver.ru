@@ -99,7 +99,7 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения по алфавиту</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения</a></li>
             <li>Новое песнопение</li>
         </ul>
         <div class="container-fluid">

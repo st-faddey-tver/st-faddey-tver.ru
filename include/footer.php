@@ -56,7 +56,7 @@
             </div>
             <div class="d-none d-lg-block col-lg-2">
                 <p>Церковное пение</p>
-                <p><a href="<?=APPLICATION ?>/cantus/">Песнопения по алфавиту</a></p>
+                <p><a href="<?=APPLICATION ?>/cantus/">Песнопения</a></p>
                 <p><a href="<?=APPLICATION ?>/ustav/">Видеолекции <span class="text-nowrap">Е. С. Кустовского</span></a></p>
             </div>
         </div>

@@ -33,7 +33,7 @@
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop_cantus" data-toggle="dropdown">Церковное пение</a>
         <div class="dropdown-menu">
-            <a class="dropdown-item<?=$cantus_status ?>" href="<?=APPLICATION ?>/cantus/">Песнопения по алфавиту</a>
+            <a class="dropdown-item<?=$cantus_status ?>" href="<?=APPLICATION ?>/cantus/">Песнопения</a>
             <a class="dropdown-item<?=$cantus_ustav_status ?>" href="<?=APPLICATION ?>/ustav/">Видеолекции Е. С. Кустовского</a>
         </div>
     </li>
