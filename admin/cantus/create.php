@@ -99,8 +99,8 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения</a></li>
-            <li>Новое песнопение</li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Общенародное пение</a></li>
+            <li>Новая страница</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -110,7 +110,7 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Новое песнопение</h1>
+                    <h1>Новая страница</h1>
                 </div>
                 <div class="p-1">
                     <a href="<?=APPLICATION ?>/admin/cantus/" class="btn btn-outline-dark"><i class="fas fa-undo-alt"></i>&nbsp;Отмена</a>

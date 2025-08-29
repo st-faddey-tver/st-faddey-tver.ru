@@ -166,9 +166,9 @@ if(empty($keywords)) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/cantus/">Песнопения</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Общенародное пение</a></li>
             <li><a href="<?=APPLICATION ?>/admin/cantus/details.php<?= BuildQuery("shortname", $old_shortname) ?>"><?=$name ?></a></li>
-            <li>Редактирование песнопения</li>
+            <li>Редактирование страницы</li>
         </ul>
         <div class="container-fluid">
             <?php

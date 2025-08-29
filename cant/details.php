@@ -26,7 +26,7 @@ $keywords = $cantus->keywords;
                 ?>
                 <div class="d-flex justify-content-center small">
                     <div class="news_name">
-                        <a href="<?=APPLICATION."/cantus/" ?>">Песнопения</a>
+                        <a href="<?=APPLICATION."/cantus/" ?>">К списку</a>
                     </div>
                 </div>
                 <hr />
