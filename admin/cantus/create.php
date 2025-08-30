@@ -120,9 +120,9 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
                 <div class="col-12 col-md-6">
                     <form method="post">
                         <div class="form-group">
-                            <label for="beginning">Начало<span class="text-danger">*</span></label>
+                            <label for="beginning">Начальные слова<span class="text-danger">*</span></label>
                             <input type="text" id="beginning" name="beginning" class="form-control<?=$beginning_valid ?>" value="<?= filter_input(INPUT_POST, 'beginning') ?>" required="required" />
-                            <div class="invalid-feedback">Начало обязательно</div>
+                            <div class="invalid-feedback">Начальные слова обязательно</div>
                         </div>
                         <div class="form-group">
                             <label for="name">Наименование<span class="text-danger">*</span></label>

@@ -33,7 +33,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                 <table class="table">
                     <tr>
                         <th>
-                            Начало
+                            Начальные слова
                             <?php if($sort == SORT_BEGINNING): ?>
                             <i class="fas fa-arrow-down" style="color: black; font-size: large;"></i>
                             <?php else: ?>

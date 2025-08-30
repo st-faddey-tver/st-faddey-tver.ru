@@ -65,7 +65,7 @@ $error_message = $cantus->errorMessage;
                 </div>
             </div>
             <table class="table">
-                <tr><td>Начало</td><td><?=$cantus->beginning ?></td></tr>
+                <tr><td>Начальные слова</td><td><?=$cantus->beginning ?></td></tr>
                 <tr><td>Краткое наименование</td><td><?=$cantus->shortname ?></td></tr>
                 <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cantus->cycle] ?></td></tr>
                 <tr><td>Глас</td><td><?=$cantus->tone ?></td></tr>
