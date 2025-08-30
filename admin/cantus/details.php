@@ -68,9 +68,14 @@ $error_message = $cantus->errorMessage;
                 <tr><td>Начальные слова</td><td><?=$cantus->beginning ?></td></tr>
                 <tr><td>Краткое наименование</td><td><?=$cantus->shortname ?></td></tr>
                 <tr><td>Круг богослужений</td><td><?=CYCLE_NAMES[$cantus->cycle] ?></td></tr>
+                <tr><td>Тип песнопения</td><td><?= key_exists($cantus->type, CANT_TYPE_NAMES) ? CANT_TYPE_NAMES[$cantus->type] : '' ?></td></tr>
                 <tr><td>Глас</td><td><?=$cantus->tone ?></td></tr>
                 <tr><td>Месяц / день (юлианск.)</td><td><?=(key_exists($cantus->month, MONTH_NAMES) ? MONTH_NAMES[$cantus->month] : "").((!empty($cantus->month) && !empty($cantus->day)) ? " / " : "").$cantus->day ?></td></tr>
                 <tr><td>Номер по порядку</td><td><?=$cantus->position ?></td></tr>
+                <tr><td>Мини-изображение 1</td><td><?=$cantus->mini_image1 ?></td></tr>
+                <tr><td>Изображение 1</td><td><?=$cantus->image1 ?></td></tr>
+                <tr><td>Мини-изображение 2</td><td><?=$cantus->mini_image2 ?></td></tr>
+                <tr><td>Изображение 2</td><td><?=$cantus->image2 ?></td></tr>
             </table>
             <div class="container" style="margin-left: 0;">
                 <div class="content bigfont">

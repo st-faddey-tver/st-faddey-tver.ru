@@ -3,7 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'].APPLICATION.'/include/myimage.php';
 
 class Cantus {
     public function __construct($shortname) {
-        $sql = "select id, beginning, name, shortname, cycle, tone, month, day, position, title, description, keywords from cantus where shortname = '$shortname'";
+        $sql = "select id, beginning, name, shortname, cycle, type, tone, month, day, position, mini_image1, image1, mini_image2, image2, title, description, keywords from cantus where shortname = '$shortname'";
         $fetcher = new Fetcher($sql);
         
         if($row = $fetcher->Fetch()) {
@@ -12,10 +12,15 @@ class Cantus {
             $this->name = htmlentities($row["name"]);
             $this->shortname = $row["shortname"];
             $this->cycle = $row["cycle"];
+            $this->type = $row["type"];
             $this->tone = $row["tone"];
             $this->month = $row["month"];
             $this->day = $row["day"];
             $this->position = $row["position"];
+            $this->mini_image1 = $row["mini_image1"];
+            $this->image1 = $row["image1"];
+            $this->mini_image2 = $row["mini_image2"];
+            $this->image2 = $row["image2"];
             $this->title = htmlentities($row["title"]);
             $this->description = htmlentities($row["description"]);
             $this->keywords = htmlentities($row["keywords"]);
@@ -27,10 +32,15 @@ class Cantus {
     public $name;
     public $shortname;
     public $cycle;
+    public $type;
     public $tone;
     public $month;
     public $day;
     public $position;
+    public $mini_image1;
+    public $image1;
+    public $mini_image2;
+    public $image2;
     public $title;
     public $description;
     public $keywords;

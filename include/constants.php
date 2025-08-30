@@ -92,6 +92,15 @@ const CYCLE_EASTER = 4;
 const CYCLES = array(CYCLE_DAYLY, CYCLE_WEEKLY, CYCLE_YEARLY, CYCLE_EASTER);
 const CYCLE_NAMES = array(CYCLE_DAYLY => "суточный", CYCLE_WEEKLY => "седмичный", CYCLE_YEARLY => "годовой", CYCLE_EASTER => "пасхальный цикл");
 
+// Типы песнопений
+const CANT_TYPE_DAILY = 1;
+const CANT_TYPE_TROPAR = 2;
+const CANT_TYPE_KONDAK = 3;
+const CANT_TYPE_THEOTOKION = 4;
+const CANT_TYPE_ZADOSTOYNIK = 5;
+const CANT_TYPES = array(CANT_TYPE_DAILY, CANT_TYPE_TROPAR, CANT_TYPE_KONDAK, CANT_TYPE_THEOTOKION, CANT_TYPE_ZADOSTOYNIK);
+const CANT_TYPE_NAMES = array(CANT_TYPE_DAILY => "неизменяемое", CANT_TYPE_TROPAR => "тропарь", CANT_TYPE_KONDAK => "кондак", CANT_TYPE_THEOTOKION => "богородичен", CANT_TYPE_ZADOSTOYNIK => "задостойник");
+
 // Другое
 const ISINVALID = ' is-invalid';
 ?>

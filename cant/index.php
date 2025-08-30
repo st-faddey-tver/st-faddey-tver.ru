@@ -40,6 +40,9 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <a href="<?= APPLICATION."/cantus/". BuildQueryRemove('sort') ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
+                        <th>Тип</th>
+                        <th>Глас</th>
+                        <th>Дата</th>
                         <th>
                             Наименование
                             <?php if($sort == SORT_NAME): ?>
@@ -82,6 +85,9 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                     ?>
                     <tr>
                         <td><a href="<?=APPLICATION."/cantus/".$shortname ?>"><?=$beginning ?>...</a></td>
+                        <td></td>
+                        <td><?=$tone ?></td>
+                        <td class="text-nowrap"><?=(empty($month) || empty($day)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
                         <td><a href="<?=APPLICATION."/cantus/".$shortname ?>"><?=$name ?></a></td>
                         <td><?=CYCLE_NAMES[$cycle] ?><?=$cycle == CYCLE_WEEKLY ? ", <span class='text-nowrap'>гл. $tone</span>" : "" ?><?=$cycle == CYCLE_YEARLY || $cycle == CYCLE_EASTER ? ", <span class='text-nowrap'>$day ".MONTH_GENETIVES[$month]."</span>" : "" ?></td>
                     </tr>

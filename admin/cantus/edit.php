@@ -20,6 +20,7 @@ $beginning_valid = '';
 $name_valid = '';
 $shortname_valid = '';
 $cycle_valid = '';
+$type_valid = '';
 
 // Обработка отправки формы
 if(null !== filter_input(INPUT_POST, "edit_cantus_submit")) {
@@ -43,12 +44,18 @@ if(null !== filter_input(INPUT_POST, "edit_cantus_submit")) {
         $form_valid = false;
     }
     
+    if(empty(filter_input(INPUT_POST, 'type'))) {
+        $type_valid = ISINVALID;
+        $form_valid = false;
+    }
+    
     if($form_valid) {
         $id = filter_input(INPUT_POST, 'id');
         $beginning = addslashes(filter_input(INPUT_POST, "beginning"));
         $name = addslashes(filter_input(INPUT_POST, "name"));
         $shortname = filter_input(INPUT_POST, "shortname");
         $cycle = filter_input(INPUT_POST, "cycle");
+        $type = filter_input(INPUT_POST, "type");
         $tone = filter_input(INPUT_POST, "tone"); if(empty($tone)) { $tone = "NULL"; }
         $month = filter_input(INPUT_POST, "month"); if(empty($month)) { $month = "NULL"; }
         $day = filter_input(INPUT_POST, "day"); if(empty($day)) { $day = "NULL"; }
@@ -80,7 +87,7 @@ if(null !== filter_input(INPUT_POST, "edit_cantus_submit")) {
             }
         }while ($shortnames_count > 0);
         
-        $sql = "update cantus set beginning = '$beginning', name = '$name', shortname = '$shortname', cycle = $cycle, tone = $tone, month = $month, day = $day, position = $position, title = '$title', description = '$description', keywords = '$keywords' where id = $id";
+        $sql = "update cantus set beginning = '$beginning', name = '$name', shortname = '$shortname', cycle = $cycle, type = $type, tone = $tone, month = $month, day = $day, position = $position, mini_image1 = '$mini_image1', image1 = '$image1', mini_image2 = '$mini_image2', image2 = '$image2', title = '$title', description = '$description', keywords = '$keywords' where id = $id";
         $executer = new Executer($sql);
         $error_message = $executer->error;
         
@@ -91,7 +98,7 @@ if(null !== filter_input(INPUT_POST, "edit_cantus_submit")) {
 }
 
 // Получение объекта
-$sql = "select beginning, name, shortname, cycle, tone, month, day, position, title, description, keywords from cantus where id = $id";
+$sql = "select beginning, name, shortname, cycle, type, tone, month, day, position, mini_image1, image1, mini_image2, image2, title, description, keywords from cantus where id = $id";
 $fetcher = new Fetcher($sql);
 $row = $fetcher->Fetch();
 
@@ -117,6 +124,11 @@ if(empty($cycle)) {
     $cycle = $row['cycle'];
 }
 
+$type = filter_input(INPUT_POST, 'type');
+if(empty($type)) {
+    $type = $row['type'];
+}
+
 $tone = filter_input(INPUT_POST, 'tone');
 if(empty($tone)) {
     $tone = $row['tone'];
@@ -135,6 +147,26 @@ if(empty($day)) {
 $position = filter_input(INPUT_POST, 'position');
 if(empty($position)) {
     $position = $row['position'];
+}
+
+$mini_image1 = filter_input(INPUT_POST, 'mini_image1');
+if(empty($mini_image1)) {
+    $mini_image1 = $row['mini_image1'];
+}
+
+$image1 = filter_input(INPUT_POST, 'image1');
+if(empty($image1)) {
+    $image1 = $row['image1'];
+}
+
+$mini_image2 = filter_input(INPUT_POST, 'mini_image2');
+if(empty($mini_image2)) {
+    $mini_image2 = $row['mini_image2'];
+}
+
+$image2 = filter_input(INPUT_POST, 'image2');
+if(empty($image2)) {
+    $image2 = $row['image2'];
 }
 
 $title = filter_input(INPUT_POST, 'title');
@@ -218,6 +250,18 @@ if(empty($keywords)) {
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
+                                    <label for="type">Тип песнопения<span class="text-danger">*</span></label>
+                                    <select id="type" name="type" class="form-control<?=$type_valid ?>" title="Тип песнопения" required="required">
+                                        <option value="" hidden="hidden">...</option>
+                                        <?php foreach(CANT_TYPES as $item): ?>
+                                        <option value="<?=$item ?>"<?=$item == $type ? " selected='selected'" : "" ?>><?=CANT_TYPE_NAMES[$item] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="invalid-feedback">Тип песнопения обязательно</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group">
                                     <label for="tone">Глас</label>
                                     <input type="number" min="1" max="8" id="tone" name="tone" class="form-control" value="<?= $tone ?>" />
                                 </div>
@@ -245,6 +289,32 @@ if(empty($keywords)) {
                                 <div class="form-group">
                                     <label for="day">День (юлианск.)</label>
                                     <input type="number" min="1" max="31" id="day" name="day" class="form-control" value="<?=$day ?>" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="mini_image1">Мини-изображение 1</label>
+                                    <input type="text" id="mini_image1" name="mini_image1" class="form-control" value="<?=$mini_image1 ?>" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="image1">Изображение 1</label>
+                                    <input type="text" id="image1" name="image1" class="form-control" value="<?= $image1 ?>" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="mini_image2">Мини-изображение 2</label>
+                                    <input type="text" id="mini_image2" name="mini_image2" class="form-control" value="<?= $mini_image2 ?>" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="image2">Изображение 2</label>
+                                    <input type="text" id="image2" name="image2" class="form-control" value="<?= $image2 ?>" />
                                 </div>
                             </div>
                         </div>
