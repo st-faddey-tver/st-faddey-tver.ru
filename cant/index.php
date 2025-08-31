@@ -65,6 +65,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <a href="<?= BuildQuery('sort', SORT_DATE) ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
+                        <th>Плакат</th>
                     </tr>
                     <?php
                     $order = "beginning";
@@ -93,6 +94,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td><?=CANT_TYPE_NAMES[$type] ?></td>
                         <td><?=(empty($tone) || $tone > 8) ? '' : $tone ?></td>
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
+                        <td style="width: 20%;"><div class="w-50"><img class="img-fluid" alt="<?=$beginning ?>" src="https://st-faddey-tver.ru/images/content/troparvoskresnygl6.jpg" /></div></td>
                     </tr>
                     <?php endwhile; ?>
                 </table>
