@@ -60,6 +60,10 @@ if(null !== filter_input(INPUT_POST, "edit_cantus_submit")) {
         $month = filter_input(INPUT_POST, "month"); if(empty($month)) { $month = "NULL"; }
         $day = filter_input(INPUT_POST, "day"); if(empty($day)) { $day = "NULL"; }
         $position = filter_input(INPUT_POST, "position");
+        $mini_image1 = filter_input(INPUT_POST, "mini_image1");
+        $image1 = filter_input(INPUT_POST, "image1");
+        $mini_image2 = filter_input(INPUT_POST, "mini_image2");
+        $image2 = filter_input(INPUT_POST, "image2");
         $title = filter_input(INPUT_POST, "title");
         $description = filter_input(INPUT_POST, "description");
         $keywords = filter_input(INPUT_POST, "keywords");
