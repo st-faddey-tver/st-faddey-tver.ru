@@ -100,12 +100,12 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
                         <td style="width: 10%;">
                             <?php if(!empty($mini_image1) && !empty($image1)): ?>
-                            <div class="w-100"><a title="Скачать пдакат" href="<?=$image1 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image1 ?>" /></a></div>
+                            <div class="w-100"><a title="Скачать пдакат" target="_blank" href="<?=$image1 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image1 ?>" /></a></div>
                             <?php endif; ?>
                         </td>
                         <td style="width: 10%;">
                             <?php if(!empty($mini_image2) && !empty($image2)): ?>
-                            <div class="w-100"><a title="Скачать плакат" href="<?=$image2 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image2 ?>" /></a></div>
+                            <div class="w-100"><a title="Скачать плакат" target="_blank" href="<?=$image2 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image2 ?>" /></a></div>
                             <?php endif; ?>
                         </td>
                     </tr>
