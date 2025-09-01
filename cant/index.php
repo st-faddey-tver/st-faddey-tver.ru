@@ -65,7 +65,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <a href="<?= BuildQuery('sort', SORT_DATE) ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
-                        <th>Плакат</th>
+                        <th colspan="2">Плакат</th>
                     </tr>
                     <?php
                     $order = "beginning";
@@ -78,7 +78,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                     elseif($sort == SORT_DATE) {
                         $order = "month, day, tone, type";
                     }
-                    $sql = "select beginning, shortname, type, ifnull(tone, 9) as tone, ifnull(month, 13) as month, day from cantus order by $order";
+                    $sql = "select beginning, shortname, type, ifnull(tone, 9) as tone, ifnull(month, 13) as month, day, mini_image1, image1, mini_image2, image2 from cantus order by $order";
                     $fetcher = new Fetcher($sql);
                     
                     while($row = $fetcher->Fetch()):
@@ -88,13 +88,26 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         $tone = $row['tone'];
                         $month = $row['month'];
                         $day = $row['day'];
+                        $mini_image1 = $row['mini_image1'];
+                        $image1 = $row['image1'];
+                        $mini_image2 = $row['mini_image2'];
+                        $image2 = $row['image2'];
                     ?>
                     <tr>
                         <td><a href="<?=APPLICATION."/cantus/".$shortname ?>"><?=$beginning ?>...</a></td>
                         <td><?=CANT_TYPE_NAMES[$type] ?></td>
                         <td><?=(empty($tone) || $tone > 8) ? '' : $tone ?></td>
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
-                        <td style="width: 20%;"><div class="w-50"><img class="img-fluid" alt="<?=$beginning ?>" src="https://st-faddey-tver.ru/images/content/troparvoskresnygl6.jpg" /></div></td>
+                        <td style="width: 10%;">
+                            <?php if(!empty($mini_image1) && !empty($image1)): ?>
+                            <div class="w-100"><a title="Скачать пдакат" href="<?=$image1 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image1 ?>" /></a></div>
+                            <?php endif; ?>
+                        </td>
+                        <td style="width: 10%;">
+                            <?php if(!empty($mini_image2) && !empty($image2)): ?>
+                            <div class="w-100"><a title="Скачать плакат" href="<?=$image2 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image2 ?>" /></a></div>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                     <?php endwhile; ?>
                 </table>
