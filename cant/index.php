@@ -78,7 +78,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                     elseif($sort == SORT_DATE) {
                         $order = "month, day, tone, type";
                     }
-                    $sql = "select beginning, shortname, type, ifnull(tone, 9) as tone, ifnull(month, 13) as month, day, mini_image1, image1, mini_image2, image2 from cantus order by $order";
+                    $sql = "select beginning, shortname, type, ifnull(tone, 9) as tone, ifnull(month, 13) as month, day, mini_image1, image1, mini_image2, image2 from cantus where visible = 1 order by $order";
                     $fetcher = new Fetcher($sql);
                     
                     while($row = $fetcher->Fetch()):
