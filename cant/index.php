@@ -65,7 +65,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <a href="<?= BuildQuery('sort', SORT_DATE)."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
-                        <th colspan="2">Плакат</th>
+                        <th></th>
                     </tr>
                     <?php
                     $order = "beginning";
@@ -98,14 +98,12 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td><?=CANT_TYPE_NAMES[$type] ?></td>
                         <td><?=(empty($tone) || $tone > 8) ? '' : $tone ?></td>
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
-                        <td style="width: 10%;">
+                        <td>
                             <?php if(!empty($mini_image1) && !empty($image1)): ?>
-                            <div class="w-100"><a title="Скачать пдакат" target="_blank" href="<?=$image1 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image1 ?>" /></a></div>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image"></i></a>
                             <?php endif; ?>
-                        </td>
-                        <td style="width: 10%;">
                             <?php if(!empty($mini_image2) && !empty($image2)): ?>
-                            <div class="w-100"><a title="Скачать плакат" target="_blank" href="<?=$image2 ?>"><img class="img-fluid" alt="<?=$beginning ?>" src="<?=$mini_image2 ?>" /></a></div>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image2 ?>"><i class="fa fa-file-image"></i></a>
                             <?php endif; ?>
                         </td>
                     </tr>
