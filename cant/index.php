@@ -29,7 +29,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <h1>Общенародное пение</h1>
+                <h1><a name="header">Общенародное пение</a></h1>
                 <p class="d-none">На нашем приходе каждая церковная служба сопровождается общенародным пением прихожан совместно с хором. Это способствует лучшему пониманию службы, а также единению в молитве и усилению соборного духа православного народа. На этом сайте мы публикуем тексты песнопений, которые поются прихожанами на службах в нашем храме.</p>
                 <table class="table">
                     <tr>
@@ -38,7 +38,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <?php if($sort == SORT_BEGINNING): ?>
                             <i class="fas fa-arrow-down" style="color: black; font-size: large;"></i>
                             <?php else: ?>
-                            <a href="<?= APPLICATION."/cantus/". BuildQueryRemove('sort') ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
+                            <a href="<?= APPLICATION."/cantus/". BuildQueryRemove('sort')."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
                         <th class="text-nowrap">
@@ -46,7 +46,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <?php if($sort == SORT_TYPE): ?>
                             <i class="fas fa-arrow-down" style="color: black; font-size: large;"></i>
                             <?php else: ?>
-                            <a href="<?= BuildQuery('sort', SORT_TYPE) ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
+                            <a href="<?= BuildQuery('sort', SORT_TYPE)."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
                         <th class="text-nowrap">
@@ -54,7 +54,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <?php if($sort == SORT_TONE): ?>
                             <i class="fas fa-arrow-down" style="color: black; font-size: large;"></i>
                             <?php else: ?>
-                            <a href="<?= BuildQuery('sort', SORT_TONE) ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
+                            <a href="<?= BuildQuery('sort', SORT_TONE)."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
                         <th>
@@ -62,7 +62,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <?php if($sort == SORT_DATE): ?>
                             <i class="fas fa-arrow-down" style="color: black; font-size: large;"></i>
                             <?php else: ?>
-                            <a href="<?= BuildQuery('sort', SORT_DATE) ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
+                            <a href="<?= BuildQuery('sort', SORT_DATE)."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
                         <th colspan="2">Плакат</th>
