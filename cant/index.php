@@ -22,6 +22,9 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
         <?php
         include '../include/header.php';
         ?>
+        <div id="mini_image" class="d-none" style="position: absolute; width: 700px; z-index: 200;">
+            <img id="mini_image_img" alt="Плакат" class="img-fluid" />
+        </div>
         <div class="container">
             <div class="content bigfont">
                 <?php
@@ -98,12 +101,12 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td><?=CANT_TYPE_NAMES[$type] ?></td>
                         <td><?=(empty($tone) || $tone > 8) ? '' : $tone ?></td>
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
-                        <td>
+                        <td class="text-nowrap">
                             <?php if(!empty($mini_image1) && !empty($image1)): ?>
-                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image"></i></a>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image" style="font-size: xx-large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image1 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
                             <?php endif; ?>
                             <?php if(!empty($mini_image2) && !empty($image2)): ?>
-                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image2 ?>"><i class="fa fa-file-image"></i></a>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image2 ?>"><i class="fa fa-file-image" style="font-size: xx-large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image2 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -115,4 +118,19 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
         include '../include/footer.php';
         ?>
     </body>
+    <script>
+        function MouseEnterPlakat(event, src) {
+            $('#mini_image_img').attr('src', src);
+            $('#mini_image').css('top', (event.pageY - 100) + 'px');
+            $('#mini_image').css('left', (event.pageX - 750) + 'px');
+            $('#mini_image').removeClass('d-none');
+        }
+        
+        function MouseOutPlakat() {
+            $('#mini_image').addClass('d-none');
+            $('#mini_image_img').removeAttr('src');
+            $('#mini_image').css('top', '');
+            $('#mini_image').css('left', '');
+        }
+    </script>
 </html>
