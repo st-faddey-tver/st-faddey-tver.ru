@@ -26,7 +26,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
             <img id="mini_image_img" alt="Плакат" class="img-fluid" />
         </div>
         <div class="container">
-            <div class="content bigfont">
+            <div class="content">
                 <?php
                 if(!empty($error_message)) {
                     echo "<div class='alert alert-danger'>$error_message</div>";
@@ -103,10 +103,10 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
                         <td class="text-nowrap">
                             <?php if(!empty($mini_image1) && !empty($image1)): ?>
-                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image" style="font-size: xx-large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image1 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image" style="font-size: large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image1 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
                             <?php endif; ?>
                             <?php if(!empty($mini_image2) && !empty($image2)): ?>
-                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image2 ?>"><i class="fa fa-file-image" style="font-size: xx-large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image2 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
+                            <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image2 ?>"><i class="fa fa-file-image" style="font-size: large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image2 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
                             <?php endif; ?>
                         </td>
                     </tr>
