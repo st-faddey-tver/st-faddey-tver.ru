@@ -17,6 +17,11 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
         <?php
         include '../include/head.php';
         ?>
+        <style>
+            table.table tr td {
+                padding: 0.4rem;
+            }
+        </style>
     </head>
     <body>
         <?php
