@@ -110,7 +110,7 @@ if(null !== filter_input(INPUT_POST, 'cantus_create_submit')) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li><a href="<?=APPLICATION ?>/admin/cantus/">Общенародное пение</a></li>
+            <li><a href="<?=APPLICATION ?>/admin/cantus/">Каталог-классификатор песнопений и их плакатов</a></li>
             <li>Новая страница</li>
         </ul>
         <div class="container-fluid">

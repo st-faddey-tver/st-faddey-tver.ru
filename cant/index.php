@@ -1,8 +1,8 @@
 <?php
 include '../include/topscripts.php';
-$title = "Общенародное пение";
-$description = "На нашем приходе каждая церковная служба сопровождается общенародным пением прихожан совместно с хором. Это способствует лучшему пониманию службы, а также единению в молитве и усилению соборного духа православного народа. На нашем сайте мы публикуем тексты песнопений, которые поются прихожанами на службах в нашем храме.";
-$keywords = "общенародное пение, тексты песнопений";
+$title = "Каталог-классификатор песнопений и их плакатов";
+$description = "Для общенародного приходского пения.";
+$keywords = "общенародное пение, приходское пение, тексты песнопений";
 
 const SORT_BEGINNING = 0;
 const SORT_TYPE = 1;
@@ -19,7 +19,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
         ?>
         <style>
             table.table tr td {
-                padding: 0.4rem;
+                padding: 0.3rem;
             }
         </style>
     </head>
@@ -37,8 +37,13 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                     echo "<div class='alert alert-danger'>$error_message</div>";
                 }
                 ?>
-                <h1><a name="header">Общенародное пение</a></h1>
-                <p class="d-none">На нашем приходе каждая церковная служба сопровождается общенародным пением прихожан совместно с хором. Это способствует лучшему пониманию службы, а также единению в молитве и усилению соборного духа православного народа. На этом сайте мы публикуем тексты песнопений, которые поются прихожанами на службах в нашем храме.</p>
+                <div class="d-flex justify-content-center">
+                    <div class="news_name">
+                        <a href="<?=APPLICATION."/publicus/" ?>">Общенародное приходское пение</a>
+                    </div>
+                </div>
+                <hr />
+                <h1>Каталог-классификатор песнопений и их плакатов</h1>
                 <table class="table">
                     <tr>
                         <th class="text-nowrap">
@@ -48,6 +53,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <?php else: ?>
                             <a href="<?= APPLICATION."/cantus/". BuildQueryRemove('sort')."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
+                            <div style="font-size: small;">(и переход на страницу песнопения)</div>
                         </th>
                         <th class="text-nowrap">
                             Тип
@@ -73,7 +79,10 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                             <a href="<?= BuildQuery('sort', SORT_DATE)."#header" ?>"><i class="fas fa-arrow-down" style="font-size: medium;"></i></a>
                             <?php endif; ?>
                         </th>
-                        <th></th>
+                        <th class="text-right">
+                            Плакат
+                            <div style="font-size: small;">(предпросмотр,<br />файл для<br />скачивания)</div>
+                        </th>
                     </tr>
                     <?php
                     $order = "beginning";
@@ -106,7 +115,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                         <td><?=CANT_TYPE_NAMES[$type] ?></td>
                         <td><?=(empty($tone) || $tone > 8) ? '' : $tone ?></td>
                         <td class="text-nowrap"><?=(empty($month) || empty($day) || !key_exists($month, MONTH_GENETIVES)) ? '' : $day.' '.MONTH_GENETIVES[$month] ?></td>
-                        <td class="text-nowrap">
+                        <td class="text-right">
                             <?php if(!empty($mini_image1) && !empty($image1)): ?>
                             <a title="Скачать плакат" data-toggle="tooltip" data-placement="right" target="_blank" href="<?=$image1 ?>"><i class="fa fa-file-image" style="font-size: large;" onmouseenter="javascript: MouseEnterPlakat(event, '<?=$mini_image1 ?>');" onmouseout="javascript: MouseOutPlakat();"></i></a>
                             <?php endif; ?>

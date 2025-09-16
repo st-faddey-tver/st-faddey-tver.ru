@@ -20,7 +20,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
         <ul class="breadcrumb">
             <li><a href="<?=APPLICATION ?>/">На главную</a></li>
             <li><a href="<?=APPLICATION ?>/admin/">Администратор</a></li>
-            <li>Общенародное пение</li>
+            <li>Каталог-классификатор песнопений и их плакатов</li>
         </ul>
         <div class="container-fluid">
             <?php
@@ -30,7 +30,7 @@ if(!IsInRole(array(ROLE_NAMES[ROLE_ADMIN]))) {
             ?>
             <div class="d-flex justify-content-between mb-2">
                 <div class="p-1">
-                    <h1>Общенародное пение</h1>
+                    <h1>Каталог-классификатор песнопений и их плакатов</h1>
                 </div>
                 <div class="p-1">
                     <a href="create.php" class="btn btn-outline-dark"><i class="fas fa-plus"></i>&nbsp;Создать страницу</a>
