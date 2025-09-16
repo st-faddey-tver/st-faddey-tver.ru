@@ -85,7 +85,6 @@ $icon_status = filter_input(INPUT_GET, 'shortname') == 'icon' ? ' disabled' : ''
 $contact_status = filter_input(INPUT_GET, 'shortname') == 'contact' ? ' disabled' : '';
 $donation_status = filter_input(INPUT_GET, 'shortname') == 'donation' ? ' disabled' : '';
 ?>
-<a name="header"></a>
 <nav class="navbar navbar-expand-lg neopalimy-navbar">
     <div class="container">
         <a class="navbar-brand<?=$home_status ?>" href="<?=APPLICATION ?>/">

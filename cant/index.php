@@ -44,6 +44,7 @@ $sort = filter_input(INPUT_GET, 'sort') ?? SORT_BEGINNING;
                 </div>
                 <hr />
                 <h1>Каталог-классификатор песнопений и их плакатов</h1>
+                <a name="header"></a>
                 <table class="table">
                     <tr>
                         <th class="text-nowrap">
