@@ -25,7 +25,7 @@ $error_message = $cantus->errorMessage;
         include '../include/head.php';
         ?>
         <style>
-            table.table tr td {
+            table.table tr td, table.table tr th {
                 padding: 0.3rem;
                 font-size: 1rem;
             }

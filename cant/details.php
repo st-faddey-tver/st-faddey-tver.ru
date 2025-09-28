@@ -1,3 +1,4 @@
+
 <?php
 include '../include/topscripts.php';
 include '../include/cantus.php';
@@ -13,7 +14,7 @@ $keywords = $cantus->keywords;
         include '../include/head.php';
         ?>
         <style>
-            table.table tr td {
+            table.table tr td, table.table tr th {
                 padding: 0.3rem;
                 font-size: 1rem;
             }
