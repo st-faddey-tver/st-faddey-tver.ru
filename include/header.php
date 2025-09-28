@@ -27,9 +27,9 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         <div class="header">
             <?php
             // Полную шапку показываем только на главной странице, на остальных - узкую шапку.
-            $header_file = filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php' ? APPLICATION."/images/header_prozrachny.png" : APPLICATION."/images/header_two_icons.jpg";
+            if(filter_input(INPUT_SERVER, 'PHP_SELF') == APPLICATION.'/index.php'):
             ?>
-            <a href="<?=APPLICATION ?>/"><img src="<?=$header_file ?>?date=20231120" class="img-fluid d-none d-md-block" /></a>
+            <a href="<?=APPLICATION ?>/"><img src="<?= APPLICATION ?>/images/header_prozrachny.png?date=20250928" class="img-fluid d-none d-md-block" /></a>
             <div class="d-none d-md-block" style="font-family: Times New Roman, Times, serif; position: absolute; top: 50%; left: 1%; color: #913d14; font-size: large; line-height: normal; font-style: italic; font-weight: bold; width: 25%; text-align: left;">
                 &#8222;Сними обувь твою с ног твоих, ибо место, на котором ты стоишь, есть земля святая.&#8220;
                 <div style="text-align: right; font-size: smaller;">Исх 3:5</div>
@@ -38,6 +38,9 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
                 &#8222;Не унывайте,<br />Христос ведь с нами.&#8220;
                 <div style="text-align: right; font-size: smaller;">Сщмч. Фаддей</div>
             </div>
+            <?php else: ?>
+            <a href="<?=APPLICATION ?>/"><img src="<?= APPLICATION ?>/images/header_prozrachny_narrow.png?date=20250928" class="img-fluid d-none d-md-block" /></a>
+            <?php endif; ?>
             
             <div class="d-flex d-md-none row">
                 <div class="col-4">
