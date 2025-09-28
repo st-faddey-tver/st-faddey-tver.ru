@@ -12,6 +12,12 @@ $keywords = $cantus->keywords;
         <?php
         include '../include/head.php';
         ?>
+        <style>
+            table.table tr td {
+                padding: 0.3rem;
+                font-size: 1rem;
+            }
+        </style>
     </head>
     <body>
         <?php
